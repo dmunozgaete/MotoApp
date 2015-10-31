@@ -1,5 +1,5 @@
 {
-  "name": "Moto_App",
+  "name": "MotoApp",
   "app_id": "",
   "gulpStartupTasks": [
     "inject"
