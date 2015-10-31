@@ -24,8 +24,5 @@
     "com.ionic.keyboard",
     "org.apache.cordova.statusbar"
   ],
-  "cordovaPlatforms": [
-    "ios",
-    "android"
-  ]
+  "cordovaPlatforms": []
 }
