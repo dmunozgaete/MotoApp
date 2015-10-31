@@ -12,6 +12,7 @@
 Get all dependencies and libraries
 
 ```bash
+cd Movil
 npm install
 bower install
 ```
