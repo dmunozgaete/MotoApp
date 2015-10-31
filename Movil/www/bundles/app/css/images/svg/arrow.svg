@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1"
+     baseProfile="full"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     viewBox="0 0 100 50"
+     preserveAspectRatio="none"
+     xmlns:ev="http://www.w3.org/2001/xml-events">
+    
+    <path width="100" height="50" stroke-width="0" stroke-miterlimit="3" stroke="#000000" fill="#FFFFFF" d="M-2.7711166694643907e-13,14.023316478574039 L50.18388791593695,0 L100.00000000000017,14.023316478574149 L100.00000000000003,50.24518388791594 L50.03434721087094,35.55159492070646 L0,50 L-2.7711166694643907e-13,14.023316478574039 Z "></path>
+        
+</svg>

@@ -1,0 +1,29 @@
+<ion-view hide-nav-bar="true" class="route start" can-swipe-back="false" >
+    <!-- CONTENT -->
+    <div class="row common-actions">
+        <div class="col no-padding">
+            <i class="icon ion-ios-camera"></i>
+            <div>Tomar Foto</div>
+        </div>
+        <div class="col">
+            <label class="toggle toggle-energized">
+                <input type="checkbox">
+                <div class="track">
+                    <div class="handle"></div>
+                </div>
+            </label>
+            <div>Compartir en Vivo</div>
+        </div>
+    </div>
+    <div class="counter">
+        <span>
+            {{counter}}
+        </span>
+    </div>
+    <!-- STOP BUTTON -->
+    <div class="counter-button stop" ng-click="stop()">
+        <div>
+            <i class="icon ion-stop"></i>
+        </div>
+    </div>
+</ion-view>

@@ -1,0 +1,52 @@
+<ion-side-menus enable-menu-with-back-views="true">
+    <ion-side-menu-content>
+        <!-- HEADER -->
+        <ion-nav-bar align-title="left">
+            <!-- LEFT BUTTON'S -->
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+                </button>
+            </ion-nav-buttons>
+    
+            <!-- RIGHT BUTTON'S -->
+            <ion-nav-buttons side="right">
+                <button class="button button-icon ion-android-notifications notification" ui-sref="app.notifications">
+                    <span class="badge badge-assertive">2</span>
+                </button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <!-- CONTENT -->
+        <ion-nav-view name="content"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="left">
+        <!-- MENU CONTENT -->
+        <ion-content>
+            <center class="profile-bubble">
+                <div class="marker">
+                    <div class="halo">
+                        <div>
+                            <img ng-src="bundles/mocks/css/images/dmunoz.jpg" />
+                        </div>
+                    </div>
+                </div>
+                <div class="name">
+                    David Muñoz Gaete
+                </div>
+                <div class="description">
+                    Novato
+                </div>
+            </center>
+            <br />
+            <ion-list>
+                <ion-item nav-clear menu-toggle="left" ng-repeat="item in config.menu" ng-click="navigateTo(item)" ng-class="{'active': item.active}">
+                    <i class="icon {{item.icon}}"></i>
+                    <span>{{item.label}}</span>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+        <!-- FOOTER -->
+        <ion-footer-bar>
+            v{{config.application.version}}
+        </ion-footer-bar>
+    </ion-side-menu>
+</ion-side-menus>

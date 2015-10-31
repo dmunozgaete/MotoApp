@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": ";;;;AAKA,iBAAkB;;;;EAId,+BAAc;;;;IAMF,6DAAS;;MAEL,mEAAM;QACF,QAAQ,EAAE,QAAQ;QAClB,IAAI,EAAE,GAAG;;;;;AAajC,aAAc;;;;EACV,2BAAc;;;;IAKN,uCAAM;MACF,UAAU,EAAE,IAAI;EAO5B,kJAAmJ;IAdvJ,aAAc;;;;MAmBF,iCAAQ;;;;;;;QAMI,iEAAiB;UACb,UAAU,EAAE,gBAAgB;UAC5B,WAAW,EAAE,eAAe;QAShC,gEAAiB;UACb,UAAU,EAAE,kBAAkB;UAC9B,WAAW,EAAE,iBAAiB",
+"sources": ["platform-overrides.scss"],
+"names": [],
+"file": "platform-overrides.css"
+}

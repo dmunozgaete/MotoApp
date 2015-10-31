@@ -1,0 +1,33 @@
+<!-- LOADING -->
+<flex-loading ng-if="!items" title="Buscando Los Mejores Embajadores" legend="...del mundo mundial">
+</flex-loading>
+<!-- CONTENT -->
+<div ng-if="items">
+    <ion-content>
+        <ion-refresher pulling-text="Vamos!, con un poco mas de fuerza..." spinner="lines" on-refresh="doRefresh()">
+        </ion-refresher>
+        <ion-list>
+            <ion-item ng-repeat="item in items" class="item-avatar">
+                <div class="information">
+                    <preload-image ng-src="item.image"></preload-image>
+                    <h2>{{item.name}}</h2>
+                    <p>{{item.type.name}}</p>
+                    <div class="likes">
+                        <i class="icon ion-heart"></i>
+                        <span>{{item.likes}}</span>
+                    </div>
+                </div>
+                <div class="markers row no-padding">
+                    <div class="col no-padding">
+                        <span class="value">{{item.followers}}</span>
+                        <span class="unit">SEGUIDORES</span>
+                    </div>
+                    <div class="col no-padding">
+                        <span class="value">{{item.following}}</span>
+                        <span class="unit">SIGUIENDO</span>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</div>

@@ -1,0 +1,63 @@
+<ion-view title="Inicio" class="home">
+    <!-- LOADING -->
+    <flex-loading ng-if="!dashboard" title="Cargando Resumen..." legend="Veamos como van esas sesiones">
+    </flex-loading>
+    <!-- CONTENT -->
+    <div ng-if="dashboard">
+        <ion-content>
+            <!-- Stat's -->
+            <div class="row period-selector">
+                <div class="col">
+                    <div>
+                        Últimos 7 días&nbsp;
+                        <i class="icon ion-ios-arrow-down"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- Stat's -->
+            <div class="row kpi big">
+                <div class="col">
+                    <div class="value">
+                        {{ dashboard.distance.total | currency : '' : 1}}
+                    </div>
+                    <div class="label">
+                        Kilometros Recorridos
+                    </div>
+                </div>
+            </div>
+            <!-- Kpi's -->
+            <div class="row kpi">
+                <div class="col">
+                    <div class="value">
+                        <i class="icon ion-ios-speedometer-outline"></i>
+                        <span>{{ dashboard.distance.average | currency : '' : 1}}</span>
+                    </div>
+                    <div class="label">
+                        Distancia Promedio
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="value">
+                        <i class="icon ion-ios-stopwatch-outline"></i>
+                        <span>{{ dashboard.rhythm | currency : '' : 1}}</span>
+                    </div>
+                    <div class="label">
+                        Ritmo Promedio
+                    </div>
+                </div>
+            </div>
+            <!-- Period Route Graph -->
+            <div class="padding" ng-if="graph">
+                <canvas class="chart chart-line" chart-options="graph.options" chart-data="graph.values" chart-labels="graph.labels" chart-series="graph.series" chart-colours="graph.colours" chart-click="graph.onClick">
+                </canvas>
+            </div>
+        </ion-content>
+        <!-- FOOTER -->
+        <ion-footer-bar>
+            <button class="button button-block" ng-click="create();">
+                <i class="icon ion-android-stopwatch"></i>
+                <span>Iniciar Sesión</span>
+            </button>
+        </ion-footer-bar>
+    </div>
+</ion-view>

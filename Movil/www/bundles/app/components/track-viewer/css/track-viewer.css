@@ -1,0 +1,22 @@
+.track-viewer-fill, track-viewer, track-viewer ui-gmap-google-map, track-viewer ui-gmap-google-map .angular-google-map, track-viewer ui-gmap-google-map .angular-google-map .angular-google-map-container, track-viewer .loading, track-viewer .static, track-viewer .static > img {
+  width: 100%;
+  height: 100%; }
+
+track-viewer {
+  display: block; }
+  track-viewer ui-gmap-google-map .angular-google-map .angular-google-map-container a img {
+    display: none; }
+  track-viewer ui-gmap-google-map .angular-google-map .gm-style-cc {
+    display: none; }
+  track-viewer .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; }
+    track-viewer .loading .legend {
+      opacity: 0.6;
+      margin-top: 1em;
+      font-size: 0.9em;
+      line-height: 1em; }
+
+/*# sourceMappingURL=track-viewer.css.map */

@@ -1,0 +1,45 @@
+.track-viewer-fill {
+    width: 100%;
+    height: 100%;
+}
+
+track-viewer {
+    @extend .track-viewer-fill;
+    display: block;
+    ui-gmap-google-map {
+        @extend .track-viewer-fill;
+        .angular-google-map {
+            @extend .track-viewer-fill;
+            .angular-google-map-container {
+                @extend .track-viewer-fill;
+                //hide Image
+                a img {
+                    display: none;
+                }
+            }
+            .gm-style-cc {
+                display: none;
+            }
+        }
+    }
+    .loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        @extend .track-viewer-fill;
+        .legend {
+            opacity: 0.6;
+            margin-top: 1em;
+            font-size: 0.9em;
+            line-height: 1em;
+        }
+    }
+
+    .static {
+        @extend .track-viewer-fill;
+        > img {
+            @extend .track-viewer-fill;
+        }
+    }
+}

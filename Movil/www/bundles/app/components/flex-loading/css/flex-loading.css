@@ -1,0 +1,27 @@
+flex-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  text-align: center; }
+  flex-loading .spinner {
+    stroke: #ffc107;
+    fill: #ffc107; }
+    flex-loading .spinner svg {
+      stroke: #ffc107; }
+      flex-loading .spinner svg .stop1 {
+        stop-color: #ffc107; }
+      flex-loading .spinner svg .stop2 {
+        stop-color: #ffc107; }
+  flex-loading > .message {
+    font-size: 1.2em;
+    opacity: 0.5; }
+  flex-loading > .legend {
+    opacity: 0.4;
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    line-height: 1em; }
+
+/*# sourceMappingURL=flex-loading.css.map */

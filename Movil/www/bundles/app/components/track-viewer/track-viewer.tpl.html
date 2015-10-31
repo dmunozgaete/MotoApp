@@ -1,0 +1,18 @@
+<div class="loading" ng-if="loadingMap">
+    <center>
+        <ion-spinner icon="lines"></ion-spinner>
+        <div class="message">
+            Generando Ruta
+        </div>
+        <div class="legend">
+            No te impacientes... no es simple!
+        </div>
+    </center>
+</div>
+
+<div ng-if="!loadingMap && static" class="static">
+	<img ng-src="{{image}}" />
+</div>
+
+<ui-gmap-google-map control="map" center='map.center' zoom='16' options="map.options">
+</ui-gmap-google-map>

@@ -1,0 +1,73 @@
+<ion-view title="Mi Perfil" class="profile">
+    <!-- LOADING -->
+    <flex-loading ng-if="!profile" title="Recopilando Información..." legend="solo queremos saber ti ^^">
+    </flex-loading>
+    <!-- CONTENT -->
+    <div ng-if="profile">
+        <ion-content>
+            <!-- HEADER PROFILE -->
+            <div class="stats">
+                <div class="row">
+                    <div class="col col-33">
+                        <!-- BUBBLE -->
+                        <div class="profile-bubble">
+                            <div class="marker">
+                                <div class="halo">
+                                    <div>
+                                        <img ng-src="{{profile.image}}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col no-padding">
+                        <!-- STATS -->
+                        <div class="row no-padding">
+                            <div class="col no-padding">
+                                <div class="title">
+                                    Total Recorrido
+                                </div>
+                                <div class="counter">
+                                    {{ profile.resume.distance.total | currency : '' : 1}} km
+                                </div>
+                                <div class="category">
+                                    {{ profile.type.name }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="progress">
+                                <div style="width:53%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col follower col-33">
+                        <span>{{ profile.following }}</span> Siguiendo
+                    </div>
+                    <div class="col following col-offset-5">
+                        <span>{{ profile.followers }}</span> Seguidores
+                    </div>
+                </div>
+            </div>
+            <!-- BANNER -->
+            <div class="row average">
+                <div class="col">
+                    Distancia Promedio
+                </div>
+                <div class="col col-33">
+                    {{ profile.resume.distance.average | currency : '' : 1}} km
+                </div>
+            </div>
+        </ion-content>
+        <ion-footer-bar>
+            <!-- CLOSE SESSION -->
+            <button class="close-session button button-block" ng-click="logOut();">
+                <i class="icon ion-ios-undo"></i>
+                <span>Cerrar Sesión</span>
+            </button>
+        </ion-footer-bar>
+    </div>
+</ion-view>

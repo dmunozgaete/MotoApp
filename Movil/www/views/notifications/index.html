@@ -1,0 +1,21 @@
+<ion-view title="Notificaciones" class="notifications">
+    <!-- LOADING -->
+    <flex-loading ng-if="!items" title="Notificaciones, Notificaciones ..." legend="Ohh! Notificaciones...">
+    </flex-loading>
+    <!-- CONTENT -->
+    <div ng-if="items">
+        <ion-content>
+            <ion-refresher pulling-text="Vamos!, con un poco mas de fuerza..." spinner="lines" on-refresh="doRefresh()">
+            </ion-refresher>
+            <ion-list>
+                <ion-item ng-repeat="item in items" class="item-avatar">
+                    <div class="information">
+                        <preload-image ng-src="item.image"></preload-image>
+                        <h2>{{item.name}}</h2>
+                        <p>{{item.observation}}</p>
+                    </div>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </div>
+</ion-view>
