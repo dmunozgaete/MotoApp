@@ -40,7 +40,7 @@
             .enableDeviceGPS() //Enable GPS Tracking
             .autoStart() //Auto Start
             .accuracyThreshold(70) //Real GPS Aproximaty (aprox 65)
-            //.addTestRoute('bundles/mocks/js/gps/+250.json'); //Simulate a Route
+            .addTestRoute('bundles/mocks/js/gps/+250.json'); //Simulate a Route
 
         //Route Tracker Configuration
         routeTrackerProvider
