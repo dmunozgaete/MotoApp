@@ -437,16 +437,45 @@
             right: auto !important;
             justify-content: center !important;
             width: 40px !important; }
+          [md-theme='imoto'] ion-view.pane.route.main ion-tabs ambassadors ion-content ion-item div.follow-button {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            border-radius: 4px;
+            border: 1px solid #E2E1E1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2em;
+            height: 1.7em;
+            width: 2em; }
+            [md-theme='imoto'] ion-view.pane.route.main ion-tabs ambassadors ion-content ion-item div.follow-button > i {
+              margin-top: 1px; }
+            [md-theme='imoto'] ion-view.pane.route.main ion-tabs ambassadors ion-content ion-item div.follow-button > ion-spinner {
+              margin-top: 4px; }
       [md-theme='imoto'] ion-view.pane.route.gps ion-list ion-item {
         padding: 6px 16px; }
         [md-theme='imoto'] ion-view.pane.route.gps ion-list ion-item p {
           margin-bottom: 0px;
           font-size: 0.9em;
           line-height: 1.2em; }
-          [md-theme='imoto'] ion-view.pane.route.gps ion-list ion-item p:last-child {
+          [md-theme='imoto'] ion-view.pane.route.gps ion-list ion-item p.stamp {
             opacity: 0.5;
             text-align: right;
             margin-top: -6px; }
+        [md-theme='imoto'] ion-view.pane.route.gps ion-list ion-item.event {
+          color: #1c1c29;
+          font-weight: bold; }
+          [md-theme='imoto'] ion-view.pane.route.gps ion-list ion-item.event p.stamp {
+            margin-top: -17px;
+            margin-bottom: 3px;
+            font-weight: normal; }
+          [md-theme='imoto'] ion-view.pane.route.gps ion-list ion-item.event.route-autopause, [md-theme='imoto'] ion-view.pane.route.gps ion-list ion-item.event.route-autostart {
+            color: green; }
+          [md-theme='imoto'] ion-view.pane.route.gps ion-list ion-item.event.gps-timeout-error {
+            color: red; }
+          [md-theme='imoto'] ion-view.pane.route.gps ion-list ion-item.event.gps-discard-point {
+            color: #4237E4; }
       [md-theme='imoto'] ion-view.pane.route.share track-viewer {
         height: 9em;
         width: 100%; }

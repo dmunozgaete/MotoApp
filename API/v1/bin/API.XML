@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>API</name>
+    </assembly>
+    <members>
+        <member name="T:API.WebApiConfig">
+            <summary>
+            WEB API Global Configuration
+            </summary>
+        </member>
+        <member name="M:API.WebApiConfig.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Register Config Variables
+            </summary>
+            <param name="config"></param>
+        </member>
+        <member name="T:API.Endpoints.HelloWorld.HelloWorldController">
+            <summary>
+            Hello World Example Controller
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.HelloWorld.HelloWorldController.Get(System.String)">
+            <summary>
+            Return a String like "Hello World {YourName}"
+            </summary>
+            <param name="name">Your Name</param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Endpoints.HelloWorld.HelloWorldController.Post(API.Endpoints.HelloWorld.Models.HelloWorld)">
+            <summary>
+            Create a newly Resource
+            </summary>
+            <returns>newly created resource</returns>
+        </member>
+        <member name="M:API.Endpoints.HelloWorld.HelloWorldController.Put(System.String,API.Endpoints.HelloWorld.Models.HelloWorld)">
+            <summary>
+            Update a resource by his identifier
+            </summary>
+            <param name="token">Token identifier</param>
+            <param name="model">HelloWorld Account</param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Endpoints.HelloWorld.HelloWorldController.Delete(System.String)">
+            <summary>
+            Delete a resource (Throw Not Implemented)
+            </summary>
+            <param name="token">Resource Identifier</param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.SimpleAuthentication.Services.Authenticate">
+            <summary>
+            Simple Authentication Service
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.SimpleAuthentication.Services.Authenticate.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Async Process
+            </summary>
+            <param name="cancellationToken">Cancellation Token</param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.HelloWorld.Services.Post">
+            <summary>
+            Create a "Virtual" new Resource
+            </summary>
+        </member>
+        <member name="T:API.Endpoints.HelloWorld.Services.Put">
+            <summary>
+            Create a "Virtual" new Resource
+            </summary>
+        </member>
+        <member name="T:API.Endpoints.SimpleAuthentication.SimpleAuthenticationController">
+            <summary>
+            SImple Authentication Example
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.SimpleAuthentication.SimpleAuthenticationController.SecretOperation">
+            <summary>
+            Restricted Operation (Authentication Required)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:API.Endpoints.SimpleAuthentication.SimpleAuthenticationController.Post(API.Endpoints.SimpleAuthentication.Models.Authenitcation)">
+            <summary>
+            Get an Access Token for retrieve the "SuperSecretOperation"
+            </summary>
+            <param name="credentials">Any credentials</param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Errors">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:API.Errors.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:API.Errors.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:API.Errors.COUNTRY_REQUIRED">
+            <summary>
+              Looks up a localized string similar to Country is required.
+            </summary>
+        </member>
+        <member name="P:API.Errors.EMAIL_REQUIRED">
+            <summary>
+              Looks up a localized string similar to Email is required.
+            </summary>
+        </member>
+        <member name="P:API.Errors.EMPTY_BODY">
+            <summary>
+              Looks up a localized string similar to Model is Empty.
+            </summary>
+        </member>
+        <member name="P:API.Errors.PASSWORD_REQUIRED">
+            <summary>
+              Looks up a localized string similar to Password is required.
+            </summary>
+        </member>
+        <member name="T:API.WebApiApplication">
+            <summary>
+            Web Api Bootstrap
+            </summary>
+        </member>
+        <member name="M:API.WebApiApplication.Application_Start">
+            <summary>
+            Start up
+            </summary>
+        </member>
+    </members>
+</doc>

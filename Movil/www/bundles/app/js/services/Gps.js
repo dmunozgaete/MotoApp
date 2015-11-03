@@ -71,8 +71,10 @@
                 var watcher = null;
                 var callbacks = [];
                 var isPlatformReady = false;
+
+                //Don't change this Timeout, they are diferent from above
                 var options = {
-                    timeout: 10000,
+                    timeout: 10000, 
                     maximumAge: 3000,
                     enableHighAccuracy: _highAccuracy
                 };
@@ -118,6 +120,7 @@
                     if (isDiscarded)
                     {
                         $log.warn("GPS: location discarded ", position);
+                        self.$fire("gps.pointDiscarded", [position]);
                         return;
                     }
 
@@ -179,15 +182,9 @@
 
                     executeOnLoad(function()
                     {
-
-                        //Not Send Error, fails :S
-                        //http://stackoverflow.com/questions/20239846/android-geolocation-using-phonegap-code-3-error
-                        /*
-                        watcher = $cordovaGeolocation.watchPosition(options);
-                        watcher.then(null, null, onUpdateLocation);
-                        */
-
                         watcher = navigator.geolocation.watchPosition(onUpdateLocation, onFailureLocation, options);
+
+                        self.$fire("gps.start");
                     })
                 };
 
@@ -215,7 +212,6 @@
                     if (!isInProcess)
                     {
                         var dif = (new Date() - _lastSuccessGPS);
-
                         if (dif > _timeout)
                         {
                             // MEANS GPS IS NOT WORK AT TIMEOUT LIMIT
@@ -228,7 +224,7 @@
                             var stopProcess = function()
                             {
                                 isInProcess = false;
-                            }
+                            };
 
                             isInProcess = true;
                             self.getCurrentPosition(_timeout).then(stopProcess, stopProcess);
@@ -269,7 +265,8 @@
                                         {
                                             accuracy: 10,
                                             latitude: position[1],
-                                            longitude: position[0]
+                                            longitude: position[0],
+                                            altitude: 300
                                         }
                                     });
 

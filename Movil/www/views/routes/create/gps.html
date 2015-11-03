@@ -4,7 +4,6 @@
             <button class="button button-icon ion-ios-arrow-left" ng-click="back();"></button>
         </ion-nav-buttons>
     </ion-nav-bar>
-
     <!-- LOADING -->
     <flex-loading ng-if="!items" title="Cargando Visor ..." legend="Esperando Actualización...">
     </flex-loading>
@@ -12,17 +11,22 @@
     <div ng-if="items">
         <ion-content>
             <ion-list>
-                <ion-item ng-repeat="item in items" class="item">
-                    <p>Latitud : {{item.coords.latitude}}</p>
-                    <p>Longitud : {{item.coords.longitude}}</p>
-                    <p>Altitud : {{item.coords.altitude}}</p>
-                    <p>
+                <ion-item ng-repeat="item in items" class="item {{item.type}}" ng-class="{'event': item.type != null}">
+                    <div ng-if="item.type">
+                        <!-- EVENT -->
+                        {{item.type}}
+                    </div>
+                    <div ng-if="!item.type">
+                        <!-- COORD -->
+                        <p>Latitud : {{item.coords.latitude}}</p>
+                        <p>Longitud : {{item.coords.longitude}}</p>
+                        <p>Altitud : {{item.coords.altitude}}</p>
+                    </div>
+                    <p class="stamp">
                         {{item.timestamp | amDateFormat:'H:mm:ss'}}
                     </p>
                 </ion-item>
             </ion-list>
         </ion-content>
     </div>
-
-
 </ion-view>

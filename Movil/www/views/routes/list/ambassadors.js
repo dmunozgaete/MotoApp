@@ -11,7 +11,8 @@ angular.module('app.components')
             $scope,
             $element,
             $log,
-            $Api
+            $Api,
+            $timeout
         )
         {
 
@@ -40,6 +41,18 @@ angular.module('app.components')
                     $scope.$broadcast('scroll.refreshComplete');
                 })
             };
+
+            $scope.follow = function(item)
+            {
+                var value = item.follow;
+                item.follow = null;
+
+                var timer = $timeout(function()
+                {
+                    item.follow = !value;
+                    $timeout.cancel(timer);
+                }, 1000);
+            }
 
         }
     };

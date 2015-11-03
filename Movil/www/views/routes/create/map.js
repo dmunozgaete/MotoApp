@@ -45,23 +45,32 @@ angular.route('nomenu.routes/create/map', function(
     });
 
     var addPointListener = routeTracker.$on("route.addTrackPoint", onRouteChange);
-    var autoPausedListener = routeTracker.$on("route.autoPaused", function()
-    {
-        $state.go("nomenu.routes/create/pause");
-    });
     $scope.$on("$destroy", function()
     {
         //Destroy Listener 
         addPointListener();
-        autoPausedListener();
-
     });
 
     //----------------------------------------
     // Action's
     $scope.back = function()
     {
-        $state.go("nomenu.routes/create/index");
+        //Check State to navigate
+        var resume = routeTracker.getResume();
+
+        //AUTO_PAUSE == 4
+        if (resume.state == 4)
+        {
+            $state.go("nomenu.routes/create/pause",
+            {
+                autopause: true
+            });
+        }
+        else
+        {
+            $state.go("nomenu.routes/create/index");
+        }
+
     };
 
 
