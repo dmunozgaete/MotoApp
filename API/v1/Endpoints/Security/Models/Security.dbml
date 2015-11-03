@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Class="SecurityDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="" Member="Credentials">
+    <Type Name="Credentials">
+      <Column Name="username" Type="System.String" CanBeNull="false" />
+      <Column Name="password" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_MAE_Usuario" Member="Users">
+    <Type Name="User">
+      <Column Name="USUA_Activo" Member="active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="USUA_UltimaConexion" Member="lastConnection" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="USUA_Email" Member="email" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="USUA_NombreCompleto" Member="fullname" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ENTI_Token" Member="token" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ENTI_Identificador" Member="identifier" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ARCH_Token" Member="photo" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_Perfiles" Member="Profiles">
+    <Type Name="Profile">
+      <Column Name="ENTI_Email" Member="email" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="ENTI_Nombre" Member="name" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ENTI_Token" Member="token" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ENTI_FechaCreacion" Member="createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="PERF_Descripcion" Member="description" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="PERF_Identificador" Member="identifier" Type="System.String" DbType="Char(5)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="RequestAccesses">
+    <Type Name="RequestAccess">
+      <Column Name="email" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

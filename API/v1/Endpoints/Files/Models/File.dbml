@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Class="FileDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.TB_MAE_ArchivoBinario" Member="FileDatas">
+    <Type Name="FileData">
+      <Column Name="ARCH_Binario" Member="binary" Type="System.Byte[]" DbType="Image NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="ARCH_Nombre" Member="name" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="ARCH_ContentType" Member="contentType" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_MAE_Archivo" Member="Files">
+    <Type Name="File">
+      <Column Name="ARCH_Nombre" Member="name" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="ARCH_Tamano" Member="length" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ARCH_FechaCreacion" Member="createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ARCH_ContentType" Member="contentType" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="ARCH_Token" Member="token" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

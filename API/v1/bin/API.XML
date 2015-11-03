@@ -15,77 +15,245 @@
             </summary>
             <param name="config"></param>
         </member>
-        <member name="T:API.Endpoints.HelloWorld.HelloWorldController">
+        <member name="T:API.Endpoints.Accounts.AccountsController">
             <summary>
-            Hello World Example Controller
+            Account API
             </summary>
         </member>
-        <member name="M:API.Endpoints.HelloWorld.HelloWorldController.Get(System.String)">
+        <member name="M:API.Endpoints.Accounts.AccountsController.Get">
             <summary>
-            Return a String like "Hello World {YourName}"
+            Retrieve Account's
             </summary>
-            <param name="name">Your Name</param>
             <returns></returns>
         </member>
-        <member name="M:API.Endpoints.HelloWorld.HelloWorldController.Post(API.Endpoints.HelloWorld.Models.HelloWorld)">
+        <member name="M:API.Endpoints.Accounts.AccountsController.Get(System.String)">
             <summary>
-            Create a newly Resource
+            Retrieve Target Account Information
             </summary>
-            <returns>newly created resource</returns>
-        </member>
-        <member name="M:API.Endpoints.HelloWorld.HelloWorldController.Put(System.String,API.Endpoints.HelloWorld.Models.HelloWorld)">
-            <summary>
-            Update a resource by his identifier
-            </summary>
-            <param name="token">Token identifier</param>
-            <param name="model">HelloWorld Account</param>
+            <param name="id">Account Token</param>
             <returns></returns>
         </member>
-        <member name="M:API.Endpoints.HelloWorld.HelloWorldController.Delete(System.String)">
+        <member name="M:API.Endpoints.Accounts.AccountsController.Current">
             <summary>
-            Delete a resource (Throw Not Implemented)
+            Retrieve Current Account Information
             </summary>
-            <param name="token">Resource Identifier</param>
             <returns></returns>
         </member>
-        <member name="T:API.Endpoints.SimpleAuthentication.Services.Authenticate">
+        <member name="M:API.Endpoints.Accounts.AccountsController.Post(API.Endpoints.Accounts.Models.Create,System.String)">
             <summary>
-            Simple Authentication Service
+            Pre-Register an account in the system
+            </summary>
+            <param name="account">Account information</param>
+            <param name="host">Application Entry Point</param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Endpoints.Accounts.AccountsController.Put(System.String,API.Endpoints.Accounts.Models.Update)">
+            <summary>
+            Update the target Account
+            </summary>
+            <param name="id">Account Token</param>
+            <param name="account">Account information</param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Endpoints.Accounts.AccountsController.ResetPassword(System.String,System.String)">
+            <summary>
+            Reset the current password
+            </summary>
+            <param name="currentPassword">Current Password</param>
+            <param name="newPassword">New Password</param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Accounts.Services.Create">
+            <summary>
+            Add User to DB
             </summary>
         </member>
-        <member name="M:API.Endpoints.SimpleAuthentication.Services.Authenticate.ExecuteAsync(System.Threading.CancellationToken)">
+        <member name="M:API.Endpoints.Accounts.Services.Create.#ctor(API.Endpoints.Accounts.Models.Create,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="user">New User Information</param>
+            <param name="host">Application URL</param>
+        </member>
+        <member name="M:API.Endpoints.Accounts.Services.Create.ExecuteAsync(System.Threading.CancellationToken)">
             <summary>
             Async Process
             </summary>
-            <param name="cancellationToken">Cancellation Token</param>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="T:API.Endpoints.HelloWorld.Services.Post">
+        <member name="T:API.Endpoints.Accounts.Services.Get">
             <summary>
-            Create a "Virtual" new Resource
+            Retrieve a Target User
             </summary>
         </member>
-        <member name="T:API.Endpoints.HelloWorld.Services.Put">
+        <member name="M:API.Endpoints.Accounts.Services.Get.#ctor(System.String)">
             <summary>
-            Create a "Virtual" new Resource
+            Constructor
+            </summary>
+            <param name="token"></param>
+        </member>
+        <member name="M:API.Endpoints.Accounts.Services.Get.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Async Process
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Accounts.Services.Update">
+            <summary>
+            Update User in DB
             </summary>
         </member>
-        <member name="T:API.Endpoints.SimpleAuthentication.SimpleAuthenticationController">
+        <member name="M:API.Endpoints.Accounts.Services.Update.#ctor(System.String,API.Endpoints.Accounts.Models.Update)">
             <summary>
-            SImple Authentication Example
+            Constructor
+            </summary>
+            <param name="token">User Token</param>
+            <param name="user">Target Model</param>
+        </member>
+        <member name="M:API.Endpoints.Accounts.Services.Update.ExecuteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+             Update User
+            </summary>
+            <param name="token"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:API.Endpoints.Dashboard.DashboardController" -->
+        <member name="T:API.Endpoints.Files.FilesController">
+            <summary>
+            File API
             </summary>
         </member>
-        <member name="M:API.Endpoints.SimpleAuthentication.SimpleAuthenticationController.SecretOperation">
+        <member name="M:API.Endpoints.Files.FilesController.Get(System.String)">
             <summary>
-            Restricted Operation (Authentication Required)
+            Retrieves a File Content
             </summary>
             <returns></returns>
         </member>
-        <member name="M:API.Endpoints.SimpleAuthentication.SimpleAuthenticationController.Post(API.Endpoints.SimpleAuthentication.Models.Authenitcation)">
+        <member name="M:API.Endpoints.Files.FilesController.Post">
             <summary>
-            Get an Access Token for retrieve the "SuperSecretOperation"
+            Create a Temporary File  (Must be Change the flag to permanently after)
             </summary>
-            <param name="credentials">Any credentials</param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Files.Services.Upload">
+            <summary>
+            File Upload
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Files.Services.Upload.#ctor(System.Net.Http.HttpRequestMessage,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="request">Http Request</param>
+            <param name="userID">User ID</param>
+        </member>
+        <member name="M:API.Endpoints.Files.Services.Upload.SaveFiles(System.Collections.Generic.List{System.Net.Http.HttpContent})">
+            <summary>
+            Save Files into DB
+            </summary>
+            <param name="files"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Files.Services.View">
+            <summary>
+            Authentication API
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Files.Services.View.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="token">Token del Archivo</param>
+        </member>
+        <member name="M:API.Endpoints.Files.Services.View.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Obtiene la foto del usuario
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Security.Resources.Security">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:API.Endpoints.Security.Resources.Security.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:API.Endpoints.Security.Resources.Security.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:API.Endpoints.Security.Resources.Security.USERNAME_OR_PASSWORD_INCORRECT">
+            <summary>
+              Looks up a localized string similar to Usuario o Clave Incorrecta.
+            </summary>
+        </member>
+        <member name="T:API.Endpoints.Security.SecurityController">
+            <summary>
+            Security Controller to grant JWT to Valid User's
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Security.SecurityController.Authorize(API.Endpoints.Security.Models.Credentials)">
+            <summary>
+            Authorize user by credentials
+            </summary>
+            <param name="credentials">Credentials</param>
+            <returns></returns>
+            <response code="200">Authorized</response>
+            <response code="500">Incorrect Username or Password</response>
+        </member>
+        <member name="M:API.Endpoints.Security.SecurityController.RequestAccess(API.Endpoints.Security.Models.RequestAccess)">
+            <summary>
+            BPM - Request Access for a Identity (enrollment)
+            </summary>
+            <param name="model">Model</param>
+            <returns></returns>
+            <response code="201">Request created</response>
+            <response code="500">Internal Server Error</response>
+        </member>
+        <member name="T:API.Endpoints.Security.Services.Authorize">
+            <summary>
+            Authorize an User by Credentials
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Security.Services.Authorize.#ctor(System.Net.Http.HttpRequestMessage,API.Endpoints.Security.Models.Credentials)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="request"></param>
+            <param name="credentials"></param>
+        </member>
+        <member name="M:API.Endpoints.Security.Services.Authorize.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Async Process
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Security.Services.RequestAccess">
+            <summary>
+            Request Access for a User
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Security.Services.RequestAccess.#ctor(API.Endpoints.Security.Models.RequestAccess)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="model">Model</param>
+        </member>
+        <member name="M:API.Endpoints.Security.Services.RequestAccess.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Async Process
+            </summary>
+            <param name="cancellationToken"></param>
             <returns></returns>
         </member>
         <member name="T:API.Errors">
@@ -132,6 +300,40 @@
         <member name="M:API.WebApiApplication.Application_Start">
             <summary>
             Start up
+            </summary>
+        </member>
+        <member name="T:API.Templates.Engine">
+            <summary>
+            Template Manager
+            </summary>
+        </member>
+        <member name="M:API.Templates.Engine.Render(System.String,System.Object)">
+            <summary>
+            Compile Template
+            </summary>
+            <param name="template">Resouce Name for the template embedded in the project</param>
+            <param name="model">Model to bind</param>
+            <returns>Compiled Template</returns>
+        </member>
+        <member name="T:API.Templates.Mail.Account.Register">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:API.Templates.Mail.Account.Register.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:API.Templates.Mail.Account.Register.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:API.Templates.Mail.Account.Register.Subject">
+            <summary>
+              Looks up a localized string similar to Activa tu cuenta!.
             </summary>
         </member>
     </members>
