@@ -80,6 +80,22 @@ angular.module('app.components')
         return _getByHandle();
     };
 
+    var exec = function(method, args)
+    {
+        var instance = self.getInstance();
+        instance[method].apply(instance, args);
+    };
+
+    self.setPath = function()
+    {
+        exec("setPath", arguments);
+    };
+
+    self.addToPath = function()
+    {
+        exec("addToPath", arguments);
+    };
+
     //Internal Use
     self.$$register = $$register;
     self.$$unregister = $$unregister;

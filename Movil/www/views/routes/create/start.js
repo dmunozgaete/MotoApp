@@ -4,7 +4,8 @@ angular.route('nomenu.routes/create/start', function(
     $log,
     $Api,
     $interval,
-    ngAudio
+    ngAudio,
+    routeTracker
 )
 {
     //----------------------------------------
@@ -22,8 +23,9 @@ angular.route('nomenu.routes/create/start', function(
         //Check Counter
         if ($scope.counter == 0)
         {
-            $state.go("nomenu.routes/create");
+            $state.go("nomenu.routes/create/index");
             $interval.cancel(delay); //Stop Counter
+            routeTracker.start();
             return;
         }
 

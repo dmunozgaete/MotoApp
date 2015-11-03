@@ -306,11 +306,48 @@ angular.module('app.components')
                 }
             };
 
+            var centerPath = function(coords)
+            {
+                var bounds = new google.maps.LatLngBounds();
+                currentPolyline.getPath().forEach(function(e)
+                {
+                    bounds.extend(e);
+                })
+
+                //Get center and fit zoom
+                var center = bounds.getCenter();
+
+                if (!isInStaticMode())
+                {
+                    $scope.map.center = {
+                        latitude: center.lat(),
+                        longitude: center.lng()
+                    };
+
+                    //Wait for the Map , or not... 
+                    addTask(function(map)
+                    {
+                        //Set Zoom and Center Map
+                        map.fitBounds(bounds);
+                        //Set Data to Model 
+                        trackData.zoom = map.getZoom();
+                    });
+                }
+
+                //Set Data to Model                 
+                trackData.center = {
+                    lat: center.lat(),
+                    lng: center.lng()
+                };
+                //--------------------------------------------------------
+
+            };
+
             //-------------------------------------------------
             //--[ GLOBAL FUNCTION'S
+            var currentPolyline = null;
             self.setPath = function(coords, callback)
             {
-
                 //--------------------------------------------------------
                 // Check Coords
                 if (!coords || coords.length == 0)
@@ -319,57 +356,23 @@ angular.module('app.components')
                         message: 'No existen datos para generar'
                     };
                 }
+
                 //--------------------------------------------------------
+                // Remove Last Polyline (if Exist's)
+                if (currentPolyline)
+                {
+                    currentPolyline.setMap(null);
+                }
 
                 //--------------------------------------------------------
                 // DRAW THE PATH IN THE MAPS, AND GET CENTER AND FIT ZOOM
-                var polyline = new google.maps.Polyline(
+                var polyline = currentPolyline = new google.maps.Polyline(
                 {
                     path: coords,
                     geodesic: true,
                     strokeColor: '#' + polylineColor,
                     strokeWeight: 4
                 });
-
-                var bounds = new google.maps.LatLngBounds();
-                polyline.getPath().forEach(function(e)
-                {
-                    bounds.extend(e);
-                })
-
-                //Get center and fit zoom
-                var center = bounds.getCenter();
-
-                //--------------------------------------------------------
-                // Set in Static Mode (Google Static Image)
-                if (isInStaticMode())
-                {
-                    trackData = {
-                        path: coords,
-                        center: center
-                    };
-                    setStaticMode(callback);
-                    return;
-                }
-                //--------------------------------------------------------
-
-
-
-                $scope.map.center = {
-                    latitude: center.lat(),
-                    longitude: center.lng()
-                };
-
-                //Wait for the Map , or not... 
-                addTask(function(map)
-                {
-                    //Set the polyline to Map
-                    polyline.setMap(map);
-
-                    //Set Zoom and Center Map
-                    map.fitBounds(bounds);
-                });
-                //--------------------------------------------------------
 
                 var firstPoint = coords[0];
 
@@ -393,24 +396,32 @@ angular.module('app.components')
                 });
                 addTask(function(map)
                 {
+                    //Set the polyline to Map
+                    polyline.setMap(map);
+
+                    //Set flag to Map
                     startFlag.setMap(map);
                 });
                 //--------------------------------------------------------
 
+                centerPath();
+
                 //--------------------------------------------------------
-                //Set Data to Model 
+                // Set in Static Mode (Google Static Image)
+                if (isInStaticMode())
+                {
+                    trackData.path = coords;
+                    setStaticMode(callback);
+                    return;
+                }
+                //--------------------------------------------------------
+
+
+                //--------------------------------------------------------
                 addTask(function(map)
                 {
 
-                    trackData = {
-                        path: coords,
-                        zoom: map.getZoom(),
-                        center:
-                        {
-                            lat: center.lat(),
-                            lng: center.lng()
-                        }
-                    };
+                    trackData.coords = coords;
 
                     self.$fire("gmaps.pathLoaded", map, trackData);
 
@@ -423,7 +434,28 @@ angular.module('app.components')
                 //--------------------------------------------------------
 
             };
+            self.addToPath = function(coord)
+            {
+                if (!currentPolyline)
+                {
+                    self.setPath([coord]);
+                }
+                else
+                {
+                    addTask(function(map)
+                    {
+                        currentPolyline.getPath().push(
+                            new google.maps.LatLng(coord)
+                        );
 
+                        //Center Path
+                        centerPath();
+
+                        //Add Coord to Model
+                        trackData.coords.push(coord);
+                    });
+                }
+            };
 
             self.getImage = function(conf)
             {

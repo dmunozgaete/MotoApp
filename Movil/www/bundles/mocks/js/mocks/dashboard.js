@@ -7,12 +7,8 @@ angular.module('mocks.api')
     {
         var result = {
             timestamp: new Date().toISOString(),
-            distance:
-            {
-                total: 134.6,
-                average: 45
-            },
-            rhythm: 23.56,
+            distance: 134.6,
+            speed: 23.56,
             graph: [
             {
                 label: "L",

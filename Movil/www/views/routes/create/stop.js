@@ -3,7 +3,8 @@ angular.route('nomenu.routes/create/stop', function(
     $state,
     $log,
     $Api,
-    $interval
+    $interval,
+    routeTracker
 )
 {
     //---------------------------------------------
@@ -12,6 +13,9 @@ angular.route('nomenu.routes/create/stop', function(
         sensation: 0
     };
 
+    //---------------------------------------------
+    // Resume Tracker
+    $scope.resume = routeTracker.getResume();
 
     //---------------------------------------------
     // COUNTER PIE CHART AROUND STOP BUTTON

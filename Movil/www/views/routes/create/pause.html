@@ -1,4 +1,4 @@
-<ion-view class="route pause" can-swipe-back="false" >
+<ion-view class="route pause" can-swipe-back="false">
     <!-- CONTENT -->
     <!-- HIDDEN IN THIS STEP -->
     <div class="row common-actions">
@@ -20,7 +20,7 @@
     <div class="row distance">
         <div class="col">
             <div>
-                0.00
+                {{ resume.distance | distance}}
             </div>
             <div>
                 Kilometros
@@ -38,8 +38,8 @@
         </div>
         <div class="col">
             <canvas class="chart chart-doughnut" on-touch="stop(true);" on-release="stop(false);" height="100%" width="100%" chart-colours="chart.colours" chart-options="chart.options" chart-data="chart.data" chart-labels="chart.labels">
-            </canvas> 
-            <div class="counter-button stop"  >
+            </canvas>
+            <div class="counter-button stop">
                 <div>
                     <i class="icon ion-stop"></i>
                 </div>
@@ -51,13 +51,13 @@
         <div class="col">
             <div>
                 <i class="icon ion-ios-stopwatch-outline"></i>
-                <span>00:00</span>
+                <span>{{ resume.seconds | time}}</span>
             </div>
         </div>
         <div class="col">
             <div>
-                <i class="icon ion-ios-time-outline"></i>
-                <span>00'0''</span>
+                <i class="icon ion-ios-speedometer-outline"></i>
+                <span>{{ resume.currentSpeed | speed}}</span>
             </div>
         </div>
     </div>

@@ -4,12 +4,18 @@ angular.route('nomenu.routes/create/share', function(
     $log,
     $Api,
     trackViewer,
-    $http
+    $http,
+    routeTracker
 )
 {
     //---------------------------------------------
     // Model
     $scope.route = {};
+
+    //---------------------------------------------
+    // Resume Tracker
+    $scope.resume = routeTracker.getResume();
+
 
     //---------------------------------------------
     // Check if has Route Name 
@@ -57,20 +63,20 @@ angular.route('nomenu.routes/create/share', function(
     trackViewer.then(function(viewer, uniqueID)
     {
 
-        $http.get('bundles/mocks/js/gps/+150.json').success(function(data)
+        //---------------
+        // PAINT THE STATIC MAP IMAGE 
+        var googleCoords = [];
+        angular.forEach($scope.resume.coords, function(point)
         {
-            //---------------
-            var googleCoords = [];
-            angular.forEach(data, function(coord)
+            googleCoords.push(
             {
-                googleCoords.push(
-                {
-                    lat: coord[1],
-                    lng: coord[0]
-                });
+                lat: point.coords.latitude,
+                lng: point.coords.longitude
             });
-
-            viewer.setPath(googleCoords, function()
+        });
+        if (googleCoords.length > 0)
+        {
+            trackViewer.setPath(googleCoords, function()
             {
                 //Try to get a Route Name
                 if (hasRouteName())
@@ -79,9 +85,8 @@ angular.route('nomenu.routes/create/share', function(
                 }
 
             });
-            //---------------
-        });
-
+        }
+        
     });
 
     //---------------------------------------------

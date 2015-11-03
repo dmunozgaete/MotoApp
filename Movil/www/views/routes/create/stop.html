@@ -15,7 +15,7 @@
     <div class="row distance">
         <div class="col">
             <div>
-                0.00
+                {{ resume.distance | distance}}
             </div>
             <div>
                 Kilometros
@@ -27,13 +27,13 @@
         <div class="col">
             <div>
                 <i class="icon ion-ios-stopwatch-outline"></i>
-                <span>00:00</span>
+                <span>{{ resume.seconds | time}}</span>
             </div>
         </div>
         <div class="col">
             <div>
-                <i class="icon ion-ios-time-outline"></i>
-                <span>00'0''</span>
+                <i class="icon ion-ios-speedometer-outline"></i>
+                <span>{{ resume.speed | speed}}</span>
             </div>
         </div>
     </div>
