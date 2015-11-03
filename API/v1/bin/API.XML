@@ -9,6 +9,11 @@
             WEB API Global Configuration
             </summary>
         </member>
+        <member name="F:API.WebApiConfig.RootRoles">
+            <summary>
+            Roles with Administrator Privileges
+            </summary>
+        </member>
         <member name="M:API.WebApiConfig.Register(System.Web.Http.HttpConfiguration)">
             <summary>
             Register Config Variables
@@ -53,14 +58,6 @@
             </summary>
             <param name="id">Account Token</param>
             <param name="account">Account information</param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Endpoints.Accounts.AccountsController.ResetPassword(System.String,System.String)">
-            <summary>
-            Reset the current password
-            </summary>
-            <param name="currentPassword">Current Password</param>
-            <param name="newPassword">New Password</param>
             <returns></returns>
         </member>
         <member name="T:API.Endpoints.Accounts.Services.Create">

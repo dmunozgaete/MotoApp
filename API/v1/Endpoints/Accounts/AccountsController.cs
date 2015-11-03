@@ -21,6 +21,7 @@ namespace API.Endpoints.Accounts
         /// <returns></returns>
         [Swashbuckle.Swagger.Annotations.SwaggerResponseRemoveDefaults]
         [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.OK)]
+        [Gale.Security.Oauth.Jwt.Authorize(Roles = API.WebApiConfig.RootRoles)]
         public IHttpActionResult Get()
         {
             return new Gale.REST.Http.HttpQueryableActionResult<Models.VT_Users>(this.Request);
@@ -34,6 +35,7 @@ namespace API.Endpoints.Accounts
         [HttpGet]
         [Swashbuckle.Swagger.Annotations.SwaggerResponseRemoveDefaults]
         [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.OK)]
+        [Gale.Security.Oauth.Jwt.Authorize(Roles = API.WebApiConfig.RootRoles)]
         public IHttpActionResult Get(String id)
         {
             //------------------------------------------------------------------------------------------------------
@@ -65,6 +67,7 @@ namespace API.Endpoints.Accounts
         [Swashbuckle.Swagger.Annotations.SwaggerResponseRemoveDefaults]
         [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.Created)]
         [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.BadRequest)]
+        [Gale.Security.Oauth.Jwt.Authorize(Roles = API.WebApiConfig.RootRoles)]
         public IHttpActionResult Post([FromBody]Models.Create account, string host)
         {
             return new Services.Create(account, host);
@@ -83,21 +86,6 @@ namespace API.Endpoints.Accounts
         {
 
             return new Services.Update(id, account);
-        }
-
-        /// <summary>
-        /// Reset the current password
-        /// </summary>
-        /// <param name="currentPassword">Current Password</param>
-        /// <param name="newPassword">New Password</param>
-        /// <returns></returns>
-        [HttpPut]
-        [Swashbuckle.Swagger.Annotations.SwaggerResponseRemoveDefaults]
-        [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.NoContent)]
-        [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.BadRequest)]
-        public IHttpActionResult ResetPassword(string currentPassword, string newPassword)
-        {
-            throw new NotImplementedException();
         }
 
     }
