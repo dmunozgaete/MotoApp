@@ -108,7 +108,7 @@ angular.module('mocks.api')
             timestamp: new Date().toISOString(),
             items: [
             {
-                name: "David Antonio Muñoz Gaete",
+                name: "David Muñoz Gaete",
                 image: "bundles/mocks/css/images/dmunoz.jpg",
                 type:
                 {
@@ -116,7 +116,8 @@ angular.module('mocks.api')
                 },
                 likes: 688,
                 followers: 130,
-                following: 20
+                following: 20,
+                follow: true
             },
             {
                 name: "Ligia Alcayaga Madrid",
@@ -127,7 +128,8 @@ angular.module('mocks.api')
                 },
                 likes: 140,
                 followers: 20,
-                following: 45
+                following: 45,
+                follow: false
             },
             {
                 name: "Danilo Velasquez",
@@ -138,7 +140,8 @@ angular.module('mocks.api')
                 },
                 likes: 156,
                 followers: 387,
-                following: 122
+                following: 122,
+                follow: false
             }]
         };
 
