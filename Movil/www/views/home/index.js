@@ -7,17 +7,22 @@ angular.route('app.home/index', function(
     $timeout,
     $Identity,
     $ionicNavBarDelegate
+
 )
 {
     //----------------------------------------
     // FIX ISSUE NAVBAR ALIGN LEFT WITHOUT PADDING
     $ionicNavBarDelegate.showBar(false);
-    $timeout(function()
+    var delay = $timeout(function()
     {
         $ionicNavBarDelegate.align("left");
         $ionicNavBarDelegate.showBar(true);
 
     }, 350);
+    $scope.$on("$destroy", function()
+    {
+        $timeout.cancel(delay);
+    });
     //----------------------------------------
 
     //----------------------------------------

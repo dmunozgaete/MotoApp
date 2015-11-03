@@ -40,11 +40,13 @@
         <script src="lib/Chart.js/Chart.js"></script>
         <script src="lib/angular-audio/app/angular.audio.js"></script>
         <script src="lib/angular-ios9-uiwebview-patch/angular-ios9-uiwebview-patch.js"></script>
+        <script src="lib/moment/moment.js"></script>
         <script src="lib/ionic/js/ionic.js"></script>
         <script src="lib/ionic/js/ionic-angular.js"></script>
         <script src="lib/angular-google-maps/dist/angular-google-maps.js"></script>
         <script src="lib/angular-chart.js/dist/angular-chart.js"></script>
         <script src="lib/ionic-toast/dist/ionic-toast.js"></script>
+        <script src="lib/angular-moment/angular-moment.js"></script>
         <!-- endinject -->
         
         <!-- inject:js -->
@@ -52,8 +54,14 @@
         <script src="bundles/app/app.js"></script>
         <script src="bundles/mocks/mocks.js"></script>
         <script src="bundles/mocks/js/angular-mocks.js"></script>
-        <script src="bundles/app/js/services/$geoLocation.js"></script>
+        <script src="bundles/app/js/filters/calories.js"></script>
+        <script src="bundles/app/js/filters/distance.js"></script>
+        <script src="bundles/app/js/filters/speed.js"></script>
+        <script src="bundles/app/js/filters/time.js"></script>
         <script src="bundles/app/js/services/BaseEventHandler.js"></script>
+        <script src="bundles/app/js/services/Gps.js"></script>
+        <script src="bundles/app/js/services/backgroundMode.js"></script>
+        <script src="bundles/app/js/services/routeTracker.js"></script>
         <script src="bundles/mocks/js/mocks/configuration.js"></script>
         <script src="bundles/mocks/js/mocks/dashboard.js"></script>
         <script src="bundles/mocks/js/mocks/notifications.js"></script>
@@ -72,6 +80,7 @@
         <script src="views/layouts/no-menu.js"></script>
         <script src="views/notifications/index.js"></script>
         <script src="views/profile/index.js"></script>
+        <script src="views/routes/create/gps.js"></script>
         <script src="views/routes/create/index.js"></script>
         <script src="views/routes/create/map.js"></script>
         <script src="views/routes/create/pause.js"></script>

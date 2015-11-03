@@ -6,7 +6,8 @@
 ------------------------------------------------------*/
 angular.module('app.services')
 
-.factory('BaseEventHandler', function(){
+.factory('BaseEventHandler', function()
+{
 
     //Like {eventName: [handlers]}
     var listeners = {};
@@ -27,7 +28,11 @@ angular.module('app.services')
         //Return Destroy Function
         return function()
         {
-            namedListeners[indexOf(namedListeners, handler)] = null;
+            var indexOf = namedListeners.indexOf(handler);
+            if (indexOf >= 0)
+            {
+                namedListeners[indexOf] = null;
+            }
         };
     };
 
@@ -43,8 +48,19 @@ angular.module('app.services')
             var handlers = listeners[name];
             angular.forEach(handlers, function(handler)
             {
-                handler.apply(handler, args);
+                if (handler)
+                {
+                    handler.apply(handler, args);
+                }
             });
+        }
+    };
+
+    self.$clear = function(name)
+    {
+        if (self.hasEventHandlersFor(name))
+        {
+            delete listeners[name];
         }
     };
     //------------------------------------------------------------------------------

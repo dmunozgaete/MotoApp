@@ -4,33 +4,56 @@ angular.route('nomenu.routes/create/map', function(
     $log,
     $Api,
     trackViewer,
-    $http
+    routeTracker
 )
 {
+    var onRouteChange = function(newPoint)
+    {
+        //---------------
+        trackViewer.addToPath(
+        {
+            lat: newPoint.coords.latitude,
+            lng: newPoint.coords.longitude
+        });
+        //---------------
+    };
 
     //---------------------------------------------
     // trackViewer is a promise.
     // The "then" callback function provides the google.maps object.
     trackViewer.then(function(viewer, uniqueID)
     {
+        //---------------
+        //Build Current Path
+        var resume = routeTracker.getResume();
 
-        $http.get('bundles/mocks/js/gps/+150.json').success(function(data)
+        var googleCoords = [];
+        angular.forEach(resume.coords, function(point)
         {
-
-            //---------------
-            var googleCoords = [];
-            angular.forEach(data, function(coord)
+            googleCoords.push(
             {
-                googleCoords.push(
-                {
-                    lat: coord[1],
-                    lng: coord[0]
-                });
+                lat: point.coords.latitude,
+                lng: point.coords.longitude
             });
-
-            viewer.setPath(googleCoords);
-            //---------------
         });
+        if (googleCoords.length > 0)
+        {
+            trackViewer.setPath(googleCoords);
+        }
+        //---------------
+
+    });
+
+    var addPointListener = routeTracker.$on("route.addTrackPoint", onRouteChange);
+    var autoPausedListener = routeTracker.$on("route.autoPaused", function()
+    {
+        $state.go("nomenu.routes/create/pause");
+    });
+    $scope.$on("$destroy", function()
+    {
+        //Destroy Listener 
+        addPointListener();
+        autoPausedListener();
 
     });
 
@@ -38,7 +61,7 @@ angular.route('nomenu.routes/create/map', function(
     // Action's
     $scope.back = function()
     {
-        $state.go("nomenu.routes/create");
+        $state.go("nomenu.routes/create/index");
     };
 
 

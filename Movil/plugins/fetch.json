@@ -27,12 +27,6 @@
             "ref": "0.3.7"
         }
     },
-    "org.apache.cordova.geolocation": {
-        "source": {
-            "type": "registry",
-            "id": "org.apache.cordova.geolocation"
-        }
-    },
     "org.apache.cordova.dialogs": {
         "source": {
             "type": "registry",
@@ -47,17 +41,13 @@
             "id": "org.apache.cordova.camera"
         }
     },
-    "de.appplant.cordova.plugin.background-mode": {
-        "source": {
-            "type": "registry",
-            "id": "de.appplant.cordova.plugin.background-mode@0.6.3"
-        }
-    },
     "org.apache.cordova.device": {
         "source": {
             "type": "registry",
             "id": "org.apache.cordova.device"
-        }
+        },
+        "is_top_level": false,
+        "variables": {}
     },
     "org.apache.cordova.statusbar": {
         "source": {
@@ -83,10 +73,34 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-nativeaudio": {
+    "cordova-plugin-device-orientation": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-nativeaudio"
+            "id": "cordova-plugin-device-orientation"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-geolocation": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-geolocation"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "de.appplant.cordova.plugin.background-mode": {
+        "source": {
+            "type": "registry",
+            "id": "de.appplant.cordova.plugin.background-mode"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-console": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-console"
         },
         "is_top_level": true,
         "variables": {}

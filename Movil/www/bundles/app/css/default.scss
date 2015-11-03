@@ -37,6 +37,34 @@
     /* Chrome 19+, Safari 6+, Safari 6+ iOS */
 }
 
+.fab-button {
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 3.5em;
+    height: 3.5em;
+    font-size: 1em;
+    border-radius: 50%;
+    z-index: 9999;
+    @extend .box-shadow-8dp;
+    > i.icon {
+        font-size: 150%;
+    }
+    &.top {
+        top: 20px;
+    }
+    &.bottom {
+        bottom: 16px;
+    }
+    &.right {
+        right: 16px;
+    }
+    &.left {
+        left: 16px;
+    }
+}
+
 @mixin flex-size($percent) {
     -webkit-box-flex: 0;
     -webkit-flex: 0 0 $percent;
@@ -61,6 +89,12 @@
     $accent_color: #ffc107;
     $text_color: #fff;
     color: $text_color;
+    /*-------------------------
+        OVERRIDE'S
+     -------------------------*/
+    .fab-button {
+        background: $accent_color;
+    }
     /*-------------------------
         HEADER BAR'S 
      -------------------------*/
@@ -225,7 +259,7 @@
                 }
                 div.buttons {
                     position: fixed;
-                    bottom:2.5em;
+                    bottom: 2.5em;
                     right: 0.7em;
                     left: 0.7em;
                     >button {
@@ -470,6 +504,27 @@
             VIEW:   Share Page
             ROUTE:  /app/routes/create/share
             -------------------------*/
+            &.gps {
+                ion-list {
+                    ion-item {
+                        padding: 6px 16px;
+                        p {
+                            margin-bottom: 0px;
+                            font-size: 0.9em;
+                            line-height: 1.2em;
+                            &:last-child {
+                                opacity: 0.5;
+                                text-align: right;
+                                margin-top: -6px;
+                            }
+                        }
+                    }
+                }
+            }
+            /*------------------------- 
+            VIEW:   Share Page
+            ROUTE:  /app/routes/create/share
+            -------------------------*/
             &.share {
                 track-viewer {
                     height: 9em;
@@ -689,7 +744,25 @@
             VIEW:   Map Page
             ROUTE:  /app/routes/create/map
             -------------------------*/
-            &.map {}
+            &.map {
+                div.button {
+                    color: $primary_Hue900_color;
+                    position: absolute;
+                    top: 7px;
+                    right: 0px;
+                    background: rgba(0, 0, 0, 0);
+                    border: none;
+                    > div.counter-button {
+                        > div {
+                            width: 3.5em;
+                            height: 3.5em;
+                            > i {
+                                font-size: 1em;
+                            }
+                        }
+                    }
+                }
+            }
             /*------------------------- 
             VIEW:   Stop Page
             ROUTE:  /app/routes/create/stop

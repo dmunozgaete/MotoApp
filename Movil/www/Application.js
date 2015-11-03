@@ -8,6 +8,7 @@
         , 'uiGmapgoogle-maps' //GOOGLE MAPS
         , 'chart.js' //AREA CHART
         , 'ionic-toast' //IONIC TOAST LIBRARY (WORK IN WEB ENVIRONMENT)
+        , 'angularMoment' //ANGULAR MOMENT JS 
 
         , 'mocks' //Mocks Only for Testing, Remove in PRD
 
@@ -16,7 +17,6 @@
     .run(function($location, $Configuration, $log, uiGmapGoogleMapApi)
     {
         //uiGmapGoogleMapApi Preload Gmaps script :P (before is better ^)
-
         var application = $Configuration.get("application");
         $log.info("application start... ;)!",
         {
@@ -31,6 +31,41 @@
         mockProvider
             .enable()
             .setDelay(700); //Simulate a Short Delay ^^ , (more 'Real' experience)
+    })
+    .config(function(GpsProvider, routeTrackerProvider, backgroundModeProvider)
+    {
+        //GPS Configuration
+        GpsProvider
+            .frequency(5000) //Try to get GPS Track each 5 seconds
+            .enableDeviceGPS() //Enable GPS Tracking
+            .autoStart() //Auto Start
+            .accuracyThreshold(70) //Real GPS Aproximaty (aprox 65)
+            //.addTestRoute('bundles/mocks/js/gps/+250.json'); //Simulate a Route
+
+        //Route Tracker Configuration
+        routeTrackerProvider
+        //Auto Pause - Minimun Distance (in Meters) Beetween Point's to Set Auto-Pause
+            .autoPause(2);
+
+
+        //BackgroundMode For getting GPS in background
+        backgroundModeProvider
+            .enable()
+            .notifyText('MotoApp seguirá enviando las coordenadas del GPS');
+
+    })
+    .config(function(GpsProvider, routeTrackerProvider, mockProvider, backgroundModeProvider, CONFIGURATION)
+    {
+        //Enable Debug for GPS and RouteTracker
+        if (CONFIGURATION.debugging)
+        {
+            //Debugger Information
+            routeTrackerProvider.debug();
+            GpsProvider.debug();
+            mockProvider.debug();
+            backgroundModeProvider.debug();
+        }
+
     })
     .config(function(uiGmapGoogleMapApiProvider)
     {

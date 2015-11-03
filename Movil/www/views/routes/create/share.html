@@ -16,7 +16,7 @@
                                     <i class="icon ion-ios-stopwatch-outline"></i>
                                 </div>
                                 <div class="col value">
-                                    <span>00:00</span>
+                                    <span>{{ resume.seconds | time}}</span>
                                 </div>
                                 <div class="col col-20 unit">
                                     min
@@ -30,13 +30,13 @@
                         <div class="counter">
                             <div class="row">
                                 <div class="col col-25 icon">
-                                    <i class="icon ion-ios-time-outline"></i>
+                                    <i class="icon ion-ios-speedometer-outline"></i>
                                 </div>
                                 <div class="col value">
-                                    <span>00'0''</span>
+                                    <span>{{ resume.speed | speed}}</span>
                                 </div>
                                 <div class="col col-20 unit">
-                                    rpm
+                                    rit
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                                     <i class="icon ion-map"></i>
                                 </div>
                                 <div class="col value">
-                                    <span>21.00</span>
+                                    <span>{{ resume.distance | distance}}</span>
                                 </div>
                                 <div class="col col-20 unit">
                                     km.
@@ -67,7 +67,7 @@
                                     <i class="icon ion-fireball"></i>
                                 </div>
                                 <div class="col value">
-                                    <span>185</span>
+                                    <span>{{ resume.calories | calories }}</span>
                                 </div>
                                 <div class="col col-20 unit">
                                     kcal
