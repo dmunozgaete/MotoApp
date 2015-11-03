@@ -27,6 +27,12 @@
                         <span class="unit">SIGUIENDO</span>
                     </div>
                 </div>
+                <!-- FOLLOW-BUTTON -->
+                <div class="follow-button" ng-click="follow(item);">
+                    <i class="icon ion-checkmark-circled" ng-if="item.follow === true"></i>
+                    <ion-spinner icon="ios-small" ng-if="item.follow === null"></ion-spinner>
+                    <i class="icon ion-person-add" ng-if="item.follow === false"></i>
+                </div>
             </ion-item>
         </ion-list>
     </ion-content>

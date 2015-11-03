@@ -41,7 +41,7 @@ angular.module('app.services')
                 seconds: 0, //in Seconds
                 distance: 0 //in KM
             };
-
+            
             //--------------------------------------------------------
             //Speed Algorithm
             var calculateSpeedAndDistance = (function()

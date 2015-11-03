@@ -43,12 +43,12 @@
             //.addTestRoute('bundles/mocks/js/gps/+250.json'); //Simulate a Route
 
         //Route Tracker Configuration
+        // - Auto Pause: Minimun Distance (in Meters)
+        //               Beetween Point's to Set Auto-Pause
         routeTrackerProvider
-        //Auto Pause - Minimun Distance (in Meters) Beetween Point's to Set Auto-Pause
             .autoPause(5);
 
-
-        //BackgroundMode For getting GPS in background
+        //Background Mode For still getting GPS in background
         backgroundModeProvider
             .enable()
             .notifyText('MotoApp seguirá enviando las coordenadas del GPS');
