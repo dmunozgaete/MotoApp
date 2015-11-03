@@ -30,7 +30,7 @@
         //Mocking Module (While the API is in Construction)
         mockProvider
             .enable()
-            .setDelay(700); //Simulate a Short Delay ^^ , (more 'Real' experience)
+            .setDelay(700); //Simulate a Short Delay ^^, (More 'Real' experience)
     })
     .config(function(GpsProvider, routeTrackerProvider, backgroundModeProvider)
     {
@@ -40,12 +40,12 @@
             .enableDeviceGPS() //Enable GPS Tracking
             .autoStart() //Auto Start
             .accuracyThreshold(70) //Real GPS Aproximaty (aprox 65)
-            .addTestRoute('bundles/mocks/js/gps/+250.json'); //Simulate a Route
+            //.addTestRoute('bundles/mocks/js/gps/+250.json'); //Simulate a Route
 
         //Route Tracker Configuration
         routeTrackerProvider
         //Auto Pause - Minimun Distance (in Meters) Beetween Point's to Set Auto-Pause
-            .autoPause(2);
+            .autoPause(5);
 
 
         //BackgroundMode For getting GPS in background

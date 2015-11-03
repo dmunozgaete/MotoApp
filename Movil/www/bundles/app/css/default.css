@@ -443,10 +443,20 @@
           margin-bottom: 0px;
           font-size: 0.9em;
           line-height: 1.2em; }
-          [md-theme='imoto'] ion-view.pane.route.gps ion-list ion-item p:last-child {
+          [md-theme='imoto'] ion-view.pane.route.gps ion-list ion-item p.stamp {
             opacity: 0.5;
             text-align: right;
             margin-top: -6px; }
+        [md-theme='imoto'] ion-view.pane.route.gps ion-list ion-item.event {
+          color: #1c1c29;
+          font-weight: bold; }
+          [md-theme='imoto'] ion-view.pane.route.gps ion-list ion-item.event p.stamp {
+            margin-top: -17px;
+            margin-bottom: 3px; }
+          [md-theme='imoto'] ion-view.pane.route.gps ion-list ion-item.event.route-autopause, [md-theme='imoto'] ion-view.pane.route.gps ion-list ion-item.event.route-autostart {
+            color: green; }
+          [md-theme='imoto'] ion-view.pane.route.gps ion-list ion-item.event.gps-timeout-error {
+            color: red; }
       [md-theme='imoto'] ion-view.pane.route.share track-viewer {
         height: 9em;
         width: 100%; }

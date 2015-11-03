@@ -99,10 +99,14 @@ angular.module('app.services')
                     distanceThreshold: _threshold / 1000 //Max Distance to ensure is a Near Point
                 };
 
-                return function(calcs)
+                return function(calcs, point)
                 {
                     if (calcs.distance <= nearPoints.distanceThreshold)
                     {
+                        
+                        self.$fire("route.tooClosePoint", [point]);
+
+
                         //If Lower than treshold, Count +1 to nearPointer (with 3 ,set to auto-pause)
                         if (nearPoints.counter == 0)
                         {
@@ -113,7 +117,7 @@ angular.module('app.services')
 
                         if (_debug)
                         {
-                            $log.debug("routeTracker: too close point, set +1 to auto-pause", nearPoints);
+                            $log.debug("routeTracker: too close point, set +1 to auto-pause", nearPoints, point);
                         }
 
                         if (nearPoints.counter >= nearPoints.pointThreshold)
@@ -179,7 +183,7 @@ angular.module('app.services')
                         // CHECK IF THE USER IS STILL
                         if (_enableAutoPause)
                         {
-                            if (isTooClose(calcs))
+                            if (isTooClose(calcs, position))
                             {
                                 return; //Discard Point
                             }

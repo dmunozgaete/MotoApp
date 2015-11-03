@@ -512,10 +512,27 @@
                             margin-bottom: 0px;
                             font-size: 0.9em;
                             line-height: 1.2em;
-                            &:last-child {
+                            &.stamp {
                                 opacity: 0.5;
                                 text-align: right;
                                 margin-top: -6px;
+                            }
+                        }
+                        &.event {
+                            color: $primary_color;
+                            font-weight: bold;
+                            p {
+                                &.stamp {
+                                    margin-top: -17px;
+                                    margin-bottom: 3px;
+                                }
+                            }
+                            &.route-autopause,
+                            &.route-autostart {
+                                color: green;
+                            }
+                            &.gps-timeout-error {
+                                color: red;
                             }
                         }
                     }

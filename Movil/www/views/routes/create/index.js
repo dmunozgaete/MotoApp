@@ -5,7 +5,8 @@ angular.route('nomenu.routes/create/index/:autostart', function(
     $Api,
     routeTracker,
     $stateParams,
-    ionicToast
+    ionicToast,
+    $ionicHistory
 )
 {
 
@@ -21,6 +22,13 @@ angular.route('nomenu.routes/create/index/:autostart', function(
     var resumeListener = routeTracker.$on("route.resumeChanged", updateCounters);
     var autoPausedListener = routeTracker.$on("route.autoPaused", function()
     {
+    
+        var view  = $ionicHistory.currentView();
+        if(view.stateId == "nomenu.routes/create/gps"){
+            //Do Nothing, because is the tracker Log
+            return;
+        }
+
         $state.go("nomenu.routes/create/pause",
         {
             autopause: true
