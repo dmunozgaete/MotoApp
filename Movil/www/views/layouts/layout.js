@@ -3,13 +3,17 @@ angular.module('app.layouts').controller('DefaultLayoutController', function(
     $state,
     $log,
     $Configuration,
-    $timeout
+    $Identity,
+    NotificationSynchronizer
 )
 {
+    
     //------------------------------------------------------------------------------------
     // Model
     $scope.config = {
         application: $Configuration.get("application"),
+        user: $Identity.getCurrent(),
+        notifications: 0,
         menu:  [
         {
             route: "app.home",
@@ -28,11 +32,24 @@ angular.module('app.layouts').controller('DefaultLayoutController', function(
             label: "Mi Perfil"
         },
         {
+            route: "app.ambassadors",
+            icon: "ion-ios-people-outline",
+            label: "Embajadores"
+        },
+        {
             route: "app.notifications",
             icon: "ion-ios-bell-outline",
             label: "Notificaciones"
         }, ]
     };
+
+    //------------------------------------------------------------------------------------
+    // Get Storage's Notificatons (Not seen yet)
+    var updateCounter = function(newCounter)
+    {
+        $scope.config.notifications = newCounter;
+    };
+    NotificationSynchronizer.$on("notifications.update-counter", updateCounter);
 
     //------------------------------------------------------------------------------------
     // Layout Actions
@@ -48,9 +65,7 @@ angular.module('app.layouts').controller('DefaultLayoutController', function(
 
         //-----------------------------------
         // Navigate
-        $timeout(function()
-        {
-            $state.go(item.route);
-        }, 300);
+        $state.go(item.route);
+
     };
 });

@@ -3,10 +3,11 @@ angular.route('nomenu.routes/create/index/:autostart', function(
     $state,
     $log,
     $Api,
-    routeTracker,
+    RouteTracker,
     $stateParams,
     ionicToast,
-    $ionicHistory
+    $ionicHistory,
+    Camera
 )
 {
 
@@ -19,12 +20,13 @@ angular.route('nomenu.routes/create/index/:autostart', function(
         //---------------
     };
 
-    var resumeListener = routeTracker.$on("route.resumeChanged", updateCounters);
-    var autoPausedListener = routeTracker.$on("route.autoPaused", function()
+    var resumeListener = RouteTracker.$on("route.resumeChanged", updateCounters);
+    var autoPausedListener = RouteTracker.$on("route.autoPaused", function()
     {
-    
-        var view  = $ionicHistory.currentView();
-        if(view.stateId == "nomenu.routes/create/gps"){
+
+        var view = $ionicHistory.currentView();
+        if (view.stateId == "nomenu.routes/create/gps")
+        {
             //Do Nothing, because is the tracker Log
             return;
         }
@@ -54,13 +56,32 @@ angular.route('nomenu.routes/create/index/:autostart', function(
     // Action's
     $scope.pause = function()
     {
-        routeTracker.pause();
+        RouteTracker.pause();
+        ionicToast.hide();
         $state.go("nomenu.routes/create/pause");
     };
 
     $scope.map = function()
     {
+        ionicToast.hide();
         $state.go("nomenu.routes/create/map");
+    };
+
+    $scope.takePicture = function()
+    {
+        Camera.takePicture().then(function(image)
+        {
+
+            //Save Picture in Temporal DB
+            RouteTracker.addPhoto(image);
+
+        }, function(err)
+        {
+
+            ionicToast.show("No se pudo tomar la foto", 'top', true, 2000);
+            $log.error(err);
+
+        });
     };
 
 });

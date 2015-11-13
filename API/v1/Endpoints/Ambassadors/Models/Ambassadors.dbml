@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MotoApp_v1" Class="AmbassadorsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\MSSQLSERVER_2012;Initial Catalog=MotoApp_v1;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MotoApp_v1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.VT_Embajadores" Member="Ambassadors">
+    <Type Name="Ambassador">
+      <Column Name="ENTI_Token" Member="token" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ENTI_FechaCreacion" Member="createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ENTI_Identificador" Member="identifier" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ARCH_Token" Member="photo" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="USUA_Email" Member="email" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="USUA_NombreCompleto" Member="name" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="USUA_UltimaConexion" Member="lastConnection" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Siguiendo" Member="follow" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="SOCU_Seguidores" Member="followers" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SOCU_Siguiendo" Member="following" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SOCU_MeGusta" Member="likes" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TIDE_Nombre" Member="sport_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TIDE_Descripcion" Member="sport_description" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

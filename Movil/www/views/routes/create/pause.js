@@ -4,22 +4,25 @@ angular.route('nomenu.routes/create/pause/:autopause', function(
     $log,
     $Api,
     $interval,
-    routeTracker,
+    RouteTracker,
     $stateParams,
-    ionicToast
+    ionicToast,
+    Camera,
+    $cordovaSocialSharing
 )
 {
 
     //---------------------------------------------
     // Resume Tracker
-    $scope.resume = routeTracker.getResume();
+    $scope.resume = RouteTracker.getResume();
 
 
     //---------------------------------------------
     // Resume Tracker when Auto-Started
-    var autoStartListener = routeTracker.$on("route.autoStart", function()
+    var autoStartListener = RouteTracker.$on("route.autoStart", function()
     {
-        $state.go("nomenu.routes/create/index", {
+        $state.go("nomenu.routes/create/index",
+        {
             autostart: true
         });
     });
@@ -41,8 +44,25 @@ angular.route('nomenu.routes/create/pause/:autopause', function(
     // Action's
     $scope.continue = function()
     {
-        routeTracker.start();
+        RouteTracker.start();
         $state.go("nomenu.routes/create/index");
+    };
+
+    $scope.takePicture = function()
+    {
+        Camera.takePicture().then(function(image)
+        {
+
+            //Save Picture in Temporal DB
+            RouteTracker.addPhoto(image);
+
+        }, function(err)
+        {
+
+            ionicToast.show("No se pudo tomar la foto", 'top', true, 2000);
+            $log.error(err);
+
+        });
     };
 
 
@@ -63,6 +83,12 @@ angular.route('nomenu.routes/create/pause/:autopause', function(
         }
     };
     var currentCounter = null;
+
+    $scope.emergency = function()
+    {
+        return $cordovaSocialSharing
+            .shareViaSMS(message, '+56968987440,+56993020558')
+    };
     $scope.stop = function(start)
     {
         if (start)
@@ -74,7 +100,8 @@ angular.route('nomenu.routes/create/pause/:autopause', function(
                 if (tick == 2)
                 {
                     $interval.cancel(currentCounter);
-                    routeTracker.stop();
+                    RouteTracker.stop();
+                    ionicToast.hide();
 
                     //If Coords is minor to Two , Discard inmediately :S
                     if ($scope.resume.coords.length <= 2)

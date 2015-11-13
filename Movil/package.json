@@ -26,5 +26,7 @@
     "de.appplant.cordova.plugin.background-mode",
     "cordova-plugin-console"
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [
+    "ios"
+  ]
 }

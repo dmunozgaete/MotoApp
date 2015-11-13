@@ -3,7 +3,7 @@
         <div class="row maps">
             <div class="col">
                 <!-- MAPS -->
-                <track-viewer static="true"> 
+                <track-viewer static="true">
                 </track-viewer>
             </div>
             <div class="col">
@@ -36,7 +36,7 @@
                                     <span>{{ resume.speed | speed}}</span>
                                 </div>
                                 <div class="col col-20 unit">
-                                    rit
+                                    km/hr
                                 </div>
                             </div>
                         </div>
@@ -80,9 +80,9 @@
         </div>
         <!-- PHOTOS -->
         <div class="list photos">
-            <a class="item item-icon-left item-icon-right">
+            <a class="item item-icon-left item-icon-right" ng-click="photos();">
                 <i class="icon ion-images"></i>
-                <span>10 Fotos Tomadas</span>
+                <span>{{resume.photos.length}} Fotos Tomadas</span>
                 <i class="icon ion-ios-arrow-right"></i>
             </a>
         </div>
@@ -92,13 +92,13 @@
                 <div class="col title">
                     ¿Como te sentiste?
                 </div>
-                <div class="col sensation-1" ng-click="route.sensation = 1;" ng-class="{'active': route.sensation == 1 }">
+                <div class="col sensation-1" ng-click="route.sensation = 'RELA';" ng-class="{'active': route.sensation == 'RELA' }">
                     <i class="icon ion-android-happy"></i>
                 </div>
-                <div class="col sensation-2" ng-click="route.sensation = 2;" ng-class="{'active': route.sensation == 2 }">
+                <div class="col sensation-2" ng-click="route.sensation = 'CANS';" ng-class="{'active': route.sensation == 'CANS' }">
                     <i class="icon ion-android-sad"></i>
                 </div>
-                <div class="col sensation-3" ng-click="route.sensation = 3;" ng-class="{'active': route.sensation == 3 }">
+                <div class="col sensation-3" ng-click="route.sensation = 'AGOT';" ng-class="{'active': route.sensation == 'AGOT' }">
                     <i class="icon ion-sad-outline"></i>
                 </div>
             </div>
@@ -118,21 +118,21 @@
                     <i class="icon ion-ios-book placeholder-icon"></i>
                     Comentario
                 </span>
-                <textarea rows="4" maxlength="500" placeholder="Algo que opinar?? (Opcional)"></textarea>
+                <textarea rows="4" maxlength="500" ng-model="route.observation" placeholder="Observaciones de la ruta (Opcional)"></textarea>
             </label>
         </div>
         <!-- SOCIAL SHARING -->
         <div class="row social-share">
             <div class="col spacer">
             </div>
-            <div class="col disabled">
+            <div class="col" ng-click="share('facebook');">
                 <img ng-src="bundles/app/css/images/social-sharing/fb.png" />
             </div>
-            <div class="col disabled">
+            <div class="col" ng-click="share('twitter');">
                 <img ng-src="bundles/app/css/images/social-sharing/twitter.png" />
             </div>
-            <div class="col">
-                <img ng-src="bundles/app/css/images/social-sharing/instagram.png" />
+            <div class="col" ng-click="share('instagram');">
+                <img ng-src="bundles/app/css/images/social-sharing/a.png" />
             </div>
         </div>
         <!-- FOOTER -->

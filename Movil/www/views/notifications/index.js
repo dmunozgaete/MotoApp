@@ -2,35 +2,35 @@ angular.route('app.notifications/index', function(
     $scope,
     $state,
     $log,
-    $Api
+    NotificationSynchronizer
 )
 {
-
-    //---------------------------------------------------
-    // Update Data
-    var update = function(callback)
+    //------------------------------------------------------------------------------------
+    // Get Storage's Notificatons
+    var update = function()
     {
-        $Api.read("/Notifications").success(function(data)
+        NotificationSynchronizer.getItems().then(function(items)
         {
-            //Set Items to List
-            $scope.items = data.items;
-            if (callback)
-            {
-                callback();
-            }
+            $scope.items = items;
+            
+            //Sync refresh
+            $scope.$broadcast('scroll.refreshComplete');
         });
     }
     update();
 
+
+    var listener = NotificationSynchronizer.$on("notifications.update-counter", update);
+    $scope.$on("$destroy", function()
+    {
+        //Destroy Listener's
+        listener(); //Destroy Function
+    });
+
+
     //------------------------------------------------
     // Action's
-    $scope.doRefresh = function()
-    {
-        update(function()
-        {
-            $scope.$broadcast('scroll.refreshComplete');
-        })
-    };
+    $scope.doRefresh = update;
 
 
 });

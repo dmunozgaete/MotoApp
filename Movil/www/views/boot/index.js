@@ -4,19 +4,22 @@ angular.route('boot/index', function(
     $log,
     $Api,
     $Configuration,
-    $location
+    $location,
+    $LocalStorage,
+    pouchDB,
+    $q,
+    Synchronizer
 )
 {
-    //---------------------------------------------------
-    // Get Data
-    $Api.read("/Configuration/State").success(function(data)
+
+    //INITIALIZE THE SYNCRONIZER MANAGER
+    var defer  = Synchronizer.start();  
+
+    //When all Process are Checked, run APP
+    $q.all([defer]).then(function()
     {
-        if (data.state == "sync")
-        {
-            var url = $Configuration.get("application");
-            $location.url(url.home);
-        }
-        
+        var url = $Configuration.get("application");
+        $location.url(url.home);
     });
 
 });

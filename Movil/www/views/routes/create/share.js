@@ -1,21 +1,28 @@
-angular.route('nomenu.routes/create/share', function(
+angular.route('nomenu.routes/create/share/:sensation', function(
     $scope,
     $state,
     $log,
     $Api,
     trackViewer,
     $http,
-    routeTracker
+    RouteTracker,
+    $Configuration,
+    $stateParams,
+    $cordovaSocialSharing,
+    $cordovaFacebook,
+    $q,
+    $ionicLoading
 )
 {
     //---------------------------------------------
     // Model
-    $scope.route = {};
+    $scope.route = {
+        sensation: ($stateParams.sensation || null)
+    };
 
     //---------------------------------------------
     // Resume Tracker
-    $scope.resume = routeTracker.getResume();
-
+    $scope.resume = RouteTracker.getResume();
 
     //---------------------------------------------
     // Check if has Route Name 
@@ -86,15 +93,212 @@ angular.route('nomenu.routes/create/share', function(
 
             });
         }
-        
+
     });
+
+    var prepareSharing = function()
+    {
+        var defer = $q.defer();
+
+        var imageDefer = $q.defer();
+        var prepareImage = function()
+        {
+
+
+            var rawUrl = trackViewer.getImage(
+            {
+                map:
+                {
+                    width: 1200,
+                    height: 1200
+                },
+                polyline:
+                {
+                    hex: "ffc107",
+                    alpha: "FF",
+                    weight: 5
+                }
+            });
+
+            var img = new Image();
+            img.crossOrigin = 'Anonymous';
+            img.onload = function()
+            {
+                var canvas = document.createElement('CANVAS');
+                var ctx = canvas.getContext('2d');
+                var dataURL;
+                canvas.height = this.height;
+                canvas.width = this.width;
+                ctx.drawImage(this, 0, 0);
+                dataURL = canvas.toDataURL("image/png");
+
+                imageDefer.resolve(
+                {
+                    url: rawUrl,
+                    dataURL: dataURL
+                });
+
+                canvas = null;
+            };
+            img.onerror = function(err)
+            {
+                imageDefer.reject(err);
+            }
+            img.src = rawUrl;
+        }
+
+        var urlDefer = $q.defer();
+        var prepareURL = function()
+        {
+            urlDefer.resolve($Configuration.get("GetTheAppUrl"));
+            /*
+            var link = $Api.getEndpoint() + "/Redirect/AppStore";
+
+            //API GOOGLE KEY  FOR SHORTENER URL!
+            var apiKey = "AIzaSyCMm91Lg0r5cGZL4aeVWH16yHi3mQQrQAk";
+            $http(
+                {
+                    method: 'POST',
+                    url: 'https://www.googleapis.com/urlshortener/v1/url?key=' + apiKey,
+                    data:
+                    {
+                        longUrl: link
+                    }
+                })
+                .then(function(response)
+                {
+                    urlDefer.resolve(response.data.id);
+                }, function(err)
+                {
+                    urlDefer.reject(err);
+                });
+            */
+        }
+
+        prepareImage();
+        prepareURL();
+
+        $q.all([imageDefer.promise, urlDefer.promise]).then(function(resolves)
+        {
+
+            var image = resolves[0];
+            var url = resolves[1];
+
+            defer.resolve(
+            {
+                image: image,
+                url: url,
+                message: "MotoApp: Revisa mi ruta! " + url
+            })
+        }, function(err)
+        {
+            defer.reject(err);
+        });
+
+        return defer.promise;
+    };
 
     //---------------------------------------------
     // Action's
+    $scope.share = function(type)
+    {
+        $ionicLoading.show(
+        {
+            template: 'Preparando...'
+        });
+
+        var share = null;
+        switch (type)
+        {
+            case 'facebook':
+
+                share = function(data)
+                {
+                    var defer = $q.defer();
+
+                    window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint(
+                        data.message,
+                        data.image.dataURL,
+                        null /* url */ ,
+                        'si quieres puedes pegar lo que dejamos en el portapapeles (pegar)' /*'Paste it dude!'*/ ,
+                        defer.resolve,
+                        defer.reject
+                    );
+
+                    /*
+                    var options = {
+                        method: 'feed',
+                        caption: data.message,
+                        image: data.image.url
+                    };
+                    return $cordovaFacebook.showDialog(options);
+                    */
+
+                    return defer.promise;
+                };
+                break;
+            case 'twitter':
+                share = function(data)
+                {
+                    return $cordovaSocialSharing
+                        .shareViaTwitter(data.message, data.image.dataURL);
+                };
+                break;
+            case 'instagram':
+                share = function(data)
+                {
+
+                    return $cordovaSocialSharing
+                        .share(data.message, "MotoApp", data.image.dataURL, null); // Share via native share sheet
+
+                    //return $cordovaInstagram
+                    //  .share(data.image, data.message);
+                };
+                break;
+        }
+
+
+        prepareSharing().then(function(data)
+        {
+            var onError = function(err)
+            {
+                $log.error("Can't Share ", type, arguments);
+                $ionicLoading.hide();
+            };
+
+            try
+            {
+                var promise = share(data);
+                if (promise)
+                {
+                    promise.then(function(result)
+                    {
+                        $ionicLoading.hide();
+                        // Success!
+                    }, onError);
+                }
+            }
+            catch (err)
+            {
+                onError(err);
+            }
+
+        });
+
+    };
+
+    $scope.photos = function()
+    {
+        $state.go("nomenu.routes/create/photos");
+    };
+
     $scope.save = function()
     {
-
-        $state.go("app.home");
+        RouteTracker.setData($scope.route);
+        $state.go("nomenu.routes/create/upload",
+        {
+            share: 1
+        });
     };
 
 });

@@ -12,7 +12,7 @@ namespace API.Endpoints.Security
     /// </summary>
     public class SecurityController : Gale.REST.RestController
     {
-
+        /*
         /// <summary>
         /// Authorize user by credentials
         /// </summary>
@@ -35,27 +35,57 @@ namespace API.Endpoints.Security
             return new Services.Authorize(this.Request, credentials);
 
         }
+        */
+
+        #region SOCIAL AUTHENTICATOR'S
 
         /// <summary>
-        /// BPM - Request Access for a Identity (enrollment)
+        /// Authorize via Facebook
         /// </summary>
-        /// <param name="model">Model</param>
+        /// <param name="credentials">facebook data</param>
         /// <returns></returns>
-        /// <response code="201">Request created</response>
-        /// <response code="500">Internal Server Error</response>
+        /// <response code="200">Authorized</response>
+        /// <response code="500">Incorrect Access Token</response>
         [HttpPost]
-        [HierarchicalRoute("/Request/Access")]
-        public IHttpActionResult RequestAccess([FromBody]Models.RequestAccess model)
+        [HierarchicalRoute("/Oauth/Facebook")]
+        public IHttpActionResult Authorize([FromBody]Models.FacebookCredentials credentials)
         {
 
             //------------------------------------------------------------------------------------------------------------------------
             //GUARD EXCEPTION
-            Gale.Exception.RestException.Guard(() => model.email == null, "EMPTY_EMAIL", API.Errors.ResourceManager);
+            Gale.Exception.RestException.Guard(() => credentials == null, "EMPTY_BODY", API.Errors.ResourceManager);
+            Gale.Exception.RestException.Guard(() => credentials.accessToken == null, "EMPTY_ACCESSTOKEN", API.Errors.ResourceManager);
+            Gale.Exception.RestException.Guard(() => credentials.email == null, "EMPTY_EMAIL", API.Errors.ResourceManager);
             //------------------------------------------------------------------------------------------------------------------------
 
-            return new Services.RequestAccess(model);
+            return new Services.Oauth.Facebook(this.Request, credentials);
 
         }
+
+        /// <summary>
+        /// Authorize via Google
+        /// </summary>
+        /// <param name="credentials">facebook data</param>
+        /// <returns></returns>
+        /// <response code="200">Authorized</response>
+        /// <response code="500">Incorrect Access Token</response>
+        [HttpPost]
+        [HierarchicalRoute("/Oauth/Google")]
+        public IHttpActionResult Authorize([FromBody]Models.GoogleCredentials credentials)
+        {
+
+            //------------------------------------------------------------------------------------------------------------------------
+            //GUARD EXCEPTION
+            Gale.Exception.RestException.Guard(() => credentials == null, "EMPTY_BODY", API.Errors.ResourceManager);
+            Gale.Exception.RestException.Guard(() => credentials.accessToken == null, "EMPTY_ACCESSTOKEN", API.Errors.ResourceManager);
+            Gale.Exception.RestException.Guard(() => credentials.email == null, "EMPTY_EMAIL", API.Errors.ResourceManager);
+            //------------------------------------------------------------------------------------------------------------------------
+
+            return new Services.Oauth.Google(this.Request, credentials);
+
+        }
+
+        #endregion
 
     }
 }

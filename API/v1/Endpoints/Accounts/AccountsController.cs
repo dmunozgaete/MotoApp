@@ -35,7 +35,6 @@ namespace API.Endpoints.Accounts
         [HttpGet]
         [Swashbuckle.Swagger.Annotations.SwaggerResponseRemoveDefaults]
         [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.OK)]
-        [Gale.Security.Oauth.Jwt.Authorize(Roles = API.WebApiConfig.RootRoles)]
         public IHttpActionResult Get(String id)
         {
             //------------------------------------------------------------------------------------------------------

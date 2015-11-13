@@ -11,39 +11,36 @@ angular.module('app.components')
             $scope,
             $element,
             $log,
-            $Api
+            RouteSynchronizer
         )
         {
 
-            //---------------------------------------------------
-            // Update Data
-            var update = function(callback)
+            //------------------------------------------------------------------------------------
+            // Get Storage's Notificatons
+            var update = function()
             {
-                $Api.read("/Routes/Me").success(function(data)
+                RouteSynchronizer.getLocals().then(function(items)
                 {
-                    //Set Items to List
-                    $scope.items = data.items;
-                    if (callback)
-                    {
-                        callback();
-                    }
+                    $scope.items = items;
+
+                    //Sync refresh
+                    $scope.$broadcast('scroll.refreshComplete');
                 });
             }
             update();
 
+
+            var listener = RouteSynchronizer.$on("routes.new-routes", update);
+            $scope.$on("$destroy", function()
+            {
+                //Destroy Listener's
+                listener(); //Destroy Function
+            });
+
+
             //------------------------------------------------
             // Action's
-            $scope.doRefresh = function()
-            {
-                update(function()
-                {
-                    $scope.$broadcast('scroll.refreshComplete');
-                })
-            };
-
-        },
-
-        link: function(scope, element, attrs, ctrl) {
+            $scope.doRefresh = update;
 
         }
     };

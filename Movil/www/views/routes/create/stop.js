@@ -4,18 +4,19 @@ angular.route('nomenu.routes/create/stop', function(
     $log,
     $Api,
     $interval,
-    routeTracker
+    RouteTracker,
+    Camera
 )
 {
     //---------------------------------------------
     // Model
-    $scope.data = {
-        sensation: 0
+    $scope.model = {
+        sensation: null
     };
 
     //---------------------------------------------
     // Resume Tracker
-    $scope.resume = routeTracker.getResume();
+    $scope.resume = RouteTracker.getResume();
 
     //---------------------------------------------
     // COUNTER PIE CHART AROUND STOP BUTTON
@@ -80,12 +81,33 @@ angular.route('nomenu.routes/create/stop', function(
     // Action's
     $scope.share = function()
     {
-        $state.go("nomenu.routes/create/share");
+        $state.go("nomenu.routes/create/share",
+        {
+            sensation: $scope.model.sensation
+        });
     };
 
     $scope.save = function()
     {
-        $state.go("app.home");
+        RouteTracker.setData($scope.model);
+        $state.go("nomenu.routes/create/upload");
+    };
+
+    $scope.takePicture = function()
+    {
+        Camera.takePicture().then(function(image)
+        {
+
+            //Save Picture in Temporal DB
+            RouteTracker.addPhoto(image);
+
+        }, function(err)
+        {
+
+            ionicToast.show("No se pudo tomar la foto", 'top', true, 2000);
+            $log.error(err);
+
+        });
     };
 
 });

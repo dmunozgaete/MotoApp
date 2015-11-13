@@ -3,7 +3,8 @@
         , 'ionic' //IONIC
         , 'app' //CUSTOM PROJECT LIBRARY
 
-        , 'ngCordova' //CORDOVA LIBRARIES
+        , 'ngCordova' //CORDOVA LIBRARI
+        , 'pouchdb' //POUCH DB (FOR DATA STORAGE)
         , 'ngAudio' //HTMl5 Audio
         , 'uiGmapgoogle-maps' //GOOGLE MAPS
         , 'chart.js' //AREA CHART
@@ -25,14 +26,32 @@
         });
         $location.url("boot");
     })
-    .config(function(mockProvider)
+    .config(function($cordovaFacebookProvider)
     {
-        //Mocking Module (While the API is in Construction)
-        mockProvider
-            .enable()
-            .setDelay(700); //Simulate a Short Delay ^^, (More 'Real' experience)
+        //Faceboook Login , -> Native Support, otherwise browser
+        if (!ionic.Platform.isWebView())
+        {
+            var init = function()
+            {
+                var appID = 975485019185433;
+                var version = "v2.5";
+                $cordovaFacebookProvider.browserInit(appID, version);
+            };
+
+            //if FB (Facebook Plugin)
+            if (typeof FB !== "undefined")
+            {
+                init();
+            }
+            else
+            {
+                //Wait for the FB
+                window.fbAsyncInit = init;
+            }
+
+        }
     })
-    .config(function(GpsProvider, routeTrackerProvider, backgroundModeProvider)
+    .config(function(GpsProvider, RouteTrackerProvider, SynchronizerProvider, BackgroundProvider, MocksProvider)
     {
         //GPS Configuration
         GpsProvider
@@ -45,25 +64,44 @@
         //Route Tracker Configuration
         // - Auto Pause: Minimun Distance (in Meters)
         //               Beetween Point's to Set Auto-Pause
-        routeTrackerProvider
+        RouteTrackerProvider
             .autoPause(5);
 
         //Background Mode For still getting GPS in background
-        backgroundModeProvider
+        BackgroundProvider
             .enable()
             .notifyText('MotoApp seguirá enviando las coordenadas del GPS');
 
+
+        //Synchronizer Manager
+        SynchronizerProvider
+            .autoLoadSynchronizers() //Auto Load Synchronizer via Reflection
+            .frequency(15000);  //Frequency between sync process
+
+        //Mocking Module (While the API is in Construction)
+        //MocksProvider
+            //.enable()
+            //.setDelay(700); //Simulate a Short Delay ^^, (More 'Real' experience)
+
     })
-    .config(function(GpsProvider, routeTrackerProvider, mockProvider, backgroundModeProvider, CONFIGURATION)
+    .config(function(
+        GpsProvider, 
+        RouteTrackerProvider, 
+        MocksProvider, 
+        BackgroundProvider, 
+        SynchronizerProvider, 
+        CONFIGURATION)
     {
         //Enable Debug for GPS and RouteTracker
         if (CONFIGURATION.debugging)
         {
+            
             //Debugger Information
-            routeTrackerProvider.debug();
+            RouteTrackerProvider.debug();
             GpsProvider.debug();
-            mockProvider.debug();
-            backgroundModeProvider.debug();
+            MocksProvider.debug();
+            BackgroundProvider.debug();
+            SynchronizerProvider.debug();
         }
 
     })
@@ -76,11 +114,14 @@
             libraries: 'visualization,geometry'
         });
     })
-    .config(function($ApiProvider)
+    .config(function($ApiProvider, FileProvider, CONFIGURATION)
     {
         //API Base Endpoint
-        var API_ENDPOINT = 'http://valentys.motoApp.com/API/v1';
+        var API_ENDPOINT = CONFIGURATION.API_EndPoint;
+        var FILE_ENDPOINT = CONFIGURATION.API_EndPoint + "/Files/";
+
         $ApiProvider.setEndpoint(API_ENDPOINT);
+        FileProvider.setEndpoint(FILE_ENDPOINT);
     })
     .config(function($IdentityProvider)
     {

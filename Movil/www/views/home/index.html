@@ -10,7 +10,7 @@
                 <div class="col">
                     <div>
                         Últimos 7 días&nbsp;
-                        <i class="icon ion-ios-arrow-down"></i>
+                        <i ng-show="false" class="icon ion-ios-arrow-down"></i>
                     </div>
                 </div>
             </div>
@@ -18,7 +18,7 @@
             <div class="row kpi big">
                 <div class="col">
                     <div class="value">
-                        {{ dashboard.distance | distance}}
+                        {{ dashboard.counters.distance | distance}}
                     </div>
                     <div class="label">
                         Kilometros Recorridos
@@ -30,7 +30,7 @@
                 <div class="col">
                     <div class="value">
                         <i class="icon ion-fireball"></i>
-                        <span>{{ dashboard.calories | calories }}</span>
+                        <span>{{ dashboard.counters.calories | calories }}</span>
                     </div>
                     <div class="label">
                         Calorias Quemadas
@@ -39,7 +39,7 @@
                 <div class="col">
                     <div class="value">
                         <i class="icon ion-ios-speedometer-outline"></i>
-                        <span>{{ dashboard.speed | speed }}</span>
+                        <span>{{ dashboard.counters.speed | speed }}</span>
                     </div>
                     <div class="label">
                         Velocidad Promedio
@@ -56,7 +56,7 @@
         <ion-footer-bar>
             <button class="button button-block" ng-click="create();">
                 <i class="icon ion-android-stopwatch"></i>
-                <span>Iniciar Sesión</span>
+                <span>Iniciar Ruta</span>
             </button>
         </ion-footer-bar>
     </div>

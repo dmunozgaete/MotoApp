@@ -58,7 +58,7 @@ namespace API.Endpoints.Security.Services
                     claims.Add(new System.Security.Claims.Claim(System.Security.Claims.ClaimTypes.Role, perfil.identifier));
                 });
 
-                int expiration = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["Security:TokenTmeout"]);
+                int expiration = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["Gale:Security:TokenTmeout"]);
 
                 //RETURN TOKEN
                 return Task.FromResult(_request.CreateResponse<Gale.Security.Oauth.Jwt.Wrapper>(

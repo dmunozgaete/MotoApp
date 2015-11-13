@@ -1,6 +1,9 @@
 <!-- LOADING -->
 <flex-loading ng-if="!items" title="Buscando Rutas Populares" legend="Y cercanas a ti ;)!">
 </flex-loading>
+<!-- EMPTY DATA -->
+<empty-data ng-if="items.length==0">
+</empty-data>
 <!-- CONTENT -->
 <div ng-if="items">
     <ion-content>
@@ -10,21 +13,21 @@
             <ion-item ng-repeat="item in items" class=" item-thumbnail-left">
                 <div class="information">
                     <preload-image ng-src="item.image"></preload-image>
-                    <h2>{{item.name}}</h2>
-                    <p>{{item.observation}}</p>
+                    <h2>{{item.shared.name}}</h2>
+                    <p>{{item.shared.observations}}</p>
                     <div class="likes">
                         <i class="icon ion-heart"></i>
-                        <span>{{item.likes}}</span>
+                        <span>{{item.shared.likes}}</span>
                     </div>
                 </div>
                 <div class="markers row no-padding">
                     <div class="col no-padding">
                         <i class="icon ion-ios-stopwatch-outline"></i>
-                        <span class="value">{{item.markers.duration.stamp}}</span>
+                        <span class="value">{{item.duration | time}}</span>
                     </div>
                     <div class="col no-padding">
                         <i class="icon ion-map"></i>
-                        <span class="value">{{item.markers.distance}}</span>
+                        <span class="value">{{item.distance | distance}}</span>
                         <span class="unit">km</span>
                     </div>
                 </div>

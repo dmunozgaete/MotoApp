@@ -1,5 +1,5 @@
 angular.module('app.services')
-    .provider('routeTracker', function()
+    .provider('RouteTracker', function()
     {
         var $ref = this;
 
@@ -30,7 +30,7 @@ angular.module('app.services')
             return $ref;
         };
 
-        this.$get = function($log, $q, BaseEventHandler, Gps, $interval)
+        this.$get = function($log, $q, BaseEventHandler, Gps, $interval, pouchDB)
         {
             var self = Object.create(BaseEventHandler); //Extend From EventHandler
             var interval = null;
@@ -38,10 +38,15 @@ angular.module('app.services')
             var resume = {
                 coords: [],
                 state: trackState.STOP,
+                photos: [],
+                pauses: 0,
                 seconds: 0, //in Seconds
-                distance: 0 //in KM
+                distance: 0, //in KM
+                calories: 0, //in Kcal (0.1 * kg * min)
+                data:
+                {} //EMPTY DATA (SET DATA WHEN FINISH ROUTE)
             };
-            
+
             //--------------------------------------------------------
             //Speed Algorithm
             var calculateSpeedAndDistance = (function()
@@ -76,11 +81,13 @@ angular.module('app.services')
                         Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(rlat1) * Math.cos(rlat2);
                     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
                     var distance = R * c;
-                    var speed_kph = (distance / ((actualTime - lastCoodTime) / 1000)) * 3600;
+                    var elapsed = ((actualTime - lastCoodTime) / 1000);
+                    var speed_kph = (distance / elapsed) * 3600;
 
                     return {
                         distance: distance,
-                        speed: speed_kph
+                        speed: speed_kph,
+                        elapsed: elapsed
                     };
                 };
 
@@ -103,7 +110,7 @@ angular.module('app.services')
                 {
                     if (calcs.distance <= nearPoints.distanceThreshold)
                     {
-                        
+
                         self.$fire("route.tooClosePoint", [point]);
 
 
@@ -117,7 +124,7 @@ angular.module('app.services')
 
                         if (_debug)
                         {
-                            $log.debug("routeTracker: too close point, set +1 to auto-pause", nearPoints, point);
+                            $log.debug("RouteTracker: too close point, set +1 to auto-pause", nearPoints, point);
                         }
 
                         if (nearPoints.counter >= nearPoints.pointThreshold)
@@ -157,7 +164,7 @@ angular.module('app.services')
 
                         if (_debug)
                         {
-                            $log.info("routeTracker: auto-start-session", resume);
+                            $log.info("RouteTracker: auto-start-session", resume);
                         }
 
                         self.$fire("route.autoStart", [resume]);
@@ -170,7 +177,7 @@ angular.module('app.services')
                 {
                     if (_debug)
                     {
-                        $log.info("routeTracker: add-track-point", position);
+                        $log.info("RouteTracker: add-track-point", position);
                     }
 
                     //-------------------------------------------
@@ -192,6 +199,7 @@ angular.module('app.services')
 
                         position.distance = calcs.distance; //DISTANCE IN KM
                         position.speed = calcs.speed; //SPEED IN KM/HR
+                        position.duration = calcs.elapsed; //TIME ELAPSED (SECONDS)
 
                         //Set Instant Speed
                         resume.currentSpeed = calcs.speed;
@@ -199,12 +207,22 @@ angular.module('app.services')
                         //Add the Distance to the Total 
                         resume.distance += calcs.distance;
 
+                        //Add the Calories Counter
+                        resume.calories += 1;
+
                         //-------------------------------------------
                         // UPDATE AVERAGES
                         var averageSpeed = (resume.distance / resume.seconds) * 3600; //in KM/H
                         resume.speed = averageSpeed;
                         //-------------------------------------------
 
+                    }
+                    else
+                    {
+                        //FIRST COORD , OF FIRST COORD AFTER PAUSE
+                        position.distance = 0; //DISTANCE IN KM
+                        position.speed = 0; //SPEED IN KM/HR
+                        position.duration = 0; //TIME ELAPSED (SECONDS)
                     }
                     //-------------------------------------------
 
@@ -228,11 +246,16 @@ angular.module('app.services')
                 {
                     if (_debug)
                     {
-                        $log.debug("routeTracker: resume-changed", resume);
+                        $log.debug("RouteTracker: resume-changed", resume);
                     }
 
                     resume.seconds++;
                     self.$fire("route.resumeChanged", [resume]);
+                }
+
+                if (resume.state == trackState.AUTO_PAUSE || resume.state == trackState.PAUSE)
+                {
+                    resume.pauses++;
                 }
             };
 
@@ -243,6 +266,9 @@ angular.module('app.services')
                 resume.speed = 0;
                 resume.currentSpeed = 0;
                 resume.distance = 0;
+                resume.data = {};
+                resume.photos = [];
+                resume.startAt = new Date();
 
                 last_coord = null;
             };
@@ -253,7 +279,7 @@ angular.module('app.services')
 
                 if (_debug)
                 {
-                    $log.info("routeTracker: auto-pause-session", resume);
+                    $log.info("RouteTracker: auto-pause-session", resume);
                 }
 
                 self.$fire("route.autoPaused", [resume]);
@@ -285,7 +311,7 @@ angular.module('app.services')
                     //RESUME SESSION
                     if (_debug)
                     {
-                        $log.info("routeTracker: resume-session", resume);
+                        $log.info("RouteTracker: resume-session", resume);
                     }
 
                     self.$fire("route.resume", [resume]);
@@ -296,7 +322,7 @@ angular.module('app.services')
                     //START A NEW SESSION
                     if (_debug)
                     {
-                        $log.info("routeTracker: start-session", resume);
+                        $log.info("RouteTracker: start-session", resume);
                     }
 
                     self.$fire("route.started", [resume]);
@@ -310,7 +336,7 @@ angular.module('app.services')
 
                 if (_debug)
                 {
-                    $log.info("routeTracker: pause-session", resume);
+                    $log.info("RouteTracker: pause-session", resume);
                 }
 
                 self.$fire("route.paused", [resume]);
@@ -319,11 +345,24 @@ angular.module('app.services')
             self.stop = function()
             {
                 resume.state = trackState.STOP;
+                resume.stopAt = new Date();
+
+                //------------------------------------------------
+                //GET AVERAGE ALTITUDE (DO IT HERE , FOR OPTIMIZATION ONLY...)
+                var totalAltitude = 0;
+                angular.forEach(resume.coords, function(coord)
+                {
+                    totalAltitude += (coord.coords.altitude || 0)
+                });
+                var averageAltitude = (totalAltitude / resume.coords.length);
+                resume.altitude = averageAltitude;
+                //------------------------------------------------
+
                 try
                 {
                     if (_debug)
                     {
-                        $log.info("routeTracker: stop-session", resume);
+                        $log.info("RouteTracker: stop-session", resume);
                     }
 
                     self.$fire("route.stopped", [resume]);
@@ -337,6 +376,18 @@ angular.module('app.services')
                         interval = null;
                     }
                 }
+            };
+
+            self.addPhoto = function(image)
+            {
+
+                resume.photos.push(image);
+
+            };
+
+            self.setData = function(data)
+            {
+                resume.data = data;
             };
 
             self.getResume = function()

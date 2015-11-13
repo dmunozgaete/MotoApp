@@ -3,7 +3,7 @@ angular.route('nomenu.routes/create/gps', function(
     $state,
     $log,
     $Api,
-    routeTracker,
+    RouteTracker,
     Gps
 )
 {
@@ -38,18 +38,18 @@ angular.route('nomenu.routes/create/gps', function(
 
     //Tracker Listener && GPs Listener's
     var listeners = [];
-    listeners.push(routeTracker.$on("route.addTrackPoint", onRouteChange));
+    listeners.push(RouteTracker.$on("route.addTrackPoint", onRouteChange));
 
     listeners.push(Gps.$on("gps.pointDiscarded", eventTracker('gps-discard-point')));
     listeners.push(Gps.$on("gps.error", eventTracker('gps-timeout-error')));
 
     //Event Listener's
-    listeners.push(routeTracker.$on("route.autoStart", eventTracker('route-autostart')));
-    listeners.push(routeTracker.$on("route.started", eventTracker('route-started')));
-    listeners.push(routeTracker.$on("route.paused", eventTracker('route-paused')));
-    listeners.push(routeTracker.$on("route.stopped", eventTracker('route-stopped')));
-    listeners.push(routeTracker.$on("route.autoPaused", eventTracker('route-autopause')));
-    listeners.push(routeTracker.$on("route.tooClosePoint", eventTracker('route-closepoint')));
+    listeners.push(RouteTracker.$on("route.autoStart", eventTracker('route-autostart')));
+    listeners.push(RouteTracker.$on("route.started", eventTracker('route-started')));
+    listeners.push(RouteTracker.$on("route.paused", eventTracker('route-paused')));
+    listeners.push(RouteTracker.$on("route.stopped", eventTracker('route-stopped')));
+    listeners.push(RouteTracker.$on("route.autoPaused", eventTracker('route-autopause')));
+    listeners.push(RouteTracker.$on("route.tooClosePoint", eventTracker('route-closepoint')));
 
     $scope.$on("$destroy", function()
     {

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MotoApp_v1" Class="NotificationsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\MSSQLSERVER_2012;Initial Catalog=MotoApp_v1;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MotoApp_v1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TB_MOT_Notificacion" Member="Notifications">
+    <Type Name="Notification">
+      <Column Name="NOTI_Texto" Member="text" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="NOTI_Fecha" Member="createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="NOTI_Imagen" Member="image" Type="System.String" DbType="VarChar(2048)" CanBeNull="true" />
+      <Column Name="NOTI_Contexto" Member="context" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="TINO_Identificador" Member="type_identifier" Type="System.String" DbType="Char(4) NOT NULL" CanBeNull="false" />
+      <Column Name="TINO_Nombre" Member="type_name" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="NOTI_Token" Member="token" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NOTI_Leida" Member="readed" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="MarkAsReadeds">
+    <Type Name="MarkAsReaded">
+      <Column Member="timestamp" Type="System.DateTime" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
