@@ -5,6 +5,7 @@ angular.route('nomenu.routes/create/stop', function(
     $Api,
     $interval,
     RouteTracker,
+    $ionicLoading,
     Camera
 )
 {
@@ -104,7 +105,11 @@ angular.route('nomenu.routes/create/stop', function(
         }, function(err)
         {
 
-            ionicToast.show("No se pudo tomar la foto", 'top', true, 2000);
+            $ionicLoading.show(
+            {
+                template: 'No se pudo tomar la foto',
+                duration: 3000
+            });
             $log.error(err);
 
         });

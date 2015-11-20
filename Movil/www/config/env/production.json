@@ -1,5 +1,5 @@
 {
     "API_EndPoint": "http://val-wb-ms-02.cloudapp.net/MotoApp/API/v1",
     "GetTheAppUrl": "http://goo.gl/bpddJM",
-    "debugging": false
+    "debugging": true
 }

@@ -6,7 +6,6 @@ angular.route('security/identity/login', function(
     $Identity,
     $scope,
     $Api,
-    ionicToast,
     $cordovaFacebook,
     $ionicLoading
 )
@@ -18,8 +17,13 @@ angular.route('security/identity/login', function(
     var throwError = function(err)
     {
         $ionicLoading.hide();
-        var message = (err && err.message) || "Inicio de Sesión Cancelado";
-        ionicToast.show(message, 'top', false, 2500);
+
+        $ionicLoading.show(
+        {
+            template: 'Hubo un problema al autenticarte, intentalo denuevo...',
+            duration: 3000
+        });
+        $log.error(err);
     };
 
     var googleLogin = function()
@@ -125,14 +129,30 @@ angular.route('security/identity/login', function(
 
     $scope.login = function(loginType)
     {
-        switch (loginType)
+        try
         {
-            case 'facebook':
-                facebookLogin();
-                break;
-            case 'google':
-                googleLogin();
-                break;
+            switch (loginType)
+            {
+                case 'facebook':
+                    facebookLogin();
+                    break;
+                case 'google':
+                    googleLogin();
+                    break;
+            }
+        }
+        catch (err)
+        {
+            $ionicLoading.hide();
+
+
+            $ionicLoading.show(
+            {
+                template: 'No se encuentra disponible el inicio de sesión para {0} en estos momentos...'.format([loginType]),
+                duration: 3000
+            });
+
+            $log.error(err);
         }
 
     };

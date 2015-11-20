@@ -45,6 +45,7 @@ angular.module('app.services')
                 // will execute when device is ready, or 
                 // immediately if the device is already ready.
                 //    (Mobile and Web)
+                //WHEN PLATFORM IS READY!
                 ionic.Platform.ready(function()
                 {
                     if (!ionic.Platform.isWebView())

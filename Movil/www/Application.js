@@ -8,7 +8,6 @@
         , 'ngAudio' //HTMl5 Audio
         , 'uiGmapgoogle-maps' //GOOGLE MAPS
         , 'chart.js' //AREA CHART
-        , 'ionic-toast' //IONIC TOAST LIBRARY (WORK IN WEB ENVIRONMENT)
         , 'angularMoment' //ANGULAR MOMENT JS 
 
         , 'mocks' //Mocks Only for Testing, Remove in PRD
@@ -55,11 +54,11 @@
     {
         //GPS Configuration
         GpsProvider
-            .frequency(5000) //Try to get GPS Track each 5 seconds
             .enableDeviceGPS() //Enable GPS Tracking
             .autoStart() //Auto Start
             .accuracyThreshold(70) //Real GPS Aproximaty (aprox 65)
-            //.addTestRoute('bundles/mocks/js/gps/+250.json'); //Simulate a Route
+            .frequency(3000) //Try to get GPS Track each 5 seconds
+            .addTestRoute('bundles/mocks/js/gps/+250.json'); //Simulate a Route
 
         //Route Tracker Configuration
         // - Auto Pause: Minimun Distance (in Meters)
@@ -76,26 +75,26 @@
         //Synchronizer Manager
         SynchronizerProvider
             .autoLoadSynchronizers() //Auto Load Synchronizer via Reflection
-            .frequency(15000);  //Frequency between sync process
+            .frequency(15000); //Frequency between sync process
 
         //Mocking Module (While the API is in Construction)
         //MocksProvider
-            //.enable()
-            //.setDelay(700); //Simulate a Short Delay ^^, (More 'Real' experience)
+        //.enable()
+        //.setDelay(700); //Simulate a Short Delay ^^, (More 'Real' experience)
 
     })
     .config(function(
-        GpsProvider, 
-        RouteTrackerProvider, 
-        MocksProvider, 
-        BackgroundProvider, 
-        SynchronizerProvider, 
+        GpsProvider,
+        RouteTrackerProvider,
+        MocksProvider,
+        BackgroundProvider,
+        SynchronizerProvider,
         CONFIGURATION)
     {
         //Enable Debug for GPS and RouteTracker
         if (CONFIGURATION.debugging)
         {
-            
+
             //Debugger Information
             RouteTrackerProvider.debug();
             GpsProvider.debug();
@@ -184,6 +183,11 @@
                 $state.go("exception.error/404");
             }
         });
+    })
+    .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider)
+    {
+        $ionicConfigProvider.views.swipeBackEnabled(false);
+        //remaining code in config
     })
     .config(function($logProvider, CONFIGURATION)
     {

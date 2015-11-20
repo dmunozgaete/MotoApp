@@ -4,10 +4,12 @@ angular.module('app.layouts').controller('DefaultLayoutController', function(
     $log,
     $Configuration,
     $Identity,
-    NotificationSynchronizer
+    NotificationSynchronizer,
+    $cordovaBadge,
+    $cordovaLocalNotification
 )
 {
-    
+
     //------------------------------------------------------------------------------------
     // Model
     $scope.config = {
@@ -48,7 +50,44 @@ angular.module('app.layouts').controller('DefaultLayoutController', function(
     var updateCounter = function(newCounter)
     {
         $scope.config.notifications = newCounter;
+
+        if (newCounter > 0)
+        {
+
+            //ONLY IN DEVICE
+            if (ionic.Platform.isWebView())
+            {
+                //WHEN PLATFORM IS READY!
+                ionic.Platform.ready(function()
+                {
+
+
+                    //SET NEW COUNTER
+                    $cordovaBadge.set(newCounter).then(function()
+                    {
+
+                        //SEND NEW NOTIFICATION'S
+                        $cordovaLocalNotification.schedule(
+                        {
+                            id: (new Date().getTime()),
+                            title: 'Tienes Nuevas Notificaciones',
+                            text: 'Tienes {0} notificaciones sin leer'.format([newCounter]),
+                            data:
+                            {
+                                type: 'NEW_NOTIFICATIONS'
+                            }
+                        });
+
+                    });
+
+
+                });
+            }
+
+        }
+
     };
+
     NotificationSynchronizer.$on("notifications.update-counter", updateCounter);
 
     //------------------------------------------------------------------------------------

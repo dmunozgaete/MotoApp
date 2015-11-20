@@ -1,20 +1,22 @@
-<ion-view title="Finalizando Sesión" class="route create upload">
+<ion-view title="Finalizando Sesión" class="route create upload" can-swipe-back="false">
     <!-- WE NEED TO USE THE TRACK VIEWER -->
     <track-viewer ng-hide="true">
     </track-viewer>
     <!-- CONTENT -->
+    <flex-loading title="Guardando ruta..." legend="Relajate mientras enviamos los datos a nuestros servidores...">
+    </flex-loading>
+    <!-- 
     <ion-list>
+        <br />
+        <br />
         <ion-item ng-repeat="item in events" class="item">
             {{item}}
         </ion-item>
     </ion-list>
-    <!-- EMERGENCY BUTTON -->
-    <ion-footer-bar ng-if="error">
-        <button class="button button-block" ng-click="retry();">
-            <div>
-                <i class="icon ion-plus"></i>
-            </div>
-            <span>Reintentar</span>
-        </button>
+    -->
+    <ion-footer-bar>
+        <center style="width:100%">
+            {{currentEvent}}
+        </center>
     </ion-footer-bar>
 </ion-view>

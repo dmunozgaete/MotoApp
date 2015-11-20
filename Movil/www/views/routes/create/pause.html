@@ -63,7 +63,7 @@
         </div>
     </div>
     <!-- EMERGENCY BUTTON -->
-    <ion-footer-bar>
+    <ion-footer-bar ng-if="emergencyIsEnabled();">
         <button class="button button-block" ng-click="emergency();">
             <div>
                 <i class="icon ion-plus"></i>

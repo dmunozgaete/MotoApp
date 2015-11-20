@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace API.Endpoints.Notifications
 {
@@ -17,11 +18,11 @@ namespace API.Endpoints.Notifications
         /// <summary>
         /// Retrieves all pendings notifications for the user
         /// </summary>
-        /// <param name="timestamp"></param>
+        /// <param name="timestamp">fecha de ultima actualización</param>
         /// <returns></returns>
         [Swashbuckle.Swagger.Annotations.SwaggerResponseRemoveDefaults]
-        [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.OK)]
-        public IHttpActionResult Get(DateTime timestamp )
+        [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.OK, "", typeof(List<Models.Notification>))]
+        public IHttpActionResult Get(DateTime timestamp)
         {
             //------------------------------------------------------------------------------------------------------
             // GUARD EXCEPTIONS

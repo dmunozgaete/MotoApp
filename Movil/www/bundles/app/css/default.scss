@@ -237,6 +237,86 @@
     ------------------------------------------------------*/
     ion-view.pane {
         /*------------------------- 
+        VIEW:   First
+ Run View's
+        ROUTE:  /app/firstRun/*
+        -------------------------*/
+        &.firstRun {
+            /*------------------------- 
+            VIEW:   First Time Configuration
+            ROUTE:  /app/firstRun/configuration
+            -------------------------*/
+            &.configuration {
+                .title {
+                    padding-bottom: 0.5em !important;
+                    background-color: $primary_Hue900_color;
+                    margin-bottom: 1em;
+                    line-height: 1em;
+                    div.col:first-child {
+                        text-transform: uppercase;
+                    }
+                }
+                &.step-1 {
+                    background-image: url(images/backgrounds/background-2.jpg);
+                    background-size: 100%;
+                    ion-content {
+                        background: none;
+                        div.welcome {
+                            color: $accent_color;
+                            padding: 1em;
+                            padding-bottom: 2em;
+                            padding-top: 2em;
+                            text-align: justify;
+                            h1 {
+                                color: $accent_color;
+                                font-size: 1.6em;
+                                font-weight: normal;
+                            }
+                        }
+                        div.fav-button {
+                            position: absolute;
+                            right: 1em;
+                            border-radius: 50%;
+                            height: 3.5em;
+                            width: 3.5em;
+                            background-color: $accent_color;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            margin-top: -1em;
+                            > i {
+                                color: $primary_color;
+                                text-align: center;
+                                font-size: 1.8em;
+                            }
+                        }
+                        div.row {
+                            padding-bottom: 1em;
+                            &.phones {
+                                div.col {
+                                    padding: 0.5em;
+                                    a {
+                                        text-decoration: none;
+                                        color: $accent_color;
+                                    }
+                                }
+                            }
+                        }
+                        input.value,
+                        select.value {
+                            width: 99%;
+                            background: rgba(0, 0, 0, 0);
+                            border: 1px solid $accent_color;
+                            border-radius: 4px;
+                            color: #fff;
+                            font-size: 1.6em;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+        /*------------------------- 
         VIEW:   Security View's
         ROUTE:  /app/security/*
         -------------------------*/
@@ -363,6 +443,7 @@
                     > div {
                         text-transform: uppercase;
                         color: $primary_color;
+                        font-size: 0.9em;
                     }
                 }
             }
@@ -388,6 +469,20 @@
                                 color: red;
                             }
                         }
+                    }
+                }
+            }
+            /*------------------------- 
+            VIEW:   Route Save Error
+            ROUTE:  /nomenu/routes/create/saveForLater
+            -------------------------*/
+            &.save-for-later {
+                center {
+                    > p {
+                        text-align: justify;
+                        padding: 2em;
+                        font-size: 1.2em;
+                        line-height: 1.2em;
                     }
                 }
             }
@@ -651,6 +746,11 @@
                                     font-size: 0.4em;
                                     padding: 0px;
                                     text-align: right;
+                                }
+                            }
+                            &.time {
+                                div.value {
+                                    font-size: 0.86em;
                                 }
                             }
                         }
@@ -1110,110 +1210,169 @@
                 }
             }
         }
-        /*------------------------- 
-        VIEW:   Profile Account Page
-        ROUTE:  /app/profile
-        -------------------------*/
         &.profile {
-            div.stats {
-                padding-top: 1em;
-                .profile-bubble {
-                    padding-bottom: 0.5em;
-                    div.marker {
-                        width: 7em;
-                        height: 7em;
-                        > div.halo {
-                            border-radius: 50%;
-                            border: 1px solid #c0c1c2;
-                            width: 100%;
-                            height: 100%;
-                            padding: 5%;
-                            > div {
+            /*
+                   TITLE
+                */
+            .title {
+                padding-bottom: 0.5em !important;
+                background-color: $primary_Hue900_color;
+                margin-bottom: 1em;
+                line-height: 1em;
+                div.col:first-child {
+                    text-transform: uppercase;
+                }
+            }
+            /*------------------------- 
+            VIEW:   Profile Account Page
+            ROUTE:  /app/profile
+            -------------------------*/
+            &.index {
+                div.stats {
+                    padding-top: 1em;
+                    .profile-bubble {
+                        padding-bottom: 0.5em;
+                        div.marker {
+                            width: 7em;
+                            height: 7em;
+                            > div.halo {
                                 border-radius: 50%;
-                                overflow: hidden;
-                                height: 100%;
+                                border: 1px solid #c0c1c2;
                                 width: 100%;
-                                background: $primary_color;
-                                > img {
+                                height: 100%;
+                                padding: 5%;
+                                > div {
+                                    border-radius: 50%;
+                                    overflow: hidden;
+                                    height: 100%;
                                     width: 100%;
+                                    background: $primary_color;
+                                    > img {
+                                        width: 100%;
+                                    }
                                 }
                             }
                         }
                     }
-                }
-                .title {
-                    font-size: 1.2em;
-                    padding-left: 0.6em;
-                    padding-bottom: 5px;
-                }
-                .counter {
-                    color: $accent_color;
-                    font-size: 1.7em;
-                    font-weight: bold;
-                    padding-left: 0.6em;
-                    padding-bottom: 5px;
-                }
-                .category {
-                    padding-left: 0.8em;
-                }
-                .progress {
-                    margin-top: 2em;
-                    background-color: #fff;
-                    height: 6px;
-                    width: 90%;
-                    border-radius: 3px;
-                    overflow: hidden;
-                    margin-left: 0.4em;
-                    > div {
-                        height: 100%;
-                        background-color: #369afc;
+                    .title {
+                        font-size: 1.2em;
+                        padding-left: 0.6em;
+                        padding-bottom: 5px;
+                    }
+                    .counter {
+                        color: $accent_color;
+                        font-size: 1.7em;
+                        font-weight: bold;
+                        padding-left: 0.6em;
+                        padding-bottom: 5px;
+                    }
+                    .category {
+                        padding-left: 0.8em;
+                    }
+                    .progress {
+                        margin-top: 2em;
+                        background-color: #fff;
+                        height: 6px;
+                        width: 90%;
+                        border-radius: 3px;
+                        overflow: hidden;
+                        margin-left: 0.4em;
+                        > div {
+                            height: 100%;
+                            background-color: #369afc;
+                        }
+                    }
+                    /*
+                        TWITTER LIKE
+                    */
+                    .follower,
+                    .following {
+                        padding-left: 1em;
+                        color: #B7B7B7;
+                        text-transform: uppercase;
+                        font-size: 0.9em;
+                        white-space: nowrap;
+                        > span {
+                            font-weight: bold;
+                            color: $text_color;
+                            padding-right: 3px;
+                            white-space: nowrap;
+                        }
                     }
                 }
                 /*
-                    TWITTER LIKE
+                    CLOSE SESSION
                 */
-                .follower,
-                .following {
-                    padding-left: 1em;
-                    color: #B7B7B7;
-                    text-transform: uppercase;
-                    font-size: 0.9em;
-                    white-space: nowrap;
-                    > span {
-                        font-weight: bold;
+                button.close-session {
+                    color: $text_color;
+                    background: rgba(0, 0, 0, 0);
+                    border: none;
+                    >i {
                         color: $text_color;
-                        padding-right: 3px;
-                        white-space: nowrap;
+                        padding-right: 10px;
+                    }
+                    > span {
+                        font-size: 0.8em;
+                        text-transform: uppercase;
+                    }
+                }
+                /*
+                    AVERAGE DISTANCE 
+                */
+                .average {
+                    margin-top: 1em;
+                    background-color: $primary_Hue900_color;
+                    div.col:first-child {
+                        text-transform: uppercase;
+                    }
+                    div.col:last-child {
+                        font-size: 1.6em;
                     }
                 }
             }
-            /*
-                CLOSE SESSION
-            */
-            button.close-session {
-                color: $text_color;
-                background: rgba(0, 0, 0, 0);
-                border: none;
-                >i {
-                    color: $text_color;
-                    padding-right: 10px;
+            /*------------------------- 
+            VIEW:   Profile Edit Page
+            ROUTE:  /app/profile/edit/index
+            -------------------------*/
+            &.edit {
+                div.fav-button {
+                    position: absolute;
+                    right: 1em;
+                    border-radius: 50%;
+                    height: 3.5em;
+                    width: 3.5em;
+                    background-color: $accent_color;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: -1em;
+                    > i {
+                        color: $primary_color;
+                        text-align: center;
+                        font-size: 1.8em;
+                    }
                 }
-                > span {
-                    font-size: 0.8em;
-                    text-transform: uppercase;
+                div.row {
+                    padding-bottom: 1em;
+                    &.phones {
+                        div.col {
+                            padding: 0.5em;
+                            a {
+                                text-decoration: none;
+                                color: $accent_color;
+                            }
+                        }
+                    }
                 }
-            }
-            /*
-                AVERAGE DISTANCE 
-            */
-            .average {
-                margin-top: 1em;
-                background-color: $primary_Hue900_color;
-                div.col:first-child {
-                    text-transform: uppercase;
-                }
-                div.col:last-child {
+                input.value,
+                select.value {
+                    width: 99%;
+                    background: rgba(0, 0, 0, 0);
+                    border: 1px solid $accent_color;
+                    border-radius: 4px;
+                    color: #fff;
                     font-size: 1.6em;
+                    text-align: center;
                 }
             }
         }

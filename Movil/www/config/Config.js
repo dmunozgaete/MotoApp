@@ -2,7 +2,7 @@ angular.module("config", []).constant("GLOBAL_CONFIGURATION",
 {
     application:
     {
-        version: "1.0.2-rc.3",
+        version: "1.0.2-rc.6",
         environment: "production",
         language: "es",
         home: "app/home"
@@ -10,8 +10,44 @@ angular.module("config", []).constant("GLOBAL_CONFIGURATION",
 
     on_build_new_version: function(newVersion, oldVersion)
     {
-        if(localStorage){
-            localStorage.clear();   //Reset App
+
+        //When has new Version , destroy the pending routes database
+        PouchDB("pending_routes").destroy();
+
+        if (localStorage)
+        {
+            localStorage.clear(); //Reset App
         }
+    },
+
+    localstorageStamps:
+    {
+        personal_data: "$_personal_data"
+    },
+
+    //Custom Collections
+    collections:
+    {
+        sportTypes: [
+        {
+            name: 'Enduro',
+            identifier: 'ENDUR'
+        },
+        {
+            name: 'MotoCross',
+            identifier: 'CROSS'
+        },
+        {
+            name: 'Big Trail',
+            identifier: 'BTRAI'
+        },
+        {
+            name: 'Pista',
+            identifier: 'PISTA'
+        },
+        {
+            name: 'Trial',
+            identifier: 'TRIAL'
+        }]
     }
 });

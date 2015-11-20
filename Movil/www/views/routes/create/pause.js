@@ -6,16 +6,16 @@ angular.route('nomenu.routes/create/pause/:autopause', function(
     $interval,
     RouteTracker,
     $stateParams,
-    ionicToast,
+    $ionicLoading,
     Camera,
-    $cordovaSocialSharing
+    $cordovaSocialSharing,
+    $Identity
 )
 {
 
     //---------------------------------------------
     // Resume Tracker
     $scope.resume = RouteTracker.getResume();
-
 
     //---------------------------------------------
     // Resume Tracker when Auto-Started
@@ -37,7 +37,11 @@ angular.route('nomenu.routes/create/pause/:autopause', function(
     //Launch from Auto-Start
     if ($stateParams.autopause)
     {
-        ionicToast.show("Se ha pausado la ruta", 'top', true, 5000);
+        $ionicLoading.show(
+        {
+            template: 'Se ha pausado la ruta',
+            duration: 3000
+        });
     }
 
     //----------------------------------------
@@ -59,7 +63,12 @@ angular.route('nomenu.routes/create/pause/:autopause', function(
         }, function(err)
         {
 
-            ionicToast.show("No se pudo tomar la foto", 'top', true, 2000);
+            $ionicLoading.show(
+            {
+                template: 'No se pudo tomar la foto',
+                duration: 3000
+            });
+
             $log.error(err);
 
         });
@@ -84,10 +93,18 @@ angular.route('nomenu.routes/create/pause/:autopause', function(
     };
     var currentCounter = null;
 
+    $scope.emergencyIsEnabled = function()
+    {
+        var personalData = $Identity.getCurrent().property("personal");
+        return personalData.emergencyPhones.length > 0;
+    };
+
     $scope.emergency = function()
     {
+        var phones = $Identity.getCurrent().property("personal").emergencyPhones;
+
         return $cordovaSocialSharing
-            .shareViaSMS(message, '+56968987440,+56993020558')
+            .shareViaSMS("Emergencia!", phones.join(","));
     };
     $scope.stop = function(start)
     {
@@ -101,7 +118,7 @@ angular.route('nomenu.routes/create/pause/:autopause', function(
                 {
                     $interval.cancel(currentCounter);
                     RouteTracker.stop();
-                    ionicToast.hide();
+                    $ionicLoading.hide();
 
                     //If Coords is minor to Two , Discard inmediately :S
                     if ($scope.resume.coords.length <= 2)

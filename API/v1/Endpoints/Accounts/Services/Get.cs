@@ -34,7 +34,10 @@ namespace API.Endpoints.Accounts.Services
                 Models.Account account = rep.GetModel<Models.Account>().FirstOrDefault();
                 List<Models.Role> roles = rep.GetModel<Models.Role>(1);
                 Models.SocialProfile counter = rep.GetModel<Models.SocialProfile>(2).FirstOrDefault();
+                Models.PersonalData personal = rep.GetModel<Models.PersonalData>(3).FirstOrDefault();
                 Models.Sport sport = rep.GetModel<Models.Sport>(3).FirstOrDefault();
+                List<Models.EmergencyPhones> phones = rep.GetModel<Models.EmergencyPhones>(4);
+                //Models.PersonalData personal = rep.GetModel<Models.PersonalData>(3).FirstOrDefault();
 
                 //----------------------------------------------------------------------------------------------------
                 //Guard Exception's
@@ -43,6 +46,10 @@ namespace API.Endpoints.Accounts.Services
 
                 account.photo = (account.photo == System.Guid.Empty ? null : account.photo);
 
+                if (personal != null)
+                {
+                    personal.emergencyPhones = (from t in phones select t.phone).ToList();
+                }
                 //----------------------------------------------------------------------------------------------------
                 //Create Response
                 var response = new HttpResponseMessage(System.Net.HttpStatusCode.OK)
@@ -53,9 +60,10 @@ namespace API.Endpoints.Accounts.Services
                             account = account,
                             roles = roles,
                             sport = sport,
+                            personal = personal,
                             social = counter
                         },
-                        System.Web.Http.GlobalConfiguration.Configuration.Formatters.JsonFormatter
+                        System.Web.Http.GlobalConfiguration.Configuration.Formatters.KqlFormatter()
                     )
                 };
 

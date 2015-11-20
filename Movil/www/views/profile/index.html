@@ -1,4 +1,4 @@
-<ion-view title="Mi Perfil" class="profile" cache-view="false">
+<ion-view title="Mi Perfil" class="profile index" cache-view="false" can-swipe-back="false">
     <!-- LOADING -->
     <flex-loading ng-if="!profile" title="Recopilando Información..." legend="solo queremos saber ti ^^">
     </flex-loading>
@@ -52,17 +52,14 @@
                     </div>
                 </div>
             </div>
-
-            <!-- BANNER
-            <div class="row average">
+            <div class="row average" ui-sref="app.profile/edit">
                 <div class="col">
-                    Distancia Promedio
+                    Editar Perfil
                 </div>
-                <div class="col col-33">
-                    {{ profile.resume.distance.average | currency : '' : 1}} km
+                <div class="col col-10">
+                    <i class="icon ion-ios-arrow-right"></i>
                 </div>
             </div>
-            --> 
         </ion-content>
         <ion-footer-bar>
             <!-- CLOSE SESSION -->

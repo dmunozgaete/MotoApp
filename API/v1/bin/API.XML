@@ -44,20 +44,10 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:API.Endpoints.Accounts.AccountsController.Post(API.Endpoints.Accounts.Models.Create,System.String)">
+        <member name="M:API.Endpoints.Accounts.AccountsController.SaveCurrent(API.Endpoints.Accounts.Models.UpdatePersonalData)">
             <summary>
-            Pre-Register an account in the system
+            Save User Personal Data
             </summary>
-            <param name="account">Account information</param>
-            <param name="host">Application Entry Point</param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Endpoints.Accounts.AccountsController.Put(System.String,API.Endpoints.Accounts.Models.Update)">
-            <summary>
-            Update the target Account
-            </summary>
-            <param name="id">Account Token</param>
-            <param name="account">Account information</param>
             <returns></returns>
         </member>
         <member name="T:API.Endpoints.Accounts.Services.Create">
@@ -102,7 +92,7 @@
             Update User in DB
             </summary>
         </member>
-        <member name="M:API.Endpoints.Accounts.Services.Update.#ctor(System.String,API.Endpoints.Accounts.Models.Update)">
+        <member name="M:API.Endpoints.Accounts.Services.Update.#ctor(System.String,API.Endpoints.Accounts.Models.UpdatePersonalData)">
             <summary>
             Constructor
             </summary>
@@ -289,7 +279,7 @@
             <summary>
             Retrieves all pendings notifications for the user
             </summary>
-            <param name="timestamp"></param>
+            <param name="timestamp">fecha de ultima actualización</param>
             <returns></returns>
         </member>
         <member name="M:API.Endpoints.Notifications.NotificationsController.MarkAsReaded(API.Endpoints.Notifications.Models.MarkAsReaded)">

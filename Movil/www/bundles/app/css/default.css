@@ -171,6 +171,11 @@
       padding: 15px 0px 0px 10px;
       opacity: 0.5; }
   [md-theme='imoto'] ion-view.pane {
+       /*------------------------- 
+       VIEW:   First
+Run View's
+       ROUTE:  /app/firstRun/*
+       -------------------------*/
     /*------------------------- 
     VIEW:   Security View's
     ROUTE:  /app/security/*
@@ -194,11 +199,65 @@
     /*------------------------- 
     VIEW:   Ambassadors Page
     ROUTE:  /app/ambassadors
-    -------------------------*/
-    /*------------------------- 
-    VIEW:   Profile Account Page
-    ROUTE:  /app/profile
     -------------------------*/ }
+    [md-theme='imoto'] ion-view.pane.firstRun {
+      /*------------------------- 
+      VIEW:   First Time Configuration
+      ROUTE:  /app/firstRun/configuration
+      -------------------------*/ }
+      [md-theme='imoto'] ion-view.pane.firstRun.configuration .title {
+        padding-bottom: 0.5em !important;
+        background-color: #141925;
+        margin-bottom: 1em;
+        line-height: 1em; }
+        [md-theme='imoto'] ion-view.pane.firstRun.configuration .title div.col:first-child {
+          text-transform: uppercase; }
+      [md-theme='imoto'] ion-view.pane.firstRun.configuration.step-1 {
+        background-image: url(images/backgrounds/background-2.jpg);
+        background-size: 100%; }
+        [md-theme='imoto'] ion-view.pane.firstRun.configuration.step-1 ion-content {
+          background: none; }
+          [md-theme='imoto'] ion-view.pane.firstRun.configuration.step-1 ion-content div.welcome {
+            color: #ffc107;
+            padding: 1em;
+            padding-bottom: 2em;
+            padding-top: 2em;
+            text-align: justify; }
+            [md-theme='imoto'] ion-view.pane.firstRun.configuration.step-1 ion-content div.welcome h1 {
+              color: #ffc107;
+              font-size: 1.6em;
+              font-weight: normal; }
+          [md-theme='imoto'] ion-view.pane.firstRun.configuration.step-1 ion-content div.fav-button {
+            position: absolute;
+            right: 1em;
+            border-radius: 50%;
+            height: 3.5em;
+            width: 3.5em;
+            background-color: #ffc107;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: -1em; }
+            [md-theme='imoto'] ion-view.pane.firstRun.configuration.step-1 ion-content div.fav-button > i {
+              color: #1c1c29;
+              text-align: center;
+              font-size: 1.8em; }
+          [md-theme='imoto'] ion-view.pane.firstRun.configuration.step-1 ion-content div.row {
+            padding-bottom: 1em; }
+            [md-theme='imoto'] ion-view.pane.firstRun.configuration.step-1 ion-content div.row.phones div.col {
+              padding: 0.5em; }
+              [md-theme='imoto'] ion-view.pane.firstRun.configuration.step-1 ion-content div.row.phones div.col a {
+                text-decoration: none;
+                color: #ffc107; }
+          [md-theme='imoto'] ion-view.pane.firstRun.configuration.step-1 ion-content input.value,
+          [md-theme='imoto'] ion-view.pane.firstRun.configuration.step-1 ion-content select.value {
+            width: 99%;
+            background: transparent;
+            border: 1px solid #ffc107;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 1.6em;
+            text-align: center; }
     [md-theme='imoto'] ion-view.pane.security {
       /*------------------------- 
       VIEW:   Route View List
@@ -248,6 +307,10 @@
       /* 
           Common Styles
       */
+      /*------------------------- 
+      VIEW:   Route Save Error
+      ROUTE:  /nomenu/routes/create/saveForLater
+      -------------------------*/
       /*------------------------- 
       VIEW:   Route View List
       ROUTE:  /app/routes/list
@@ -330,7 +393,8 @@
         font-weight: bold; }
         [md-theme='imoto'] ion-view.pane.route .counters > div.col > div {
           text-transform: uppercase;
-          color: #1c1c29; }
+          color: #1c1c29;
+          font-size: 0.9em; }
       [md-theme='imoto'] ion-view.pane.route .sensation > div.states {
         margin-top: 0em;
         padding: 0px; }
@@ -348,6 +412,11 @@
               color: yellow; }
             [md-theme='imoto'] ion-view.pane.route .sensation > div.states > div.col.active.sensation-3 {
               color: red; }
+      [md-theme='imoto'] ion-view.pane.route.save-for-later center > p {
+        text-align: justify;
+        padding: 2em;
+        font-size: 1.2em;
+        line-height: 1.2em; }
       [md-theme='imoto'] ion-view.pane.route.main ion-tabs {
         /* CUSTOM DIRECTIVE */ }
         [md-theme='imoto'] ion-view.pane.route.main ion-tabs > div.tabs {
@@ -530,6 +599,8 @@
                 font-size: 0.4em;
                 padding: 0px;
                 text-align: right; }
+            [md-theme='imoto'] ion-view.pane.route.share .counters > div.col div.counter.time div.value {
+              font-size: 0.86em; }
       [md-theme='imoto'] ion-view.pane.route.share div.photos {
         margin-bottom: 9px; }
         [md-theme='imoto'] ion-view.pane.route.share div.photos > a {
@@ -818,87 +889,137 @@
           margin-top: 4px; }
     [md-theme='imoto'] ion-view.pane.profile {
       /*
-          CLOSE SESSION
-      */
-      /*
-          AVERAGE DISTANCE 
-      */ }
-      [md-theme='imoto'] ion-view.pane.profile div.stats {
-        padding-top: 1em;
+             TITLE
+          */
+      /*------------------------- 
+      VIEW:   Profile Account Page
+      ROUTE:  /app/profile
+      -------------------------*/
+      /*------------------------- 
+      VIEW:   Profile Edit Page
+      ROUTE:  /app/profile/edit/index
+      -------------------------*/ }
+      [md-theme='imoto'] ion-view.pane.profile .title {
+        padding-bottom: 0.5em !important;
+        background-color: #141925;
+        margin-bottom: 1em;
+        line-height: 1em; }
+        [md-theme='imoto'] ion-view.pane.profile .title div.col:first-child {
+          text-transform: uppercase; }
+      [md-theme='imoto'] ion-view.pane.profile.index {
         /*
-            TWITTER LIKE
+            CLOSE SESSION
+        */
+        /*
+            AVERAGE DISTANCE 
         */ }
-        [md-theme='imoto'] ion-view.pane.profile div.stats .profile-bubble {
-          padding-bottom: 0.5em; }
-          [md-theme='imoto'] ion-view.pane.profile div.stats .profile-bubble div.marker {
-            width: 7em;
-            height: 7em; }
-            [md-theme='imoto'] ion-view.pane.profile div.stats .profile-bubble div.marker > div.halo {
-              border-radius: 50%;
-              border: 1px solid #c0c1c2;
-              width: 100%;
-              height: 100%;
-              padding: 5%; }
-              [md-theme='imoto'] ion-view.pane.profile div.stats .profile-bubble div.marker > div.halo > div {
+        [md-theme='imoto'] ion-view.pane.profile.index div.stats {
+          padding-top: 1em;
+          /*
+              TWITTER LIKE
+          */ }
+          [md-theme='imoto'] ion-view.pane.profile.index div.stats .profile-bubble {
+            padding-bottom: 0.5em; }
+            [md-theme='imoto'] ion-view.pane.profile.index div.stats .profile-bubble div.marker {
+              width: 7em;
+              height: 7em; }
+              [md-theme='imoto'] ion-view.pane.profile.index div.stats .profile-bubble div.marker > div.halo {
                 border-radius: 50%;
-                overflow: hidden;
-                height: 100%;
+                border: 1px solid #c0c1c2;
                 width: 100%;
-                background: #1c1c29; }
-                [md-theme='imoto'] ion-view.pane.profile div.stats .profile-bubble div.marker > div.halo > div > img {
-                  width: 100%; }
-        [md-theme='imoto'] ion-view.pane.profile div.stats .title {
-          font-size: 1.2em;
-          padding-left: 0.6em;
-          padding-bottom: 5px; }
-        [md-theme='imoto'] ion-view.pane.profile div.stats .counter {
-          color: #ffc107;
-          font-size: 1.7em;
-          font-weight: bold;
-          padding-left: 0.6em;
-          padding-bottom: 5px; }
-        [md-theme='imoto'] ion-view.pane.profile div.stats .category {
-          padding-left: 0.8em; }
-        [md-theme='imoto'] ion-view.pane.profile div.stats .progress {
-          margin-top: 2em;
-          background-color: #fff;
-          height: 6px;
-          width: 90%;
-          border-radius: 3px;
-          overflow: hidden;
-          margin-left: 0.4em; }
-          [md-theme='imoto'] ion-view.pane.profile div.stats .progress > div {
-            height: 100%;
-            background-color: #369afc; }
-        [md-theme='imoto'] ion-view.pane.profile div.stats .follower,
-        [md-theme='imoto'] ion-view.pane.profile div.stats .following {
-          padding-left: 1em;
-          color: #B7B7B7;
-          text-transform: uppercase;
-          font-size: 0.9em;
-          white-space: nowrap; }
-          [md-theme='imoto'] ion-view.pane.profile div.stats .follower > span,
-          [md-theme='imoto'] ion-view.pane.profile div.stats .following > span {
+                height: 100%;
+                padding: 5%; }
+                [md-theme='imoto'] ion-view.pane.profile.index div.stats .profile-bubble div.marker > div.halo > div {
+                  border-radius: 50%;
+                  overflow: hidden;
+                  height: 100%;
+                  width: 100%;
+                  background: #1c1c29; }
+                  [md-theme='imoto'] ion-view.pane.profile.index div.stats .profile-bubble div.marker > div.halo > div > img {
+                    width: 100%; }
+          [md-theme='imoto'] ion-view.pane.profile.index div.stats .title {
+            font-size: 1.2em;
+            padding-left: 0.6em;
+            padding-bottom: 5px; }
+          [md-theme='imoto'] ion-view.pane.profile.index div.stats .counter {
+            color: #ffc107;
+            font-size: 1.7em;
             font-weight: bold;
-            color: #fff;
-            padding-right: 3px;
+            padding-left: 0.6em;
+            padding-bottom: 5px; }
+          [md-theme='imoto'] ion-view.pane.profile.index div.stats .category {
+            padding-left: 0.8em; }
+          [md-theme='imoto'] ion-view.pane.profile.index div.stats .progress {
+            margin-top: 2em;
+            background-color: #fff;
+            height: 6px;
+            width: 90%;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-left: 0.4em; }
+            [md-theme='imoto'] ion-view.pane.profile.index div.stats .progress > div {
+              height: 100%;
+              background-color: #369afc; }
+          [md-theme='imoto'] ion-view.pane.profile.index div.stats .follower,
+          [md-theme='imoto'] ion-view.pane.profile.index div.stats .following {
+            padding-left: 1em;
+            color: #B7B7B7;
+            text-transform: uppercase;
+            font-size: 0.9em;
             white-space: nowrap; }
-      [md-theme='imoto'] ion-view.pane.profile button.close-session {
-        color: #fff;
-        background: transparent;
-        border: none; }
-        [md-theme='imoto'] ion-view.pane.profile button.close-session > i {
+            [md-theme='imoto'] ion-view.pane.profile.index div.stats .follower > span,
+            [md-theme='imoto'] ion-view.pane.profile.index div.stats .following > span {
+              font-weight: bold;
+              color: #fff;
+              padding-right: 3px;
+              white-space: nowrap; }
+        [md-theme='imoto'] ion-view.pane.profile.index button.close-session {
           color: #fff;
-          padding-right: 10px; }
-        [md-theme='imoto'] ion-view.pane.profile button.close-session > span {
-          font-size: 0.8em;
-          text-transform: uppercase; }
-      [md-theme='imoto'] ion-view.pane.profile .average {
-        margin-top: 1em;
-        background-color: #141925; }
-        [md-theme='imoto'] ion-view.pane.profile .average div.col:first-child {
-          text-transform: uppercase; }
-        [md-theme='imoto'] ion-view.pane.profile .average div.col:last-child {
-          font-size: 1.6em; }
+          background: transparent;
+          border: none; }
+          [md-theme='imoto'] ion-view.pane.profile.index button.close-session > i {
+            color: #fff;
+            padding-right: 10px; }
+          [md-theme='imoto'] ion-view.pane.profile.index button.close-session > span {
+            font-size: 0.8em;
+            text-transform: uppercase; }
+        [md-theme='imoto'] ion-view.pane.profile.index .average {
+          margin-top: 1em;
+          background-color: #141925; }
+          [md-theme='imoto'] ion-view.pane.profile.index .average div.col:first-child {
+            text-transform: uppercase; }
+          [md-theme='imoto'] ion-view.pane.profile.index .average div.col:last-child {
+            font-size: 1.6em; }
+      [md-theme='imoto'] ion-view.pane.profile.edit div.fav-button {
+        position: absolute;
+        right: 1em;
+        border-radius: 50%;
+        height: 3.5em;
+        width: 3.5em;
+        background-color: #ffc107;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -1em; }
+        [md-theme='imoto'] ion-view.pane.profile.edit div.fav-button > i {
+          color: #1c1c29;
+          text-align: center;
+          font-size: 1.8em; }
+      [md-theme='imoto'] ion-view.pane.profile.edit div.row {
+        padding-bottom: 1em; }
+        [md-theme='imoto'] ion-view.pane.profile.edit div.row.phones div.col {
+          padding: 0.5em; }
+          [md-theme='imoto'] ion-view.pane.profile.edit div.row.phones div.col a {
+            text-decoration: none;
+            color: #ffc107; }
+      [md-theme='imoto'] ion-view.pane.profile.edit input.value,
+      [md-theme='imoto'] ion-view.pane.profile.edit select.value {
+        width: 99%;
+        background: transparent;
+        border: 1px solid #ffc107;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 1.6em;
+        text-align: center; }
 
 /*# sourceMappingURL=default.css.map */

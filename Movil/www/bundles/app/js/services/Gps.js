@@ -65,7 +65,7 @@
                 _testRoute = url;
             };
 
-            this.$get = function($log, $q, BaseEventHandler, $interval, $http, ionicToast)
+            this.$get = function($log, $q, BaseEventHandler, $interval, $http)
             {
                 var self = Object.create(BaseEventHandler); //Extend From EventHandler
                 var watcher = null;

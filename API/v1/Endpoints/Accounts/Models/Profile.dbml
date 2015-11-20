@@ -8,10 +8,10 @@
       <Column Name="RUTA_Distancia" Member="distance" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.TB_MOT_TipoDeporte" Member="Sports">
-    <Type Name="Sport">
-      <Column Name="TIDE_Nombre" Member="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="TIDE_Descripcion" Member="description" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+  <Table Name="dbo.TB_MOT_TipoDeporte" Member="PersonalDatas">
+    <Type Name="PersonalData">
+      <Column Name="USUA_Peso" Member="weight" Type="System.Int32" DbType="INT" CanBeNull="false" />
+      <Column Member="emergencyPhones" Type="List&lt;String&gt;" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.V_Perfiles" Member="Roles">
@@ -31,6 +31,25 @@
       <Column Name="USUA_NombreCompleto" Member="name" Storage="_fullname" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
       <Column Name="USUA_UltimaConexion" Member="lastConnection" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="USUA_Activo" Member="active" Type="System.Int32" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="EmergencyPhones">
+    <Type Name="EmergencyPhones">
+      <Column Name="USUA_Telefono" Member="phone" Type="System.String" DbType="varchar(40)" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="UpdatePersonalDatas">
+    <Type Name="UpdatePersonalData">
+      <Column Member="sport" Type="System.String" CanBeNull="false" />
+      <Column Member="weight" Type="System.Int32" CanBeNull="false" />
+      <Column Name="" Member="emergencyPhones" Type="List&lt;String&gt;" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_MOT_TipoDeporte" Member="Sports">
+    <Type Name="Sport">
+      <Column Name="TIDE_Nombre" Member="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TIDE_Descripcion" Member="description" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="TIDE_Identificador" Member="identifier" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

@@ -5,7 +5,7 @@ angular.route('nomenu.routes/create/index/:autostart', function(
     $Api,
     RouteTracker,
     $stateParams,
-    ionicToast,
+    $ionicLoading,
     $ionicHistory,
     Camera
 )
@@ -49,7 +49,11 @@ angular.route('nomenu.routes/create/index/:autostart', function(
     //Launch from Auto-Start
     if ($stateParams.autostart)
     {
-        ionicToast.show("Se ha reanudado la ruta", 'top', true, 5000);
+        $ionicLoading.show(
+        {
+            template: 'Se ha reanudado la ruta',
+            duration: 3000
+        });
     }
 
     //----------------------------------------
@@ -57,13 +61,13 @@ angular.route('nomenu.routes/create/index/:autostart', function(
     $scope.pause = function()
     {
         RouteTracker.pause();
-        ionicToast.hide();
+        $ionicLoading.hide();
         $state.go("nomenu.routes/create/pause");
     };
 
     $scope.map = function()
     {
-        ionicToast.hide();
+        $ionicLoading.hide();
         $state.go("nomenu.routes/create/map");
     };
 
@@ -78,7 +82,11 @@ angular.route('nomenu.routes/create/index/:autostart', function(
         }, function(err)
         {
 
-            ionicToast.show("No se pudo tomar la foto", 'top', true, 2000);
+            $ionicLoading.show(
+            {
+                template: 'No se pudo tomar la foto',
+                duration: 3000
+            });
             $log.error(err);
 
         });

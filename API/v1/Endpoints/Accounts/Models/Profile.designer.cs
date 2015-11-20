@@ -36,6 +36,9 @@ namespace API.Endpoints.Accounts.Models
     partial void InsertAccount(Account instance);
     partial void UpdateAccount(Account instance);
     partial void DeleteAccount(Account instance);
+    partial void InsertSport(Sport instance);
+    partial void UpdateSport(Sport instance);
+    partial void DeleteSport(Sport instance);
     #endregion
 		
 		public ProfileDataContext() : 
@@ -76,11 +79,11 @@ namespace API.Endpoints.Accounts.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<Sport> Sports
+		public System.Data.Linq.Table<PersonalData> PersonalDatas
 		{
 			get
 			{
-				return this.GetTable<Sport>();
+				return this.GetTable<PersonalData>();
 			}
 		}
 		
@@ -97,6 +100,30 @@ namespace API.Endpoints.Accounts.Models
 			get
 			{
 				return this.GetTable<Account>();
+			}
+		}
+		
+		public System.Data.Linq.Table<EmergencyPhones> EmergencyPhones
+		{
+			get
+			{
+				return this.GetTable<EmergencyPhones>();
+			}
+		}
+		
+		public System.Data.Linq.Table<UpdatePersonalData> UpdatePersonalDatas
+		{
+			get
+			{
+				return this.GetTable<UpdatePersonalData>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Sport> Sports
+		{
+			get
+			{
+				return this.GetTable<Sport>();
 			}
 		}
 	}
@@ -183,45 +210,45 @@ namespace API.Endpoints.Accounts.Models
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TB_MOT_TipoDeporte")]
-	public partial class Sport
+	public partial class PersonalData
 	{
 		
-		private string _name;
+		private int _weight;
 		
-		private string _description;
+		private List<String> _emergencyPhones;
 		
-		public Sport()
+		public PersonalData()
 		{
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="TIDE_Nombre", Storage="_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string name
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="USUA_Peso", Storage="_weight", DbType="INT")]
+		public int weight
 		{
 			get
 			{
-				return this._name;
+				return this._weight;
 			}
 			set
 			{
-				if ((this._name != value))
+				if ((this._weight != value))
 				{
-					this._name = value;
+					this._weight = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="TIDE_Descripcion", Storage="_description", DbType="VarChar(500) NOT NULL", CanBeNull=false)]
-		public string description
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_emergencyPhones", CanBeNull=false)]
+		public List<String> emergencyPhones
 		{
 			get
 			{
-				return this._description;
+				return this._emergencyPhones;
 			}
 			set
 			{
-				if ((this._description != value))
+				if ((this._emergencyPhones != value))
 				{
-					this._description = value;
+					this._emergencyPhones = value;
 				}
 			}
 		}
@@ -542,6 +569,206 @@ namespace API.Endpoints.Accounts.Models
 					this._active = value;
 					this.SendPropertyChanged("active");
 					this.OnactiveChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
+	public partial class EmergencyPhones
+	{
+		
+		private string _phone;
+		
+		public EmergencyPhones()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="USUA_Telefono", Storage="_phone", DbType="varchar(40)", CanBeNull=false)]
+		public string phone
+		{
+			get
+			{
+				return this._phone;
+			}
+			set
+			{
+				if ((this._phone != value))
+				{
+					this._phone = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
+	public partial class UpdatePersonalData
+	{
+		
+		private string _sport;
+		
+		private int _weight;
+		
+		private List<String> _emergencyPhones;
+		
+		public UpdatePersonalData()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sport", CanBeNull=false)]
+		public string sport
+		{
+			get
+			{
+				return this._sport;
+			}
+			set
+			{
+				if ((this._sport != value))
+				{
+					this._sport = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_weight")]
+		public int weight
+		{
+			get
+			{
+				return this._weight;
+			}
+			set
+			{
+				if ((this._weight != value))
+				{
+					this._weight = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="", Storage="_emergencyPhones", CanBeNull=false)]
+		public List<String> emergencyPhones
+		{
+			get
+			{
+				return this._emergencyPhones;
+			}
+			set
+			{
+				if ((this._emergencyPhones != value))
+				{
+					this._emergencyPhones = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TB_MOT_TipoDeporte")]
+	public partial class Sport : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _name;
+		
+		private string _description;
+		
+		private string _identifier;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OndescriptionChanging(string value);
+    partial void OndescriptionChanged();
+    partial void OnidentifierChanging(string value);
+    partial void OnidentifierChanged();
+    #endregion
+		
+		public Sport()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="TIDE_Nombre", Storage="_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="TIDE_Descripcion", Storage="_description", DbType="VarChar(500) NOT NULL", CanBeNull=false)]
+		public string description
+		{
+			get
+			{
+				return this._description;
+			}
+			set
+			{
+				if ((this._description != value))
+				{
+					this.OndescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._description = value;
+					this.SendPropertyChanged("description");
+					this.OndescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="TIDE_Identificador", Storage="_identifier", DbType="Char(5) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string identifier
+		{
+			get
+			{
+				return this._identifier;
+			}
+			set
+			{
+				if ((this._identifier != value))
+				{
+					this.OnidentifierChanging(value);
+					this.SendPropertyChanging();
+					this._identifier = value;
+					this.SendPropertyChanged("identifier");
+					this.OnidentifierChanged();
 				}
 			}
 		}

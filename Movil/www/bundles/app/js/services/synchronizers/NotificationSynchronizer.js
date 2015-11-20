@@ -105,7 +105,9 @@ angular.module('app.services.synchronizers')
             if (!$Identity.isAuthenticated())
             {
                 defer.resolve();
+                return defer.promise;
             }
+            //------------------------------------------------
 
             //------------------------------------------------
             var stamp = $LocalStorage.get(label);
