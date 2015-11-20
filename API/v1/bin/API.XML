@@ -44,20 +44,10 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:API.Endpoints.Accounts.AccountsController.Post(API.Endpoints.Accounts.Models.Create,System.String)">
+        <member name="M:API.Endpoints.Accounts.AccountsController.SaveCurrent(API.Endpoints.Accounts.Models.UpdatePersonalData)">
             <summary>
-            Pre-Register an account in the system
+            Save User Personal Data
             </summary>
-            <param name="account">Account information</param>
-            <param name="host">Application Entry Point</param>
-            <returns></returns>
-        </member>
-        <member name="M:API.Endpoints.Accounts.AccountsController.Put(System.String,API.Endpoints.Accounts.Models.Update)">
-            <summary>
-            Update the target Account
-            </summary>
-            <param name="id">Account Token</param>
-            <param name="account">Account information</param>
             <returns></returns>
         </member>
         <member name="T:API.Endpoints.Accounts.Services.Create">
@@ -102,7 +92,7 @@
             Update User in DB
             </summary>
         </member>
-        <member name="M:API.Endpoints.Accounts.Services.Update.#ctor(System.String,API.Endpoints.Accounts.Models.Update)">
+        <member name="M:API.Endpoints.Accounts.Services.Update.#ctor(System.String,API.Endpoints.Accounts.Models.UpdatePersonalData)">
             <summary>
             Constructor
             </summary>
@@ -117,7 +107,115 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
+        <member name="T:API.Endpoints.Ambassadors.AmbassadorsController">
+            <summary>
+            Ambassador Controller
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Ambassadors.AmbassadorsController.Get">
+            <summary>
+            Retrieve Ambassador's
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:API.Endpoints.Ambassadors.AmbassadorsController.Follow(System.String)">
+            <summary>
+            Follow Ambassador
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:API.Endpoints.Ambassadors.AmbassadorsController.Unfollow(System.String)">
+            <summary>
+            UnFollow Ambassador
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Ambassadors.Services.Unfollow">
+            <summary>
+            Un Follow Ambassador
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Ambassadors.Services.Unfollow.#ctor(System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="user">Current User</param>
+            <param name="ambassador">Ambassador to Follow</param>
+        </member>
+        <member name="M:API.Endpoints.Ambassadors.Services.Unfollow.ExecuteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Async Process
+            </summary>
+            <param name="token"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Ambassadors.Services.Follow">
+            <summary>
+            Follow Ambassador
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Ambassadors.Services.Follow.#ctor(System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="user">Current User</param>
+            <param name="ambassador">Ambassador to Follow</param>
+        </member>
+        <member name="M:API.Endpoints.Ambassadors.Services.Follow.ExecuteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Async Process
+            </summary>
+            <param name="token"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Ambassadors.Services.Get">
+            <summary>
+            Retrieve a Target User
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Ambassadors.Services.Get.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="token"></param>
+        </member>
+        <member name="M:API.Endpoints.Ambassadors.Services.Get.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Async Process
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
         <!-- Badly formed XML comment ignored for member "T:API.Endpoints.Dashboard.DashboardController" -->
+        <member name="M:API.Endpoints.Dashboard.DashboardController.Get(System.String,System.DateTime,System.DateTime)">
+            <summary>
+            Retrieve Dashboard Data
+            </summary>
+            <param name="range">Range Mode</param>
+            <param name="start">Start Range Date</param>
+            <param name="end">End Range Date</param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Dashboard.Services.Get">
+            <summary>
+            Retrieve a Target User
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Dashboard.Services.Get.#ctor(API.Endpoints.Dashboard.Models.Filter,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="token"></param>
+        </member>
+        <member name="M:API.Endpoints.Dashboard.Services.Get.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Async Process
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
         <member name="T:API.Endpoints.Files.FilesController">
             <summary>
             File API
@@ -172,6 +270,209 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
+        <member name="T:API.Endpoints.Notifications.NotificationsController">
+            <summary>
+            Notification Controller
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Notifications.NotificationsController.Get(System.DateTime)">
+            <summary>
+            Retrieves all pendings notifications for the user
+            </summary>
+            <param name="timestamp">fecha de ultima actualización</param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Endpoints.Notifications.NotificationsController.MarkAsReaded(API.Endpoints.Notifications.Models.MarkAsReaded)">
+            <summary>
+            Mark's all notifications to readed according to the TimeStamp
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Notifications.Services.MarkAsReaded">
+            <summary>
+            Mark All Notifications from the user to Readed accord to timestamp
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Notifications.Services.MarkAsReaded.#ctor(System.String,System.DateTime)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="user">User Token</param>
+            <param name="timestamp">Time Stamp</param>
+        </member>
+        <member name="M:API.Endpoints.Notifications.Services.MarkAsReaded.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Async Process
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Notifications.Services.Get">
+            <summary>
+            Retrieve a Target User
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Notifications.Services.Get.#ctor(System.DateTime,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="token"></param>
+        </member>
+        <member name="M:API.Endpoints.Notifications.Services.Get.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Async Process
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Redirect.RedirectController">
+            <summary>
+            Redirects to dynamic URLS
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Redirect.RedirectController.GetTheApp">
+            <summary>
+            Redirect to the landing page (when is ready :P), and track ^^
+            </summary>
+            <param name="device"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Redirect.Services.Redirect">
+            <summary>
+            Retrieve a Target User
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Redirect.Services.Redirect.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Async Process
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Routes.RoutesController">
+            <summary>
+            Route Controller
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Routes.RoutesController.Populars">
+            <summary>
+            Retrieve Popular Shared Routes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:API.Endpoints.Routes.RoutesController.Get(System.String)">
+            <summary>
+            Retrieve Current Routes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:API.Endpoints.Routes.RoutesController.Current(System.DateTime)">
+            <summary>
+            Retrieve Current Routes specified by timestamp (for syncing)
+            </summary>
+            <param name="timestamp">Time Stamp</param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Endpoints.Routes.RoutesController.Post(API.Endpoints.Routes.Models.NewRoute)">
+            <summary>
+            Create a new Route for the user (without sharing)
+            </summary>
+            <param name="route">Newly Route</param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Endpoints.Routes.RoutesController.Post(System.String,API.Endpoints.Routes.Models.newSharedRoute)">
+            <summary>
+            Share a Route with the users
+            </summary>
+            <param name="route">Route Identifier</param>
+            <param name="information">Shared Information</param>
+            <returns></returns>
+        </member>
+        <member name="M:API.Endpoints.Routes.RoutesController.Post(System.String,API.Endpoints.Routes.Models.RoutePhoto)">
+            <summary>
+            Save Route Photo
+            </summary>
+            <param name="route"></param>
+            <param name="photo"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Routes.Services.SavePhoto">
+            <summary>
+            Add New Route
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Routes.Services.SavePhoto.#ctor(API.Endpoints.Routes.Models.RoutePhoto,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="route">New Route</param>
+            <param name="user">User</param>
+        </member>
+        <member name="M:API.Endpoints.Routes.Services.SavePhoto.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Async Process
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Routes.Services.Get">
+            <summary>
+            Retrieve a Target User
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Routes.Services.Get.#ctor(System.DateTime,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="token"></param>
+        </member>
+        <member name="M:API.Endpoints.Routes.Services.Get.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Async Process
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Routes.Services.Share">
+            <summary>
+            Share Route to Public
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Routes.Services.Share.#ctor(System.String,API.Endpoints.Routes.Models.newSharedRoute)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="route">Route to Share</param>
+            <param name="user">User</param>
+        </member>
+        <member name="M:API.Endpoints.Routes.Services.Share.ExecuteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Async Process
+            </summary>
+            <param name="token">Route to Share</param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Routes.Services.Create">
+            <summary>
+            Add New Route
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Routes.Services.Create.#ctor(API.Endpoints.Routes.Models.NewRoute,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="route">New Route</param>
+            <param name="user">User</param>
+        </member>
+        <member name="M:API.Endpoints.Routes.Services.Create.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Async Process
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
         <member name="T:API.Endpoints.Security.Resources.Security">
             <summary>
               A strongly-typed resource class, for looking up localized strings, etc.
@@ -198,23 +499,23 @@
             Security Controller to grant JWT to Valid User's
             </summary>
         </member>
-        <member name="M:API.Endpoints.Security.SecurityController.Authorize(API.Endpoints.Security.Models.Credentials)">
+        <member name="M:API.Endpoints.Security.SecurityController.Authorize(API.Endpoints.Security.Models.FacebookCredentials)">
             <summary>
-            Authorize user by credentials
+            Authorize via Facebook
             </summary>
-            <param name="credentials">Credentials</param>
+            <param name="credentials">facebook data</param>
             <returns></returns>
             <response code="200">Authorized</response>
-            <response code="500">Incorrect Username or Password</response>
+            <response code="500">Incorrect Access Token</response>
         </member>
-        <member name="M:API.Endpoints.Security.SecurityController.RequestAccess(API.Endpoints.Security.Models.RequestAccess)">
+        <member name="M:API.Endpoints.Security.SecurityController.Authorize(API.Endpoints.Security.Models.GoogleCredentials)">
             <summary>
-            BPM - Request Access for a Identity (enrollment)
+            Authorize via Google
             </summary>
-            <param name="model">Model</param>
+            <param name="credentials">facebook data</param>
             <returns></returns>
-            <response code="201">Request created</response>
-            <response code="500">Internal Server Error</response>
+            <response code="200">Authorized</response>
+            <response code="500">Incorrect Access Token</response>
         </member>
         <member name="T:API.Endpoints.Security.Services.Authorize">
             <summary>
@@ -235,18 +536,38 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="T:API.Endpoints.Security.Services.RequestAccess">
+        <member name="T:API.Endpoints.Security.Services.Oauth.Google">
             <summary>
-            Request Access for a User
+            Create or Authorize a Google User into the Application (Always Create a User Application)
             </summary>
         </member>
-        <member name="M:API.Endpoints.Security.Services.RequestAccess.#ctor(API.Endpoints.Security.Models.RequestAccess)">
+        <member name="M:API.Endpoints.Security.Services.Oauth.Google.#ctor(System.Net.Http.HttpRequestMessage,API.Endpoints.Security.Models.GoogleCredentials)">
             <summary>
             Constructor
             </summary>
-            <param name="model">Model</param>
+            <param name="request"></param>
+            <param name="credentials"></param>
         </member>
-        <member name="M:API.Endpoints.Security.Services.RequestAccess.ExecuteAsync(System.Threading.CancellationToken)">
+        <member name="M:API.Endpoints.Security.Services.Oauth.Google.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Async Process
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Security.Services.Oauth.Facebook">
+            <summary>
+            Create or Authorize a Facebook User into the Application (Always Create a User Application)
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Security.Services.Oauth.Facebook.#ctor(System.Net.Http.HttpRequestMessage,API.Endpoints.Security.Models.FacebookCredentials)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="request"></param>
+            <param name="credentials"></param>
+        </member>
+        <member name="M:API.Endpoints.Security.Services.Oauth.Facebook.ExecuteAsync(System.Threading.CancellationToken)">
             <summary>
             Async Process
             </summary>

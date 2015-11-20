@@ -4,19 +4,50 @@ angular.route('boot/index', function(
     $log,
     $Api,
     $Configuration,
-    $location
+    $location,
+    $LocalStorage,
+    pouchDB,
+    $q,
+    Synchronizer,
+    $Identity,
+    $cordovaBadge
 )
 {
-    //---------------------------------------------------
-    // Get Data
-    $Api.read("/Configuration/State").success(function(data)
+
+    //INITIALIZE THE SYNCRONIZER MANAGER
+    var defer = Synchronizer.start();
+
+    //When all Process are Checked, run APP
+    $q.all([defer]).then(function()
     {
-        if (data.state == "sync")
+
+        //Get if user is the first time!!
+        var label = $Configuration.get("localstorageStamps").personal_data;
+        var isFirstTime = $LocalStorage.get(label) == null;
+        if (isFirstTime)
         {
-            var url = $Configuration.get("application");
-            $location.url(url.home);
+            $state.go("nomenu.firstRun/configuration/step-1");
+            return;
         }
-        
+        else
+        {
+            //Extend Personal Data
+            $Identity.extend("personal", $LocalStorage.getObject(label));
+        }
+
+
+        var url = $Configuration.get("application");
+        $location.url(url.home);
     });
 
+    //ONLY IN DEVICE
+    if (ionic.Platform.isWebView())
+    {
+        //PROMOT FOR NOTIFICATION ACCESS
+        $cordovaBadge.hasPermission().then(function() {}, function()
+        {
+            //ASK FOR PERMISSION
+            window.plugin.notification.local.promptForPermission();
+        });
+    }
 });

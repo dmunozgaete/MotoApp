@@ -1,0 +1,18 @@
+empty-data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  text-align: center; }
+  empty-data > .message {
+    font-size: 1.2em;
+    opacity: 0.5; }
+  empty-data > .legend {
+    opacity: 0.4;
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    line-height: 1em; }
+
+/*# sourceMappingURL=empty-data.css.map */

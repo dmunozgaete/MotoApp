@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.vlabs.motoapp" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.vlabs.motoapp" version="1.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>MotoApp</name>
   <description>
             MotoApp
@@ -16,7 +16,6 @@
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
   <preference name="SplashScreenDelay" value="3000"/>
-  <!-- <preference name="StatusBarStyle" value="lightcontent"/> -->
   <feature name="StatusBar">
     <param name="ios-package" onload="true" value="CDVStatusBar"/>
   </feature>
@@ -72,11 +71,28 @@
     <splash src="resources/ios/splash/Default~iphone.png" width="320" height="480"/>
   </platform>
   <platform name="ios">
-    <config-file platform="ios" target="*-Info.plist" parent="NSAppTransportSecurity">
+    <config-file target="*-Info.plist" parent="NSAppTransportSecurity">
       <dict>
         <key>NSAllowsArbitraryLoads</key>
         <true/>
       </dict>
+    </config-file>
+    <config-file target="*-Info.plist" parent="LSApplicationQueriesSchemes">
+      <array>
+        <string>fbauth</string>
+        <string>fb</string>
+        <string>com.vlabs.motoapp</string>
+        <string>com.google.gppconsent.2.4.1</string>
+        <string>com.google.gppconsent.2.4.0</string>
+        <string>com.google.gppconsent.2.3.0</string>
+        <string>com.google.gppconsent.2.2.0</string>
+        <string>com.google.gppconsent</string>
+        <string>hasgplus4</string>
+        <string>gplus</string>
+        <string>googlechrome-x-callback</string>
+        <string>googlechrome</string>
+        <string>instagram</string>
+      </array>
     </config-file>
   </platform>
   <icon src="resources/ios/icon/icon-small@3x.png"/>

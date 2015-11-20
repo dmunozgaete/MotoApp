@@ -4,22 +4,25 @@ angular.route('nomenu.routes/create/pause/:autopause', function(
     $log,
     $Api,
     $interval,
-    routeTracker,
+    RouteTracker,
     $stateParams,
-    ionicToast
+    $ionicLoading,
+    Camera,
+    $cordovaSocialSharing,
+    $Identity
 )
 {
 
     //---------------------------------------------
     // Resume Tracker
-    $scope.resume = routeTracker.getResume();
-
+    $scope.resume = RouteTracker.getResume();
 
     //---------------------------------------------
     // Resume Tracker when Auto-Started
-    var autoStartListener = routeTracker.$on("route.autoStart", function()
+    var autoStartListener = RouteTracker.$on("route.autoStart", function()
     {
-        $state.go("nomenu.routes/create/index", {
+        $state.go("nomenu.routes/create/index",
+        {
             autostart: true
         });
     });
@@ -34,15 +37,41 @@ angular.route('nomenu.routes/create/pause/:autopause', function(
     //Launch from Auto-Start
     if ($stateParams.autopause)
     {
-        ionicToast.show("Se ha pausado la ruta", 'top', true, 5000);
+        $ionicLoading.show(
+        {
+            template: 'Se ha pausado la ruta',
+            duration: 3000
+        });
     }
 
     //----------------------------------------
     // Action's
     $scope.continue = function()
     {
-        routeTracker.start();
+        RouteTracker.start();
         $state.go("nomenu.routes/create/index");
+    };
+
+    $scope.takePicture = function()
+    {
+        Camera.takePicture().then(function(image)
+        {
+
+            //Save Picture in Temporal DB
+            RouteTracker.addPhoto(image);
+
+        }, function(err)
+        {
+
+            $ionicLoading.show(
+            {
+                template: 'No se pudo tomar la foto',
+                duration: 3000
+            });
+
+            $log.error(err);
+
+        });
     };
 
 
@@ -63,6 +92,20 @@ angular.route('nomenu.routes/create/pause/:autopause', function(
         }
     };
     var currentCounter = null;
+
+    $scope.emergencyIsEnabled = function()
+    {
+        var personalData = $Identity.getCurrent().property("personal");
+        return personalData.emergencyPhones.length > 0;
+    };
+
+    $scope.emergency = function()
+    {
+        var phones = $Identity.getCurrent().property("personal").emergencyPhones;
+
+        return $cordovaSocialSharing
+            .shareViaSMS("Emergencia!", phones.join(","));
+    };
     $scope.stop = function(start)
     {
         if (start)
@@ -74,7 +117,8 @@ angular.route('nomenu.routes/create/pause/:autopause', function(
                 if (tick == 2)
                 {
                     $interval.cancel(currentCounter);
-                    routeTracker.stop();
+                    RouteTracker.stop();
+                    $ionicLoading.hide();
 
                     //If Coords is minor to Two , Discard inmediately :S
                     if ($scope.resume.coords.length <= 2)

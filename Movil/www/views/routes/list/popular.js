@@ -41,10 +41,6 @@ angular.module('app.components')
                 })
             };
 
-        },
-
-        link: function(scope, element, attrs, ctrl) {
-
         }
     };
 });

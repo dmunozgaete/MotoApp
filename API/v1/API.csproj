@@ -36,15 +36,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Gale, Version=2.2.2.0, Culture=neutral, PublicKeyToken=1a9845e4bf678c19, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Gale\bin\Release\Gale.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="RazorTemplates.Core">
       <HintPath>..\packages\RazorTemplates.1.2.0\lib\RazorTemplates.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.4.0.2.206221351\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -90,6 +89,7 @@
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Swashbuckle.Core">
       <HintPath>..\packages\Swashbuckle.Core.Net45.5.2.1\lib\net45\Swashbuckle.Core.dll</HintPath>
@@ -109,10 +109,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Account.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Endpoints\Accounts\Models\Profile.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Profile.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Endpoints\Accounts\Services\Create.cs" />
     <Compile Include="Endpoints\Accounts\Services\Get.cs" />
     <Compile Include="Endpoints\Accounts\Services\Update.cs" />
+    <Compile Include="Endpoints\Ambassadors\AmbassadorsController.cs" />
+    <Compile Include="Endpoints\Ambassadors\Models\Ambassadors.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ambassadors.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Endpoints\Ambassadors\Services\Unfollow.cs" />
+    <Compile Include="Endpoints\Ambassadors\Services\Follow.cs" />
+    <Compile Include="Endpoints\Ambassadors\Services\Get.cs" />
     <Compile Include="Endpoints\Dashboard\DashboardController.cs" />
+    <Compile Include="Endpoints\Dashboard\Models\Dashboard.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Dashboard.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Endpoints\Dashboard\Services\Get.cs" />
     <Compile Include="Endpoints\Files\FilesController.cs" />
     <Compile Include="Endpoints\Files\Models\File.designer.cs">
       <AutoGen>True</AutoGen>
@@ -121,6 +141,31 @@
     </Compile>
     <Compile Include="Endpoints\Files\Services\Upload.cs" />
     <Compile Include="Endpoints\Files\Services\View.cs" />
+    <Compile Include="Endpoints\Notifications\Models\Notifications.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Notifications.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Endpoints\Notifications\NotificationsController.cs" />
+    <Compile Include="Endpoints\Notifications\Services\MarkAsReaded.cs" />
+    <Compile Include="Endpoints\Notifications\Services\Get.cs" />
+    <Compile Include="Endpoints\Redirect\RedirectController.cs" />
+    <Compile Include="Endpoints\Redirect\Services\Redirect.cs" />
+    <Compile Include="Endpoints\Routes\Models\Routes.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Routes.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Endpoints\Routes\RoutesController.cs" />
+    <Compile Include="Endpoints\Routes\Services\SavePhoto.cs" />
+    <Compile Include="Endpoints\Routes\Services\Get.cs" />
+    <Compile Include="Endpoints\Routes\Services\Share.cs" />
+    <Compile Include="Endpoints\Routes\Services\Create.cs" />
+    <Compile Include="Endpoints\Security\Models\Oauth.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Oauth.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Endpoints\Security\Models\Security.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -133,7 +178,8 @@
     </Compile>
     <Compile Include="Endpoints\Security\SecurityController.cs" />
     <Compile Include="Endpoints\Security\Services\Authorize.cs" />
-    <Compile Include="Endpoints\Security\Services\RequestAccess.cs" />
+    <Compile Include="Endpoints\Security\Services\Oauth\Google.cs" />
+    <Compile Include="Endpoints\Security\Services\Oauth\Facebook.cs" />
     <Compile Include="Errors.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -167,7 +213,37 @@
       <LastGenOutput>Security.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Properties\PublishProfiles\QAS_Valentys.pubxml" />
+    <Content Include="Endpoints\Security\Models\Oauth.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Oauth.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Endpoints\Dashboard\Models\Dashboard.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Dashboard.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Endpoints\Routes\Models\Routes.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Routes.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Endpoints\Notifications\Models\Notifications.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Notifications.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Endpoints\Ambassadors\Models\Ambassadors.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Ambassadors.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Endpoints\Accounts\Models\Profile.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Profile.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Properties\PublishProfiles\PRD.pubxml" />
     <Content Include="Templates\Mail\Account\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -181,6 +257,24 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Endpoints\Security\Models\Oauth.dbml.layout">
+      <DependentUpon>Oauth.dbml</DependentUpon>
+    </None>
+    <None Include="Endpoints\Dashboard\Models\Dashboard.dbml.layout">
+      <DependentUpon>Dashboard.dbml</DependentUpon>
+    </None>
+    <None Include="Endpoints\Routes\Models\Routes.dbml.layout">
+      <DependentUpon>Routes.dbml</DependentUpon>
+    </None>
+    <None Include="Endpoints\Notifications\Models\Notifications.dbml.layout">
+      <DependentUpon>Notifications.dbml</DependentUpon>
+    </None>
+    <None Include="Endpoints\Ambassadors\Models\Ambassadors.dbml.layout">
+      <DependentUpon>Ambassadors.dbml</DependentUpon>
+    </None>
+    <None Include="Endpoints\Accounts\Models\Profile.dbml.layout">
+      <DependentUpon>Profile.dbml</DependentUpon>
+    </None>
     <EmbeddedResource Include="Templates\Mail\Account\Register.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Register.Designer.cs</LastGenOutput>
@@ -204,9 +298,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Endpoints\Dashboard\Models\" />
-    <Folder Include="Endpoints\Dashboard\Services\" />
+    <ProjectReference Include="..\..\..\..\..\Arquitectura\Gale\Gale\Gale.csproj">
+      <Project>{53407c84-10be-40cf-bd5b-17890a894fba}</Project>
+      <Name>Gale</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

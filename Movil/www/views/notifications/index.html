@@ -1,7 +1,10 @@
-<ion-view title="Notificaciones" class="notifications">
+<ion-view title="Notificaciones" class="notifications" can-swipe-back="false">
     <!-- LOADING -->
     <flex-loading ng-if="!items" title="Notificaciones, Notificaciones ..." legend="Ohh! Notificaciones...">
     </flex-loading>
+    <!-- EMPTY DATA -->
+    <empty-data ng-if="items.length==0">
+    </empty-data>
     <!-- CONTENT -->
     <div ng-if="items">
         <ion-content>
@@ -10,9 +13,11 @@
             <ion-list>
                 <ion-item ng-repeat="item in items" class="item-avatar">
                     <div class="information">
+
                         <preload-image ng-src="item.image"></preload-image>
-                        <h2>{{item.name}}</h2>
-                        <p>{{item.observation}}</p>
+                        <h2>{{item.type.name}}</h2>
+                        <p>{{item.text}}</p>
+                        <p class="stamp" am-time-ago="item.createdAt"></p>
                     </div>
                 </ion-item>
             </ion-list>

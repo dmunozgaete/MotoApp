@@ -1,9 +1,9 @@
 angular.module('mocks.api')
 
-.run(function(mock, $log)
+.run(function(Mocks, $log)
 {
     //-------------------------------------------------------------
-    mock.whenPOST("/Security/Authorize", function(method, url, data)
+    Mocks.whenPOST("/Security/Authorize", function(method, url, data)
     {
         var result = {
             "expires_in": 1426991771,

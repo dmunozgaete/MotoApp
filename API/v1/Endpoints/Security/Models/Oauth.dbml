@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Class="OauthDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="" Member="FacebookCredentials">
+    <Type Name="FacebookCredentials">
+      <Column Name="name" Type="System.String" CanBeNull="false" />
+      <Column Name="accessToken" Type="System.String" CanBeNull="false" />
+      <Column Name="email" Type="System.String" CanBeNull="false" />
+      <Column Name="id" Type="System.String" CanBeNull="false" />
+      <Column Name="image" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="GoogleCredentials">
+    <Type Name="GoogleCredentials">
+      <Column Name="name" Type="System.String" CanBeNull="false" />
+      <Column Name="accessToken" Type="System.String" CanBeNull="false" />
+      <Column Name="email" Type="System.String" CanBeNull="false" />
+      <Column Name="id" Type="System.String" CanBeNull="false" />
+      <Column Name="image" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

@@ -55,7 +55,7 @@ angular.module('app.components')
                 setTimeout(function()
                 {
                     n.parentNode.removeChild(n)
-                }, 0);
+                }, 50);
 
 
                 //Call $apply beacuse the loading is Async and

@@ -103,6 +103,9 @@
         background-image: none;
         button {
             color: $text_color !important;
+            background: $accent_color;
+            background-image: none;
+            border: none;
         }
         .title {
             margin-left: 0px;
@@ -234,6 +237,86 @@
     ------------------------------------------------------*/
     ion-view.pane {
         /*------------------------- 
+        VIEW:   First
+ Run View's
+        ROUTE:  /app/firstRun/*
+        -------------------------*/
+        &.firstRun {
+            /*------------------------- 
+            VIEW:   First Time Configuration
+            ROUTE:  /app/firstRun/configuration
+            -------------------------*/
+            &.configuration {
+                .title {
+                    padding-bottom: 0.5em !important;
+                    background-color: $primary_Hue900_color;
+                    margin-bottom: 1em;
+                    line-height: 1em;
+                    div.col:first-child {
+                        text-transform: uppercase;
+                    }
+                }
+                &.step-1 {
+                    background-image: url(images/backgrounds/background-2.jpg);
+                    background-size: 100%;
+                    ion-content {
+                        background: none;
+                        div.welcome {
+                            color: $accent_color;
+                            padding: 1em;
+                            padding-bottom: 2em;
+                            padding-top: 2em;
+                            text-align: justify;
+                            h1 {
+                                color: $accent_color;
+                                font-size: 1.6em;
+                                font-weight: normal;
+                            }
+                        }
+                        div.fav-button {
+                            position: absolute;
+                            right: 1em;
+                            border-radius: 50%;
+                            height: 3.5em;
+                            width: 3.5em;
+                            background-color: $accent_color;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            margin-top: -1em;
+                            > i {
+                                color: $primary_color;
+                                text-align: center;
+                                font-size: 1.8em;
+                            }
+                        }
+                        div.row {
+                            padding-bottom: 1em;
+                            &.phones {
+                                div.col {
+                                    padding: 0.5em;
+                                    a {
+                                        text-decoration: none;
+                                        color: $accent_color;
+                                    }
+                                }
+                            }
+                        }
+                        input.value,
+                        select.value {
+                            width: 99%;
+                            background: rgba(0, 0, 0, 0);
+                            border: 1px solid $accent_color;
+                            border-radius: 4px;
+                            color: #fff;
+                            font-size: 1.6em;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+        /*------------------------- 
         VIEW:   Security View's
         ROUTE:  /app/security/*
         -------------------------*/
@@ -310,6 +393,12 @@
                     > .icon {
                         font-size: 3em;
                     }
+                    > .badge {
+                        position: absolute;
+                        margin-top: -3em;
+                        padding: 1px 5px;
+                        margin-left: 5px;
+                    }
                 }
             }
             .counter-button {
@@ -354,6 +443,7 @@
                     > div {
                         text-transform: uppercase;
                         color: $primary_color;
+                        font-size: 0.9em;
                     }
                 }
             }
@@ -383,6 +473,20 @@
                 }
             }
             /*------------------------- 
+            VIEW:   Route Save Error
+            ROUTE:  /nomenu/routes/create/saveForLater
+            -------------------------*/
+            &.save-for-later {
+                center {
+                    > p {
+                        text-align: justify;
+                        padding: 2em;
+                        font-size: 1.2em;
+                        line-height: 1.2em;
+                    }
+                }
+            }
+            /*------------------------- 
             VIEW:   Route View List
             ROUTE:  /app/routes/list
             -------------------------*/
@@ -397,10 +501,9 @@
                             }
                         }
                     }
-                    /* CUSTOM DIRECTIVE */
                     popular-routes,
                     my-routes,
-                    ambassadors {
+                    shared-routes {
                         margin-top: 110px;
                         display: block;
                         background: $primary_color;
@@ -436,6 +539,13 @@
                                     width: 100%;
                                     height: 100%;
                                 }
+                            }
+                        }
+                    }
+                    /* CUSTOM DIRECTIVE */
+                    popular-routes {
+                        ion-content {
+                            ion-item {
                                 div.information {
                                     min-height: 60px;
                                 }
@@ -472,46 +582,65 @@
                             }
                         }
                     }
-                    /* CUSTOM OVERRIDES */
-                    ambassadors {
+                    my-routes {
                         ion-content {
                             ion-item {
-                                padding-bottom: 10px !important;
-                                preload-image:first-child {
-                                    top: 16px !important;
-                                    left: 16px !important;
-                                    max-width: 40px !important;
-                                    max-height: 40px !important;
-                                    border-radius: 50% !important;
-                                    overflow: hidden;
+                                div.information {
+                                    min-height: auto;
+                                    padding-bottom: 4px;
+                                }
+                                div.markers {
+                                    padding: 2px 0px;
+                                    font-size: 0.9em;
+                                    div.col {
+                                        span.value {
+                                            font-weight: bold;
+                                        }
+                                        span.unit {
+                                            font-size: 0.8em;
+                                        }
+                                        &:last-child {
+                                            text-align: left;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    shared-routes {
+                        ion-content {
+                            ion-item {
+                                div.likes {
+                                    font-size: 0.85em;
+                                    position: absolute;
+                                    top: 7px;
+                                    right: 7px;
+                                    display: flex;
+                                    justify-content: flex-end;
+                                    align-items: center;
+                                    > i.icon {
+                                        color: #EF473A;
+                                    }
+                                    >span {
+                                        color: #EE4336;
+                                        padding-left: 2px;
+                                    }
                                 }
                                 div.information {
-                                    min-height: 38px !important;
+                                    min-height: 60px;
                                 }
-                                div.likes {
-                                    top: 55px !important;
-                                    left: 16px !important;
-                                    right: auto !important;
-                                    justify-content: center !important;
-                                    width: 40px !important;
-                                }
-                                div.follow-button {
-                                    position: absolute;
-                                    top: 6px;
-                                    right: 6px;
-                                    border-radius: 4px;
-                                    border: 1px solid #E2E1E1;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    width: 2em;
-                                    height: 1.7em;
-                                    width: 2em;
-                                    > i {
-                                        margin-top: 1px;
-                                    }
-                                    > ion-spinner {
-                                        margin-top: 4px;
+                                div.markers {
+                                    font-size: 0.9em;
+                                    div.col {
+                                        span.value {
+                                            font-weight: bold;
+                                        }
+                                        span.unit {
+                                            font-size: 0.8em;
+                                        }
+                                        &:last-child {
+                                            text-align: right;
+                                        }
                                     }
                                 }
                             }
@@ -617,6 +746,11 @@
                                     font-size: 0.4em;
                                     padding: 0px;
                                     text-align: right;
+                                }
+                            }
+                            &.time {
+                                div.value {
+                                    font-size: 0.86em;
                                 }
                             }
                         }
@@ -842,6 +976,47 @@
                     }
                 }
             }
+            /*------------------------- 
+            VIEW:   Upload Page
+            ROUTE:  /app/routes/upload
+            -------------------------*/
+            &.upload {
+                ion-item {
+                    background: $primary_color;
+                    color: $text_color;
+                    border: none;
+                }
+            }
+            /*------------------------- 
+            VIEW:   Camera Roll
+            ROUTE:  /app/routes/camera-roll
+            -------------------------*/
+            &.camera-roll {
+                div.image-box {
+                    width: 80%;
+                    box-shadow: #585858 2px 2px 7px;
+                    margin: 1em;
+                    border: 1px solid #1C1C29;
+                    border-radius: 5px;
+                    margin-top: 3em;
+                    > div {
+                        padding: 0.4em;
+                        background: #FFF;
+                        overflow: hidden;
+                        > img {
+                            width: 100%;
+                            border-radius: 3px;
+                        }
+                        > i {
+                            float: right;
+                            margin-top: -25px;
+                            margin-right: -21px;
+                            font-size: 2.5em;
+                            color: #FA4C0D;
+                        }
+                    }
+                }
+            }
         }
         /*------------------------- 
         VIEW:   Boot Page
@@ -886,7 +1061,7 @@
                     font-weight: bold;
                     color: $accent_color;
                     line-height: 1em;
-                    font-size: 2.6em;
+                    font-size: 2.3em;
                     display: flex;
                     justify-content: center;
                     .icon {
@@ -936,6 +1111,9 @@
                             -webkit-box-orient: vertical;
                             line-height: 1.2em;
                             white-space: normal;
+                            &.stamp {
+                                text-align: right;
+                            }
                         }
                         h2 {
                             margin-right: 27px;
@@ -955,109 +1133,246 @@
             }
         }
         /*------------------------- 
-        VIEW:   Profile Account Page
-        ROUTE:  /app/profile
+        VIEW:   Ambassadors Page
+        ROUTE:  /app/ambassadors
         -------------------------*/
+        &.ambassadors {
+            ion-content {
+                ion-item {
+                    margin: 0.5em 0.5em 0em 0.5em;
+                    padding-bottom: 8px;
+                    @extend .box-shadow-3dp;
+                    margin-top: 0.6em;
+                    border-radius: 2px;
+                    &:first-child {
+                        margin-top: 1em;
+                    }
+                    p {
+                        font-size: 0.8em;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        line-height: 1.2em;
+                        white-space: normal;
+                    }
+                    h2 {
+                        margin-right: 27px;
+                        font-size: 0.9em;
+                    }
+                    padding-bottom: 10px !important;
+                    preload-image:first-child {
+                        position: absolute;
+                        top: 16px !important;
+                        left: 16px !important;
+                        max-width: 40px !important;
+                        max-height: 40px !important;
+                        border-radius: 50% !important;
+                        width: 100%;
+                        height: 100%;
+                        overflow: hidden;
+                    }
+                    div.information {
+                        min-height: 38px !important;
+                    }
+                    div.markers {
+                        font-size: 0.9em;
+                        div.col {
+                            span.value {
+                                font-weight: bold;
+                            }
+                            span.unit {
+                                font-size: 0.8em;
+                            }
+                            &:last-child {
+                                text-align: right;
+                            }
+                        }
+                    }
+                    div.follow-button {
+                        position: absolute;
+                        top: 6px;
+                        right: 6px;
+                        border-radius: 4px;
+                        border: 1px solid #E2E1E1;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 2em;
+                        height: 1.7em;
+                        width: 2em;
+                        > i {
+                            margin-top: 1px;
+                        }
+                        > ion-spinner {
+                            margin-top: 4px;
+                        }
+                    }
+                }
+            }
+        }
         &.profile {
-            div.stats {
-                padding-top: 1em;
-                .profile-bubble {
-                    padding-bottom: 0.5em;
-                    div.marker {
-                        width: 7em;
-                        height: 7em;
-                        > div.halo {
-                            border-radius: 50%;
-                            border: 1px solid #c0c1c2;
-                            width: 100%;
-                            height: 100%;
-                            padding: 5%;
-                            > div {
+            /*
+                   TITLE
+                */
+            .title {
+                padding-bottom: 0.5em !important;
+                background-color: $primary_Hue900_color;
+                margin-bottom: 1em;
+                line-height: 1em;
+                div.col:first-child {
+                    text-transform: uppercase;
+                }
+            }
+            /*------------------------- 
+            VIEW:   Profile Account Page
+            ROUTE:  /app/profile
+            -------------------------*/
+            &.index {
+                div.stats {
+                    padding-top: 1em;
+                    .profile-bubble {
+                        padding-bottom: 0.5em;
+                        div.marker {
+                            width: 7em;
+                            height: 7em;
+                            > div.halo {
                                 border-radius: 50%;
-                                overflow: hidden;
-                                height: 100%;
+                                border: 1px solid #c0c1c2;
                                 width: 100%;
-                                background: $primary_color;
-                                > img {
+                                height: 100%;
+                                padding: 5%;
+                                > div {
+                                    border-radius: 50%;
+                                    overflow: hidden;
+                                    height: 100%;
                                     width: 100%;
+                                    background: $primary_color;
+                                    > img {
+                                        width: 100%;
+                                    }
                                 }
                             }
                         }
                     }
-                }
-                .title {
-                    font-size: 1.2em;
-                    padding-left: 0.6em;
-                    padding-bottom: 5px;
-                }
-                .counter {
-                    color: $accent_color;
-                    font-size: 1.7em;
-                    font-weight: bold;
-                    padding-left: 0.6em;
-                    padding-bottom: 5px;
-                }
-                .category {
-                    padding-left: 0.8em;
-                }
-                .progress {
-                    margin-top: 2em;
-                    background-color: #fff;
-                    height: 6px;
-                    width: 90%;
-                    border-radius: 3px;
-                    overflow: hidden;
-                    margin-left: 0.4em;
-                    > div {
-                        height: 100%;
-                        background-color: #369afc;
+                    .title {
+                        font-size: 1.2em;
+                        padding-left: 0.6em;
+                        padding-bottom: 5px;
+                    }
+                    .counter {
+                        color: $accent_color;
+                        font-size: 1.7em;
+                        font-weight: bold;
+                        padding-left: 0.6em;
+                        padding-bottom: 5px;
+                    }
+                    .category {
+                        padding-left: 0.8em;
+                    }
+                    .progress {
+                        margin-top: 2em;
+                        background-color: #fff;
+                        height: 6px;
+                        width: 90%;
+                        border-radius: 3px;
+                        overflow: hidden;
+                        margin-left: 0.4em;
+                        > div {
+                            height: 100%;
+                            background-color: #369afc;
+                        }
+                    }
+                    /*
+                        TWITTER LIKE
+                    */
+                    .follower,
+                    .following {
+                        padding-left: 1em;
+                        color: #B7B7B7;
+                        text-transform: uppercase;
+                        font-size: 0.9em;
+                        white-space: nowrap;
+                        > span {
+                            font-weight: bold;
+                            color: $text_color;
+                            padding-right: 3px;
+                            white-space: nowrap;
+                        }
                     }
                 }
                 /*
-                    TWITTER LIKE
+                    CLOSE SESSION
                 */
-                .follower,
-                .following {
-                    padding-left: 1em;
-                    color: #B7B7B7;
-                    text-transform: uppercase;
-                    font-size: 0.9em;
-                    white-space: nowrap;
-                    > span {
-                        font-weight: bold;
+                button.close-session {
+                    color: $text_color;
+                    background: rgba(0, 0, 0, 0);
+                    border: none;
+                    >i {
                         color: $text_color;
-                        padding-right: 3px;
-                        white-space: nowrap;
+                        padding-right: 10px;
+                    }
+                    > span {
+                        font-size: 0.8em;
+                        text-transform: uppercase;
+                    }
+                }
+                /*
+                    AVERAGE DISTANCE 
+                */
+                .average {
+                    margin-top: 1em;
+                    background-color: $primary_Hue900_color;
+                    div.col:first-child {
+                        text-transform: uppercase;
+                    }
+                    div.col:last-child {
+                        font-size: 1.6em;
                     }
                 }
             }
-            /*
-                CLOSE SESSION
-            */
-            button.close-session {
-                color: $text_color;
-                background: rgba(0, 0, 0, 0);
-                border: none;
-                >i {
-                    color: $text_color;
-                    padding-right: 10px;
+            /*------------------------- 
+            VIEW:   Profile Edit Page
+            ROUTE:  /app/profile/edit/index
+            -------------------------*/
+            &.edit {
+                div.fav-button {
+                    position: absolute;
+                    right: 1em;
+                    border-radius: 50%;
+                    height: 3.5em;
+                    width: 3.5em;
+                    background-color: $accent_color;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: -1em;
+                    > i {
+                        color: $primary_color;
+                        text-align: center;
+                        font-size: 1.8em;
+                    }
                 }
-                > span {
-                    font-size: 0.8em;
-                    text-transform: uppercase;
+                div.row {
+                    padding-bottom: 1em;
+                    &.phones {
+                        div.col {
+                            padding: 0.5em;
+                            a {
+                                text-decoration: none;
+                                color: $accent_color;
+                            }
+                        }
+                    }
                 }
-            }
-            /*
-                AVERAGE DISTANCE 
-            */
-            .average {
-                margin-top: 1em;
-                background-color: $primary_Hue900_color;
-                div.col:first-child {
-                    text-transform: uppercase;
-                }
-                div.col:last-child {
+                input.value,
+                select.value {
+                    width: 99%;
+                    background: rgba(0, 0, 0, 0);
+                    border: 1px solid $accent_color;
+                    border-radius: 4px;
+                    color: #fff;
                     font-size: 1.6em;
+                    text-align: center;
                 }
             }
         }

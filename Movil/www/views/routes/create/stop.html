@@ -1,10 +1,11 @@
 <ion-view class="route stop" can-swipe-back="false">
     <!-- CONTENT -->
     <!-- HIDDEN IN THIS STEP -->
-    <div class="row common-actions">
-        <div class="col no-padding">
+    <div class="row common-actions" >
+        <div class="col no-padding" ng-click="takePicture();">
             <i class="icon ion-ios-camera"></i>
             <div>Tomar Foto</div>
+            <span ng-if="resume.photos.length>0" class="badge badge-assertive">{{resume.photos.length}}</span>
         </div>
         <div class="col no-padding" ng-click="share();">
             <i class="icon ion-android-share"></i>
@@ -59,20 +60,20 @@
             </div>
         </div>
         <div class="row states">
-            <div class="col sensation-1" ng-click="data.sensation = 1;" ng-class="{'active': data.sensation == 1 }">
+            <div class="col sensation-1" ng-click="model.sensation = 'RELA';" ng-class="{'active': model.sensation == 'RELA' }">
                 <i class="icon ion-android-happy"></i>
             </div>
-            <div class="col sensation-2" ng-click="data.sensation = 2;" ng-class="{'active': data.sensation == 2 }">
+            <div class="col sensation-2" ng-click="model.sensation = 'CANS';" ng-class="{'active': model.sensation == 'CANS' }">
                 <i class="icon ion-android-sad"></i>
             </div>
-            <div class="col sensation-3" ng-click="data.sensation = 3;" ng-class="{'active': data.sensation == 3 }">
+            <div class="col sensation-3" ng-click="model.sensation = 'AGOT';" ng-class="{'active': model.sensation == 'AGOT' }">
                 <i class="icon ion-sad-outline"></i>
             </div>
         </div>
     </div>
     <!-- FOOTER -->
     <ion-footer-bar>
-        <button class="button button-block" ng-disabled="data.sensation == 0" ng-click="save();">
+        <button class="button button-block" ng-disabled="model.sensation == null" ng-click="save();">
             <i class="icon ion-trophy"></i> 
             <span>Finalizar Sesión</span>
         </button>

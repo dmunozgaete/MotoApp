@@ -308,13 +308,13 @@ angular.module('app.components')
 
             var centerPath = function(coords)
             {
+
                 var bounds = new google.maps.LatLngBounds();
                 currentPolyline.getPath().forEach(function(e)
                 {
                     bounds.extend(e);
                 })
 
-                //Get center and fit zoom
                 var center = bounds.getCenter();
 
                 if (!isInStaticMode())
@@ -465,20 +465,21 @@ angular.module('app.components')
                 {
                     map:
                     {
-                        width: 600,
-                        height: 600
+                        width: 500,
+                        height: 500
                     },
                     polyline:
                     {
                         hex: polylineColor,
                         alpha: "FF",
                         weight: 5
-                    }
+                    },
+                    path: trackData.path
                 }, conf);
 
                 //--------------------------------------------------------
                 // Check Data
-                if (!trackData)
+                if (!conf.path)
                 {
                     throw {
                         message: 'No existen datos para generar'
@@ -488,9 +489,9 @@ angular.module('app.components')
                 //--------------------------------------------------------
                 // Encode Polyline Path 
                 var latlngs = []
-                for (var j = 0; j < trackData.path.length; j++)
+                for (var j = 0; j < conf.path.length; j++)
                 {
-                    var coord = trackData.path[j];
+                    var coord = conf.path[j];
                     var lat = coord.lat.toFixed(3);
                     var lng = coord.lng.toFixed(3);
 
@@ -567,8 +568,16 @@ angular.module('app.components')
                 return trackData;
             };
 
-            self.setCenter = function(coords) {
+            self.getBounds = function(coords)
+            {
+                var bounds = new google.maps.LatLngBounds();
+                angular.forEach(coords, function(coord)
+                {
+                    bounds.extend(new google.maps.LatLng(coord));
+                });
 
+                //Get bounds
+                return bounds;
             };
 
             self.getName = function(coords)

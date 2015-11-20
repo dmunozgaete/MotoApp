@@ -35,7 +35,6 @@ namespace API.Endpoints.Accounts
         [HttpGet]
         [Swashbuckle.Swagger.Annotations.SwaggerResponseRemoveDefaults]
         [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.OK)]
-        [Gale.Security.Oauth.Jwt.Authorize(Roles = API.WebApiConfig.RootRoles)]
         public IHttpActionResult Get(String id)
         {
             //------------------------------------------------------------------------------------------------------
@@ -59,34 +58,18 @@ namespace API.Endpoints.Accounts
         }
 
         /// <summary>
-        /// Pre-Register an account in the system
+        /// Save User Personal Data
         /// </summary>
-        /// <param name="account">Account information</param>
-        /// <param name="host">Application Entry Point</param>
         /// <returns></returns>
+        [HttpPut]
+        [HierarchicalRoute("/Me")]
         [Swashbuckle.Swagger.Annotations.SwaggerResponseRemoveDefaults]
-        [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.Created)]
-        [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.BadRequest)]
-        [Gale.Security.Oauth.Jwt.Authorize(Roles = API.WebApiConfig.RootRoles)]
-        public IHttpActionResult Post([FromBody]Models.Create account, string host)
+        [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.PartialContent)]
+        public IHttpActionResult SaveCurrent(Models.UpdatePersonalData data)
         {
-            return new Services.Create(account, host);
+            return new Services.Update(this.User.PrimarySid(), data);
         }
 
-        /// <summary>
-        /// Update the target Account
-        /// </summary>
-        /// <param name="id">Account Token</param>
-        /// <param name="account">Account information</param>
-        /// <returns></returns>
-        [Swashbuckle.Swagger.Annotations.SwaggerResponseRemoveDefaults]
-        [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.NoContent)]
-        [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.BadRequest)]
-        public IHttpActionResult Put([FromUri]String id, [FromBody]Models.Update account)
-        {
-
-            return new Services.Update(id, account);
-        }
 
     }
 }

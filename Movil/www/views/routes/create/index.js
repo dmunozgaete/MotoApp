@@ -3,10 +3,11 @@ angular.route('nomenu.routes/create/index/:autostart', function(
     $state,
     $log,
     $Api,
-    routeTracker,
+    RouteTracker,
     $stateParams,
-    ionicToast,
-    $ionicHistory
+    $ionicLoading,
+    $ionicHistory,
+    Camera
 )
 {
 
@@ -19,12 +20,13 @@ angular.route('nomenu.routes/create/index/:autostart', function(
         //---------------
     };
 
-    var resumeListener = routeTracker.$on("route.resumeChanged", updateCounters);
-    var autoPausedListener = routeTracker.$on("route.autoPaused", function()
+    var resumeListener = RouteTracker.$on("route.resumeChanged", updateCounters);
+    var autoPausedListener = RouteTracker.$on("route.autoPaused", function()
     {
-    
-        var view  = $ionicHistory.currentView();
-        if(view.stateId == "nomenu.routes/create/gps"){
+
+        var view = $ionicHistory.currentView();
+        if (view.stateId == "nomenu.routes/create/gps")
+        {
             //Do Nothing, because is the tracker Log
             return;
         }
@@ -47,20 +49,47 @@ angular.route('nomenu.routes/create/index/:autostart', function(
     //Launch from Auto-Start
     if ($stateParams.autostart)
     {
-        ionicToast.show("Se ha reanudado la ruta", 'top', true, 5000);
+        $ionicLoading.show(
+        {
+            template: 'Se ha reanudado la ruta',
+            duration: 3000
+        });
     }
 
     //----------------------------------------
     // Action's
     $scope.pause = function()
     {
-        routeTracker.pause();
+        RouteTracker.pause();
+        $ionicLoading.hide();
         $state.go("nomenu.routes/create/pause");
     };
 
     $scope.map = function()
     {
+        $ionicLoading.hide();
         $state.go("nomenu.routes/create/map");
+    };
+
+    $scope.takePicture = function()
+    {
+        Camera.takePicture().then(function(image)
+        {
+
+            //Save Picture in Temporal DB
+            RouteTracker.addPhoto(image);
+
+        }, function(err)
+        {
+
+            $ionicLoading.show(
+            {
+                template: 'No se pudo tomar la foto',
+                duration: 3000
+            });
+            $log.error(err);
+
+        });
     };
 
 });

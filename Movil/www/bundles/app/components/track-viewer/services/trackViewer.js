@@ -41,23 +41,20 @@ angular.module('app.components')
                 };
             }
 
-            if (count > 1)
+            //Always return the last registered
+            // Some caches in IONIC, crap the original method because the 
+            // "late destroy event" (for the special caching in IONIC)
+            identifier = (function()
             {
-                throw {
-                    message: 'when you have more than 1 track-viewer in view, you must send the uniqueID'
-                };
-            }
-            else
-            {
-                identifier = (function()
+                var last = null;
+                for (var id in components)
                 {
-                    for (var id in components)
-                    {
-                        return id;
-                    }
-                })();
+                    last = id;
+                }
+                return last;
+            })();
 
-            }
+
         }
 
         var component = components[identifier];
@@ -83,7 +80,7 @@ angular.module('app.components')
     var exec = function(method, args)
     {
         var instance = self.getInstance();
-        instance[method].apply(instance, args);
+        return instance[method].apply(instance, args);
     };
 
     self.setPath = function()
@@ -94,6 +91,16 @@ angular.module('app.components')
     self.addToPath = function()
     {
         exec("addToPath", arguments);
+    };
+
+    self.getBounds = function()
+    {
+        return exec("getBounds", arguments);
+    };
+
+    self.getImage = function()
+    {
+        return exec("getImage", arguments);
     };
 
     //Internal Use

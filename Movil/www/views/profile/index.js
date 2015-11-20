@@ -3,13 +3,14 @@ angular.route('app.profile/index', function(
     $state,
     $log,
     $Api,
-    $Identity
+    $Identity,
+    $LocalStorage
 )
 {
 
     //---------------------------------------------------
     // Get Data
-    $Api.read("/Profile").success(function(data)
+    $Api.read("/Accounts/Me").success(function(data)
     {
         //Set Profile
         $scope.profile = data;
@@ -21,6 +22,7 @@ angular.route('app.profile/index', function(
     // Action's
     $scope.logOut = function()
     {
+        $LocalStorage.clear();
         $Identity.logOut();
     };
 

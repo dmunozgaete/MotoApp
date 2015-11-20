@@ -25,20 +25,31 @@ namespace API.Endpoints.Accounts.Services
         /// <returns></returns>
         public override System.Threading.Tasks.Task<System.Net.Http.HttpResponseMessage> ExecuteAsync(System.Threading.CancellationToken cancellationToken)
         {
-            using (Gale.Db.DataService svc = new Gale.Db.DataService("PA_MAE_OBT_InformacionUsuario"))
+            using (Gale.Db.DataService svc = new Gale.Db.DataService("PA_MOT_OBT_Perfl"))
             {
                 svc.Parameters.Add("USUA_Token", this.Model);
 
                 Gale.Db.EntityRepository rep = this.ExecuteQuery(svc);
 
-                Models.VT_Users account = rep.GetModel<Models.VT_Users>().FirstOrDefault();
-                List<Models.Profile> profiles = rep.GetModel<Models.Profile>(1);
+                Models.Account account = rep.GetModel<Models.Account>().FirstOrDefault();
+                List<Models.Role> roles = rep.GetModel<Models.Role>(1);
+                Models.SocialProfile counter = rep.GetModel<Models.SocialProfile>(2).FirstOrDefault();
+                Models.PersonalData personal = rep.GetModel<Models.PersonalData>(3).FirstOrDefault();
+                Models.Sport sport = rep.GetModel<Models.Sport>(3).FirstOrDefault();
+                List<Models.EmergencyPhones> phones = rep.GetModel<Models.EmergencyPhones>(4);
+                //Models.PersonalData personal = rep.GetModel<Models.PersonalData>(3).FirstOrDefault();
 
                 //----------------------------------------------------------------------------------------------------
                 //Guard Exception's
                 Gale.Exception.RestException.Guard(() => account == null, "ACCOUNT_DONT_EXISTS", API.Errors.ResourceManager);
                 //----------------------------------------------------------------------------------------------------
 
+                account.photo = (account.photo == System.Guid.Empty ? null : account.photo);
+
+                if (personal != null)
+                {
+                    personal.emergencyPhones = (from t in phones select t.phone).ToList();
+                }
                 //----------------------------------------------------------------------------------------------------
                 //Create Response
                 var response = new HttpResponseMessage(System.Net.HttpStatusCode.OK)
@@ -46,21 +57,13 @@ namespace API.Endpoints.Accounts.Services
                     Content = new ObjectContent<Object>(
                         new
                         {
-                            token = account.token,
-                            email = account.email,
-                            fullName = account.fullname,
-                            identifier = account.identifier,
-                            avatar = (account.photo == System.Guid.Empty ? null : account.photo.ToString()),
-                            lastConnection = account.lastConnection,
-                            roles = (from role in profiles
-                                     select new
-                                     {
-                                         identifier = role.identifier,
-                                         token = role.token,
-                                         name = role.name
-                                     })
+                            account = account,
+                            roles = roles,
+                            sport = sport,
+                            personal = personal,
+                            social = counter
                         },
-                        System.Web.Http.GlobalConfiguration.Configuration.Formatters.JsonFormatter
+                        System.Web.Http.GlobalConfiguration.Configuration.Formatters.KqlFormatter()
                     )
                 };
 
