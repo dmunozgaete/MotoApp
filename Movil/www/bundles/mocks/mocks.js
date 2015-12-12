@@ -17,7 +17,7 @@
     ])
 
     // Create a Wrapper Interceptor, for easy use.
-    .provider('mock', function()
+    .provider('Mocks', function()
     {
         var $ref = this;
 

@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Class="HelloWorldDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Table Name="" Member="HelloWorlds">
-    <Type Name="HelloWorld">
-      <Column Member="name" Type="System.String" CanBeNull="false" />
-      <Column Member="country" Type="System.String" CanBeNull="false" />
-    </Type>
-  </Table>
-</Database>

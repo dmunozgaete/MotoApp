@@ -4,7 +4,7 @@ angular.route('nomenu.routes/create/map', function(
     $log,
     $Api,
     trackViewer,
-    routeTracker
+    RouteTracker
 )
 {
     var onRouteChange = function(newPoint)
@@ -25,7 +25,7 @@ angular.route('nomenu.routes/create/map', function(
     {
         //---------------
         //Build Current Path
-        var resume = routeTracker.getResume();
+        var resume = RouteTracker.getResume();
 
         var googleCoords = [];
         angular.forEach(resume.coords, function(point)
@@ -44,7 +44,7 @@ angular.route('nomenu.routes/create/map', function(
 
     });
 
-    var addPointListener = routeTracker.$on("route.addTrackPoint", onRouteChange);
+    var addPointListener = RouteTracker.$on("route.addTrackPoint", onRouteChange);
     $scope.$on("$destroy", function()
     {
         //Destroy Listener 
@@ -56,7 +56,7 @@ angular.route('nomenu.routes/create/map', function(
     $scope.back = function()
     {
         //Check State to navigate
-        var resume = routeTracker.getResume();
+        var resume = RouteTracker.getResume();
 
         //AUTO_PAUSE == 4
         if (resume.state == 4)

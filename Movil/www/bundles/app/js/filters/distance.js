@@ -12,7 +12,7 @@ angular.module('app.filters')
 
         try
         {
-            return $filter('currency')(distance, '', 2);
+            return $filter('currency')(distance, '', 1);
         }
         catch (e)
         {

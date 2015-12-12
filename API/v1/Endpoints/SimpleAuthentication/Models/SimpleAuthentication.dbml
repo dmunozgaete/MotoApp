@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Class="SimpleAuthenticationDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Table Name="" Member="Authenitcations">
-    <Type Name="Authenitcation">
-      <Column Member="email" Type="System.String" CanBeNull="false" />
-      <Column Member="password" Type="System.String" CanBeNull="false" />
-    </Type>
-  </Table>
-</Database>

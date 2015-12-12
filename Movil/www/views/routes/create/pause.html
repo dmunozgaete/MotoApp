@@ -1,12 +1,13 @@
-<ion-view class="route pause" can-swipe-back="false">
+<ion-view class="routes pause" can-swipe-back="false">
     <!-- CONTENT -->
     <!-- HIDDEN IN THIS STEP -->
     <div class="row common-actions">
-        <div class="col no-padding">
+        <div class="col no-padding" ng-click="takePicture();">
             <i class="icon ion-ios-camera"></i>
             <div>Tomar Foto</div>
+            <span ng-if="resume.photos.length>0" class="badge badge-assertive">{{resume.photos.length}}</span>
         </div>
-        <div class="col">
+        <div class="col" ng-if="1==0">
             <label class="toggle toggle-energized">
                 <input type="checkbox">
                 <div class="track">
@@ -62,7 +63,7 @@
         </div>
     </div>
     <!-- EMERGENCY BUTTON -->
-    <ion-footer-bar>
+    <ion-footer-bar ng-if="emergencyIsEnabled();">
         <button class="button button-block" ng-click="emergency();">
             <div>
                 <i class="icon ion-plus"></i>

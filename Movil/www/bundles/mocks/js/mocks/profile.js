@@ -1,9 +1,9 @@
 angular.module('mocks.api')
 
-.run(function(mock, $log)
+.run(function(Mocks, $log)
 {
     //-------------------------------------------------------------
-    mock.whenGET("/Profile", function(method, url, data)
+    Mocks.whenGET("/Profile", function(method, url, data)
     {
 
         var result = {

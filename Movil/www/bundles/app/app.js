@@ -12,5 +12,6 @@ angular.manifiest('app', [
     'app.directives',
     'app.filters',
     'app.services',
-    'app.components'
+    'app.components',
+    'app.services.synchronizers'
 ]);

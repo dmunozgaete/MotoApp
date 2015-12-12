@@ -6,10 +6,17 @@ angular.route('app.home/index', function(
     $interval,
     $timeout,
     $Identity,
-    $ionicNavBarDelegate
-
+    $ionicNavBarDelegate,
+    Rewards
 )
 {
+    //----------------------------------------
+    // Models
+    $scope.model = {
+        range: 'S'
+    };
+
+
     //----------------------------------------
     // FIX ISSUE NAVBAR ALIGN LEFT WITHOUT PADDING
     $ionicNavBarDelegate.showBar(false);
@@ -24,7 +31,7 @@ angular.route('app.home/index', function(
         $timeout.cancel(delay);
     });
     //----------------------------------------
-
+    
     //----------------------------------------
     // Charts Data
     //  http://jtblin.github.io/angular-chart.js/
@@ -50,7 +57,7 @@ angular.route('app.home/index', function(
             },
             onClick: function(points, evt)
             {
-                console.log(points, evt);
+                
             },
             values: [
                 values
@@ -61,7 +68,23 @@ angular.route('app.home/index', function(
 
     //---------------------------------------------------
     // Get Data
-    $Api.read("/Dashboard").success(function(data)
+    var start = new Date();
+    var end = new Date();
+
+    switch ($scope.model.range)
+    {
+        case "S":
+            //-7 Dias (Week)
+            start.setDate(end.getDate() - 7);
+            break;
+    };
+
+    $Api.read("/Dashboard/{range}",
+    {
+        range: $scope.model.range,
+        start: start,
+        end: end
+    }).success(function(data)
     {
         //Set Items to List
         drawGraph(data);

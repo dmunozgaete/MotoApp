@@ -104,5 +104,110 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "phonegap-facebook-plugin": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Wizcorp/phonegap-facebook-plugin.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {
+            "APP_ID": "975485019185433",
+            "APP_NAME": "MotoApp"
+        }
+    },
+    "cordova-plugin-mauron85-background-geolocation": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-mauron85-background-geolocation"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-x-socialsharing": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-x-socialsharing"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.verso.cordova.clipboard": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/VersoSolutions/CordovaClipboard.git",
+            "subdir": "."
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "cordova-instagram-plugin": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-instagram-plugin"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-googleplus": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-googleplus"
+        },
+        "is_top_level": true,
+        "variables": {
+            "REVERSED_CLIENT_ID": "com.googleusercontent.apps.162165027234-e1vbilo4ifasjorf809sd2h8n5ivr989"
+        }
+    },
+    "de.appplant.cordova.common.registerusernotificationsettings": {
+        "source": {
+            "type": "registry",
+            "id": "de.appplant.cordova.common.registerusernotificationsettings"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "org.apache.cordova.contacts": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.contacts"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "de.appplant.cordova.plugin.local-notification": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/katzer/cordova-plugin-local-notifications.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "de.appplant.cordova.plugin.badge": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/katzer/cordova-plugin-badge.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-dialogs": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-dialogs"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "es.keensoft.fullscreenimage": {
+        "source": {
+            "type": "registry",
+            "id": "es.keensoft.fullscreenimage"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

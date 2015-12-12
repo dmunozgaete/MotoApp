@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MotoApp_v1" Class="ProfileDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\MSSQLSERVER_2012;Initial Catalog=MotoApp_v1;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MotoApp_v1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TB_MOT_ContadorSocial" Member="SocialProfiles">
+    <Type Name="SocialProfile">
+      <Column Name="SOCU_Seguidores" Member="followers" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SOCU_Siguiendo" Member="following" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SOCU_MeGusta" Member="likes" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Distancia" Member="distance" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="MEDA_Total" Member="medals_total" Type="System.Int32" CanBeNull="false" />
+      <Column Name="MEDA_Contador" Member="medals_user" Type="System.Int32" CanBeNull="false" />
+      <Column Name="USUA_PuntosActuales" Member="experience_total" Type="System.Int32" CanBeNull="false" />
+      <Column Name="NIVE_Puntos" Member="experience_level" Type="System.Int32" CanBeNull="false" />
+      <Column Name="NIVE_Titulo" Member="experience_title" Type="System.String" CanBeNull="false" />
+      <Column Name="NIVE_Ordinal" Member="experience_category" Type="System.Int32" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_MOT_TipoDeporte" Member="PersonalDatas">
+    <Type Name="PersonalData">
+      <Column Name="USUA_Peso" Member="weight" Type="System.Int32" DbType="INT" CanBeNull="false" />
+      <Column Name="emergencyPhones" Type="List&lt;String&gt;" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_Perfiles" Member="Roles">
+    <Type Name="Role">
+      <Column Name="ENTI_Nombre" Member="name" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="ENTI_Token" Member="token" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PERF_Identificador" Member="identifier" Type="System.String" DbType="Char(5)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VT_Usuarios" Member="Accounts">
+    <Type Name="Account">
+      <Column Name="ENTI_Token" Member="token" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ENTI_FechaCreacion" Member="createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ENTI_Identificador" Member="identifier" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ARCH_Token" Member="photo" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="USUA_Email" Member="email" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="USUA_NombreCompleto" Member="name" Storage="_fullname" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="USUA_UltimaConexion" Member="lastConnection" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="USUA_Activo" Member="active" Type="System.Int32" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="EmergencyPhones">
+    <Type Name="EmergencyPhones">
+      <Column Name="USUA_Telefono" Member="phone" Type="System.String" DbType="varchar(40)" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="UpdatePersonalDatas">
+    <Type Name="UpdatePersonalData">
+      <Column Name="sport" Type="System.String" CanBeNull="false" />
+      <Column Name="weight" Type="System.Int32" CanBeNull="false" />
+      <Column Name="" Member="emergencyPhones" Type="List&lt;String&gt;" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_MOT_TipoDeporte" Member="Sports">
+    <Type Name="Sport">
+      <Column Name="TIDE_Nombre" Member="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TIDE_Descripcion" Member="description" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="TIDE_Identificador" Member="identifier" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VT_MOT_Medallas" Member="Medals">
+    <Type Name="Medal">
+      <Column Name="MEDA_Token" Member="token" Type="System.Guid" DbType="UniqueIdentifier" IsPrimaryKey="true" CanBeNull="true" />
+      <Column Name="MEUS_Fecha" Member="acquiredAt" Type="System.DateTime" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VT_MOT_Medallas" Member="NewMedals">
+    <Type Name="NewMedal">
+      <Column Name="MEDA_Nombre" Member="name" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="MEDA_Descripcion" Member="description" Type="System.String" DbType="VarChar(90) NOT NULL" CanBeNull="false" />
+      <Column Name="MEDA_Identificador" Member="identifier" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MEDA_Puntos" Member="points" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MEDA_Token" Member="token" Type="System.Guid" DbType="UniqueIdentifier" IsPrimaryKey="true" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="NewDetails">
+    <Type Name="NewDetails">
+      <Column Name="USUA_SubioNivel" Member="level_up" Storage="_levelUp" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="NIVE_Titulo" Member="level_title" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Class="MedalsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.VT_MOT_Medallas" Member="VT_Medals">
+    <Type Name="VT_Medal">
+      <Column Name="MEDA_Nombre" Member="name" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="MEDA_Descripcion" Member="description" Type="System.String" DbType="VarChar(90) NOT NULL" CanBeNull="false" />
+      <Column Name="MEDA_Identificador" Member="identifier" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MEDA_Puntos" Member="points" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MEDA_Token" Member="token" Type="System.Guid" DbType="UniqueIdentifier" IsPrimaryKey="true" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

@@ -5,9 +5,13 @@ angular.route('nomenu.routes/create/start', function(
     $Api,
     $interval,
     ngAudio,
-    routeTracker
+    RouteTracker
 )
 {
+    //---------------------------------------------
+    // Resume Tracker
+    $scope.resume = RouteTracker.getResume();
+
     //----------------------------------------
     // Preload Beep Sound
     var audio =  ngAudio.load("bundles/app/sounds/beep-soft.wav");
@@ -25,7 +29,7 @@ angular.route('nomenu.routes/create/start', function(
         {
             $state.go("nomenu.routes/create/index");
             $interval.cancel(delay); //Stop Counter
-            routeTracker.start();
+            RouteTracker.start();
             return;
         }
 
@@ -46,5 +50,6 @@ angular.route('nomenu.routes/create/start', function(
     {
         $state.go("app.home");
     };
+
 
 });

@@ -1,0 +1,87 @@
+<ion-view title="Detalle de Ruta" class="routes view index" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button" ng-click="back()">
+            <i class="icon ion-chevron-left"></i>
+        </button>
+    </ion-nav-buttons>
+    <!-- LOADING -->
+    <flex-loading ng-if="!data" title="Cargando Ruta..." legend="obteniendo información ^^">
+    </flex-loading>
+    <!-- CONTENT -->
+    <div ng-if="data">
+        <ion-content>
+            <!-- LIKE -->
+            <div class="fab-button top right likes" ng-class="{'active': data.social.like}" ng-click="like();" ng-if="data.shared.name">
+                <ion-spinner icon="ios-small" ng-if="data.social.like === null"></ion-spinner>
+                <i ng-if="data.social.like !== null" class="icon ion-heart"></i>
+            </div>
+            <!-- LIKE -->
+            <div class="fab-button top right photos" ng-click="photos();" ng-if="data.photos.length>0">
+                <i class="icon ion-images"></i>
+            </div>
+            <!-- VIEWER MAP -->
+            <track-viewer>
+            </track-viewer>
+            <!-- CONTENT -->
+            <form name="form">
+                <div>
+                    <!-- -->
+                    <div class="row">
+                        <div class="col">
+                            Distancia (km)
+                        </div>
+                        <div class="col-33">
+                            <input type="tel" disabled value="{{ data.distance | distance }}" class="value" />
+                        </div>
+                    </div>
+                    <!-- -->
+                    <div class="row">
+                        <div class="col">
+                            Altitud (mts)
+                        </div>
+                        <div class="col-33">
+                            <input type="tel" disabled value="{{ data.altitude | distance }}" class="value" />
+                        </div>
+                    </div>
+                    <!-- -->
+                    <div class="row">
+                        <div class="col">
+                            Duración (min)
+                        </div>
+                        <div class="col-33">
+                            <input type="tel" disabled value="{{ data.duration | time }}" class="value" />
+                        </div>
+                    </div>
+                    <!-- -->
+                    <div class="row">
+                        <div class="col">
+                            Calorias (kcal)
+                        </div>
+                        <div class="col-33">
+                            <input type="tel" disabled value="{{ data.calories | calories }}" class="value" />
+                        </div>
+                    </div>
+                    <!-- -->
+                    <div class="row">
+                        <div class="col">
+                            Velocidad (km/hr)
+                        </div>
+                        <div class="col-33">
+                            <input type="tel" disabled value="{{ data.speed | speed }}" class="value" />
+                        </div>
+                    </div>
+                    <!-- -->
+                    <div class="row">
+                        <div class="col">
+                            Pausas (min)
+                        </div>
+                        <div class="col-33">
+                            <input type="tel" disabled value="{{ data.pauses | time }}" class="value" />
+                        </div>
+                    </div>
+                    <!-- -->
+                </div>
+            </form>
+        </ion-content>
+    </div>
+</ion-view>

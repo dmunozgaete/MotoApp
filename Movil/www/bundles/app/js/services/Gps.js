@@ -19,7 +19,7 @@
             //Configurable Variable on .config Step
             var _timeout = 15000;
             var _highAccuracy = false;
-            var _accuracyThreshold = 150;   //Web Acuracy Default
+            var _accuracyThreshold = 150; //Web Acuracy Default
             var _testRoute = null;
 
 
@@ -74,7 +74,7 @@
 
                 //Don't change this Timeout, they are diferent from above
                 var options = {
-                    timeout: 10000, 
+                    timeout: 10000,
                     maximumAge: 3000,
                     enableHighAccuracy: _highAccuracy
                 };
@@ -110,6 +110,11 @@
                 {
                     var isDiscarded = false;
 
+                    if (typeof backgroundGeoLocation !== "undefined")
+                    {
+                        backgroundGeoLocation.finish();
+                    }
+
                     //Over acuracy Threshold meters (Threshold/2 = radius)
                     if (position.coords.accuracy > _accuracyThreshold)
                     {
@@ -123,6 +128,7 @@
                         self.$fire("gps.pointDiscarded", [position]);
                         return;
                     }
+
 
                     //Check the Acuracy and accepto only "realistic" acuracy 
                     _updateLocation(position);
@@ -184,6 +190,51 @@
                     {
                         watcher = navigator.geolocation.watchPosition(onUpdateLocation, onFailureLocation, options);
 
+
+                        //Added Background GPS
+                        if (typeof backgroundGeoLocation !== "undefined")
+                        {
+                            if (_debug)
+                            {
+                                $log.warn("GPS: Enabling Background Mode...");
+                            }
+
+                            // BackgroundGeoLocation is highly configurable. See platform specific configuration options 
+                            backgroundGeoLocation.configure(function(location)
+                            {
+
+                                if (_debug)
+                                {
+                                    $log.info("GPS BG: Update Position...", location);
+                                }
+
+                                onUpdateLocation(
+                                {
+                                    coords:
+                                    {
+                                        altitudeAccuracy: location.altitudeAccuracy,
+                                        altitude: location.altitude,
+                                        accuracy: location.accuracy,
+                                        latitude: location.latitude,
+                                        longitude: location.longitude
+                                    },
+                                    timestamp: location.timestamp
+                                });
+
+                            }, onFailureLocation,
+                            {
+                                desiredAccuracy: 10,
+                                stationaryRadius: 10,
+                                distanceFilter: 30,
+                                debug: _debug, // <-- enable this hear sounds for background-geolocation life-cycle. 
+                                stopOnTerminate: true, // <-- enable this to clear background location settings when the app terminates 
+                            });
+
+                            // Turn ON the background-geolocation system.  The user will be tracked whenever they suspend the app. 
+                            backgroundGeoLocation.start();
+                        }
+
+
                         self.$fire("gps.start");
                     })
                 };
@@ -231,7 +282,7 @@
                         }
                     }
 
-                }, (_timeout + 500));
+                }, (_timeout + (_timeout / 3)));
 
                 //------------------------------------------------
                 // Only for Testing Purpose!

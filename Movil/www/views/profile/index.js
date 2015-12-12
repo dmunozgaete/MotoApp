@@ -3,13 +3,15 @@ angular.route('app.profile/index', function(
     $state,
     $log,
     $Api,
-    $Identity
+    $Identity,
+    $LocalStorage
 )
 {
+    var user = $Identity.getCurrent();
 
     //---------------------------------------------------
     // Get Data
-    $Api.read("/Profile").success(function(data)
+    $Api.read("/Accounts/Me").success(function(data)
     {
         //Set Profile
         $scope.profile = data;
@@ -19,8 +21,31 @@ angular.route('app.profile/index', function(
 
     //------------------------------------------------
     // Action's
+    $scope.getProgress = function(exp)
+    {
+        if (exp.total == 0)
+        {
+            return 0;
+        }
+        return exp.total * 100 / exp.level;
+    };
+
+    $scope.edit = function()
+    {
+        $state.go("app.profile/edit");
+    };
+
+    $scope.medals = function()
+    {
+        $state.go("app.profile/edit/medals",
+        {
+            user: user.primarysid
+        });
+    };
+
     $scope.logOut = function()
     {
+        $LocalStorage.clear();
         $Identity.logOut();
     };
 

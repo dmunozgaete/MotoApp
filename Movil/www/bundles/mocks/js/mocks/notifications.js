@@ -1,9 +1,9 @@
 angular.module('mocks.api')
 
-.run(function(mock, $log)
+.run(function(Mocks, $log)
 {
     //-------------------------------------------------------------
-    mock.whenGET("/Notifications", function(method, url, data)
+    Mocks.whenGET("/Notifications", function(method, url, data)
     {
         var result = {
             timestamp: new Date().toISOString(),

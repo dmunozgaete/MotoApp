@@ -7,11 +7,10 @@
                 <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
                 </button>
             </ion-nav-buttons>
-    
             <!-- RIGHT BUTTON'S -->
             <ion-nav-buttons side="right">
-                <button class="button button-icon ion-android-notifications notification" ui-sref="app.notifications">
-                    <span class="badge badge-assertive">2</span>
+                <button ng-if="config.notifications >0" class="button button-icon ion-android-notifications notification" ui-sref="app.notifications">
+                    <span class="badge badge-assertive">{{config.notifications}}</span>
                 </button>
             </ion-nav-buttons>
         </ion-nav-bar>
@@ -25,15 +24,15 @@
                 <div class="marker">
                     <div class="halo">
                         <div>
-                            <img ng-src="bundles/mocks/css/images/dmunoz.jpg" />
+                            <img ng-src="{{config.user.photo | restricted}}" />
                         </div>
                     </div>
                 </div>
                 <div class="name">
-                    David Muñoz Gaete
+                    {{config.user.unique_name}}
                 </div>
                 <div class="description">
-                    Novato
+                    
                 </div>
             </center>
             <br />
@@ -41,6 +40,8 @@
                 <ion-item nav-clear menu-toggle="left" ng-repeat="item in config.menu" ng-click="navigateTo(item)" ng-class="{'active': item.active}">
                     <i class="icon {{item.icon}}"></i>
                     <span>{{item.label}}</span>
+
+                    <span ng-if="config.notifications >0 && item.route == 'app.notifications'" class="badge badge-assertive">{{config.notifications}}</span>
                 </ion-item>
             </ion-list>
         </ion-content>

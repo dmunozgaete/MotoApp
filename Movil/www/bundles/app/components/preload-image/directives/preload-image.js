@@ -55,7 +55,8 @@ angular.module('app.components')
                 setTimeout(function()
                 {
                     n.parentNode.removeChild(n)
-                }, 0);
+                }, 50);
+                $element[0].style.webkitTransform = 'scale(1)';
 
 
                 //Call $apply beacuse the loading is Async and

@@ -1,9 +1,9 @@
 angular.module('mocks.api')
 
-.run(function(mock, $log)
+.run(function(Mocks, $log)
 {
     //-------------------------------------------------------------
-    mock.whenGET("/Routes/Popular", function(method, url, data)
+    Mocks.whenGET("/Routes/Popular", function(method, url, data)
     {
         var result = {
             timestamp: new Date().toISOString(),
@@ -70,7 +70,7 @@ angular.module('mocks.api')
     //-------------------------------------------------------------
 
     //-------------------------------------------------------------
-    mock.whenGET("/Routes/Me", function(method, url, data)
+    Mocks.whenGET("/Routes/Me", function(method, url, data)
     {
         var result = {
             timestamp: new Date().toISOString(),
@@ -102,7 +102,7 @@ angular.module('mocks.api')
     //-------------------------------------------------------------
 
     //-------------------------------------------------------------
-    mock.whenGET("/Ambassadors", function(method, url, data)
+    Mocks.whenGET("/Ambassadors", function(method, url, data)
     {
         var result = {
             timestamp: new Date().toISOString(),

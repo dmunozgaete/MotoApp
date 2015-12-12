@@ -1,0 +1,72 @@
+<ion-view title="Embajador" class="profile index" cache-view="false">
+    <ion-nav-buttons side="left">
+        <button class="button" ng-click="back()">
+            <i class="icon ion-chevron-left"></i>
+        </button>
+    </ion-nav-buttons>
+    <!-- LOADING -->
+    <flex-loading ng-if="!profile" title="Recopilando Información..." legend="obteniendo información ^^">
+    </flex-loading>
+    <!-- CONTENT -->
+    <div ng-if="profile">
+        <ion-content>
+            <!-- HEADER PROFILE -->
+            <div class="stats">
+                <div class="row">
+                    <div class="col col-33">
+                        <!-- BUBBLE -->
+                        <div class="profile-bubble">
+                            <div class="marker">
+                                <div class="halo">
+                                    <div>
+                                        <img ng-src="{{profile.account.photo | restricted}}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col no-padding">
+                        <!-- STATS -->
+                        <div class="row no-padding">
+                            <div class="col no-padding">
+                                <div class="title">
+                                    Total Recorrido
+                                </div>
+                                <div class="counter">
+                                    {{ profile.social.distance | distance }} km
+                                </div>
+                                <div class="category">
+                                    {{ profile.sport.name }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="progress">
+                                <div style="width:10%">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col follower col-33">
+                        <span>{{ profile.social.following }}</span> Siguiendo
+                    </div>
+                    <div class="col following col-offset-5">
+                        <span>{{ profile.social.followers }}</span> Seguidores
+                    </div>
+                </div>
+            </div>
+            <!-- BANNER
+            <div class="row average">
+                <div class="col">
+                    Distancia Promedio
+                </div>
+                <div class="col col-33">
+                    {{ profile.resume.distance.average | currency : '' : 1}} km
+                </div>
+            </div>
+            -->
+        </ion-content>
+    </div>
+</ion-view>

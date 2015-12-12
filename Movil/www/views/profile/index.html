@@ -1,4 +1,4 @@
-<ion-view title="Mi Perfil" class="profile">
+<ion-view title="Mi Perfil" class="profile index" cache-view="false" can-swipe-back="false">
     <!-- LOADING -->
     <flex-loading ng-if="!profile" title="Recopilando Información..." legend="solo queremos saber ti ^^">
     </flex-loading>
@@ -14,7 +14,7 @@
                             <div class="marker">
                                 <div class="halo">
                                     <div>
-                                        <img ng-src="{{profile.image}}" />
+                                        <img ng-src="{{profile.account.photo | restricted}}" />
                                     </div>
                                 </div>
                             </div>
@@ -28,16 +28,10 @@
                                     Total Recorrido
                                 </div>
                                 <div class="counter">
-                                    {{ profile.resume.distance.total | currency : '' : 1}} km
+                                    {{ profile.social.distance | distance }} km
                                 </div>
                                 <div class="category">
-                                    {{ profile.type.name }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="progress">
-                                <div style="width:53%">
+                                    {{ profile.sport.name }}
                                 </div>
                             </div>
                         </div>
@@ -45,20 +39,42 @@
                 </div>
                 <div class="row">
                     <div class="col follower col-33">
-                        <span>{{ profile.following }}</span> Siguiendo
+                        <span>{{ profile.social.following }}</span> Siguiendo
                     </div>
                     <div class="col following col-offset-5">
-                        <span>{{ profile.followers }}</span> Seguidores
+                        <span>{{ profile.social.followers }}</span> Seguidores
                     </div>
                 </div>
             </div>
-            <!-- BANNER -->
-            <div class="row average">
-                <div class="col">
-                    Distancia Promedio
+            <!-- EXPERIENCE LEVE -->
+            <div class="experience">
+                <div class="brand">
+                    {{profile.social.experience.title}} &nbsp;
+                    <span>(Categoria {{profile.social.experience.category}})</span>
                 </div>
-                <div class="col col-33">
-                    {{ profile.resume.distance.average | currency : '' : 1}} km
+                <div class="progress">
+                    <div style="width:{{getProgress(profile.social.experience)}}%">
+                    </div>
+                </div>
+                <div class=" points">
+                    {{profile.social.experience.total}} / {{profile.social.experience.level}}
+                </div>
+            </div>
+            <!-- LIST ITEM's -->
+            <div class="row list-item" ng-click="edit();">
+                <div class="col">
+                    Editar Perfil
+                </div>
+                <div class="col col-20">
+                    <i class="icon ion-ios-arrow-right"></i>
+                </div>
+            </div>
+            <div class="row list-item" ng-click="medals();">
+                <div class="col">
+                    {{profile.social.medals.user}}/{{profile.social.medals.total}} Medallas Obtenidas
+                </div>
+                <div class="col col-20">
+                    <i class="icon ion-ios-arrow-right"></i>
                 </div>
             </div>
         </ion-content>

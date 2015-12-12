@@ -1,0 +1,25 @@
+<ion-modal-view ng-controller="RewardDialogController" class="reward">
+    <center>
+        <!-- POINTS -->
+        <div class="points">
+            {{data.points}} Pts
+        </div>
+        <!-- LOGO -->
+        <img src="bundles/app/css/images/medals/medal-active.png" />
+        <!-- TITLE -->
+        <div class="title">
+            {{data.name}}
+        </div>
+        <!-- TEXT -->
+        <div class="text">
+            Has ganado una nueva medalla
+        </div>
+        <!-- DESCRPIPTION -->
+        <div class="description">
+            {{data.description}}
+        </div>
+    </center>
+    <div class="bar bar-footer" ng-click="close();">
+        <div class="title">Cerrar</div>
+    </div>
+</ion-modal-view>

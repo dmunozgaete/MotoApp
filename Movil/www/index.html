@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
         <!-- WHITE LIST PLUGIN -->
-        <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
+        <!--<meta http-equiv="Content-Security-Policy" content="image-src *; default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">-->
+
+
 
         <title></title>
 
@@ -20,9 +22,20 @@
         <!-- inject:css -->
         <link rel="stylesheet" href="bundles/app/css/default.css">
         <link rel="stylesheet" href="bundles/app/css/platform-overrides.css">
+        <link rel="stylesheet" href="bundles/app/css/variables.css">
+        <link rel="stylesheet" href="bundles/app/components/empty-data/css/empty-data.css">
         <link rel="stylesheet" href="bundles/app/components/flex-loading/css/flex-loading.css">
         <link rel="stylesheet" href="bundles/app/components/preload-image/css/preload-image.css">
         <link rel="stylesheet" href="bundles/app/components/track-viewer/css/track-viewer.css">
+        <link rel="stylesheet" href="views/ambassadors/css/ambassadors.css">
+        <link rel="stylesheet" href="views/boot/css/boot.css">
+        <link rel="stylesheet" href="views/home/css/home.css">
+        <link rel="stylesheet" href="views/firstRun/css/firstRun.css">
+        <link rel="stylesheet" href="views/notifications/css/notifications.css">
+        <link rel="stylesheet" href="views/profile/css/profile.css">
+        <link rel="stylesheet" href="views/rewards/css/rewards.css">
+        <link rel="stylesheet" href="views/routes/css/routes.css">
+        <link rel="stylesheet" href="views/security/css/security.css">
         <!-- endinject -->
         
         <!-- cordova script (this will be a 404 during development) -->
@@ -41,26 +54,34 @@
         <script src="lib/angular-audio/app/angular.audio.js"></script>
         <script src="lib/angular-ios9-uiwebview-patch/angular-ios9-uiwebview-patch.js"></script>
         <script src="lib/moment/moment.js"></script>
+        <script src="lib/cordova-facebook-connect-plugin/lib/cordova-facebook-connect-plugin.js"></script>
+        <script src="lib/pouchdb/dist/pouchdb.js"></script>
+        <script src="lib/pouchdb-find/dist/pouchdb.find.min.js"></script>
         <script src="lib/ionic/js/ionic.js"></script>
         <script src="lib/ionic/js/ionic-angular.js"></script>
         <script src="lib/angular-google-maps/dist/angular-google-maps.js"></script>
         <script src="lib/angular-chart.js/dist/angular-chart.js"></script>
         <script src="lib/ionic-toast/dist/ionic-toast.js"></script>
         <script src="lib/angular-moment/angular-moment.js"></script>
+        <script src="lib/angular-pouchdb/angular-pouchdb.js"></script>
         <!-- endinject -->
         
         <!-- inject:js -->
         <script src="bundles/angular-locale/angular-locale_es-cl.js"></script>
+        <script src="bundles/angular-locale/moment.es-CL.js"></script>
         <script src="bundles/app/app.js"></script>
         <script src="bundles/mocks/mocks.js"></script>
         <script src="bundles/mocks/js/angular-mocks.js"></script>
         <script src="bundles/app/js/filters/calories.js"></script>
         <script src="bundles/app/js/filters/distance.js"></script>
+        <script src="bundles/app/js/filters/restricted.js"></script>
         <script src="bundles/app/js/filters/speed.js"></script>
         <script src="bundles/app/js/filters/time.js"></script>
-        <script src="bundles/app/js/services/BaseEventHandler.js"></script>
+        <script src="bundles/app/js/services/Background.js"></script>
+        <script src="bundles/app/js/services/Camera.js"></script>
+        <script src="bundles/app/js/services/File.js"></script>
         <script src="bundles/app/js/services/Gps.js"></script>
-        <script src="bundles/app/js/services/backgroundMode.js"></script>
+        <script src="bundles/app/js/services/Synchronizer.js"></script>
         <script src="bundles/app/js/services/routeTracker.js"></script>
         <script src="bundles/mocks/js/mocks/configuration.js"></script>
         <script src="bundles/mocks/js/mocks/dashboard.js"></script>
@@ -68,10 +89,16 @@
         <script src="bundles/mocks/js/mocks/profile.js"></script>
         <script src="bundles/mocks/js/mocks/routes.js"></script>
         <script src="bundles/mocks/js/mocks/security.js"></script>
-        <script src="bundles/app/components/flex-loading/directives/flex-laoding.js"></script>
+        <script src="bundles/app/components/empty-data/directives/empty-data.js"></script>
+        <script src="bundles/app/components/flex-loading/directives/flex-loading.js"></script>
         <script src="bundles/app/components/preload-image/directives/preload-image.js"></script>
         <script src="bundles/app/components/track-viewer/directives/track-viewer.js"></script>
         <script src="bundles/app/components/track-viewer/services/trackViewer.js"></script>
+        <script src="bundles/app/js/services/synchronizers/NotificationSynchronizer.js"></script>
+        <script src="bundles/app/js/services/synchronizers/PendingRouteSynchronizer.js"></script>
+        <script src="bundles/app/js/services/synchronizers/RouteSynchronizer.js"></script>
+        <script src="views/ambassadors/details.js"></script>
+        <script src="views/ambassadors/index.js"></script>
         <script src="views/boot/index.js"></script>
         <script src="views/error/404.js"></script>
         <script src="views/home/index.js"></script>
@@ -80,17 +107,26 @@
         <script src="views/layouts/no-menu.js"></script>
         <script src="views/notifications/index.js"></script>
         <script src="views/profile/index.js"></script>
+        <script src="views/rewards/reward.js"></script>
+        <script src="views/firstRun/configuration/step-1.js"></script>
+        <script src="views/profile/edit/index.js"></script>
+        <script src="views/profile/edit/medals.js"></script>
         <script src="views/routes/create/gps.js"></script>
         <script src="views/routes/create/index.js"></script>
         <script src="views/routes/create/map.js"></script>
         <script src="views/routes/create/pause.js"></script>
+        <script src="views/routes/create/photos.js"></script>
+        <script src="views/routes/create/saveForLater.js"></script>
         <script src="views/routes/create/share.js"></script>
         <script src="views/routes/create/start.js"></script>
         <script src="views/routes/create/stop.js"></script>
-        <script src="views/routes/list/ambassadors.js"></script>
+        <script src="views/routes/create/upload.js"></script>
         <script src="views/routes/list/index.js"></script>
         <script src="views/routes/list/my-routes.js"></script>
         <script src="views/routes/list/popular.js"></script>
+        <script src="views/routes/list/shared-routes.js"></script>
+        <script src="views/routes/view/index.js"></script>
+        <script src="views/routes/view/photos.js"></script>
         <script src="views/security/identity/login.js"></script>
         <!-- endinject -->
 
@@ -98,7 +134,9 @@
         <script src="Application.js"></script>
     </head>
 
-    <body >
+    <body>
+
+        <!-- ANGULAR VIEW -->
         <div ui-view ng-cloak md-theme="imoto">
         </div>
     </body>

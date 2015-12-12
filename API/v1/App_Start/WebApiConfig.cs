@@ -15,6 +15,11 @@ namespace API
 	/// </summary>
 	public static class WebApiConfig
 	{
+        /// <summary>
+        /// Roles with Administrator Privileges
+        /// </summary>
+        public const string RootRoles = "ROOT";
+
 		/// <summary>
 		/// Register Config Variables
 		/// </summary>

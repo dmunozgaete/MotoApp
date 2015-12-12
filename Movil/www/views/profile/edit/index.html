@@ -1,0 +1,61 @@
+<ion-view title="Mis Datos" class="profile edit">
+    <ion-nav-buttons side="left">
+        <button class="button" ng-click="back()">
+            <i class="icon ion-chevron-left"></i>
+        </button>
+    </ion-nav-buttons>
+    <!-- CONTENT -->
+    <form name="form">
+        <div >
+            <ion-content>
+                <div class="row title">
+                    <div class="col">
+                        Datos Personales:
+                    </div>
+                </div>
+                <!-- WEIGHT -->
+                <div class="row">
+                    <div class="col">
+                        Peso (kg.)
+                    </div>
+                    <div class="col-33">
+                        <input type="tel" ng-model="data.weight" maxlength="3" required ng-range min="30" max="600" class="value" />
+                    </div>
+                </div>
+                <!-- SPORT TYPE -->
+                <div class="row">
+                    <div class="col">
+                        Deporte
+                    </div>
+                    <div class="col-66">
+                        <select ng-model="data.sport" class="value" required>
+                            <option ng-repeat="item in collections.sportTypes" ng-selected="item.identifier == data.sport" ng-value="{{item}}">{{item.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <br />
+                <div class="row title">
+                    <div class="col">
+                        Numeros de Emergencia:
+                        <div class="fav-button" ng-click="pickContact();">
+                            <i class="icon ion-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- EMERGENCY PHONEs -->
+                <div class="row phones" ng-repeat="item in data.emergencyPhones">
+                    <div class="col no-padding" ng-click="delete(item,$index);">
+                        {{item}}
+                    </div>
+                </div>
+            </ion-content>
+            <ion-footer-bar>
+                <!-- SAVE DATA -->
+                <button class="button button-block" ng-disabled="form.$invalid" ng-click="save(data);">
+                    <i class="icon ion-ios-checkmark-outline"></i>
+                    <span>Guardar Datos</span>
+                </button>
+            </ion-footer-bar>
+        </div>
+    </form>
+</ion-view>

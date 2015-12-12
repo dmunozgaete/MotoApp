@@ -1,0 +1,16 @@
+@import "../../../bundles/app/css/variables";
+
+/*------------------------- 
+VIEW:   Boot Page
+ROUTE:  /boot
+-------------------------*/
+ion-view.boot {
+    flex-loading {
+        div.message {
+            font-size: 1.4em;
+        }
+        div.legend {
+            font-size: 1em;
+        }
+    }
+}
