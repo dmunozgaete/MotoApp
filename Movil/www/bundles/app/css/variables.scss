@@ -1,0 +1,36 @@
+/* 
+    SASS Theme Variables 
+*/
+
+$primary_color: #1c1c29;
+$primary_Hue900_color: #141925;
+$accent_color: #ffc107;
+$text_color: #fff;
+
+
+.box-shadow-3dp {
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, .2), 0 3px 4px 0 rgba(0, 0, 0, .14), 0 3px 3px -2px rgba(0, 0, 0, .12)
+}
+
+.box-shadow-8dp {
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2), 0 8px 10px 1px rgba(0, 0, 0, .14), 0 3px 14px 2px rgba(0, 0, 0, .12)
+}
+
+.grayscale {
+    filter: url("data:image/svg+xml;utf8,&lt;svg xmlns=\'http://www.w3.org/2000/svg\'&gt;&lt;filter id=\'grayscale\'&gt;&lt;feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale");
+    /* Firefox 10+, Firefox on Android */
+    filter: gray;
+    /* IE6-9 */
+    -webkit-filter: grayscale(100%);
+    /* Chrome 19+, Safari 6+, Safari 6+ iOS */
+}
+
+@mixin flex-size($percent) {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 $percent;
+    -moz-box-flex: 0;
+    -moz-flex: 0 0 $percent;
+    -ms-flex: 0 0 $percent;
+    flex: 0 0 $percent;
+    max-width: $percent;
+}

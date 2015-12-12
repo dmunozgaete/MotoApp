@@ -3,7 +3,8 @@ angular.route('app.ambassadors/index', function(
     $state,
     $log,
     $filter,
-    $Api
+    $Api,
+    Rewards
 )
 {
     //---------------------------------------------------
@@ -71,6 +72,8 @@ angular.route('app.ambassadors/index', function(
             {
                 item.followers += 1;
                 item.follow = true;
+
+                Rewards.check('AMBASSADORS');
             });
 
         }

@@ -7,6 +7,7 @@ angular.route('app.profile/index', function(
     $LocalStorage
 )
 {
+    var user = $Identity.getCurrent();
 
     //---------------------------------------------------
     // Get Data
@@ -20,6 +21,28 @@ angular.route('app.profile/index', function(
 
     //------------------------------------------------
     // Action's
+    $scope.getProgress = function(exp)
+    {
+        if (exp.total == 0)
+        {
+            return 0;
+        }
+        return exp.total * 100 / exp.level;
+    };
+
+    $scope.edit = function()
+    {
+        $state.go("app.profile/edit");
+    };
+
+    $scope.medals = function()
+    {
+        $state.go("app.profile/edit/medals",
+        {
+            user: user.primarysid
+        });
+    };
+
     $scope.logOut = function()
     {
         $LocalStorage.clear();

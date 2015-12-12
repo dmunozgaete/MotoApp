@@ -26,7 +26,6 @@
       <Column Name="COOR_Distancia" Member="distance" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
       <Column Name="COOR_Duracion" Member="duration" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
       <Column Name="COOR_Fecha" Member="createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="" Member="Property" Type="System.String" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.VT_MOT_Rutas" Member="Routes">
@@ -84,7 +83,16 @@
   </Table>
   <Table Name="" Member="RoutePhotos">
     <Type Name="RoutePhoto">
-      <Column Member="photo" Type="System.String" CanBeNull="false" />
+      <Column Name="photo" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="SocialRoutes">
+    <Type Name="SocialRoute">
+      <Column Name="MeGusta" Member="like" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="RUCO_Nombre" Member="name" Storage="_shared_name" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="RUCO_MeGusta" Member="totalLikes" Storage="_shared_likes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RUCO_Observaciones" Member="observations" Storage="_shared_observations" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="RUCO_Fecha" Member="sharedAt" Storage="_shared_createdAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

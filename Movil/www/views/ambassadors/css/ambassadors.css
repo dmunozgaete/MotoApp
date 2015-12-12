@@ -1,0 +1,77 @@
+/* 
+    SASS Theme Variables 
+*/
+.box-shadow-3dp, ion-view.ambassadors ion-content ion-item {
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.12); }
+
+.box-shadow-8dp {
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12); }
+
+.grayscale {
+  filter: url("data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg'&gt;&lt;filter id='grayscale'&gt;&lt;feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale");
+  /* Firefox 10+, Firefox on Android */
+  filter: gray;
+  /* IE6-9 */
+  -webkit-filter: grayscale(100%);
+  /* Chrome 19+, Safari 6+, Safari 6+ iOS */ }
+
+/*------------------------- 
+VIEW:   Ambassadors Page
+ROUTE:  /app/ambassadors
+-------------------------*/
+ion-view.ambassadors ion-content ion-item {
+  margin: 0.5em 0.5em 0em 0.5em;
+  padding-bottom: 8px;
+  margin-top: 0.6em;
+  border-radius: 2px;
+  padding-bottom: 10px !important; }
+  ion-view.ambassadors ion-content ion-item:first-child {
+    margin-top: 1em; }
+  ion-view.ambassadors ion-content ion-item p {
+    font-size: 0.8em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.2em;
+    white-space: normal; }
+  ion-view.ambassadors ion-content ion-item h2 {
+    margin-right: 27px;
+    font-size: 0.9em; }
+  ion-view.ambassadors ion-content ion-item preload-image:first-child {
+    position: absolute;
+    top: 16px !important;
+    left: 16px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    border-radius: 50% !important;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; }
+  ion-view.ambassadors ion-content ion-item div.information {
+    min-height: 38px !important; }
+  ion-view.ambassadors ion-content ion-item div.markers {
+    font-size: 0.9em; }
+    ion-view.ambassadors ion-content ion-item div.markers div.col span.value {
+      font-weight: bold; }
+    ion-view.ambassadors ion-content ion-item div.markers div.col span.unit {
+      font-size: 0.8em; }
+    ion-view.ambassadors ion-content ion-item div.markers div.col:last-child {
+      text-align: right; }
+  ion-view.ambassadors ion-content ion-item div.follow-button {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    border-radius: 4px;
+    border: 1px solid #E2E1E1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2em;
+    height: 1.7em;
+    width: 2em; }
+    ion-view.ambassadors ion-content ion-item div.follow-button > i {
+      margin-top: 1px; }
+    ion-view.ambassadors ion-content ion-item div.follow-button > ion-spinner {
+      margin-top: 4px; }
+
+/*# sourceMappingURL=ambassadors.css.map */

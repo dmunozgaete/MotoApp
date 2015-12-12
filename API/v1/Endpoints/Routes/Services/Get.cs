@@ -8,21 +8,15 @@ using System.Web;
 namespace API.Endpoints.Routes.Services
 {
     /// <summary>
-    /// Retrieve a Target User
+    /// Retrieve a Target Route
     /// </summary>
     public class Get : Gale.REST.Http.HttpReadActionResult<String>
     {
-        DateTime _timestamp;
-
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="token"></param>
-        public Get(DateTime timestamp, String user)
-            : base(user)
-        {
-            this._timestamp = timestamp;
-        }
+        public Get(String route) : base(route) { }
 
         /// <summary>
         /// Async Process
@@ -31,16 +25,17 @@ namespace API.Endpoints.Routes.Services
         /// <returns></returns>
         public override System.Threading.Tasks.Task<System.Net.Http.HttpResponseMessage> ExecuteAsync(System.Threading.CancellationToken cancellationToken)
         {
-            using (Gale.Db.DataService svc = new Gale.Db.DataService("[PA_MOT_OBT_MisRutas]"))
+            using (Gale.Db.DataService svc = new Gale.Db.DataService("[PA_MOT_OBT_Ruta]"))
             {
-                svc.Parameters.Add("USUA_Token", this.Model);
-                svc.Parameters.Add("MarcaTiempo", _timestamp);
+                svc.Parameters.Add("USUA_Token", HttpContext.Current.User.PrimarySid());
+                svc.Parameters.Add("RUTA_Token", this.Model);
 
                 Gale.Db.EntityRepository rep = this.ExecuteQuery(svc);
 
-                List<Models.Route> items = rep.GetModel<Models.Route>();
-
-                DateTime stamp = items.Count>0 ? items.Max((a)=>a.createdAt) : _timestamp;
+                Models.Route route = rep.GetModel<Models.Route>().FirstOrDefault();
+                Models.SocialRoute socialRoute = rep.GetModel<Models.SocialRoute>().FirstOrDefault();
+                List<Models.Coordinates> coords = rep.GetModel<Models.Coordinates>(1);
+                List<Models.RoutePhoto> photos = rep.GetModel<Models.RoutePhoto>(2);
                 //----------------------------------------------------------------------------------------------------
                 //Create Response
                 var response = new HttpResponseMessage(System.Net.HttpStatusCode.OK)
@@ -48,11 +43,12 @@ namespace API.Endpoints.Routes.Services
                     Content = new ObjectContent<Object>(
                         new
                         {
-                            timestamp = stamp,
-                            total = items.Count,
-                            items = items
+                            details = route,
+                            coordinates = coords,
+                            social = socialRoute,
+                            photos = photos
                         },
-                        System.Web.Http.GlobalConfiguration.Configuration.Formatters.KqlFormatter()    //-> CAMEL_CASING RETRIEVE DIFERENT OBJECT =)
+                        System.Web.Http.GlobalConfiguration.Configuration.Formatters.KqlFormatter()
                     )
                 };
 

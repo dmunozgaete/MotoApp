@@ -11,7 +11,8 @@ angular.module('app.components')
             $scope,
             $element,
             $log,
-            $Api
+            $Api,
+            $state
         )
         {
 
@@ -33,6 +34,14 @@ angular.module('app.components')
 
             //------------------------------------------------
             // Action's
+            $scope.view = function(item)
+            {
+                $state.go("app.routes/view/index",
+                {
+                    route: item.token
+                });
+            };
+
             $scope.doRefresh = function()
             {
                 update(function()

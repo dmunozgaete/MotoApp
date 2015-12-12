@@ -6,7 +6,8 @@ angular.route('app.home/index', function(
     $interval,
     $timeout,
     $Identity,
-    $ionicNavBarDelegate
+    $ionicNavBarDelegate,
+    Rewards
 )
 {
     //----------------------------------------
@@ -30,7 +31,7 @@ angular.route('app.home/index', function(
         $timeout.cancel(delay);
     });
     //----------------------------------------
-
+    
     //----------------------------------------
     // Charts Data
     //  http://jtblin.github.io/angular-chart.js/

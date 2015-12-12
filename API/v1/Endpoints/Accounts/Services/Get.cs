@@ -37,7 +37,7 @@ namespace API.Endpoints.Accounts.Services
                 Models.PersonalData personal = rep.GetModel<Models.PersonalData>(3).FirstOrDefault();
                 Models.Sport sport = rep.GetModel<Models.Sport>(3).FirstOrDefault();
                 List<Models.EmergencyPhones> phones = rep.GetModel<Models.EmergencyPhones>(4);
-                //Models.PersonalData personal = rep.GetModel<Models.PersonalData>(3).FirstOrDefault();
+                List<Models.Medal> medals = rep.GetModel<Models.Medal>(5);
 
                 //----------------------------------------------------------------------------------------------------
                 //Guard Exception's
@@ -61,7 +61,8 @@ namespace API.Endpoints.Accounts.Services
                             roles = roles,
                             sport = sport,
                             personal = personal,
-                            social = counter
+                            social = counter,
+                            medals = medals
                         },
                         System.Web.Http.GlobalConfiguration.Configuration.Formatters.KqlFormatter()
                     )

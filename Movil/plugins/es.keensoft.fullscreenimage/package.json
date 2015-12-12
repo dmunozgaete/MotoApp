@@ -1,0 +1,10 @@
+{
+  "name": "es.keensoft.fullscreenimage",
+  "version": "0.2.10",
+  "description": "Plugin to show images from cordova project and use it with native components.",
+  "keywords": [],
+  "author": "keensoft",
+  "repository": "git://github.com/keensoft/FullScreenImage-Cordova-Plugin.git",
+  "main": "index",
+  "homepage": "https://github.com/keensoft/FullScreenImage-Cordova-Plugin"
+}

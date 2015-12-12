@@ -6,12 +6,18 @@
       <Column Name="SOCU_Siguiendo" Member="following" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="SOCU_MeGusta" Member="likes" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="RUTA_Distancia" Member="distance" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="MEDA_Total" Member="medals_total" Type="System.Int32" CanBeNull="false" />
+      <Column Name="MEDA_Contador" Member="medals_user" Type="System.Int32" CanBeNull="false" />
+      <Column Name="USUA_PuntosActuales" Member="experience_total" Type="System.Int32" CanBeNull="false" />
+      <Column Name="NIVE_Puntos" Member="experience_level" Type="System.Int32" CanBeNull="false" />
+      <Column Name="NIVE_Titulo" Member="experience_title" Type="System.String" CanBeNull="false" />
+      <Column Name="NIVE_Ordinal" Member="experience_category" Type="System.Int32" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.TB_MOT_TipoDeporte" Member="PersonalDatas">
     <Type Name="PersonalData">
       <Column Name="USUA_Peso" Member="weight" Type="System.Int32" DbType="INT" CanBeNull="false" />
-      <Column Member="emergencyPhones" Type="List&lt;String&gt;" CanBeNull="false" />
+      <Column Name="emergencyPhones" Type="List&lt;String&gt;" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.V_Perfiles" Member="Roles">
@@ -40,8 +46,8 @@
   </Table>
   <Table Name="" Member="UpdatePersonalDatas">
     <Type Name="UpdatePersonalData">
-      <Column Member="sport" Type="System.String" CanBeNull="false" />
-      <Column Member="weight" Type="System.Int32" CanBeNull="false" />
+      <Column Name="sport" Type="System.String" CanBeNull="false" />
+      <Column Name="weight" Type="System.Int32" CanBeNull="false" />
       <Column Name="" Member="emergencyPhones" Type="List&lt;String&gt;" CanBeNull="false" />
     </Type>
   </Table>
@@ -50,6 +56,27 @@
       <Column Name="TIDE_Nombre" Member="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="TIDE_Descripcion" Member="description" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
       <Column Name="TIDE_Identificador" Member="identifier" Type="System.String" DbType="Char(5) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VT_MOT_Medallas" Member="Medals">
+    <Type Name="Medal">
+      <Column Name="MEDA_Token" Member="token" Type="System.Guid" DbType="UniqueIdentifier" IsPrimaryKey="true" CanBeNull="true" />
+      <Column Name="MEUS_Fecha" Member="acquiredAt" Type="System.DateTime" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VT_MOT_Medallas" Member="NewMedals">
+    <Type Name="NewMedal">
+      <Column Name="MEDA_Nombre" Member="name" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="MEDA_Descripcion" Member="description" Type="System.String" DbType="VarChar(90) NOT NULL" CanBeNull="false" />
+      <Column Name="MEDA_Identificador" Member="identifier" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="MEDA_Puntos" Member="points" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MEDA_Token" Member="token" Type="System.Guid" DbType="UniqueIdentifier" IsPrimaryKey="true" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="" Member="NewDetails">
+    <Type Name="NewDetails">
+      <Column Name="USUA_SubioNivel" Member="level_up" Storage="_levelUp" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="NIVE_Titulo" Member="level_title" Type="System.String" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

@@ -29,25 +29,53 @@ namespace API.Endpoints.Routes
 
 
         /// <summary>
-        /// Retrieve Current Routes
+        /// Retrieve Detailed Route
         /// </summary>
         /// <returns></returns>
         [HttpGet]
         [Swashbuckle.Swagger.Annotations.SwaggerResponseRemoveDefaults]
         [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.OK)]
-        public IHttpActionResult Get(string token)
+        [HierarchicalRoute("/{route:Guid}")]
+        public IHttpActionResult Get(string route)
         {
-            //Only My Routes
-            var config = new Gale.REST.Queryable.OData.Builders.GQLConfiguration();
-            config.filters.Add(new Gale.REST.Queryable.OData.Builders.GQLConfiguration.Filter
-            {
-                field = "user_token",
-                operatorAlias = "eq",
-                value = token
-            });
-            return new Gale.REST.Http.HttpQueryableActionResult<Models.Route>(this.Request, config);
+            return new Services.Get(route);
         }
 
+        /// <summary>
+        /// Like Route
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost]
+        [Swashbuckle.Swagger.Annotations.SwaggerResponseRemoveDefaults]
+        [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.Created)]
+        [HierarchicalRoute("/{route}/Like")]
+        public IHttpActionResult Like(String route)
+        {
+            //------------------------------------------------------------------------------------------------------
+            // GUARD EXCEPTIONS
+            Gale.Exception.RestException.Guard(() => route == null, "EMPTY_ROUTE", API.Errors.ResourceManager);
+            //------------------------------------------------------------------------------------------------------
+
+            return new Services.Like(this.User.PrimarySid(), route);
+        }
+
+        /// <summary>
+        /// Unlike Route
+        /// </summary>
+        /// <returns></returns>
+        [HttpDelete]
+        [Swashbuckle.Swagger.Annotations.SwaggerResponseRemoveDefaults]
+        [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.Created)]
+        [HierarchicalRoute("/{route}/Unlike")]
+        public IHttpActionResult Unlike(String route)
+        {
+            //------------------------------------------------------------------------------------------------------
+            // GUARD EXCEPTIONS
+            Gale.Exception.RestException.Guard(() => route == null, "EMPTY_ROUTE", API.Errors.ResourceManager);
+            //------------------------------------------------------------------------------------------------------
+
+            return new Services.Unlike(this.User.PrimarySid(), route);
+        }
 
         /// <summary>
         /// Retrieve Current Routes specified by timestamp (for syncing)
@@ -65,7 +93,7 @@ namespace API.Endpoints.Routes
             Gale.Exception.RestException.Guard(() => timestamp == null, "EMPTY_TIMESTAMP", API.Errors.ResourceManager);
             //------------------------------------------------------------------------------------------------------
 
-            return new Services.Get(timestamp, this.User.PrimarySid());
+            return new Services.MyRoutes(timestamp, this.User.PrimarySid());
         }
 
         /// <summary>

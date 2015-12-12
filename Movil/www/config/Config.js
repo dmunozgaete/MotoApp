@@ -2,10 +2,10 @@ angular.module("config", []).constant("GLOBAL_CONFIGURATION",
 {
     application:
     {
-        version: "1.0.2-rc.6",
+        version: "1.0.3-rc.1",
         environment: "production",
         language: "es",
-        home: "app/home"
+        home: "app/profile"
     },
 
     on_build_new_version: function(newVersion, oldVersion)

@@ -13,7 +13,8 @@ angular.module('app.services.synchronizers')
         $Api,
         $Identity,
         $filter,
-        $cordovaLocalNotification
+        $cordovaLocalNotification,
+        Rewards
     )
     {
         // SYNC VARIABLES
@@ -189,6 +190,8 @@ angular.module('app.services.synchronizers')
 
                 var db = pouchDB(database.name, database.options);
                 db.remove(route); //REMOVE THE PENDING ROUTE WHEN SYNC!
+
+                Rewards.check('ROUTES');
 
                 process_defer.resolve();
 

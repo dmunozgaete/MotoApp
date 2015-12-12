@@ -116,6 +116,7 @@
     </Compile>
     <Compile Include="Endpoints\Accounts\Services\Create.cs" />
     <Compile Include="Endpoints\Accounts\Services\Get.cs" />
+    <Compile Include="Endpoints\Accounts\Services\Medals\Check.cs" />
     <Compile Include="Endpoints\Accounts\Services\Update.cs" />
     <Compile Include="Endpoints\Ambassadors\AmbassadorsController.cs" />
     <Compile Include="Endpoints\Ambassadors\Models\Ambassadors.designer.cs">
@@ -141,6 +142,12 @@
     </Compile>
     <Compile Include="Endpoints\Files\Services\Upload.cs" />
     <Compile Include="Endpoints\Files\Services\View.cs" />
+    <Compile Include="Endpoints\Medals\MedalsController.cs" />
+    <Compile Include="Endpoints\Medals\Models\Medals.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Medals.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Endpoints\Notifications\Models\Notifications.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -157,10 +164,13 @@
       <DependentUpon>Routes.dbml</DependentUpon>
     </Compile>
     <Compile Include="Endpoints\Routes\RoutesController.cs" />
-    <Compile Include="Endpoints\Routes\Services\SavePhoto.cs" />
+    <Compile Include="Endpoints\Routes\Services\Like.cs" />
     <Compile Include="Endpoints\Routes\Services\Get.cs" />
+    <Compile Include="Endpoints\Routes\Services\SavePhoto.cs" />
+    <Compile Include="Endpoints\Routes\Services\MyRoutes.cs" />
     <Compile Include="Endpoints\Routes\Services\Share.cs" />
     <Compile Include="Endpoints\Routes\Services\Create.cs" />
+    <Compile Include="Endpoints\Routes\Services\Unlike.cs" />
     <Compile Include="Endpoints\Security\Models\Oauth.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -243,10 +253,16 @@
       <LastGenOutput>Profile.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Endpoints\Medals\Models\Medals.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Medals.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Properties\PublishProfiles\PRD.pubxml" />
     <Content Include="Templates\Mail\Account\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -274,6 +290,9 @@
     </None>
     <None Include="Endpoints\Accounts\Models\Profile.dbml.layout">
       <DependentUpon>Profile.dbml</DependentUpon>
+    </None>
+    <None Include="Endpoints\Medals\Models\Medals.dbml.layout">
+      <DependentUpon>Medals.dbml</DependentUpon>
     </None>
     <EmbeddedResource Include="Templates\Mail\Account\Register.resx">
       <Generator>ResXFileCodeGenerator</Generator>

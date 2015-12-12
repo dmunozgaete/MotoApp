@@ -39,6 +39,12 @@ namespace API.Endpoints.Accounts.Models
     partial void InsertSport(Sport instance);
     partial void UpdateSport(Sport instance);
     partial void DeleteSport(Sport instance);
+    partial void InsertMedal(Medal instance);
+    partial void UpdateMedal(Medal instance);
+    partial void DeleteMedal(Medal instance);
+    partial void InsertNewMedal(NewMedal instance);
+    partial void UpdateNewMedal(NewMedal instance);
+    partial void DeleteNewMedal(NewMedal instance);
     #endregion
 		
 		public ProfileDataContext() : 
@@ -126,6 +132,30 @@ namespace API.Endpoints.Accounts.Models
 				return this.GetTable<Sport>();
 			}
 		}
+		
+		public System.Data.Linq.Table<Medal> Medals
+		{
+			get
+			{
+				return this.GetTable<Medal>();
+			}
+		}
+		
+		public System.Data.Linq.Table<NewMedal> NewMedals
+		{
+			get
+			{
+				return this.GetTable<NewMedal>();
+			}
+		}
+		
+		public System.Data.Linq.Table<NewDetails> NewDetails
+		{
+			get
+			{
+				return this.GetTable<NewDetails>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TB_MOT_ContadorSocial")]
@@ -139,6 +169,18 @@ namespace API.Endpoints.Accounts.Models
 		private int _likes;
 		
 		private decimal _distance;
+		
+		private int _medals_total;
+		
+		private int _medals_user;
+		
+		private int _experience_total;
+		
+		private int _experience_level;
+		
+		private string _experience_title;
+		
+		private int _experience_category;
 		
 		public SocialProfile()
 		{
@@ -204,6 +246,102 @@ namespace API.Endpoints.Accounts.Models
 				if ((this._distance != value))
 				{
 					this._distance = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="MEDA_Total", Storage="_medals_total")]
+		public int medals_total
+		{
+			get
+			{
+				return this._medals_total;
+			}
+			set
+			{
+				if ((this._medals_total != value))
+				{
+					this._medals_total = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="MEDA_Contador", Storage="_medals_user")]
+		public int medals_user
+		{
+			get
+			{
+				return this._medals_user;
+			}
+			set
+			{
+				if ((this._medals_user != value))
+				{
+					this._medals_user = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="USUA_PuntosActuales", Storage="_experience_total")]
+		public int experience_total
+		{
+			get
+			{
+				return this._experience_total;
+			}
+			set
+			{
+				if ((this._experience_total != value))
+				{
+					this._experience_total = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="NIVE_Puntos", Storage="_experience_level")]
+		public int experience_level
+		{
+			get
+			{
+				return this._experience_level;
+			}
+			set
+			{
+				if ((this._experience_level != value))
+				{
+					this._experience_level = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="NIVE_Titulo", Storage="_experience_title", CanBeNull=false)]
+		public string experience_title
+		{
+			get
+			{
+				return this._experience_title;
+			}
+			set
+			{
+				if ((this._experience_title != value))
+				{
+					this._experience_title = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="NIVE_Ordinal", Storage="_experience_category")]
+		public int experience_category
+		{
+			get
+			{
+				return this._experience_category;
+			}
+			set
+			{
+				if ((this._experience_category != value))
+				{
+					this._experience_category = value;
 				}
 			}
 		}
@@ -790,6 +928,295 @@ namespace API.Endpoints.Accounts.Models
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VT_MOT_Medallas")]
+	public partial class Medal : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Nullable<System.Guid> _token;
+		
+		private System.DateTime _acquiredAt;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OntokenChanging(System.Nullable<System.Guid> value);
+    partial void OntokenChanged();
+    partial void OnacquiredAtChanging(System.DateTime value);
+    partial void OnacquiredAtChanged();
+    #endregion
+		
+		public Medal()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="MEDA_Token", Storage="_token", DbType="UniqueIdentifier", IsPrimaryKey=true)]
+		public System.Nullable<System.Guid> token
+		{
+			get
+			{
+				return this._token;
+			}
+			set
+			{
+				if ((this._token != value))
+				{
+					this.OntokenChanging(value);
+					this.SendPropertyChanging();
+					this._token = value;
+					this.SendPropertyChanged("token");
+					this.OntokenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="MEUS_Fecha", Storage="_acquiredAt")]
+		public System.DateTime acquiredAt
+		{
+			get
+			{
+				return this._acquiredAt;
+			}
+			set
+			{
+				if ((this._acquiredAt != value))
+				{
+					this.OnacquiredAtChanging(value);
+					this.SendPropertyChanging();
+					this._acquiredAt = value;
+					this.SendPropertyChanged("acquiredAt");
+					this.OnacquiredAtChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VT_MOT_Medallas")]
+	public partial class NewMedal : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _name;
+		
+		private string _description;
+		
+		private string _identifier;
+		
+		private int _points;
+		
+		private System.Nullable<System.Guid> _token;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OndescriptionChanging(string value);
+    partial void OndescriptionChanged();
+    partial void OnidentifierChanging(string value);
+    partial void OnidentifierChanged();
+    partial void OnpointsChanging(int value);
+    partial void OnpointsChanged();
+    partial void OntokenChanging(System.Nullable<System.Guid> value);
+    partial void OntokenChanged();
+    #endregion
+		
+		public NewMedal()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="MEDA_Nombre", Storage="_name", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="MEDA_Descripcion", Storage="_description", DbType="VarChar(90) NOT NULL", CanBeNull=false)]
+		public string description
+		{
+			get
+			{
+				return this._description;
+			}
+			set
+			{
+				if ((this._description != value))
+				{
+					this.OndescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._description = value;
+					this.SendPropertyChanged("description");
+					this.OndescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="MEDA_Identificador", Storage="_identifier", DbType="VarChar(20)")]
+		public string identifier
+		{
+			get
+			{
+				return this._identifier;
+			}
+			set
+			{
+				if ((this._identifier != value))
+				{
+					this.OnidentifierChanging(value);
+					this.SendPropertyChanging();
+					this._identifier = value;
+					this.SendPropertyChanged("identifier");
+					this.OnidentifierChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="MEDA_Puntos", Storage="_points", DbType="Int NOT NULL")]
+		public int points
+		{
+			get
+			{
+				return this._points;
+			}
+			set
+			{
+				if ((this._points != value))
+				{
+					this.OnpointsChanging(value);
+					this.SendPropertyChanging();
+					this._points = value;
+					this.SendPropertyChanged("points");
+					this.OnpointsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="MEDA_Token", Storage="_token", DbType="UniqueIdentifier", IsPrimaryKey=true)]
+		public System.Nullable<System.Guid> token
+		{
+			get
+			{
+				return this._token;
+			}
+			set
+			{
+				if ((this._token != value))
+				{
+					this.OntokenChanging(value);
+					this.SendPropertyChanging();
+					this._token = value;
+					this.SendPropertyChanged("token");
+					this.OntokenChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
+	public partial class NewDetails
+	{
+		
+		private bool _levelUp;
+		
+		private string _level_title;
+		
+		public NewDetails()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="USUA_SubioNivel", Storage="_levelUp")]
+		public bool level_up
+		{
+			get
+			{
+				return this._levelUp;
+			}
+			set
+			{
+				if ((this._levelUp != value))
+				{
+					this._levelUp = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="NIVE_Titulo", Storage="_level_title", CanBeNull=false)]
+		public string level_title
+		{
+			get
+			{
+				return this._level_title;
+			}
+			set
+			{
+				if ((this._level_title != value))
+				{
+					this._level_title = value;
+				}
 			}
 		}
 	}

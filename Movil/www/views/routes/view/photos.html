@@ -1,0 +1,27 @@
+<ion-view title="Fotos" class="routes view photos" cache-view="false">
+    <!-- HEADER -->
+    <ion-nav-bar align-title="left">
+        <!-- LEFT BUTTON'S -->
+        <ion-nav-buttons side="left">
+            <button class="button" ng-click="back()">
+                <i class="icon ion-chevron-left"></i>
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <!-- LOADING -->
+    <flex-loading ng-if="!items" title="Recopilando Información..." legend="obteniendo información ^^">
+    </flex-loading>
+    <!-- EMPTY DATA -->
+    <empty-data ng-if="items.length==0">
+    </empty-data>
+    <!-- CONTENT -->
+    <div ng-if="items">
+        <ion-content>
+            <center>
+                <div ng-repeat="item in items" class="image-box" ng-click="showFullImage(item);">
+                    <img ng-src="{{item.photo | restricted}}">
+                </div>
+            </center>
+        </ion-content>
+    </div>
+</ion-view>

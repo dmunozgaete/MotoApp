@@ -11,7 +11,8 @@ angular.module('app.components')
             $scope,
             $element,
             $log,
-            RouteSynchronizer
+            RouteSynchronizer,
+            $state
         )
         {
 
@@ -40,6 +41,14 @@ angular.module('app.components')
 
             //------------------------------------------------
             // Action's
+            $scope.view = function(item)
+            {
+                $state.go("app.routes/view/index",
+                {
+                    route: item.token
+                });
+            };
+            
             $scope.doRefresh = update;
 
         }

@@ -24,7 +24,11 @@
     "com.ionic.keyboard",
     "org.apache.cordova.statusbar",
     "de.appplant.cordova.plugin.background-mode",
-    "cordova-plugin-console"
+    "cordova-plugin-console",
+    "phonegap-facebook-plugin",
+    "cordova-plugin-googleplus",
+    "cordova-plugin-mauron85-background-geolocation",
+    "es.keensoft.fullscreenimage"
   ],
   "cordovaPlatforms": [
     "ios"

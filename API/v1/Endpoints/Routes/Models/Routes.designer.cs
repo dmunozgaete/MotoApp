@@ -115,6 +115,14 @@ namespace API.Endpoints.Routes.Models
 				return this.GetTable<RoutePhoto>();
 			}
 		}
+		
+		public System.Data.Linq.Table<SocialRoute> SocialRoutes
+		{
+			get
+			{
+				return this.GetTable<SocialRoute>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TB_MOT_Ruta")]
@@ -378,8 +386,6 @@ namespace API.Endpoints.Routes.Models
 		
 		private System.DateTime _createdAt;
 		
-		private string _Property;
-		
 		public Coordinates()
 		{
 		}
@@ -492,22 +498,6 @@ namespace API.Endpoints.Routes.Models
 				if ((this._createdAt != value))
 				{
 					this._createdAt = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="", Storage="_Property", CanBeNull=false)]
-		public string Property
-		{
-			get
-			{
-				return this._Property;
-			}
-			set
-			{
-				if ((this._Property != value))
-				{
-					this._Property = value;
 				}
 			}
 		}
@@ -1592,6 +1582,105 @@ namespace API.Endpoints.Routes.Models
 				if ((this._photo != value))
 				{
 					this._photo = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="")]
+	public partial class SocialRoute
+	{
+		
+		private bool _like;
+		
+		private string _shared_name;
+		
+		private System.Nullable<int> _shared_likes;
+		
+		private string _shared_observations;
+		
+		private System.Nullable<System.DateTime> _shared_createdAt;
+		
+		public SocialRoute()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="MeGusta", Storage="_like")]
+		public bool like
+		{
+			get
+			{
+				return this._like;
+			}
+			set
+			{
+				if ((this._like != value))
+				{
+					this._like = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="RUCO_Nombre", Storage="_shared_name", DbType="VarChar(500)")]
+		public string name
+		{
+			get
+			{
+				return this._shared_name;
+			}
+			set
+			{
+				if ((this._shared_name != value))
+				{
+					this._shared_name = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="RUCO_MeGusta", Storage="_shared_likes", DbType="Int")]
+		public System.Nullable<int> totalLikes
+		{
+			get
+			{
+				return this._shared_likes;
+			}
+			set
+			{
+				if ((this._shared_likes != value))
+				{
+					this._shared_likes = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="RUCO_Observaciones", Storage="_shared_observations", DbType="VarChar(500)")]
+		public string observations
+		{
+			get
+			{
+				return this._shared_observations;
+			}
+			set
+			{
+				if ((this._shared_observations != value))
+				{
+					this._shared_observations = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="RUCO_Fecha", Storage="_shared_createdAt", DbType="DateTime")]
+		public System.Nullable<System.DateTime> sharedAt
+		{
+			get
+			{
+				return this._shared_createdAt;
+			}
+			set
+			{
+				if ((this._shared_createdAt != value))
+				{
+					this._shared_createdAt = value;
 				}
 			}
 		}

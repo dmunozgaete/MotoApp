@@ -35,12 +35,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="progress">
-                                <div style="width:10%">
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -52,11 +46,34 @@
                     </div>
                 </div>
             </div>
-            <div class="row average" ui-sref="app.profile/edit">
+            <!-- EXPERIENCE LEVE -->
+            <div class="experience">
+                <div class="brand">
+                    {{profile.social.experience.title}} &nbsp;
+                    <span>(Categoria {{profile.social.experience.category}})</span>
+                </div>
+                <div class="progress">
+                    <div style="width:{{getProgress(profile.social.experience)}}%">
+                    </div>
+                </div>
+                <div class=" points">
+                    {{profile.social.experience.total}} / {{profile.social.experience.level}}
+                </div>
+            </div>
+            <!-- LIST ITEM's -->
+            <div class="row list-item" ng-click="edit();">
                 <div class="col">
                     Editar Perfil
                 </div>
-                <div class="col col-10">
+                <div class="col col-20">
+                    <i class="icon ion-ios-arrow-right"></i>
+                </div>
+            </div>
+            <div class="row list-item" ng-click="medals();">
+                <div class="col">
+                    {{profile.social.medals.user}}/{{profile.social.medals.total}} Medallas Obtenidas
+                </div>
+                <div class="col col-20">
                     <i class="icon ion-ios-arrow-right"></i>
                 </div>
             </div>

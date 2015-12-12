@@ -1,0 +1,57 @@
+/* 
+    SASS Theme Variables 
+*/
+.box-shadow-3dp {
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.12); }
+
+.box-shadow-8dp {
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12); }
+
+.grayscale {
+  filter: url("data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg'&gt;&lt;filter id='grayscale'&gt;&lt;feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale");
+  /* Firefox 10+, Firefox on Android */
+  filter: gray;
+  /* IE6-9 */
+  -webkit-filter: grayscale(100%);
+  /* Chrome 19+, Safari 6+, Safari 6+ iOS */ }
+
+div.modal-backdrop-bg {
+  background-color: #000;
+  opacity: 0.7; }
+
+ion-modal-view.reward {
+  min-height: 45%;
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 50%;
+  border-radius: 4px;
+  overflow: visible; }
+  ion-modal-view.reward > center > img {
+    height: 8em;
+    margin-top: -4em; }
+  ion-modal-view.reward > center > .title {
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-bottom: 0.1em;
+    font-size: 1.2em; }
+  ion-modal-view.reward > center > .points {
+    text-align: right;
+    font-weight: bold;
+    font-size: 0.9em;
+    padding-right: 0.5em;
+    margin-top: -1.7em;
+    color: #FFF; }
+  ion-modal-view.reward > center > .text {
+    padding-bottom: 1em; }
+  ion-modal-view.reward > center > .description {
+    padding: 1em; }
+    ion-modal-view.reward > center > .description > span {
+      font-size: 2.3em;
+      display: block;
+      color: #1c1c29;
+      padding-top: 0.5em; }
+  ion-modal-view.reward > div.bar-footer {
+    border-radius: 4px;
+    color: #2370dc; }
+
+/*# sourceMappingURL=rewards.css.map */

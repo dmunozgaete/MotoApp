@@ -1,0 +1,33 @@
+<ion-view title="Medallas" class="profile medals" can-swipe-back="false">
+    <ion-nav-buttons side="left">
+        <button class="button" ng-click="back()">
+            <i class="icon ion-chevron-left"></i>
+        </button>
+    </ion-nav-buttons>
+    <!-- LOADING -->
+    <flex-loading ng-if="!items" title="Medallas, Medallas ..." legend="Ohh! Medallas...">
+    </flex-loading>
+    <!-- EMPTY DATA -->
+    <empty-data ng-if="items.length==0">
+    </empty-data>
+    <!-- CONTENT -->
+    <div ng-if="items">
+        <ion-content>
+            <ion-refresher pulling-text="Vamos!, con un poco mas de fuerza..." spinner="lines" on-refresh="doRefresh()">
+            </ion-refresher>
+            <ion-list>
+                <ion-item item-height="85px" collection-repeat="item in items" class="item-avatar">
+                    <div class="wrap">
+                    </div>
+                    <img ng-if="!item.acquired" src="bundles/app/css/images/medals/medal.png" />
+                    <img ng-if="item.acquired" src="bundles/app/css/images/medals/medal-active.png" />
+                    <div class="information">
+                        <h2>{{item.name}}</h2>
+                        <p>{{item.description}}</p>
+                    </div>
+                    <div class="points">{{item.points}} pts</div>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </div>
+</ion-view>

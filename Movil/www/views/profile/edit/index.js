@@ -8,7 +8,8 @@ angular.route('app.profile/edit/index', function(
     $cordovaContacts,
     $ionicLoading,
     $cordovaDialogs,
-    $Configuration
+    $Configuration,
+    Rewards
 )
 {
 
@@ -22,8 +23,6 @@ angular.route('app.profile/edit/index', function(
     // Action's
     $scope.save = function(data)
     {
-
-
 
         $ionicLoading.show(
         {
@@ -43,8 +42,10 @@ angular.route('app.profile/edit/index', function(
 
                 $ionicLoading.hide();
 
+                Rewards.check('PROFILE');
+                
                 //Set Profile
-                $state.go("app.profile");
+                $scope.back();
 
             })
             .error(function()

@@ -12,7 +12,9 @@ angular.module('app.services.synchronizers')
         pouchDB,
         $Api,
         $Identity,
-        $filter)
+        $filter,
+        Rewards
+    )
     {
         // SYNC VARIABLES
         var self = Object.create(BaseEventHandler); //Extend From EventHandler

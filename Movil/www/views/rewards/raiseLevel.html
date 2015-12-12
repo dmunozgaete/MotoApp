@@ -1,0 +1,21 @@
+<ion-modal-view ng-controller="RaiseLevelDialogController" class="reward level">
+    <center>
+        <!-- LOGO -->
+        <img src="bundles/app/css/images/trophy/trophy.png" />
+        <!-- TITLE -->
+        <div class="title">
+            FELICITACIONES!
+        </div>
+        <!-- TEXT -->
+        <div class="text">
+            Has alcanzado un nuevo nivel
+        </div>
+        <!-- DESCRPIPTION -->
+        <div class="description">
+            Tu nuevo titulo es <span>{{data.level.title}}</span>
+        </div>
+    </center>
+    <div class="bar bar-footer" ng-click="close();">
+        <div class="title">Cerrar</div>
+    </div>
+</ion-modal-view>

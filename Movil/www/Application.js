@@ -57,8 +57,7 @@
             .enableDeviceGPS() //Enable GPS Tracking
             .autoStart() //Auto Start
             .accuracyThreshold(70) //Real GPS Aproximaty (aprox 65)
-            .frequency(3000) //Try to get GPS Track each 5 seconds
-            .addTestRoute('bundles/mocks/js/gps/+250.json'); //Simulate a Route
+            .frequency(5000); //Try to get GPS Track each 5 seconds
 
         //Route Tracker Configuration
         // - Auto Pause: Minimun Distance (in Meters)
@@ -81,6 +80,12 @@
         //MocksProvider
         //.enable()
         //.setDelay(700); //Simulate a Short Delay ^^, (More 'Real' experience)
+
+        //If is a Web Broser, add test route!
+        if (!ionic.Platform.isWebView())
+        {
+            GpsProvider.addTestRoute('bundles/mocks/js/gps/+250.json'); //Simulate a Route
+        }
 
     })
     .config(function(

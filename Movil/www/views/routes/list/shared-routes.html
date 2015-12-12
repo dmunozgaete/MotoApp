@@ -10,39 +10,8 @@
         <ion-refresher pulling-text="Vamos!, con un poco mas de fuerza..." spinner="lines" on-refresh="doRefresh()">
         </ion-refresher>
         <ion-list>
-            <ion-item ng-repeat="item in items" class=" item-thumbnail-left">
+            <ion-item ng-repeat="item in items" class=" item-thumbnail-left" ng-click="view(item);">
                 <preload-image ng-src="item.image"></preload-image>
-                <!-- PERSONAL ROUTE -->
-                <div ng-if="item.isShared == 0" class="personal">
-                    <div class="information">
-                        <h2 am-time-ago="item.createdAt"></h2>
-                    </div>
-                    <div class="markers row no-padding">
-                        <div class="col no-padding">
-                            <i class="icon ion-fireball"></i>
-                            <span class="value">{{item.calories | calories }}</span>
-                            <span class="unit">kcal</span>
-                        </div>
-                    </div>
-                    <div class="markers row no-padding">
-                        <div class="col no-padding">
-                            <i class="icon ion-ios-speedometer-outline"></i>
-                            <span class="value">{{item.speed | speed }}</span>
-                            <span class="unit">km/hr</span>
-                        </div>
-                    </div>
-                    <div class="markers row no-padding">
-                        <div class="col no-padding">
-                            <i class="icon ion-ios-stopwatch-outline"></i>
-                            <span class="value">{{item.duration | time }}</span>
-                        </div>
-                        <div class="col no-padding">
-                            <i class="icon ion-map"></i>
-                            <span class="value">{{item.distance | distance }}</span>
-                            <span class="unit">km</span>
-                        </div>
-                    </div>
-                </div>
                 <!-- SHARED ROUTE -->
                 <div ng-if="item.isShared == 1">
                     <div class="information">

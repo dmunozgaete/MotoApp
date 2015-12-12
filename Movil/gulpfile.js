@@ -57,6 +57,7 @@ gulp.task('inject', function()
         .pipe(inject(gulp.src([
             './www/bundles/**/*.css',
             './www/bundles/**/*.js',
+            './www/views/**/*.css',
             './www/views/**/*.js'
         ],
         {

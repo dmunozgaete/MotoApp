@@ -29,7 +29,7 @@
                     </div>
                     <div class="col-66">
                         <select ng-model="data.sport" class="value" required>
-                            <option ng-repeat="item in collections.sportTypes" ng-selected="item.identifier == data.sport" value="{{item.identifier}}">{{item.name}}</option>
+                            <option ng-repeat="item in collections.sportTypes" ng-selected="item.identifier == data.sport" ng-value="{{item}}">{{item.name}}</option>
                         </select>
                     </div>
                 </div>

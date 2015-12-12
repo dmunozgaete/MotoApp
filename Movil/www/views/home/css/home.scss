@@ -1,0 +1,57 @@
+@import "../../../bundles/app/css/variables";
+
+/*------------------------- 
+VIEW:   Home Page
+ROUTE:  /app/home
+-------------------------*/
+
+ion-view.home {
+    .period-selector {
+        margin-top: 1em;
+        opacity: 0.8;
+        > div {
+            background: linear-gradient(to bottom, #2a2a3b 0%, #1c1c29 100%);
+            margin-left: 15%;
+            margin-right: 15%;
+            padding: 5px;
+            border-radius: 6px;
+            border: 1px solid $primary_Hue900_color;
+            > div {
+                text-transform: uppercase;
+                color: $accent_color;
+                text-align: center;
+            }
+        }
+    }
+    .kpi {
+        text-align: center;
+        padding-top: 2em;
+        .value {
+            font-weight: bold;
+            color: $accent_color;
+            line-height: 1em;
+            font-size: 2.3em;
+            display: flex;
+            justify-content: center;
+            .icon {
+                font-size: 0.7em;
+                padding-right: 7px;
+            }
+        }
+        .label {
+            text-transform: uppercase;
+            font-size: 0.8em;
+        }
+        &.big {
+            padding-top: 1em;
+            .value {
+                font-size: 5em;
+                line-height: 1.1em;
+            }
+            .label {
+                text-transform: uppercase;
+                font-size: 1.2em;
+            }
+        }
+    }
+}

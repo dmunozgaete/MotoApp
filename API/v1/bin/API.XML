@@ -44,6 +44,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:API.Endpoints.Accounts.AccountsController.NewMedals(System.String)">
+            <summary>
+            Check for winned Medal's
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:API.Endpoints.Accounts.AccountsController.SaveCurrent(API.Endpoints.Accounts.Models.UpdatePersonalData)">
             <summary>
             Save User Personal Data
@@ -81,6 +87,30 @@
             <param name="token"></param>
         </member>
         <member name="M:API.Endpoints.Accounts.Services.Get.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Async Process
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Accounts.Services.Medals.Check">
+            <summary>
+            Check when a medal or medals are won
+            </summary>
+        </member>
+        <member name="F:API.Endpoints.Accounts.Services.Medals.Check._category">
+            <summary>
+            Category
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Accounts.Services.Medals.Check.#ctor(System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="user">User</param>
+            <param name="category">Category to Check</param>
+        </member>
+        <member name="M:API.Endpoints.Accounts.Services.Medals.Check.ExecuteAsync(System.Threading.CancellationToken)">
             <summary>
             Async Process
             </summary>
@@ -270,6 +300,17 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
+        <member name="T:API.Endpoints.Medals.MedalsController">
+            <summary>
+            Medals Rewards Controller
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Medals.MedalsController.Get">
+            <summary>
+            Retrieve Medal's
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:API.Endpoints.Notifications.NotificationsController">
             <summary>
             Notification Controller
@@ -363,7 +404,19 @@
         </member>
         <member name="M:API.Endpoints.Routes.RoutesController.Get(System.String)">
             <summary>
-            Retrieve Current Routes
+            Retrieve Detailed Route
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:API.Endpoints.Routes.RoutesController.Like(System.String)">
+            <summary>
+            Like Route
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:API.Endpoints.Routes.RoutesController.Unlike(System.String)">
+            <summary>
+            Unlike Route
             </summary>
             <returns></returns>
         </member>
@@ -397,6 +450,44 @@
             <param name="photo"></param>
             <returns></returns>
         </member>
+        <member name="T:API.Endpoints.Routes.Services.Like">
+            <summary>
+            Liked Roue
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Routes.Services.Like.#ctor(System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="user">Current User</param>
+            <param name="route">Liked Route</param>
+        </member>
+        <member name="M:API.Endpoints.Routes.Services.Like.ExecuteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Async Process
+            </summary>
+            <param name="token"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Routes.Services.Get">
+            <summary>
+            Retrieve a Target Route
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Routes.Services.Get.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="token"></param>
+        </member>
+        <member name="M:API.Endpoints.Routes.Services.Get.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            Async Process
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
         <member name="T:API.Endpoints.Routes.Services.SavePhoto">
             <summary>
             Add New Route
@@ -416,18 +507,18 @@
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>
-        <member name="T:API.Endpoints.Routes.Services.Get">
+        <member name="T:API.Endpoints.Routes.Services.MyRoutes">
             <summary>
             Retrieve a Target User
             </summary>
         </member>
-        <member name="M:API.Endpoints.Routes.Services.Get.#ctor(System.DateTime,System.String)">
+        <member name="M:API.Endpoints.Routes.Services.MyRoutes.#ctor(System.DateTime,System.String)">
             <summary>
             Constructor
             </summary>
             <param name="token"></param>
         </member>
-        <member name="M:API.Endpoints.Routes.Services.Get.ExecuteAsync(System.Threading.CancellationToken)">
+        <member name="M:API.Endpoints.Routes.Services.MyRoutes.ExecuteAsync(System.Threading.CancellationToken)">
             <summary>
             Async Process
             </summary>
@@ -470,6 +561,26 @@
             <summary>
             Async Process
             </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:API.Endpoints.Routes.Services.Unlike">
+            <summary>
+            UnLike Route
+            </summary>
+        </member>
+        <member name="M:API.Endpoints.Routes.Services.Unlike.#ctor(System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="user">Current User</param>
+            <param name="route">Disguss Route</param>
+        </member>
+        <member name="M:API.Endpoints.Routes.Services.Unlike.ExecuteAsync(System.String,System.Threading.CancellationToken)">
+            <summary>
+            Async Process
+            </summary>
+            <param name="token"></param>
             <param name="cancellationToken"></param>
             <returns></returns>
         </member>

@@ -33,11 +33,11 @@
     "angular-ui-router": "0.2.13",
     "lodash": "~3.10.1"
   },
-  "_release": "1fb5afbab1",
+  "_release": "e3fda388fe",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "1fb5afbab104e01efd17056dac3b12a27c1fdeff"
+    "commit": "e3fda388fe25e2ac8d5a6cd4c478c8f658991fc5"
   },
   "_source": "git://github.com/dmunozgaete/angular-gale.git",
   "_target": "master",

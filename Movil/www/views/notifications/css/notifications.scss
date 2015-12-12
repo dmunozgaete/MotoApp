@@ -1,0 +1,48 @@
+@import "../../../bundles/app/css/variables";
+
+/*------------------------- 
+VIEW:   Notification Page
+ROUTE:  /app/notifications
+-------------------------*/
+ion-view.notifications {
+    ion-content {
+        background: transparent;
+        ion-item {
+            border-radius: 2px;
+            margin: 0.5em 0.5em 0em 0.5em;
+            padding-bottom: 8px;
+            @extend .box-shadow-3dp;
+            margin-top: 0.6em;
+            &:first-child {
+                margin-top: 1em;
+            }
+            > div.information {
+                min-height: 55px;
+                p {
+                    font-size: 0.8em;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                    line-height: 1.2em;
+                    white-space: normal;
+                    &.stamp {
+                        text-align: right;
+                    }
+                }
+                h2 {
+                    margin-right: 27px;
+                    font-size: 0.9em;
+                }
+                preload-image:first-child {
+                    top: 20px;
+                    left: 16px;
+                    max-width: 40px;
+                    max-height: 40px;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    position: absolute;
+                }
+            }
+        }
+    }
+}

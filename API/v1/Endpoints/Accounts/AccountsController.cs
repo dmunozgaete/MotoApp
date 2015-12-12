@@ -58,6 +58,19 @@ namespace API.Endpoints.Accounts
         }
 
         /// <summary>
+        /// Check for winned Medal's
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [HierarchicalRoute("/Me/NewMedals/{category}")]
+        [Swashbuckle.Swagger.Annotations.SwaggerResponseRemoveDefaults]
+        [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.OK)]
+        public IHttpActionResult NewMedals(String category)
+        {
+            return new Services.Medals.Check(this.User.PrimarySid(), category);
+        }
+
+        /// <summary>
         /// Save User Personal Data
         /// </summary>
         /// <returns></returns>

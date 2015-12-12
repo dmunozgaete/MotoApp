@@ -201,5 +201,13 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "es.keensoft.fullscreenimage": {
+        "source": {
+            "type": "registry",
+            "id": "es.keensoft.fullscreenimage"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
