@@ -3,6 +3,9 @@ http://excellencenodejsblog.com/cordova-ionic-facebook-login-mobile-app/
 https://ionicthemes.com/tutorials/about/native-facebook-login-with-ionic-framework
 http://www.joshmorony.com/user-authentication-with-ionic-and-parse-part-2-facebook-login/
 
+#Key Hashes
+keytool -exportcert -alias motoApp -keystore distribution.keystore | openssl sha1 -binary | openssl base64
+
 #Android Google+ Setup
 http://www.androidhive.info/2014/02/android-login-with-google-plus-account-1/
 https://ionicthemes.com/tutorials/about/google-plus-login-with-ionic-framework
