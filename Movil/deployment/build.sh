@@ -1,6 +1,6 @@
 #!/bin/sh
-ANT_BUILD_FOLDER="platforms/android/ant-build"
-ANT_BUILD_APK_FILENAME="MainActivity"
+ANT_BUILD_FOLDER="platforms/android/build/outputs/apk"
+ANT_BUILD_APK_FILENAME="android"
 ZIPALIGN_PATH="/usr/local/Cellar/android-sdk/24.3.3/build-tools/23.0.1/zipalign"
 DEPLOYMENT_FOLDER=`dirname $0`						#GET PATH FROM THE SCRIPT
 
@@ -10,8 +10,12 @@ DEBUG_FILENAME="app-qas"
 
 #RELEASE MODE CONFIGURATION
 KEYSTORE_FILE="distribution.keystore"
-KEYSTORE_PASSWORD="sgs2015"
-KEYSTORE_ALIAS="mds2"
+KEYSTORE_PASSWORD="123Momia"
+KEYSTORE_ALIAS="motoApp"
+
+#CREATE KEY
+#keytool -genkey -v -keystore distribution.keystore -alias motoApp -storepass 123Momia -keyalg RSA -keysize 2048 -validity 10000
+
 
 clear
 echo ''
