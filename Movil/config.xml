@@ -12,9 +12,10 @@
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
-    <preference name="android-minSdkVersion" value="19" />
+    <preference name="android-minSdkVersion" value="18" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashScreen" value="screen" />
+    <preference name="AutoHideSplashScreen" value="false" />
     <preference name="SplashScreenDelay" value="3000" />
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
@@ -95,7 +96,7 @@
             </array>
         </config-file>
     </platform>
-    <icon src="resources/ios/icon/icon-small@3x.png" />
+    <icon src="resources/android/icon/drawable-xhdpi-icon.png" />
     <plugin name="cordova-plugin-mauron85-background-geolocation" spec="~0.7.3" />
     <plugin name="cordova-plugin-googleplus" spec="~4.0.6">
         <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.162165027234-fhkv11s9btarp8ffogf73q9073n75cf8" />
@@ -105,4 +106,5 @@
         <variable name="APP_NAME" value="MotoApp" />
     </plugin>
     <plugin name="es.keensoft.fullscreenimage" spec="~1.0.1" />
+    <plugin name="cordova-plugin-splashscreen" spec="~3.0.0" />
 </widget>

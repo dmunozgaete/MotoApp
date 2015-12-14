@@ -10,9 +10,11 @@ angular.route('boot/index', function(
     $q,
     Synchronizer,
     $Identity,
-    $cordovaBadge
+    $cordovaBadge,
+    $cordovaSplashscreen
 )
 {
+    $cordovaSplashscreen.hide();
 
     //INITIALIZE THE SYNCRONIZER MANAGER
     var defer = Synchronizer.start();
@@ -20,7 +22,6 @@ angular.route('boot/index', function(
     //When all Process are Checked, run APP
     $q.all([defer]).then(function()
     {
-
         //Get if user is the first time!!
         var label = $Configuration.get("localstorageStamps").personal_data;
         var isFirstTime = $LocalStorage.get(label) == null;

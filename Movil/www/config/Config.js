@@ -5,7 +5,7 @@ angular.module("config", []).constant("GLOBAL_CONFIGURATION",
         version: "1.0.3-rc.1",
         environment: "production",
         language: "es",
-        home: "app/profile"
+        home: "app/home"
     },
 
     on_build_new_version: function(newVersion, oldVersion)

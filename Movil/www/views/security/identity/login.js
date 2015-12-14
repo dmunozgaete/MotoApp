@@ -7,9 +7,13 @@ angular.route('security/identity/login', function(
     $scope,
     $Api,
     $cordovaFacebook,
-    $ionicLoading
+    $ionicLoading,
+    $cordovaSplashscreen
 )
 {
+
+    $cordovaSplashscreen.hide();
+
     //Application Information
     $scope.signature = $Configuration.get("application");
     $scope.user = {};
@@ -49,9 +53,11 @@ angular.route('security/identity/login', function(
 
                 //GO TO API, CHECK THE TOKEN ,
                 // AND IF IS CORRECT , CREATE OR GET THE USER
+
+                //NOTE: In Android Only , the authReponse has a oauthToken and not the accessToken
                 var data = {
                     name: authReponse.displayName,
-                    accessToken: authReponse.accessToken,
+                    accessToken: (authReponse.accessToken||authReponse.oauthToken),
                     email: authReponse.email,
                     id: authReponse.userId,
                     image: authReponse.imageUrl

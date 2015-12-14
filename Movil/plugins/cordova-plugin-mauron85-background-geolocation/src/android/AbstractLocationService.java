@@ -94,7 +94,7 @@ public abstract class AbstractLocationService extends Service {
                 builder.setLargeIcon(BitmapFactory.decodeResource(getApplication().getResources(), getPluginResource(config.getLargeNotificationIcon())));
             }
             if (config.getNotificationIconColor() != null) {
-                builder.setColor(this.parseNotificationIconColor(config.getNotificationIconColor()));
+                //builder.setColor(this.parseNotificationIconColor(config.getNotificationIconColor()));
             }
 
             setClickEvent(builder);
