@@ -8,9 +8,15 @@ angular.route('nomenu.firstRun/configuration/step-1', function(
     $cordovaContacts,
     $Identity,
     $ionicLoading,
-    $LocalStorage
+    $LocalStorage,
+    $cordovaSplashscreen
 )
 {
+    //Hide Splash Screen 
+    if (ionic.Platform.isWebView())
+    {
+        $cordovaSplashscreen.hide();
+    }
 
     //---------------------------------------------------
     // Model

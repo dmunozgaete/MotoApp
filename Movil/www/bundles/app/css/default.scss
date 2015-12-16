@@ -69,7 +69,8 @@
     ion-header-bar {
         background-color: $accent_color;
         background-image: none;
-        button {
+        button,
+        button.activated {
             color: $text_color !important;
             background: $accent_color;
             background-image: none;

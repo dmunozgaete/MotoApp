@@ -97,7 +97,6 @@ ion-view.routes {
             }
         }
     }
-    
     /*------------------------- 
     VIEW:   Route Save Error
     ROUTE:  /nomenu/routes/create/saveForLater
@@ -147,7 +146,6 @@ ion-view.routes {
             text-align: center;
         }
     }
-
     /*------------------------- 
     VIEW:   Route Save Error
     ROUTE:  /nomenu/routes/create/saveForLater
@@ -167,7 +165,6 @@ ion-view.routes {
             }
         }
     }
-    
     /*------------------------- 
     VIEW:   Route Save Error
     ROUTE:  /nomenu/routes/create/saveForLater
@@ -182,7 +179,6 @@ ion-view.routes {
             }
         }
     }
-
     /*------------------------- 
     VIEW:   Route View List
     ROUTE:  /app/routes/list
@@ -348,7 +344,6 @@ ion-view.routes {
             }
         }
     }
-
     /*------------------------- 
     VIEW:   Share Page
     ROUTE:  /app/routes/create/share
@@ -391,7 +386,6 @@ ion-view.routes {
             }
         }
     }
-
     /*------------------------- 
     VIEW:   Share Page
     ROUTE:  /app/routes/create/share
@@ -513,7 +507,6 @@ ion-view.routes {
             }
         }
     }
-
     /*------------------------- 
     VIEW:   Start Counter Page
     ROUTE:  /app/routes/create/start
@@ -531,15 +524,12 @@ ion-view.routes {
             margin-top: 4em;
         }
     }
-
     /*------------------------- 
     VIEW:   IN-TRAVEL Home Page
     ROUTE:  /app/routes/create
     -------------------------*/
     &.index {
-        .common-actions {
-            
-        }
+        .common-actions {}
         .counters {
             margin-top: -8em;
         }
@@ -572,7 +562,6 @@ ion-view.routes {
             }
         }
     }
-
     /*------------------------- 
     VIEW:   Pause Page
     ROUTE:  /app/routes/create/pause
@@ -619,7 +608,6 @@ ion-view.routes {
             }
         }
     }
-
     /*------------------------- 
     VIEW:   Map Page
     ROUTE:  /app/routes/create/map
@@ -643,7 +631,6 @@ ion-view.routes {
             }
         }
     }
-
     /*------------------------- 
     VIEW:   Stop Page
     ROUTE:  /app/routes/create/stop
@@ -683,7 +670,6 @@ ion-view.routes {
             }
         }
     }
-
     /*------------------------- 
     VIEW:   Upload Page
     ROUTE:  /app/routes/upload
@@ -695,7 +681,6 @@ ion-view.routes {
             border: none;
         }
     }
-
     /*------------------------- 
     VIEW:   Camera Roll
     ROUTE:  /app/routes/camera-roll
@@ -723,6 +708,26 @@ ion-view.routes {
                     font-size: 2.5em;
                     color: #FA4C0D;
                 }
+            }
+        }
+    }
+    /*------------------------- 
+    VIEW:   ROUTE VIEW
+    ROUTE:  /app/routes/view
+    -------------------------*/
+    &.view {
+        /*------------------------- 
+        VIEW:   ROUTE VIEW
+        ROUTE:  /app/routes/view/index
+        -------------------------*/
+        &.index {
+            button.delete {
+                background-color: rgba(0, 0, 0, 0);
+                border: 1px solid #4A4A4C;
+                color: #F00;
+                margin-left: 3%;
+                margin-top: 10%;
+                width: 94%;
             }
         }
     }

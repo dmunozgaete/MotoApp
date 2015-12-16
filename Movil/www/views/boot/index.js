@@ -14,7 +14,11 @@ angular.route('boot/index', function(
     $cordovaSplashscreen
 )
 {
-    $cordovaSplashscreen.hide();
+    //Hide Splash Screen 
+    if (ionic.Platform.isWebView())
+    {
+        $cordovaSplashscreen.hide();
+    }
 
     //INITIALIZE THE SYNCRONIZER MANAGER
     var defer = Synchronizer.start();

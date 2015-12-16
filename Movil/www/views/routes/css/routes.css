@@ -78,6 +78,10 @@ ion-view.routes {
   /*------------------------- 
   VIEW:   Camera Roll
   ROUTE:  /app/routes/camera-roll
+  -------------------------*/
+  /*------------------------- 
+  VIEW:   ROUTE VIEW
+  ROUTE:  /app/routes/view
   -------------------------*/ }
   ion-view.routes .common-actions {
     margin-top: 1.5em; }
@@ -532,5 +536,17 @@ ion-view.routes {
         margin-right: -21px;
         font-size: 2.5em;
         color: #FA4C0D; }
+  ion-view.routes.view {
+    /*------------------------- 
+    VIEW:   ROUTE VIEW
+    ROUTE:  /app/routes/view/index
+    -------------------------*/ }
+    ion-view.routes.view.index button.delete {
+      background-color: transparent;
+      border: 1px solid #4A4A4C;
+      color: #F00;
+      margin-left: 3%;
+      margin-top: 10%;
+      width: 94%; }
 
 /*# sourceMappingURL=routes.css.map */

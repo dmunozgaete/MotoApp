@@ -77,7 +77,8 @@
   [md-theme='imoto'] ion-header-bar {
     background-color: #ffc107;
     background-image: none; }
-    [md-theme='imoto'] ion-header-bar button {
+    [md-theme='imoto'] ion-header-bar button,
+    [md-theme='imoto'] ion-header-bar button.activated {
       color: #fff !important;
       background: #ffc107;
       background-image: none;

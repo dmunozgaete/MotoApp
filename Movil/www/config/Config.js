@@ -3,7 +3,7 @@ angular.module("config", []).constant("GLOBAL_CONFIGURATION",
     application:
     {
         version: "1.0.3-rc.1",
-        environment: "production",
+        environment: "development",
         language: "es",
         home: "app/home"
     },
@@ -48,6 +48,14 @@ angular.module("config", []).constant("GLOBAL_CONFIGURATION",
         {
             name: 'Trial',
             identifier: 'TRIAL'
+        },
+        {
+            name: 'ATV',
+            identifier: 'MTATV'
+        },
+        {
+            name: 'UTV',
+            identifier: 'MTUTV'
         }]
     }
 });

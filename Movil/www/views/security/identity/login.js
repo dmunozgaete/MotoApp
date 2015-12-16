@@ -11,8 +11,11 @@ angular.route('security/identity/login', function(
     $cordovaSplashscreen
 )
 {
-
-    $cordovaSplashscreen.hide();
+    //Hide Splash Screen 
+    if (ionic.Platform.isWebView())
+    {
+        $cordovaSplashscreen.hide();
+    }
 
     //Application Information
     $scope.signature = $Configuration.get("application");
