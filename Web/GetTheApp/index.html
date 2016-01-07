@@ -1,661 +1,522 @@
-<!doctype html>
-<!--[if lt IE 7]><html lang="en" class="no-js ie6"><![endif]-->
-<!--[if IE 7]><html lang="en" class="no-js ie7"><![endif]-->
-<!--[if IE 8]><html lang="en" class="no-js ie8"><![endif]-->
-<!--[if gt IE 8]><!-->
-<html lang="en" class="no-js">
-<!--<![endif]-->
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Oleose App Landing Page | Bootstrap Theme</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <link rel="shortcut icon" href="favicon.png">
-    
-    <!-- Bootstrap 3.3.2 -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/js/rs-plugin/css/settings.css">
+	<title>MotoApp</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link href="css/bootstrap.css" rel="stylesheet" media="screen">
+	<link href="css/owl.theme.css" rel="stylesheet" media="screen">
+	<link href="css/owl.carousel.css" rel="stylesheet" media="screen">
+	<link href="css/style-dark.css" rel="stylesheet" media="screen">
+	<link href="css/animate.css" rel="stylesheet" media="screen">
+	<link href="css/ionicons.css" rel="stylesheet" media="screen">
+	<link rel="stylesheet" href="css/nivo-lightbox.css" type="text/css" />
+	<link rel="stylesheet" href="css/nivo-themes/default/default.css" type="text/css" />
 
-    <link rel="stylesheet" href="assets/css/styles.css">
+	<link href="img/favicon.png" rel="shortcut icon">
 
-
-    <script type="text/javascript" src="assets/js/modernizr.custom.32033.js"></script>
-
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Merriweather:300italic' rel='stylesheet' type='text/css'>
+	
 </head>
+<body class='ios'>
 
-<body>
-    
-    <div class="pre-loader">
-        <div class="load-con">
-            <img src="assets/img/freeze/logo.png" class="animated fadeInDown" alt="">
-            <div class="spinner">
-              <div class="bounce1"></div>
-              <div class="bounce2"></div>
-              <div class="bounce3"></div>
-            </div>
-        </div>
-    </div>
-   
-    <header>
-        
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-                <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="fa fa-bars fa-lg"></span>
-                        </button>
-                        <a class="navbar-brand" href="index.html">
-                            <img src="assets/img/freeze/logo.png" alt="" class="logo">
-                        </a>
-                    </div>
+	<!--HEADER-->
+	<header id='header'>
+		<div id='menu-bar' class='animated fadeIn'>
+			<div class='container'>
+				<div class='logo'>
+					<img src="img/logo.png" alt>
+				</div>
+				<nav  id="nav" class='nav'>
+					<ul class='nav-inner'>
+						<li class='current'><a href="#header">Inicio</a></li>
+						<li><a href="#about">Sobre</a></li>
+						<li><a href="#features">Caracteristicas</a></li>
+						<li><a href="#screenshots">Imagenes</a></li>
+						<li><a href="#reviews">Historias</a></li>
+						<li><a href="#download">Descarga</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<div class="container">
+			<div class='row'>					
+				<div class='col-sm-10 col-sm-offset-1 col-md-7 col-md-offset-0 col-md-push-5 col-lg-6 col-lg-push-6 animated fadeInRight'>
+					<h1>Comparte el mundo en dos ruedas</h1>
+					<div id='header-btn'>
+						<a class='btn btn-secondary scrollTo-about'>Leer Mas</a>
+						<a class='btn btn-primary scrollTo-download'>Descargar Ahora</a>
+					</div>
+				</div>
+				<div class='col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-5 col-md-offset-0 col-md-pull-7 col-lg-5 col-lg-pull-6 col-lg-offset-1'>
+					<img src="img/iPhone-header.png" id='header-img' class='img-responsive animated fadeInUp' alt>
+				</div>
+			</div>
+		</div>
+		<svg id='svg-header'>
+			<defs>
+				<linearGradient id="grad" x1="0%" y1="100%" x2="100%" y2="30%">
+					<stop offset="8%" style="stop-color:rgb(0,0,0);stop-opacity:0.1" />
+					<stop offset="50%" style="stop-color:rgb(0,0,0);stop-opacity:1" />
+				</linearGradient>
+			</defs>
+			<rect id='svg-rect' width="3000" height="1050" fill="url(#grad)"/>
+		</svg>
+		<div id='menu-bar-fixed'>
+			<div class='container'>
+				<a class='logo scrollTo-header'><img src="img/logo.png" alt></a>
+				<nav  id="nav-fixed" class='nav'>
+					<a id="show-nav" title="Show navigation"><div></div></a>
+    				<a id="hide-nav" title="Hide navigation"><div></div></a>
+					<ul id='nav-ul' class='nav-inner'>
+						<li><a href="#header">Inicio</a></li>
+						<li class='current'><a href="#about">Sobre</a></li>
+						<li><a href="#features">Caracteristicas</a></li>
+						<li><a href="#screenshots">Imagenes</a></li>
+						<li><a href="#reviews">Historias</a></li>
+						<li><a href="#download">Descargas</a></li>
+						<li id='off-nav'></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	<!--ABOUT-->
+	<section id='about'>
+		<div class="container">
+			<div class='row wow fadeInUp'>	
+				<div class='col-sm-6 col-md-3 col-lg-3'>
+					<div class='circle-icon-lg'>
+						<div class='icon ion-ios-people-outline'></div>
+					</div>
+					<div class='text'>
+						<h3>Tu Comunidad</h3>
+						<p>Tenemos una comunidad de motoqueros y el mundo tuerca esperando por tí.</p>
+					</div>
+				</div>
+				<div class='col-sm-6 col-md-3 col-lg-3'>
+					<div class='circle-icon-lg'>
+						<div class='icon ion-ios-loop-strong'></div>
+					</div>
+					<div class='text'>
+						<h3>Descubre</h3>
+						<p>Descubre nuevos lugares para realizar tu pasión o solo explora nuevas rutas compartidas en la comunidad.</p>
+					</div>
+				</div>
+				<div class='col-sm-6 col-md-3 col-lg-3'>
+					<div class='circle-icon-lg'>
+						<div class='icon ion-ios-navigate-outline'></div>
+					</div>
+					<div class='text'>
+						<h3>Explora</h3>
+						<p>Explora nuevos paisajes cerca tuyo, comparte imagenes y experiencias en la comunidad para que todos podamos verlas.</p>
+					</div>
+				</div>
+				<div class='col-sm-6 col-md-3 col-lg-3'>
+					<div class='circle-icon-lg'>
+						<div class='icon ion-ios-body-outline'></div>
+					</div>
+					<div class='text'>
+						<h3>Embajadores</h3>
+						<p>Si no sabes que hacer o no sabes como partir, sigue a un embajador y explora su camino como si fuera tuyo.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#about">about</a>
-                            </li>
-                            <li><a href="#features">features</a>
-                            </li>
-                            <li><a href="#reviews">reviews</a>
-                            </li>
-                            <li><a href="#screens">screens</a>
-                            </li>
-                            <li><a href="#demo">demo</a>
-                            </li>
-                            <li><a class="getApp" href="#getApp">get app</a>
-                            </li>
-                            <li><a href="#support">support</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- /.navbar-collapse -->
-                </div>
-                <!-- /.container-->
-        </nav>
+	<!--FEATURES-->
+	<section id='features'>
+		<div class="container">
+			<div class='wow fadeInDown'>
+				<h2>Caracteristicas Destacadas</h2>
+				<p class='subtitle'>Estas son algunas de las sorpresas que tenemos preparadas para tí.</p>
+			</div>
+			<div class='row'>	
+				<div class='col-sm-4 col-md-4 col-lg-4 left wow fadeInLeft'>
+					<div class='row'>
+						<div class='col-sm-12 col-md-9 col-lg-9'>
+							<h4>Grabar Ruta</h4>
+							<p>Graba tus rutas o circuitos para mantener un registro o compartelas con la comunidad.</p>
+						</div>
+						<div class='col-sm-3 col-md-3 col-lg-3'>
+							<div class='circle-icon-rspv'><div class='icon ion-ios-stopwatch-outline'></div></div>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-sm-12 col-md-9 col-lg-9'>
+							<h4>Solo GPS</h4>
+							<p>Para grabar tu ruta solo necesitas de tu GPS. <br />Sabemos que no siempre las mejores rutas se encuentran en zonas urbanas.</p>
+						</div>
+						<div class='col-sm-3 col-md-3 col-lg-3'>
+							<div class='circle-icon-rspv'><div class='icon ion-ios-location-outline'></div></div>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-sm-12 col-md-9 col-lg-9'>
+							<h4>Descubrir</h4>
+							<p>Descubre nuevas cerca tuyo o simplemente explora nuevos lugares que la comunidad a compartido para tí.</p>
+						</div>
+						<div class='col-sm-3 col-md-3 col-lg-3'>
+							<div class='circle-icon-rspv'><div class='icon ion-ios-search-strong'></div></div>
+						</div>
+					</div>
+				</div>
+				<div class='col-sm-4 col-sm-push-4 col-md-4 col-md-push-4 col-lg-4 col-lg-push-4 right wow fadeInRight'>
+					<div class='row'>
+						<div class='col-sm-3 col-md-3 col-lg-3'>
+							<div class='circle-icon-rspv'><div class='icon ion-ios-skipforward-outline'></div></div>
+						</div>
+						<div class='col-sm-12 col-md-9 col-lg-9'>
+							<h4>Auto Pausa y Reanudación</h4>
+							<p>Para tu comodida hemos implementado un sistema de pausa y reanudación cuando grabas para que en ningun momento interrumpa tu pasión</p>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-sm-3 col-md-3 col-lg-3'>
+							<div class='circle-icon-rspv'><div class='icon ion-ios-heart-outline'></div></div>
+						</div>
+						<div class='col-sm-12 col-md-9 col-lg-9'>
+							<h4>Compartir</h4>
+							<p>Comparte en la comunidad o en las principales redes sociales, tus avances , rutas y progresos de tu pasión.</p>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-sm-3 col-md-3 col-lg-3'>
+							<div class='circle-icon-rspv'><div class='icon ion-ios-people-outline'></div></div>
+						</div>
+						<div class='col-sm-12 col-md-9 col-lg-9'>
+							<h4>Mapa de la Ruta</h4>
+							<p>En todo momento puedes ver el mapa y la grabación de las rutas.</p>
+						</div>
+					</div>
+				</div>
+				<div class='col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 col-sm-pull-4 col-md-4 col-md-pull-4 col-lg-4 col-lg-pull-4'>
+					<img src="img/iPhone-5C-red.png" class='img-responsive wow fadeInUp' alt>
+				</div>
+			</div>
+		</div>
+	</section>
 
-        
-        <!--RevSlider-->
-        <div class="tp-banner-container">
-            <div class="tp-banner" >
-                <ul>
-                    <!-- SLIDE  -->
-                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
-                        <!-- MAIN IMAGE -->
-                        <img src="assets/img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-                        <!-- LAYERS -->
-                        <!-- LAYER NR. 1 -->
-                        <div class="tp-caption lfl fadeout hidden-xs"
-                            data-x="left"
-                            data-y="bottom"
-                            data-hoffset="30"
-                            data-voffset="0"
-                            data-speed="500"
-                            data-start="700"
-                            data-easing="Power4.easeOut">
-                            <img src="assets/img/freeze/Slides/hand-freeze.png" alt="">
-                        </div>
+	<!--DETAILED INFO-->
+	<section id='detailed'>
+		<div class="container">
+			<div class='row'>
+				<div class='col-sm-12 col-md-7 col-lg-7 wow fadeInLeft'>
+					<h2>Información</h2>
+					<p class='subtitle'>MOTO APP es la primera comunidad pensada y creada por y para los amantes de las dos ruedas. Nace de la necesidad que todos tenemos de registrar, compartir y medir las rutas recorridas arriba de la moto, ya sea en cerro, ciudad, o cualquier otro lugar por descubrir.</p>
+				</div>
+				<div class='col-sm-6 col-md-6 col-lg-6 wow fadeInLeft'>
+					<div class='row'>
+						<div class='col-sm-2 col-md-2 col-lg-2'>
+							<div class='icon ion-ios7-loop-strong'></div>
+						</div>
+						<div class='col-sm-10 col-md-10 col-lg-10'>
+							<h4>Descubre Nuevos Lugares</h4>
+							<p>Donec ullamcorper nulla non metus auctor fringilla. Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum.</p>
+						</div>
+					</div>
+					<div class='row'>
+						<div class='col-sm-2 col-md-2 col-lg-2'>
+							<div class='icon ion-ios7-stopwatch-outline'></div>
+						</div>
+						<div class='col-sm-10 col-md-10 col-lg-10'>
+							<h4>Comparte en la Comunidad</h4>
+							<p>Donec ullamcorper nulla non metus auctor fringilla. Maecenas faucibus mollis interdum. Maecenas faucibus mollis interdum.</p>
+						</div>
+					</div>
+				</div>
+				<div class='col-sm-6 col-md-6 col-lg-6 img wow fadeInRight delay-sm'>
+					<img src="img/3iPhones.png" class='img-responsive' alt>
+				</div>
+			</div>
+		<div></div>
+	</section>
+	
+	<!--BANNER-DOWNLOAD-->
+	<section id='download-banner'>
+		<div class="container">
+			<p>
+				<span class='text wow fadeInLeft'>
+					<span class='bold'>Te gusta lo que ves?</span><span class='normal'>Descarga la aplicación ahora!</span>
+				</span>
+				<a class='btn btn-primary scrollTo-download wow pulse delay-1s'>Descargar Ahora</a>
+			</p>
+		</div>
+	</section>
 
-                        <div class="tp-caption lfl fadeout visible-xs"
-                            data-x="left"
-                            data-y="center"
-                            data-hoffset="700"
-                            data-voffset="0"
-                            data-speed="500"
-                            data-start="700"
-                            data-easing="Power4.easeOut">
-                            <img src="assets/img/freeze/iphone-freeze.png" alt="">
-                        </div>
+	<!--SCREENSHOTS-->
+	<section id='screenshots'>
+		<div class="container">
+			<div class='wow fadeInDown'>
+				<h2>Imagenes</h2>
+				<p class='subtitle'>La primera comunidad pensada para los amantes de dos ruedas</p>
+			</div>
+			<div id="screens-carousel" class="owl-carousel wow fadeInUp">
+				<a href='img/screens/screen1.jpg' class='item' data-lightbox-gallery="gallery1">
+					<img src="img/screens/screen1.jpg" class='img-responsive' alt>
+				</a>
+				<a href='img/screens/screen2.jpg' class='item' data-lightbox-gallery="gallery1">
+					<img src="img/screens/screen2.jpg" class='img-responsive' alt>
+				</a>
+				<a href='img/screens/screen3.jpg' class='item' data-lightbox-gallery="gallery1">
+					<img src="img/screens/screen3.jpg" class='img-responsive' alt>
+				</a>
+				<a href='img/screens/screen4.jpg' class='item' data-lightbox-gallery="gallery1">
+					<img src="img/screens/screen4.jpg" class='img-responsive' alt>
+				</a>
+				<a href='img/screens/screen5.jpg' class='item' data-lightbox-gallery="gallery1">
+					<img src="img/screens/screen5.jpg" class='img-responsive' alt>
+				</a>
+				<a href='img/screens/screen6.jpg' class='item' data-lightbox-gallery="gallery1">
+					<img src="img/screens/screen6.jpg" class='img-responsive' alt>
+				</a>
+			</div>
+		</div>
+	</section>
 
-                        <div class="tp-caption large_white_bold sft" data-x="550" data-y="center" data-hoffset="0" data-voffset="-80" data-speed="500" data-start="1200" data-easing="Power4.easeOut">
-                            Oleose
-                        </div>
-                        <div class="tp-caption large_white_light sfr" data-x="770" data-y="center" data-hoffset="0" data-voffset="-80" data-speed="500" data-start="1400" data-easing="Power4.easeOut">
-                            App
-                        </div>
-                        <div class="tp-caption large_white_light sfb" data-x="550" data-y="center" data-hoffset="0" data-voffset="0" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
-                            Landing Theme
-                        </div>
+	<!--REVIEWS-->
+	<section id='reviews'>
+		<div class="container">
+			<div id="reviews-carousel" class="owl-carousel">
+				<div class='item'>
+					<div class='avatar'></div>
+					<p class='quote'>The path of the righteous man is beset on all sides by the inequities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children.</p>
+					<div class='author'>
+						<div class='name'>Benjamin Israel</div>
+						<div class='position'>Referente Nacional, Motocross</div>
+					</div>
+				</div>
+				<div class='item'>
+					<div class='avatar'></div>
+					<p class='quote'>Welcome to Fight Club. The first rule of Fight Club is: you do not talk about Fight Club. The second rule of Fight Club is: you DO NOT talk about Fight Club! Third rule of Fight Club: someone yells "stop!", goes limp, taps out, the fight is over. Fourth rule: only two guys to a fight. Fifth rule: one fight at a time, fellas.</p>
+					<div class='author'>
+						<div class='name'>Franco Bontá</div>
+						<div class='position'>CEO y Coach, MotoCoach</div>
+					</div>
+				</div>
+				<div class='item'>
+					<div class='avatar'></div>
+					<p class='quote'>The path of the righteous man is beset on all sides by the inequities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will, shepherds the weak through the valley of darkness, for he is truly his brother's keeper and the finder of lost children.</p>
+					<div class='author'>
+						<div class='name'>Ismael Velasco</div>
+						<div class='position'>CEO, MotoApp</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-                        <div class="tp-caption sfb hidden-xs" data-x="550" data-y="center" data-hoffset="0" data-voffset="85" data-speed="1000" data-start="1700" data-easing="Power4.easeOut">
-                            <a href="#about" class="btn btn-primary inverse btn-lg">LEARN MORE</a>
-                        </div>
-                        <div class="tp-caption sfr hidden-xs" data-x="730" data-y="center" data-hoffset="0" data-voffset="85" data-speed="1500" data-start="1900" data-easing="Power4.easeOut">
-                            <a href="#getApp" class="btn btn-default btn-lg">GET APP</a>
-                        </div>
+	<!--DOWNLOAD-->
+	<section id='download'>
+		<div class="container">
+			<div class='wow fadeInDown'>
+				<h2>Descarga la App</h2>
+				<p class='subtitle'>Explora y Descubre Nuevos Lugares</p>
+			</div>
+			<p class='download-buttons'>
+				<a class='btn btn-icon btn-secondary' target="_blank" href="https://itunes.apple.com/us/app/motoapp/id1058050067?l=es&ls=1&mt=8"><span class='icon ion-social-apple'></span>App Store</a>
+				<a class='btn btn-icon btn-primary' target="_blank" href="https://play.google.com/store/apps/details?id=com.vlabs.motoapp&hl=es"><span class='icon ion-social-android'></span>Play Store</a>
+			</p>
+			<div class='floating-phone wow fadeInRightBig'></div>
+		</div>
+	</section>
 
-                    </li>
-                    <!-- SLIDE 2 -->
-                    <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000" >
-                        <!-- MAIN IMAGE -->
-                        <img src="assets/img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-                        <!-- LAYERS -->
-                        <!-- LAYER NR. 1 -->
-                        <div class="tp-caption lfb fadeout hidden-xs"
-                            data-x="center"
-                            data-y="bottom"
-                            data-hoffset="0"
-                            data-voffset="0"
-                            data-speed="1000"
-                            data-start="700"
-                            data-easing="Power4.easeOut">
-                            <img src="assets/img/freeze/Slides/freeze-slide2.png" alt="">
-                        </div>
+	<!--Newsletter-->
+	<section id='newsletter'>
+		<div class="container">
+			<div class='wow fadeInDown'>
+				<h2>Subscribete para conocer mas!</h2>
+				<p class='subtitle'>y sigue las noticias mas importantes del mundo tuerca</p>
+			</div>
+			<div id='newsletter-form'>
+				<input type="email" name="email" class="subscribe-input" placeholder="Ingresa tu Dirección E-mail..." required>
+				<button class='btn btn-primary subscribe-submit' type="submit">Subscribir</button>
+			</div>
+		</div>
+	</section>
 
-                        
-                        <div class="tp-caption large_white_light sft" data-x="center" data-y="250" data-hoffset="0" data-voffset="0" data-speed="1000" data-start="1400" data-easing="Power4.easeOut">
-                            Every Pixel <i class="fa fa-heart"></i>
-                        </div>
-                        
-                        
-                    </li>
+	<!--FOOTER-->
+	<footer id='footer'>
+		<div class="container">
+			<div id='footer-content'>
+				<h2><img src="img/logo.png" alt></h2>
+				<p id='social-links'>
+					<a target="_blank" href="https://www.facebook.com/MotoAppMobile/" class='icon ion-social-facebook'></a>
+					<a target="_blank" href="https://twitter.com/Moto__app" class='icon ion-social-twitter'></a>
+					<a target="_blank" href="https://www.instagram.com/moto_app/" class='icon ion-social-instagram'></a>
+				</p>
+				<p class='copyright'>Todos los derechos reservados © 2015 MotoApp</p>
+			</div>
+		</div>
+	</footer>
+	<div id='static-footer'></div>
 
-                    <!-- SLIDE 3 -->
-                    <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000" >
-                        <!-- MAIN IMAGE -->
-                        <img src="assets/img/transparent.png"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
-                        <!-- LAYERS -->
-                        <!-- LAYER NR. 1 -->
-                        <div class="tp-caption customin customout hidden-xs"
-                            data-x="right"
-                            data-y="center"
-                            data-hoffset="0"
-                            data-customin="x:50;y:150;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;opacity:0;transformPerspective:0;transformOrigin:50% 50%;"
-                        data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                            data-voffset="50"
-                            data-speed="1000"
-                            data-start="700"
-                            data-easing="Power4.easeOut">
-                            <img src="assets/img/freeze/Slides/family-freeze.png" alt="">
-                        </div>
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/retina.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/wow.js"></script>
+	<script src="js/jquery.nav.js"></script>
+	<script src="js/jquery.scrollTo.min.js"></script>
+	<script src="js/nivo-lightbox.min.js"></script>
+	<script type="text/javascript">
+		// general variables
+		myWindow = $(window)
+		windowHeight = myWindow.height()
+		header = $('#header')
+		svgRect = $('#svg-rect')
+		showNav = $('#show-nav')
+		hideNav = $('#hide-nav')
+		navUl = $('#nav-ul')
 
-                        <div class="tp-caption customin customout visible-xs"
-                            data-x="center"
-                            data-y="center"
-                            data-hoffset="0"
-                            data-customin="x:50;y:150;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.5;scaleY:0.5;skewX:0;skewY:0;opacity:0;transformPerspective:0;transformOrigin:50% 50%;"
-                        data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
-                            data-voffset="0"
-                            data-speed="1000"
-                            data-start="700"
-                            data-easing="Power4.easeOut">
-                            <img src="assets/img/freeze/Slides/family-freeze.png" alt="">
-                        </div>
+		// set header height
+		if (windowHeight>=900) {
+			header.css('height', windowHeight - 250)
+		}
+		else{
+			header.css('height', windowHeight)
+		}
 
-                        <div class="tp-caption lfb visible-xs" data-x="center" data-y="center" data-hoffset="0" data-voffset="400" data-speed="1000" data-start="1200" data-easing="Power4.easeOut">
-                            <a href="#" class="btn btn-primary inverse btn-lg">Purchase</a>
-                        </div>
+		headerHeight = header.outerHeight()
+		headerWidth = header.outerWidth()
 
-                        
-                        <div class="tp-caption mediumlarge_light_white sfl hidden-xs" data-x="left" data-y="center" data-hoffset="0" data-voffset="-50" data-speed="1000" data-start="1000" data-easing="Power4.easeOut">
-                           Powerful Responsive
-                        </div>
-                        <div class="tp-caption mediumlarge_light_white sft hidden-xs" data-x="left" data-y="center" data-hoffset="0" data-voffset="0" data-speed="1000" data-start="1200" data-easing="Power4.easeOut">
-                           App Landing Page
-                        </div>
-                        <div class="tp-caption small_light_white sfb hidden-xs" data-x="left" data-y="center" data-hoffset="0" data-voffset="80" data-speed="1000" data-start="1600" data-easing="Power4.easeOut">
-                           <p>Nulla pretium libero interdum, tempus lorem non, rutrum diam. <br> Quisque pellentesque diam sed pulvinar lobortis. Vestibulum ante <br>ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
-                        </div>
+		$(document).ready(function() {
 
-                        <div class="tp-caption lfl hidden-xs" data-x="left" data-y="center" data-hoffset="0" data-voffset="160" data-speed="1000" data-start="1800" data-easing="Power4.easeOut">
-                            <a href="#" class="btn btn-primary inverse btn-lg">Purchase</a>
-                        </div>
-                        
-                        
-                    </li>
-                    
-                </ul>
-            </div>
-        </div>
+			// header animation svg
+			var svgHeader = $('#svg-header')
+
+			svgRect.attr('height', 1.5*headerHeight)
+			svgRect.attr('width', 2*headerWidth)
+			svgHeader.css('transform', 'rotate(-55deg)')
+			svgHeader.css('-webkit-transform', 'rotate(-55deg)')
+			svgHeader.css('ms-transform', 'rotate(-55deg)')
+
+			// wow.js initialization
+			if (myWindow.width()>530) {
+				new WOW().init();
+			};
+
+			// jquery.nav.js initialization
+			$('.nav-inner', '#header').onePageNav();
+
+			// Nivo Lightbox initialization
+			$('#screenshots a').nivoLightbox({
+				effect: 'fadeScale',
+				keyboardNav: true,
+			});
+
+			// owl.carousel.js initialization
+			$("#screens-carousel").owlCarousel({
+				items : 4,
+				itemsDesktop : [1199,4],
+				itemsDesktopSmall : [980,3],
+				itemsTablet: [768,2],
+				itemsMobile : [480,1],
+			});
+			$("#reviews-carousel").owlCarousel({
+				items : 1,
+				itemsDesktop : [1199,1],
+				itemsDesktopSmall : [980,1],
+				itemsTablet: [768,1],
+				itemsMobile : [480,1],
+				autoPlay: 8000,
+			});
+		});
+		// Responsive navigation show/hide
+		function showNavig() {
+			navUl.css('display','block')
+			hideNav.css('display','block')
+			showNav.css('display','none')
+		}
+		function hideNavig() {
+			navUl.css('display','none')
+			showNav.css('display','block')
+			hideNav.css('display','none')
+		}
+		showNav.click(function() {
+			showNavig();
+		});
+		hideNav.click(function() {
+			hideNavig();
+		});
+		$( "#off-nav" ).click(function() {
+			hideNavig();
+		});
+		$( "#nav-ul > li" ).click(function() {
+			if (myWindow.width()<=767) {
+				hideNavig();
+			};
+		});
+
+		// Resize event handler
+		myWindow.resize(function() {
+			// show/hide responsive navigation
+			if (myWindow.width()>767) {
+				navUl.css('display','block')
+			}
+			else{
+				navUl.css('display','none')
+			}
+
+			// resize SVG rectangle in header
+			headerWidth = header.outerWidth()
+			svgRect.attr('height', 1.5*headerHeight)
+			svgRect.attr('width', 2*headerWidth)
+		});
+
+		// scrollTo buttons
+		menuBarHeight = $('#menu-bar-fixed').outerHeight();
+
+		$('.scrollTo-download').click(function(){
+			$.scrollTo( $('#download').offset().top-menuBarHeight+'px' , 800 );
+		});
+		$('.scrollTo-about').click(function(){
+			$.scrollTo( $('#about').offset().top-menuBarHeight+'px' , 800 );
+		});
+		$('.scrollTo-header').click(function(){
+			$.scrollTo( header , 800 );
+		});
 
 
-    </header>
+		footerHeight = $('footer').outerHeight();
+		$('#static-footer').css('margin-top', footerHeight+'px');
 
+		// scroll event
+		window.onscroll = scroll;
+		
+		function scroll () {
 
-    <div class="wrapper">
+			var wScrollTop = $(window).scrollTop();
+			var wScrollBot = wScrollTop + $(window).height();
+			var pageHeight = $(document).height();
+			var footerContent = $("#footer-content")
 
-        
+			// fixed footer opacity change onscroll
+			if(wScrollBot>pageHeight-(footerHeight/2)){
+				var newOpacity = (0.99/(footerHeight/2)) * (wScrollBot-(pageHeight-(footerHeight/2)))
+				footerContent.css('opacity', newOpacity);
+			}
+			else{
+				footerContent.css('opacity','0');
+			}
+			
+			// fixed navigation show/hide
+			var menuBarFixed = $('#menu-bar-fixed')
 
-        <section id="about">
-            <div class="container">
-                
-                <div class="section-heading scrollpoint sp-effect3">
-                    <h1>About Us</h1>
-                    <div class="divider"></div>
-                    <p>Oleose Beautiful App Landing Page</p>
-                </div>
+			if (wScrollTop >= headerHeight - menuBarFixed.outerHeight()) {
+				menuBarFixed.css('top','0');
+				menuBarFixed.css('opacity','1');
+			}
+			else{
+				menuBarFixed.css('top',-menuBarFixed.outerHeight()+'px');
+				menuBarFixed.css('opacity','0');
+			};
+		}
 
-                <div class="row">
-                    <div class="col-md-3 col-sm-3 col-xs-6">
-                        <div class="about-item scrollpoint sp-effect2">
-                            <i class="fa fa-download fa-2x"></i>
-                            <h3>Easy setup</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6" >
-                        <div class="about-item scrollpoint sp-effect5">
-                            <i class="fa fa-mobile fa-2x"></i>
-                            <h3>On-the-go</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6" >
-                        <div class="about-item scrollpoint sp-effect5">
-                            <i class="fa fa-users fa-2x"></i>
-                            <h3>Social connect</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6" >
-                        <div class="about-item scrollpoint sp-effect1">
-                            <i class="fa fa-sliders fa-2x"></i>
-                            <h3>Dedicated support</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+	</script>
 
-        <section id="features">
-            <div class="container">
-                <div class="section-heading scrollpoint sp-effect3">
-                    <h1>Features</h1>
-                    <div class="divider"></div>
-                    <p>Learn more about this feature packed App</p>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 col-sm-4 scrollpoint sp-effect1">
-                        <div class="media text-right feature">
-                            <a class="pull-right" href="#">
-                                <i class="fa fa-cogs fa-2x"></i>
-                            </a>
-                            <div class="media-body">
-                                <h3 class="media-heading">User Settings</h3>
-                                Lorem ipsum dolor sit amet.
-                            </div>
-                        </div>
-                        <div class="media text-right feature">
-                            <a class="pull-right" href="#">
-                                <i class="fa fa-envelope fa-2x"></i>
-                            </a>
-                            <div class="media-body">
-                                <h3 class="media-heading">Messages Inbox</h3>
-                                Lorem ipsum dolor sit amet.
-                            </div>
-                        </div>
-                        <div class="media text-right feature">
-                            <a class="pull-right" href="#">
-                                <i class="fa fa-users fa-2x"></i>
-                            </a>
-                            <div class="media-body">
-                                <h3 class="media-heading">Friends List</h3>
-                                Lorem ipsum dolor sit amet.
-                            </div>
-                        </div>
-                        <div class="media text-right feature">
-                            <a class="pull-right" href="#">
-                                <i class="fa fa-comments fa-2x"></i>
-                            </a>
-                            <div class="media-body">
-                                <h3 class="media-heading">Live Chat Messages</h3>
-                                Lorem ipsum dolor sit amet.
-                            </div>
-                        </div>
-                        <div class="media text-right feature">
-                            <a class="pull-right" href="#">
-                                <i class="fa fa-calendar fa-2x"></i>
-                            </a>
-                            <div class="media-body">
-                                <h3 class="media-heading">Calendar / Planner</h3>
-                                Lorem ipsum dolor sit amet.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4" >
-                        <img src="assets/img/freeze/iphone-freeze.png" class="img-responsive scrollpoint sp-effect5" alt="">
-                    </div>
-                    <div class="col-md-4 col-sm-4 scrollpoint sp-effect2">
-                        <div class="media feature">
-                            <a class="pull-left" href="#">
-                                <i class="fa fa-map-marker fa-2x"></i>
-                            </a>
-                            <div class="media-body">
-                                <h3 class="media-heading">My Places</h3>
-                                Lorem ipsum dolor sit amet.
-                            </div>
-                        </div>
-                        <div class="media feature">
-                            <a class="pull-left" href="#">
-                                <i class="fa fa-film fa-2x"></i>
-                            </a>
-                            <div class="media-body">
-                                <h3 class="media-heading">Media Player™</h3>
-                                Lorem ipsum dolor sit amet.
-                            </div>
-                        </div>
-                        <div class="media feature">
-                            <a class="pull-left" href="#">
-                                <i class="fa fa-compass fa-2x"></i>
-                            </a>
-                            <div class="media-body">
-                                <h3 class="media-heading">Intuitive Statistics</h3>
-                                Lorem ipsum dolor sit amet.
-                            </div>
-                        </div>
-                        <div class="media feature">
-                            <a class="pull-left" href="#">
-                                <i class="fa fa-picture-o fa-2x"></i>
-                            </a>
-                            <div class="media-body">
-                                <h3 class="media-heading">Weather on-the-go</h3>
-                                Lorem ipsum dolor sit amet.
-                            </div>
-                        </div>
-                        <div class="media active feature">
-                            <a class="pull-left" href="#">
-                                <i class="fa fa-plus fa-2x"></i>
-                            </a>
-                            <div class="media-body">
-                                <h3 class="media-heading">And much more!</h3>
-                                Lorem ipsum dolor sit amet.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="reviews">
-            <div class="container">
-                <div class="section-heading inverse scrollpoint sp-effect3">
-                    <h1>Reviews</h1>
-                    <div class="divider"></div>
-                    <p>Read What's The People Are Saying About Us</p>
-                </div>
-                <div class="row">
-                    <div class="col-md-10 col-md-push-1 scrollpoint sp-effect3">
-                        <div class="review-filtering">
-                            <div class="review">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="review-person">
-                                            <img src="http://api.randomuser.me/portraits/women/94.jpg" alt="" class="img-responsive">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <div class="review-comment">
-                                            <h3>“I love Oleose, I highly rfreezemmend it, Everyone Try It Now”</h3>
-                                            <p>
-                                                - Krin Fox
-                                                <span>
-                                                    <i class="fa fa-star fa-lg"></i>
-                                                    <i class="fa fa-star fa-lg"></i>
-                                                    <i class="fa fa-star fa-lg"></i>
-                                                    <i class="fa fa-star fa-lg"></i>
-                                                    <i class="fa fa-star-o fa-lg"></i>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="review rollitin">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="review-person">
-                                            <img src="http://api.randomuser.me/portraits/men/70.jpg" alt="" class="img-responsive">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <div class="review-comment">
-                                            <h3>“Oleaose Is The Best Stable, Fast App I Have Ever Experienced”</h3>
-                                            <p>
-                                                - Theodore Willis
-                                                <span>
-                                                    <i class="fa fa-star fa-lg"></i>
-                                                    <i class="fa fa-star fa-lg"></i>
-                                                    <i class="fa fa-star fa-lg"></i>
-                                                    <i class="fa fa-star-half-o fa-lg"></i>
-                                                    <i class="fa fa-star-o fa-lg"></i>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="review rollitin">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="review-person">
-                                            <img src="http://api.randomuser.me/portraits/men/93.jpg" alt="" class="img-responsive">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <div class="review-comment">
-                                            <h3>“Keep It Up Guys Your Work Rules, Cheers :)”</h3>
-                                            <p>
-                                                - Ricky Grant
-                                                <span>
-                                                    <i class="fa fa-star fa-lg"></i>
-                                                    <i class="fa fa-star fa-lg"></i>
-                                                    <i class="fa fa-star fa-lg"></i>
-                                                    <i class="fa fa-star-half-o fa-lg"></i>
-                                                    <i class="fa fa-star-o fa-lg"></i>
-                                                </span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="screens">
-            <div class="container">
-
-                <div class="section-heading scrollpoint sp-effect3">
-                    <h1>Screens</h1>
-                    <div class="divider"></div>
-                    <p>See what’s included in the App</p>
-                </div>
-
-                <div class="filter scrollpoint sp-effect3">
-                    <a href="javascript:void(0)" class="button js-filter-all active">All Screens</a>
-                    <a href="javascript:void(0)" class="button js-filter-one">User Access</a>
-                    <a href="javascript:void(0)" class="button js-filter-two">Social Network</a>
-                    <a href="javascript:void(0)" class="button js-filter-three">Media Players</a>
-                </div>
-                <div class="slider filtering scrollpoint sp-effect5" >
-                    <div class="one">
-                        <img src="assets/img/freeze/screens/profile.jpg" alt="">
-                        <h4>Profile Page</h4>
-                    </div>
-                    <div class="two">
-                        <img src="assets/img/freeze/screens/menu.jpg" alt="">
-                        <h4>Toggel Menu</h4>
-                    </div>
-                    <div class="three">
-                        <img src="assets/img/freeze/screens/weather.jpg" alt="">
-                        <h4>Weather Forcast</h4>
-                    </div>
-                    <div class="one">
-                        <img src="assets/img/freeze/screens/signup.jpg" alt="">
-                        <h4>Sign Up</h4>
-                    </div>
-                    <div class="one">
-                        <img src="assets/img/freeze/screens/calendar.jpg" alt="">
-                        <h4>Event Calendar</h4>
-                    </div>
-                    <div class="two">
-                        <img src="assets/img/freeze/screens/options.jpg" alt="">
-                        <h4>Some Options</h4>
-                    </div>
-                    <div class="three">
-                        <img src="assets/img/freeze/screens/sales.jpg" alt="">
-                        <h4>Sales Analysis</h4>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="demo">
-            <div class="container">
-                <div class="section-heading scrollpoint sp-effect3">
-                    <h1>Demo</h1>
-                    <div class="divider"></div>
-                    <p>Take a closer look in more detail</p>
-                </div>
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2 scrollpoint sp-effect2">
-                        <div class="video-container" >
-                            <iframe src="http://player.vimeo.com/video/70984663"></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="getApp">
-            <div class="container-fluid">
-                <div class="section-heading inverse scrollpoint sp-effect3">
-                    <h1>Get App</h1>
-                    <div class="divider"></div>
-                    <p>Choose your native platform and get started!</p>
-                </div>
-                
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="hanging-phone scrollpoint sp-effect2 hidden-xs">
-                            <img src="assets/img/freeze/freeze-angled2.png" alt="">
-                        </div>
-                        <div class="platforms">
-                            <a href="#" class="btn btn-primary inverse scrollpoint sp-effect1">
-                                <i class="fa fa-android fa-3x pull-left"></i>
-                                <span>Download for</span><br>
-                                <b>Android</b>
-                            </a>
-                            
-                                <a href="#" class="btn btn-primary inverse scrollpoint sp-effect2">
-                                    <i class="fa fa-apple fa-3x pull-left"></i>
-                                    <span>Download for</span><br>
-                                    <b>Apple IOS</b>
-                                </a>
-                        </div>
-
-                    </div>
-                </div>
-
-                
-
-            </div>
-        </section>
-
-        <section id="support" class="doublediagonal">
-            <div class="container">
-                <div class="section-heading scrollpoint sp-effect3">
-                    <h1>Support</h1>
-                    <div class="divider"></div>
-                    <p>For more info and support, contact us!</p>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-8 col-sm-8 scrollpoint sp-effect1">
-                                <form role="form">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Your name">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Your email">
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea cols="30" rows="10" class="form-control" placeholder="Your message"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
-                                </form>
-                            </div>
-                            <div class="col-md-4 col-sm-4 contact-details scrollpoint sp-effect2">
-                                <div class="media">
-                                    <a class="pull-left" href="#" >
-                                        <i class="fa fa-map-marker fa-2x"></i>
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">4, Some street, California, USA</h4>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <a class="pull-left" href="#" >
-                                        <i class="fa fa-envelope fa-2x"></i>
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">
-                                            <a href="mailto:support@oleose.com">support@oleose.com</a>
-                                        </h4>
-                                    </div>
-                                </div>
-                                <div class="media">
-                                    <a class="pull-left" href="#" >
-                                        <i class="fa fa-phone fa-2x"></i>
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading">+1 234 567890</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <div class="container">
-                <a href="#" class="scrollpoint sp-effect3">
-                    <img src="assets/img/freeze/logo.png" alt="" class="logo">
-                </a>
-                <div class="social">
-                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-twitter fa-lg"></i></a>
-                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-google-plus fa-lg"></i></a>
-                    <a href="#" class="scrollpoint sp-effect3"><i class="fa fa-facebook fa-lg"></i></a>
-                </div>
-                <div class="rights">
-                    <p>Copyright &copy; 2014</p>
-                    <p>Template by <a href="http://www.scoopthemes.com" target="_blank">ScoopThemes</a></p>
-                </div>
-            </div>
-        </footer>
-
-        
-
-    </div>
-    <script src="assets/js/jquery-1.11.1.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/slick.min.js"></script>
-    <script src="assets/js/placeholdem.min.js"></script>
-    <script src="assets/js/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
-    <script src="assets/js/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/scripts.js"></script>
-    <script>
-        $(document).ready(function() {
-            appMaster.preLoader();
-        });
-    </script>
 </body>
-
 </html>
