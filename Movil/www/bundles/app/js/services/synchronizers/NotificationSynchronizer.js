@@ -16,12 +16,12 @@ angular.module('app.services.synchronizers')
     {
         // SYNC VARIABLES
         var self = Object.create(BaseEventHandler); //Extend From EventHandler
-        var label = "$_notification_stamp";
         var database = {
             name: "notifications",
             options:
             {}
         };
+        var label = database.name + "_stamp";
 
         //----------------------------------------
         // CONFIGURATION STEP (LIKE CONSTRUCTOR)
@@ -130,6 +130,15 @@ angular.module('app.services.synchronizers')
                     angular.forEach(data.items, function(item)
                     {
                         item._id = item.createdAt;
+
+                        //Decode Context
+                        switch (item.type.identifier)
+                        {
+                            case "INFO":
+                                item.image = $filter("restricted")(item.image);
+                                break;
+                        }
+
                     });
 
                     //-----------------------------------------
@@ -170,7 +179,7 @@ angular.module('app.services.synchronizers')
 
             var promise = db.query('queries/unreaded',
             {
-                include_docs: true
+                include_docs: false
             });
 
             promise.then(function(res)
@@ -181,73 +190,109 @@ angular.module('app.services.synchronizers')
             return promise;
         };
 
+        self.paginate = function(limit)
+        {
+            var db = pouchDB(database.name);
+            var options = {
+                limit: limit,
+                include_docs: true,
+                descending: true
+            };
+
+            var totalRows = 0;
+            var currentRows = 0;
+
+            var hasNext = function hasNext()
+            {
+                return totalRows > 0 && currentRows < totalRows;
+            }
+
+            var nextPage = function nextPage()
+            {
+                var defer = $q.defer();
+
+                db.query('queries/all', options).then(function(res)
+                {
+                    if (res.rows.length > 0)
+                    {
+                        //Set counter's
+                        options.startkey = res.rows[res.rows.length - 1].key;
+                        totalRows = res.total_rows;
+                        currentRows += res.rows.length;
+                        options.skip = 1;
+                    }
+
+                    //Return Item's
+                    var items = _.pluck(res.rows, 'doc');
+                    defer.resolve(items);
+
+                }, defer.reject);
+
+                return defer.promise;
+            };
+
+            var defer = nextPage();
+            defer.nextPage = nextPage;
+            defer.hasNext = hasNext;
+
+            return defer;
+        };
+
         self.getItems = function()
         {
             var defer = $q.defer();
-
             var db = pouchDB(database.name);
-            db.query("queries/all".format([name]),
+            db.query('queries/all',
             {
                 include_docs: true,
-                descending: true
+                descending: true,
+                limit: 10
             }).then(function(res)
             {
+
+                //Return Item's
                 var items = _.pluck(res.rows, 'doc');
-
-                //Update Notification's if exist's
-                if (res.rows.length > 0)
-                {
-                    hasUnreaded = false;
-
-                    //UPDATE ALL Notifications to readed
-                    angular.forEach(items, function(item)
-                    {
-                        //First Seen??!
-                        if (!item.readed)
-                        {
-                            hasUnreaded = true;
-
-                            //Decode Context
-                            switch (item.type.identifier)
-                            {
-                                case "INFO":
-                                    item.image = $filter("restricted")(item.image);
-                                    break;
-                            }
-                        }
-
-                        item.readed = true;
-                    });
-
-                    if (hasUnreaded)
-                    {
-                        self.markAllAsReaded().then(function()
-                        {
-                            //Update Doc's
-                            db.bulkDocs(items).then(function()
-                            {
-                                //<- event
-                                updateCount();
-                            });
-                        });
-                    }
-                }
-
                 defer.resolve(items);
 
+            }, function(err)
+            {
+                defer.reject(err);
             });
 
             return defer.promise;
         };
 
-
         self.markAllAsReaded = function()
         {
-            var stamp = $LocalStorage.get(label);
-            return $Api.update("/Notifications/MarkAsReaded",
+            var defer = $q.defer();
+            var db = pouchDB(database.name);
+            db.query('queries/unreaded',
             {
-                timestamp: stamp
-            });
+                include_docs: true
+            }).then(function(res)
+            {
+                //Mark all unreaded item's as READED
+                var items = _.pluck(res.rows, 'doc');
+                angular.forEach(items, function(item)
+                {
+                    item.readed = true;
+                })
+                db.bulkDocs(items).then(function()
+                {
+
+                    var stamp = $LocalStorage.get(label);
+                    $Api.update("/Notifications/MarkAsReaded",
+                    {
+                        timestamp: stamp
+                    }).then(defer.resolve, defer.reject);
+
+                    updateCount();
+
+                }, defer.reject);
+
+            }, defer.reject);
+
+            return defer.promise;
         };
 
         return self;

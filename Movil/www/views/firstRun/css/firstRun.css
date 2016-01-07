@@ -1,81 +1,76 @@
 /* 
     SASS Theme Variables 
 */
-.box-shadow-3dp {
-  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.12); }
-
-.box-shadow-8dp {
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12); }
-
-.grayscale {
-  filter: url("data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg'&gt;&lt;filter id='grayscale'&gt;&lt;feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale");
-  /* Firefox 10+, Firefox on Android */
-  filter: gray;
-  /* IE6-9 */
-  -webkit-filter: grayscale(100%);
-  /* Chrome 19+, Safari 6+, Safari 6+ iOS */ }
-
-/*------------------------- 
-VIEW:   First Run View's
-ROUTE:  /app/firstRun/*
--------------------------*/
-ion-view.firstRun {
+/* 
+    SASS Mixins
+*/
+[md-theme='imoto'] {
   /*------------------------- 
-  VIEW:   First Time Configuration
-  ROUTE:  /app/firstRun/configuration
+  VIEW:   First Run View's
+  ROUTE:  /app/firstRun/configure
   -------------------------*/ }
-  ion-view.firstRun.configuration .title {
-    padding-bottom: 0.5em !important;
-    background-color: #141925;
-    margin-bottom: 1em;
-    line-height: 1em; }
-    ion-view.firstRun.configuration .title div.col:first-child {
-      text-transform: uppercase; }
-  ion-view.firstRun.configuration.step-1 {
-    background-image: url(images/backgrounds/background-2.jpg);
-    background-size: 100%; }
-    ion-view.firstRun.configuration.step-1 ion-content {
-      background: none; }
-      ion-view.firstRun.configuration.step-1 ion-content div.welcome {
-        color: #ffc107;
-        padding: 1em;
-        padding-bottom: 2em;
-        padding-top: 2em;
-        text-align: justify; }
-        ion-view.firstRun.configuration.step-1 ion-content div.welcome h1 {
-          color: #ffc107;
-          font-size: 1.6em;
-          font-weight: normal; }
-      ion-view.firstRun.configuration.step-1 ion-content div.fav-button {
-        position: absolute;
-        right: 1em;
-        border-radius: 50%;
-        height: 3.5em;
-        width: 3.5em;
-        background-color: #ffc107;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: -1em; }
-        ion-view.firstRun.configuration.step-1 ion-content div.fav-button > i {
-          color: #1c1c29;
-          text-align: center;
-          font-size: 1.8em; }
-      ion-view.firstRun.configuration.step-1 ion-content div.row {
+  [md-theme='imoto'] .firstRun.configure {
+    /*
+      ION SLIDES CUSTOMIZATION
+    */ }
+    [md-theme='imoto'] .firstRun.configure background-gps {
+      display: block;
+      min-height: 100%;
+      width: 100%;
+      background-image: url(images/background-gps.png);
+      background-color: #bd741a; }
+    [md-theme='imoto'] .firstRun.configure push-notifications {
+      display: block;
+      min-height: 100%;
+      width: 100%;
+      background-image: url(images/push-notifications.png);
+      background-color: #6b8e35; }
+      [md-theme='imoto'] .firstRun.configure push-notifications .actions {
+        text-align: left; }
+        [md-theme='imoto'] .firstRun.configure push-notifications .actions > button {
+          padding: 6px !important;
+          margin-right: 8px; }
+        [md-theme='imoto'] .firstRun.configure push-notifications .actions > a {
+          color: white;
+          font-size: 1.1em;
+          padding-left: 4px;
+          padding: 8px;
+          padding-right: 12px;
+          padding-left: 8px; }
+    [md-theme='imoto'] .firstRun.configure sport-selector {
+      display: block;
+      min-height: 100%;
+      width: 100%;
+      background-image: url(images/sport-selector.png);
+      background-color: #3c3688; }
+    [md-theme='imoto'] .firstRun.configure ion-slides .swiper-slide > * {
+      background-size: 100% auto;
+      background-position: center 35%;
+      background-repeat: no-repeat; }
+    [md-theme='imoto'] .firstRun.configure ion-slides .swiper-slide content {
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1em;
+      height: 18em; }
+      [md-theme='imoto'] .firstRun.configure ion-slides .swiper-slide content > .title {
+        font-size: 1.8em;
         padding-bottom: 1em; }
-        ion-view.firstRun.configuration.step-1 ion-content div.row.phones div.col {
-          padding: 0.5em; }
-          ion-view.firstRun.configuration.step-1 ion-content div.row.phones div.col a {
-            text-decoration: none;
-            color: #ffc107; }
-      ion-view.firstRun.configuration.step-1 ion-content input.value,
-      ion-view.firstRun.configuration.step-1 ion-content select.value {
-        width: 99%;
-        background: transparent;
-        border: 1px solid #ffc107;
-        border-radius: 4px;
-        color: #fff;
-        font-size: 1.6em;
-        text-align: center; }
+      [md-theme='imoto'] .firstRun.configure ion-slides .swiper-slide content > .description {
+        text-align: justify; }
+      [md-theme='imoto'] .firstRun.configure ion-slides .swiper-slide content > .actions {
+        text-align: center;
+        padding-top: 2em; }
+        [md-theme='imoto'] .firstRun.configure ion-slides .swiper-slide content > .actions > button {
+          padding: 6px 25px;
+          border-radius: 4px;
+          font-size: 1.2em;
+          border: 1px solid #e2e2e2;
+          background: none;
+          color: white; }
+    [md-theme='imoto'] .firstRun.configure ion-slides .swiper-pagination-bullet {
+      background-color: #fff; }
 
 /*# sourceMappingURL=firstRun.css.map */

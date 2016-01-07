@@ -378,6 +378,11 @@ angular.module('app.services')
                 }
             };
 
+            self.getCurrentState = function()
+            {
+                return resume.state;
+            };
+
             self.addPhoto = function(image)
             {
 

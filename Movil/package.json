@@ -29,7 +29,8 @@
     "cordova-plugin-googleplus",
     "cordova-plugin-mauron85-background-geolocation",
     "es.keensoft.fullscreenimage",
-    "cordova-plugin-splashscreen"
+    "cordova-plugin-splashscreen",
+    "cordova.plugins.diagnostic"
   ],
   "cordovaPlatforms": [
     "ios",

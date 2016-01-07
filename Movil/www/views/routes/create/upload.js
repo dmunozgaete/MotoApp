@@ -71,7 +71,7 @@ angular.route('nomenu.routes/create/upload/:share', function(
             coordinates: coords,
             name: resume.data.name,
             observation: resume.data.observation,
-            isShared: ($stateParams.share ? true : false),
+            isShared: ($stateParams.share == "1" ? true : false),
             photos: resume.photos
         };
 

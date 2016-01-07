@@ -3,6 +3,9 @@ http://excellencenodejsblog.com/cordova-ionic-facebook-login-mobile-app/
 https://ionicthemes.com/tutorials/about/native-facebook-login-with-ionic-framework
 http://www.joshmorony.com/user-authentication-with-ionic-and-parse-part-2-facebook-login/
 
+#Key Hashes
+keytool -exportcert -alias motoApp -keystore distribution.keystore | openssl sha1 -binary | openssl base64
+
 #Android Google+ Setup
 http://www.androidhive.info/2014/02/android-login-with-google-plus-account-1/
 https://ionicthemes.com/tutorials/about/google-plus-login-with-ionic-framework
@@ -26,3 +29,6 @@ configurations {
    all*.exclude group: 'com.android.support', module: 'support-v4'
 }
 
+
+In the __project.properties__ file , for correct build downgrade the appcompat to 22 and not 23
+cordova.system.library.6=com.android.support:appcompat-v7:22.2.1

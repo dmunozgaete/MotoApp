@@ -16,7 +16,6 @@ angular.route('app.home/index', function(
         range: 'S'
     };
 
-
     //----------------------------------------
     // FIX ISSUE NAVBAR ALIGN LEFT WITHOUT PADDING
     $ionicNavBarDelegate.showBar(false);

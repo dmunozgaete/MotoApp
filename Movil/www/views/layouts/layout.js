@@ -6,7 +6,8 @@ angular.module('app.layouts').controller('DefaultLayoutController', function(
     $Identity,
     NotificationSynchronizer,
     $cordovaBadge,
-    $cordovaLocalNotification
+    $cordovaLocalNotification,
+    $ionicHistory
 )
 {
 
@@ -17,32 +18,40 @@ angular.module('app.layouts').controller('DefaultLayoutController', function(
         user: $Identity.getCurrent(),
         notifications: 0,
         menu:  [
-        {
-            route: "app.home",
-            icon: "ion-ios-speedometer-outline",
-            label: "Inicio",
-            active: true
-        },
-        {
-            route: "app.routes/list",
-            icon: "ion-ios-location-outline",
-            label: "Rutas"
-        },
-        {
-            route: "app.profile",
-            icon: "ion-ios-person-outline",
-            label: "Mi Perfil"
-        },
-        {
-            route: "app.ambassadors",
-            icon: "ion-ios-people-outline",
-            label: "Embajadores"
-        },
-        {
-            route: "app.notifications",
-            icon: "ion-ios-bell-outline",
-            label: "Notificaciones"
-        }, ]
+            {
+                route: "app.home",
+                icon: "ion-ios-speedometer-outline",
+                label: "Inicio",
+                active: true
+            },
+            {
+                route: "app.routes/discover",
+                icon: "ion-ios-star-outline",
+                label: "Descubrir"
+            },
+
+            {
+                route: "app.routes/me",
+                icon: "ion-ios-location-outline",
+                label: "Mis Rutas"
+            },
+
+            {
+                route: "app.profile",
+                icon: "ion-ios-person-outline",
+                label: "Mi Perfil"
+            },
+            {
+                route: "app.ambassadors",
+                icon: "ion-ios-people-outline",
+                label: "Embajadores"
+            },
+            {
+                route: "app.notifications",
+                icon: "ion-ios-bell-outline",
+                label: "Notificaciones"
+            }
+        ]
     };
 
     //------------------------------------------------------------------------------------
@@ -85,6 +94,27 @@ angular.module('app.layouts').controller('DefaultLayoutController', function(
             }
 
         }
+        else
+        {
+
+            //ONLY IN DEVICE
+            if (ionic.Platform.isWebView())
+            {
+
+                //WHEN PLATFORM IS READY!
+                ionic.Platform.ready(function()
+                {
+                    //HAS PERMISSION TO PUT BADGE??
+                    $cordovaBadge.hasPermission().then(function()
+                    {
+                        //RESET BADGE COUNTER
+                        $cordovaBadge.clear();
+
+                    });
+                });
+            }
+
+        }
 
     };
 
@@ -92,8 +122,25 @@ angular.module('app.layouts').controller('DefaultLayoutController', function(
 
     //------------------------------------------------------------------------------------
     // Layout Actions
+    $scope.showNotifications = function()
+    {
+
+        var item = _.find($scope.config.menu,
+        {
+            route: "app.notifications"
+        });
+
+        $scope.navigateTo(item);
+
+    };
+
+    //------------------------------------------------------------------------------------
+
+    //------------------------------------------------------------------------------------
+    // Layout Actions
     $scope.navigateTo = function(item)
     {
+
         //----------------------------------- 
         //Mark as Active
         angular.forEach($scope.config.menu, function(item)
@@ -102,9 +149,22 @@ angular.module('app.layouts').controller('DefaultLayoutController', function(
         });
         item.active = true;
 
-        //-----------------------------------
-        // Navigate
-        $state.go(item.route);
+        //----------------------------------- 
+        // If the current View is the clicked menu item, do nothing ;)
+        if ($ionicHistory.currentView().stateId == item.route)
+        {
+            return;
+        };
+
+        //----------------------------------- 
+        // Try to remove the cache from history if view exist's , 
+        // (always try to reload if clicked from menu)
+        $ionicHistory.clearCache([item.route]).then(function()
+        {
+            //-----------------------------------
+            // Navigate
+            $state.go(item.route);
+        })
 
     };
 });

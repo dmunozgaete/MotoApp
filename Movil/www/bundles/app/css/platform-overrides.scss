@@ -3,26 +3,7 @@ Whether the application is running within a webview on
 the device within a native application
 --------------------------------------------------*/
 
-.platform-webview {
-    /*------------------------------------------------------
-    SPECIFIC VIEW'S
-    ------------------------------------------------------*/
-    ion-view.pane {
-        /*------------------------- 
-        VIEW:   Pause Page
-        -------------------------*/
-        &.pause {
-            ion-footer-bar {
-                > button {
-                    /* IN MOBILE, THE RED CIRCLE DONT SHOW PROPERLY */
-                    > div {
-                        position: absolute;
-                        left: 41%;
-                    }
-                }
-            }
-        }
-    }
+.platform-webview {   
 }
 
 
@@ -31,16 +12,7 @@ the device within a native application
 --------------------------------------------------*/
 
 .platform-ios {
-    ion-view.pane {
-        /*------------------------- 
-        VIEW:   Share Page
-        -------------------------*/
-        &.share {
-            .maps {
-                margin-top: 17px;
-            }
-        }
-    }
+    
     /* iPhone 4 and 4S */
     @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {}
     /* iPhone 6 */
@@ -49,26 +21,14 @@ the device within a native application
         SPECIFIC VIEW'S
         ------------------------------------------------------*/
         ion-view.pane {
-            &.route {
+            &.routes {
                 /*------------------------- 
-                VIEW:   Pause Page
+                VIEW:   Stop Page
                 -------------------------*/
                 &.pause {
                     .buttons {
                         .chart-container {
-                            margin-top: -13px !important;
-                            margin-left: 24px !important;
-                        }
-                    }
-                }
-                /*------------------------- 
-                VIEW:   Stop Page
-                -------------------------*/
-                &.stop {
-                    .buttons {
-                        .chart-container {
-                            margin-top: -0.65em !important;
-                            margin-left: 0.84em !important;
+                            margin-left: 1.84em !important;
                         }
                     }
                 }

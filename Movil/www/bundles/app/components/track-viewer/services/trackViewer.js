@@ -1,111 +1,129 @@
 angular.module('app.components')
 
-.factory('trackViewer', function($q, $rootScope)
+.provider('trackViewer', function()
 {
-    var self = this;
-    var components = {};
-    var callbacks = [];
+    //---------------------------------------------------
+    //Configurable Variable on .config Step
+    var $ref = this;
+    var _googleMapApiKey = null;
 
-    //Entry Point to register
-    var $$register = function(component, uniqueID)
+    this.googleMapApiKey = function(key)
     {
-        components[uniqueID] = component;
-
-        //Call all then function registered
-        angular.forEach(callbacks, function(callback)
-        {
-            callback.apply(component, [component, uniqueID]);
-        });
-
-        callbacks = [];
+        _googleMapApiKey = key;
+        return $ref;
     };
 
-    //Help to dispose the factory
-    var $$unregister = function(uniqueID)
+    this.$get = function($q, $rootScope)
     {
-        delete components[uniqueID];
-        callbacks = [];
-    };
+        var self = this;
+        var components = {};
+        var callbacks = [];
 
-    var _getByHandle = function(uniqueID)
-    {
-        var identifier = uniqueID;
-
-        if (!identifier)
+        //Entry Point to register
+        var $$register = function(component, uniqueID)
         {
-            var count = Object.keys(components).length;
-            if (count === 0)
+            components[uniqueID] = component;
+
+            //Call all then function registered
+            angular.forEach(callbacks, function(callback)
             {
-                throw {
-                    message: 'no track-viewer has instantied in the view'
-                };
+                callback.apply(component, [component, uniqueID]);
+            });
+
+            callbacks = [];
+        };
+
+        //Help to dispose the factory
+        var $$unregister = function(uniqueID)
+        {
+            delete components[uniqueID];
+            callbacks = [];
+        };
+
+        var _getByHandle = function(uniqueID)
+        {
+            var identifier = uniqueID;
+
+            if (!identifier)
+            {
+                var count = Object.keys(components).length;
+                if (count === 0)
+                {
+                    throw {
+                        message: 'no track-viewer has instantied in the view'
+                    };
+                }
+
+                //Always return the last registered
+                // Some caches in IONIC, crap the original method because the 
+                // "late destroy event" (for the special caching in IONIC)
+                identifier = (function()
+                {
+                    var last = null;
+                    for (var id in components)
+                    {
+                        last = id;
+                    }
+                    return last;
+                })();
+
+
             }
 
-            //Always return the last registered
-            // Some caches in IONIC, crap the original method because the 
-            // "late destroy event" (for the special caching in IONIC)
-            identifier = (function()
+            var component = components[identifier];
+            if (!component)
             {
-                var last = null;
-                for (var id in components)
-                {
-                    last = id;
-                }
-                return last;
-            })();
+                throw {
+                    message: 'no track-viewer has found with id {0}'.format([identifier])
+                };
+            }
+            return component;
+        };
 
-
-        }
-
-        var component = components[identifier];
-        if (!component)
+        self.then = function(callback)
         {
-            throw {
-                message: 'no track-viewer has found with id {0}'.format([identifier])
-            };
+            callbacks.push(callback);
+        };
+
+        self.getInstance = function()
+        {
+            return _getByHandle();
+        };
+
+        var exec = function(method, args)
+        {
+            var instance = self.getInstance();
+            return instance[method].apply(instance, args);
+        };
+
+        self.setPath = function()
+        {
+            exec("setPath", arguments);
+        };
+
+        self.addToPath = function()
+        {
+            exec("addToPath", arguments);
+        };
+
+        self.getBounds = function()
+        {
+            return exec("getBounds", arguments);
+        };
+
+        self.getImage = function()
+        {
+            return exec("getImage", arguments);
+        };
+
+        self.getGoogleMapApiKey = function(){
+            return _googleMapApiKey;
         }
-        return component;
+
+        //Internal Use
+        self.$$register = $$register;
+        self.$$unregister = $$unregister;
+
+        return self;
     };
-
-    self.then = function(callback)
-    {
-        callbacks.push(callback);
-    };
-
-    self.getInstance = function()
-    {
-        return _getByHandle();
-    };
-
-    var exec = function(method, args)
-    {
-        var instance = self.getInstance();
-        return instance[method].apply(instance, args);
-    };
-
-    self.setPath = function()
-    {
-        exec("setPath", arguments);
-    };
-
-    self.addToPath = function()
-    {
-        exec("addToPath", arguments);
-    };
-
-    self.getBounds = function()
-    {
-        return exec("getBounds", arguments);
-    };
-
-    self.getImage = function()
-    {
-        return exec("getImage", arguments);
-    };
-
-    //Internal Use
-    self.$$register = $$register;
-    self.$$unregister = $$unregister;
-
-    return self;
 });

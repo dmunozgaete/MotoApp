@@ -543,10 +543,6 @@ namespace API.Endpoints.Routes.Models
 		
 		private System.Nullable<System.DateTime> _shared_createdAt;
 		
-		private System.Guid _user_token;
-		
-		private string _user_identifier;
-		
 		private string _sensation_name;
 		
 		private System.Guid _sensation_token;
@@ -554,6 +550,14 @@ namespace API.Endpoints.Routes.Models
 		private string _sensation_identifier;
 		
 		private System.DateTime _createdAt;
+		
+		private System.Guid _creator_token;
+		
+		private string _creator_identifier;
+		
+		private string _creator_photo;
+		
+		private string _fullname;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -593,10 +597,6 @@ namespace API.Endpoints.Routes.Models
     partial void Onshared_observationsChanged();
     partial void Onshared_createdAtChanging(System.Nullable<System.DateTime> value);
     partial void Onshared_createdAtChanged();
-    partial void Onuser_tokenChanging(System.Guid value);
-    partial void Onuser_tokenChanged();
-    partial void Onuser_identifierChanging(string value);
-    partial void Onuser_identifierChanged();
     partial void Onsensation_nameChanging(string value);
     partial void Onsensation_nameChanged();
     partial void Onsensation_tokenChanging(System.Guid value);
@@ -605,6 +605,14 @@ namespace API.Endpoints.Routes.Models
     partial void Onsensation_identifierChanged();
     partial void OncreatedAtChanging(System.DateTime value);
     partial void OncreatedAtChanged();
+    partial void Oncreator_tokenChanging(System.Guid value);
+    partial void Oncreator_tokenChanged();
+    partial void Oncreator_identifierChanging(string value);
+    partial void Oncreator_identifierChanged();
+    partial void Oncreator_photoChanging(string value);
+    partial void Oncreator_photoChanged();
+    partial void Oncreator_fullnameChanging(string value);
+    partial void Oncreator_fullnameChanged();
     #endregion
 		
 		public Route()
@@ -952,46 +960,6 @@ namespace API.Endpoints.Routes.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="ENTI_Token", Storage="_user_token", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid user_token
-		{
-			get
-			{
-				return this._user_token;
-			}
-			set
-			{
-				if ((this._user_token != value))
-				{
-					this.Onuser_tokenChanging(value);
-					this.SendPropertyChanging();
-					this._user_token = value;
-					this.SendPropertyChanged("user_token");
-					this.Onuser_tokenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="ENTI_Identificador", Storage="_user_identifier", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
-		public string user_identifier
-		{
-			get
-			{
-				return this._user_identifier;
-			}
-			set
-			{
-				if ((this._user_identifier != value))
-				{
-					this.Onuser_identifierChanging(value);
-					this.SendPropertyChanging();
-					this._user_identifier = value;
-					this.SendPropertyChanged("user_identifier");
-					this.Onuser_identifierChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="TISE_Nombre", Storage="_sensation_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string sensation_name
 		{
@@ -1068,6 +1036,86 @@ namespace API.Endpoints.Routes.Models
 					this._createdAt = value;
 					this.SendPropertyChanged("createdAt");
 					this.OncreatedAtChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="ENTI_Token", Storage="_creator_token", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid creator_token
+		{
+			get
+			{
+				return this._creator_token;
+			}
+			set
+			{
+				if ((this._creator_token != value))
+				{
+					this.Oncreator_tokenChanging(value);
+					this.SendPropertyChanging();
+					this._creator_token = value;
+					this.SendPropertyChanged("creator_token");
+					this.Oncreator_tokenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="ENTI_Identificador", Storage="_creator_identifier", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string creator_identifier
+		{
+			get
+			{
+				return this._creator_identifier;
+			}
+			set
+			{
+				if ((this._creator_identifier != value))
+				{
+					this.Oncreator_identifierChanging(value);
+					this.SendPropertyChanging();
+					this._creator_identifier = value;
+					this.SendPropertyChanged("creator_identifier");
+					this.Oncreator_identifierChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="ARCH_Token", Storage="_creator_photo", CanBeNull=false)]
+		public string creator_photo
+		{
+			get
+			{
+				return this._creator_photo;
+			}
+			set
+			{
+				if ((this._creator_photo != value))
+				{
+					this.Oncreator_photoChanging(value);
+					this.SendPropertyChanging();
+					this._creator_photo = value;
+					this.SendPropertyChanged("creator_photo");
+					this.Oncreator_photoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="USUA_NombreCompleto", Storage="_fullname", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		public string creator_fullname
+		{
+			get
+			{
+				return this._fullname;
+			}
+			set
+			{
+				if ((this._fullname != value))
+				{
+					this.Oncreator_fullnameChanging(value);
+					this.SendPropertyChanging();
+					this._fullname = value;
+					this.SendPropertyChanged("creator_fullname");
+					this.Oncreator_fullnameChanged();
 				}
 			}
 		}
@@ -1176,6 +1224,10 @@ namespace API.Endpoints.Routes.Models
 		
 		private string _creator_identifier;
 		
+		private string _creator_photo;
+		
+		private string _fullname;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1212,6 +1264,10 @@ namespace API.Endpoints.Routes.Models
     partial void Oncreator_tokenChanged();
     partial void Oncreator_identifierChanging(string value);
     partial void Oncreator_identifierChanged();
+    partial void Oncreator_photoChanging(string value);
+    partial void Oncreator_photoChanged();
+    partial void Oncreator_fullnameChanging(string value);
+    partial void Oncreator_fullnameChanged();
     #endregion
 		
 		public PopularRoute()
@@ -1535,6 +1591,46 @@ namespace API.Endpoints.Routes.Models
 					this._creator_identifier = value;
 					this.SendPropertyChanged("creator_identifier");
 					this.Oncreator_identifierChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="ARCH_Token", Storage="_creator_photo", CanBeNull=false)]
+		public string creator_photo
+		{
+			get
+			{
+				return this._creator_photo;
+			}
+			set
+			{
+				if ((this._creator_photo != value))
+				{
+					this.Oncreator_photoChanging(value);
+					this.SendPropertyChanging();
+					this._creator_photo = value;
+					this.SendPropertyChanged("creator_photo");
+					this.Oncreator_photoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="USUA_NombreCompleto", Storage="_fullname", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
+		public string creator_fullname
+		{
+			get
+			{
+				return this._fullname;
+			}
+			set
+			{
+				if ((this._fullname != value))
+				{
+					this.Oncreator_fullnameChanging(value);
+					this.SendPropertyChanging();
+					this._fullname = value;
+					this.SendPropertyChanged("creator_fullname");
+					this.Oncreator_fullnameChanged();
 				}
 			}
 		}

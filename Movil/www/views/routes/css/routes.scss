@@ -1,727 +1,1000 @@
-@import "../../../bundles/app/css/variables";
-
-/*
-    -----------------------------------------
-    ROUTES
-    -----------------------------------------
-*/
-
-ion-view.routes {
-    /*------------------------- 
-    VIEW:   Route View's
-    ROUTE:  /app/routes/*
-    -------------------------*/
-    .common-actions {
-        margin-top: 1.5em;
-        > div.col {
-            text-align: center;
-            > .icon {
-                font-size: 3em;
+@import "../../../bundles/app/css/_variables";
+@import "../../../bundles/app/css/_flexbox";
+[md-theme='imoto'] {
+    ion-view.routes {
+        /*------------------------- 
+        VIEW:   ROUTE VIEW
+        ROUTE:  /app/routes/create/*
+        -------------------------*/
+        &.create {
+            /*------------------------- 
+            VIEW:   Route View's
+            ROUTE:  /app/routes/*
+            -------------------------*/
+            .common-actions {
+                margin-top: 1.5em;
+                > div.col {
+                    text-align: center;
+                    > .icon {
+                        font-size: 3em;
+                    }
+                    > .badge {
+                        position: absolute;
+                        margin-top: -3em;
+                        padding: 1px 5px;
+                        margin-left: 5px;
+                    }
+                }
             }
-            > .badge {
-                position: absolute;
-                margin-top: -3em;
-                padding: 1px 5px;
-                margin-left: 5px;
+            .counter-button {
+                @include flexbox();
+                @include align-items(center);
+                @include justify-content(center);
+                >div {
+                    width: 7em;
+                    height: 7em;
+                    background-color: #BD0000;
+                    color: $text_color;
+                    @include flexbox();
+                    @include align-items(center);
+                    @include justify-content(center);
+                    border-radius: 50%;
+                    @include box-shadow(8px);
+                    > i.icon {
+                        font-size: 2.5em;
+                    }
+                }
             }
-        }
-    }
-    .counter-button {
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        >div {
-            width: 7em;
-            height: 7em;
-            background-color: #BD0000;
-            color: $text_color;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            @extend .box-shadow-8dp;
-            > i.icon {
-                font-size: 2.5em;
-            }
-        }
-    }
-    .distance {
-        margin-top: 1em;
-        text-align: center;
-        > div.col {
-            > div:first-child {
-                font-size: 6em;
-                line-height: 1em;
-                font-weight: bold;
-                color: $accent_color;
-            }
-            > div:last-child {
-                text-transform: uppercase;
-            }
-        }
-    }
-    .counters {
-        > div.col {
-            text-align: center;
-            font-size: 2.2em;
-            font-weight: bold;
-            > div {
-                text-transform: uppercase;
-                color: $primary_color;
-                font-size: 0.9em;
-            }
-        }
-    }
-    .sensation {
-        > div.states {
-            margin-top: 0em;
-            padding: 0px;
-            > div.col {
-                padding: 0px;
+            .distance {
+                margin-top: 1em;
                 text-align: center;
-                font-size: 3em;
-                line-height: 1em;
-                opacity: 0.3;
-                &.active {
-                    opacity: 1;
-                    &.sensation-1 {
-                        color: green;
-                    }
-                    &.sensation-2 {
-                        color: yellow;
-                    }
-                    &.sensation-3 {
-                        color: red;
-                    }
-                }
-            }
-        }
-    }
-    
-    /*------------------------- 
-    VIEW:   Route Save Error
-    ROUTE:  /nomenu/routes/create/saveForLater
-    -------------------------*/
-    &.index {
-        .fab-button {
-            top: 15.2em;
-            &.likes {
-                background: #666;
-                &.active {
-                    background: red;
-                }
-            }
-            &.photos {
-                right: 5.5em;
-            }
-            ion-spinner {
-                color: #FFF;
-                stroke: #FFF;
-                fill: #FFF;
-            }
-        }
-        track-viewer {
-            height: 17em;
-            margin-bottom: 2em;
-        }
-        div.row {
-            padding-bottom: 0.7em;
-            &.phones {
-                div.col {
-                    padding: 0.5em;
-                    a {
-                        text-decoration: none;
+                > div.col {
+                    > div:first-child {
+                        font-size: 6em;
+                        line-height: 1em;
+                        font-weight: bold;
                         color: $accent_color;
                     }
-                }
-            }
-        }
-        input.value,
-        select.value {
-            width: 99%;
-            background: rgba(0, 0, 0, 0);
-            border: 1px solid $accent_color;
-            border-radius: 4px;
-            color: #fff;
-            font-size: 1.6em;
-            text-align: center;
-        }
-    }
-
-    /*------------------------- 
-    VIEW:   Route Save Error
-    ROUTE:  /nomenu/routes/create/saveForLater
-    -------------------------*/
-    &.photos {
-        div.image-box {
-            width: 90%;
-            margin-top: 3em;
-            background: #FFF;
-            padding-top: 5px;
-            padding: 5px;
-            padding-bottom: 0px;
-            > img {
-                margin: 0px;
-                padding: 0px;
-                width: 100%;
-            }
-        }
-    }
-    
-    /*------------------------- 
-    VIEW:   Route Save Error
-    ROUTE:  /nomenu/routes/create/saveForLater
-    -------------------------*/
-    &.save-for-later {
-        center {
-            > p {
-                text-align: justify;
-                padding: 2em;
-                font-size: 1.2em;
-                line-height: 1.2em;
-            }
-        }
-    }
-
-    /*------------------------- 
-    VIEW:   Route View List
-    ROUTE:  /app/routes/list
-    -------------------------*/
-    &.main {
-        ion-tabs {
-            > div.tabs {
-                background: $accent_color;
-                color: $primary_color;
-                a {
-                    &.tab-item-active {
-                        border-bottom: 3px solid $primary_color;
+                    > div:last-child {
+                        text-transform: uppercase;
                     }
                 }
             }
-            popular-routes,
-            my-routes,
-            shared-routes {
-                margin-top: 110px;
-                display: block;
-                background: $primary_color;
-                ion-content {
-                    > div.scroll {
-                        padding-bottom: 120px;
-                    }
-                    background: transparent;
-                    ion-item {
-                        margin: 0.5em 0.5em 0em 0.5em;
-                        padding-bottom: 8px;
-                        @extend .box-shadow-3dp;
-                        margin-top: 0.6em;
-                        border-radius: 2px;
-                        &:first-child {
-                            margin-top: 1em;
-                        }
-                        p {
-                            font-size: 0.8em;
-                            display: -webkit-box;
-                            -webkit-line-clamp: 2;
-                            -webkit-box-orient: vertical;
-                            line-height: 1.2em;
-                            white-space: normal;
-                        }
-                        h2 {
-                            margin-right: 27px;
-                            font-size: 0.9em;
-                        }
-                        preload-image:first-child {
-                            position: absolute;
-                            top: 10px;
-                            left: 10px;
-                            max-width: 80px;
-                            max-height: 80px;
-                            width: 100%;
-                            height: 100%;
-                        }
-                    }
-                }
-            }
-            /* CUSTOM DIRECTIVE */
-            popular-routes {
-                ion-content {
-                    ion-item {
-                        div.information {
-                            min-height: 60px;
-                        }
-                        div.markers {
-                            font-size: 0.9em;
-                            div.col {
-                                span.value {
-                                    font-weight: bold;
-                                }
-                                span.unit {
-                                    font-size: 0.8em;
-                                }
-                                &:last-child {
-                                    text-align: right;
-                                }
-                            }
-                        }
-                        div.likes {
-                            font-size: 0.85em;
-                            position: absolute;
-                            top: 7px;
-                            right: 7px;
-                            display: flex;
-                            justify-content: flex-end;
-                            align-items: center;
-                            > i.icon {
-                                color: #EF473A;
-                            }
-                            >span {
-                                color: #EE4336;
-                                padding-left: 2px;
-                            }
-                        }
-                    }
-                }
-            }
-            my-routes {
-                ion-content {
-                    ion-item {
-                        div.information {
-                            min-height: auto;
-                            padding-bottom: 4px;
-                        }
-                        div.markers {
-                            padding: 2px 0px;
-                            font-size: 0.9em;
-                            div.col {
-                                span.value {
-                                    font-weight: bold;
-                                }
-                                span.unit {
-                                    font-size: 0.8em;
-                                }
-                                &:last-child {
-                                    text-align: left;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            shared-routes {
-                ion-content {
-                    ion-item {
-                        div.likes {
-                            font-size: 0.85em;
-                            position: absolute;
-                            top: 7px;
-                            right: 7px;
-                            display: flex;
-                            justify-content: flex-end;
-                            align-items: center;
-                            > i.icon {
-                                color: #EF473A;
-                            }
-                            >span {
-                                color: #EE4336;
-                                padding-left: 2px;
-                            }
-                        }
-                        div.information {
-                            min-height: 60px;
-                        }
-                        div.markers {
-                            font-size: 0.9em;
-                            div.col {
-                                span.value {
-                                    font-weight: bold;
-                                }
-                                span.unit {
-                                    font-size: 0.8em;
-                                }
-                                &:last-child {
-                                    text-align: right;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    /*------------------------- 
-    VIEW:   Share Page
-    ROUTE:  /app/routes/create/share
-    -------------------------*/
-    &.gps {
-        ion-list {
-            ion-item {
-                padding: 6px 16px;
-                p {
-                    margin-bottom: 0px;
-                    font-size: 0.9em;
-                    line-height: 1.2em;
-                    &.stamp {
-                        opacity: 0.5;
-                        text-align: right;
-                        margin-top: -6px;
-                    }
-                }
-                &.event {
-                    color: $primary_color;
+            .counters {
+                > div.col {
+                    text-align: center;
+                    font-size: 2.2em;
                     font-weight: bold;
-                    p {
-                        &.stamp {
-                            margin-top: -17px;
-                            margin-bottom: 3px;
-                            font-weight: normal;
-                        }
-                    }
-                    &.route-autopause,
-                    &.route-autostart {
-                        color: green;
-                    }
-                    &.gps-timeout-error {
-                        color: red;
-                    }
-                    &.gps-discard-point {
-                        color: #4237E4;
+                    > div {
+                        text-transform: uppercase;
+                        color: $primary_color;
+                        font-size: 0.9em;
                     }
                 }
             }
-        }
-    }
-
-    /*------------------------- 
-    VIEW:   Share Page
-    ROUTE:  /app/routes/create/share
-    -------------------------*/
-    &.share {
-        track-viewer {
-            height: 9em;
-            width: 100%;
-        }
-        .mpas {
-            padding-bottom: 0px;
-        }
-        .chart-container {
-            height: 9em;
-        }
-        .sensation {
-            border-bottom: 1px solid #414550;
-            padding-bottom: 7px;
-            div.title {
-                opacity: 0.6;
-                font-size: 1em !important;
-                @include flex-size(50%);
-                justify-content: center;
-                align-items: center;
-                display: flex;
-                opacity: 0.6 !important;
-            }
-        }
-        .counters {
-            padding: 0px;
-            div.col {
-                padding: 0px;
-            }
-            > div.col {
-                font-size: 1.8em;
-                padding: 0px;
-                div.counter {
-                    padding: 5px 0px;
-                    text-align: left;
-                    color: $accent_color;
-                    text-transform: none;
-                    >div.row {
-                        > div.icon {
-                            text-align: center;
-                            padding-right: 5px;
-                        }
-                        justify-content: center;
-                        align-items: center;
+            .sensation {
+                > div.states {
+                    margin-top: 0em;
+                    padding: 0px;
+                    > div.col {
                         padding: 0px;
-                        > div.value {
-                            text-align: right;
+                        text-align: center;
+                        font-size: 3em;
+                        line-height: 1em;
+                        opacity: 0.3;
+                        &.active {
+                            opacity: 1;
+                            &.sensation-1 {
+                                color: green;
+                            }
+                            &.sensation-2 {
+                                color: yellow;
+                            }
+                            &.sensation-3 {
+                                color: red;
+                            }
                         }
-                        >div.unit {
-                            font-size: 0.4em;
-                            padding: 0px;
-                            text-align: right;
+                    }
+                }
+            }
+            /*------------------------- 
+            VIEW:   Route Save Error
+            ROUTE:  /nomenu/routes/create/saveForLater
+            -------------------------*/
+            &.index {
+                .fab-button {
+                    top: 15.2em;
+                    &.likes {
+                        background: #666;
+                        &.active {
+                            background: red;
                         }
                     }
-                    &.time {
-                        div.value {
-                            font-size: 0.86em;
+                    &.photos {
+                        right: 5.5em;
+                    }
+                    ion-spinner {
+                        color: #FFF;
+                        stroke: #FFF;
+                        fill: #FFF;
+                    }
+                }
+                track-viewer {
+                    height: 17em;
+                    margin-bottom: 2em;
+                }
+                div.row {
+                    padding-bottom: 0.7em;
+                    &.phones {
+                        div.col {
+                            padding: 0.5em;
+                            a {
+                                text-decoration: none;
+                                color: $accent_color;
+                            }
                         }
                     }
                 }
-            }
-        }
-        div.photos {
-            > a {
-                padding-top: 12px;
-                background: transparent;
-                border-top: none;
-                border-bottom: 1px solid #414550;
-                i:last-child {
-                    opacity: 0.6;
-                }
-            }
-            margin-bottom: 9px;
-        }
-        div.form {
-            margin-top: 1em;
-            label.item-input {
-                padding-bottom: 0px;
-                padding-top: 0px;
-                .input-label.has-input {
-                    color: $text_color;
-                    opacity: 0.6;
-                }
-                background: transparent;
-                border:none;
-                > textarea,
-                > input {
-                    background: transparent;
-                    color: $text_color;
-                    border: none;
-                    padding-right: 24px;
-                }
-            }
-            label.item-input:last-child {
-                padding-top: 10px;
-            }
-        }
-        div.social-share {
-            position: fixed;
-            bottom: 57px;
-            div.spacer {
-                @include flex-size(60%);
-            }
-            div.col {
-                text-align: center;
-                >img {
-                    height: 2.5em;
-                    width: 2.5em;
-                }
-                &.disabled {
-                    > img {
-                        @extend .grayscale;
-                    }
-                }
-            }
-        }
-    }
-
-    /*------------------------- 
-    VIEW:   Start Counter Page
-    ROUTE:  /app/routes/create/start
-    -------------------------*/
-    &.start {
-        .counter {
-            text-align: center;
-            margin-top: 4em;
-            > span {
-                font-size: 15em;
-                line-height: 1em;
-            }
-        }
-        .counter-button {
-            margin-top: 4em;
-        }
-    }
-
-    /*------------------------- 
-    VIEW:   IN-TRAVEL Home Page
-    ROUTE:  /app/routes/create
-    -------------------------*/
-    &.index {
-        .common-actions {
-            
-        }
-        .counters {
-            margin-top: -8em;
-        }
-        .pause {
-            margin-top: 1.5em;
-            >div {
-                width: 12em;
-                height: 12em;
-                background-color: $text_color;
-                color: $primary_color;
-                > i.icon {
-                    font-size: 5em;
-                }
-            }
-        }
-        .arrow {
-            width: 150%;
-            background-image: url(images/svg/arrow.svg);
-            height: 180px;
-            margin-top: -4em;
-            margin-left: -25%;
-        }
-        .map {
-            margin-top: 2em;
-            text-align: center;
-            i.icon {
-                color: $text_color;
-                font-size: 3em;
-                padding: 0.7em 1em;
-            }
-        }
-    }
-
-    /*------------------------- 
-    VIEW:   Pause Page
-    ROUTE:  /app/routes/create/pause
-    -------------------------*/
-    &.pause {
-        .buttons {
-            margin-top: 2em;
-            .play {
-                >div {
-                    background-color: #008000;
-                }
-            }
-            .chart-container {
-                width: 8.8em;
-                height: 8.8em;
-                position: absolute;
-                margin-top: -0.85em;
-                margin-left: 0.85em;
-            }
-        }
-        .counters {
-            margin-top: 2em;
-            > div.col {
-                > div {
-                    color: $text_color;
-                }
-            }
-        }
-        ion-footer-bar {
-            > button {
-                > div {
-                    margin-top: -30px;
-                    > i.icon {
-                        padding: 13px;
-                        background-color: #BD0000;
-                        border-radius: 50%;
-                    }
-                }
-                background-color: #BD0000;
-                border-color: #BD0000;
-                color: #fff;
-                font-size: 1.3em;
-                border-radius: 0px;
-            }
-        }
-    }
-
-    /*------------------------- 
-    VIEW:   Map Page
-    ROUTE:  /app/routes/create/map
-    -------------------------*/
-    &.map {
-        div.button {
-            color: $primary_Hue900_color;
-            position: absolute;
-            top: 7px;
-            right: 0px;
-            background: rgba(0, 0, 0, 0);
-            border: none;
-            > div.counter-button {
-                > div {
-                    width: 3.5em;
-                    height: 3.5em;
-                    > i {
-                        font-size: 1em;
-                    }
-                }
-            }
-        }
-    }
-
-    /*------------------------- 
-    VIEW:   Stop Page
-    ROUTE:  /app/routes/create/stop
-    -------------------------*/
-    &.stop {
-        .sensation {
-            > div.row:first-child {
-                margin-top: 0em;
-                >div.col {
+                input.value,
+                select.value {
+                    width: 99%;
+                    background: rgba(0, 0, 0, 0);
+                    border: 1px solid $accent_color;
+                    border-radius: 4px;
+                    color: #fff;
+                    font-size: 1.6em;
                     text-align: center;
                 }
             }
-        }
-        .counters {
-            margin-top: 0.5em;
-            > div.col {
-                > div {
-                    color: $text_color;
+            /*------------------------- 
+            VIEW:   Route Save Error
+            ROUTE:  /nomenu/routes/create/saveForLater
+            -------------------------*/
+            &.photos {
+                div.image-box {
+                    width: 90%;
+                    margin-top: 3em;
+                    background: #FFF;
+                    padding-top: 5px;
+                    padding: 5px;
+                    padding-bottom: 0px;
+                    > img {
+                        margin: 0px;
+                        padding: 0px;
+                        width: 100%;
+                    }
                 }
             }
-        }
-        .buttons {
-            margin-top: 1em;
-            margin-bottom: 2.5em;
-            .counter-button {
-                >div {
-                    width: 5em;
-                    height: 5em;
+            /*------------------------- 
+            VIEW:   Route Save Error
+            ROUTE:  /nomenu/routes/create/saveForLater
+            -------------------------*/
+            &.save-for-later {
+                center {
+                    > p {
+                        text-align: justify;
+                        padding: 2em;
+                        font-size: 1.2em;
+                        line-height: 1.2em;
+                    }
                 }
             }
-            .chart-container {
-                width: 6.3em;
-                height: 6.3em;
-                position: absolute;
-                margin-top: -0.65em;
-                margin-left: 0.2em;
+            /*------------------------- 
+            VIEW:   Share Page
+            ROUTE:  /app/routes/create/share
+            -------------------------*/
+            &.gps {
+                ion-list {
+                    ion-item {
+                        padding: 6px 16px;
+                        p {
+                            margin-bottom: 0px;
+                            font-size: 0.9em;
+                            line-height: 1.2em;
+                            &.stamp {
+                                opacity: 0.5;
+                                text-align: right;
+                                margin-top: -6px;
+                            }
+                        }
+                        &.event {
+                            color: $primary_color;
+                            font-weight: bold;
+                            p {
+                                &.stamp {
+                                    margin-top: -17px;
+                                    margin-bottom: 3px;
+                                    font-weight: normal;
+                                }
+                            }
+                            &.route-autopause,
+                            &.route-autostart {
+                                color: green;
+                            }
+                            &.gps-timeout-error {
+                                color: red;
+                            }
+                            &.gps-discard-point {
+                                color: #4237E4;
+                            }
+                        }
+                    }
+                }
             }
-        }
-    }
-
-    /*------------------------- 
-    VIEW:   Upload Page
-    ROUTE:  /app/routes/upload
-    -------------------------*/
-    &.upload {
-        ion-item {
-            background: $primary_color;
-            color: $text_color;
-            border: none;
-        }
-    }
-
-    /*------------------------- 
-    VIEW:   Camera Roll
-    ROUTE:  /app/routes/camera-roll
-    -------------------------*/
-    &.camera-roll {
-        div.image-box {
-            width: 80%;
-            box-shadow: #585858 2px 2px 7px;
-            margin: 1em;
-            border: 1px solid #1C1C29;
-            border-radius: 5px;
-            margin-top: 3em;
-            > div {
-                padding: 0.4em;
-                background: #FFF;
-                overflow: hidden;
-                > img {
+            /*------------------------- 
+            VIEW:   Start Counter Page
+            ROUTE:  /app/routes/create/start
+            -------------------------*/
+            &.start {
+                .counter {
+                    text-align: center;
+                    margin-top: 4em;
+                    > span {
+                        font-size: 15em;
+                        line-height: 1em;
+                    }
+                }
+                .counter-button {
+                    margin-top: 4em;
+                }
+            }
+            /*------------------------- 
+            VIEW:   IN-TRAVEL Home Page
+            ROUTE:  /app/routes/create
+            -------------------------*/
+            &.index {
+                .common-actions {}
+                .counters {
+                    margin-top: -8em;
+                }
+                .pause {
+                    margin-top: 1.5em;
+                    >div {
+                        width: 12em;
+                        height: 12em;
+                        background-color: $text_color;
+                        color: $primary_color;
+                        > i.icon {
+                            font-size: 5em;
+                        }
+                    }
+                }
+                .arrow {
+                    width: 150%;
+                    background-image: url(images/svg/arrow.svg);
+                    height: 180px;
+                    margin-top: -4em;
+                    margin-left: -25%;
+                }
+                .map {
+                    margin-top: 2em;
+                    text-align: center;
+                    i.icon {
+                        color: $text_color;
+                        font-size: 3em;
+                        padding: 0.7em 1em;
+                    }
+                }
+            }
+            /*------------------------- 
+            VIEW:   Pause Page
+            ROUTE:  /app/routes/create/pause
+            -------------------------*/
+            &.pause {
+                .buttons {
+                    margin-top: 2em;
+                    .play {
+                        >div {
+                            background-color: #008000;
+                        }
+                    }
+                    .chart-container {
+                        width: 8.8em;
+                        height: 8.8em;
+                        position: absolute;
+                        margin-top: -0.85em;
+                        margin-left: 0.85em;
+                    }
+                }
+                .counters {
+                    margin-top: 2em;
+                    > div.col {
+                        > div {
+                            color: $text_color;
+                        }
+                    }
+                }
+                ion-footer-bar {
+                    > button {
+                        > div {
+                            margin-top: -30px;
+                            > i.icon {
+                                padding: 13px;
+                                background-color: #BD0000;
+                                border-radius: 50%;
+                            }
+                        }
+                        background-color: #BD0000;
+                        border-color: #BD0000;
+                        color: #fff;
+                        font-size: 1.3em;
+                        border-radius: 0px;
+                    }
+                }
+            }
+            /*------------------------- 
+            VIEW:   Map Page
+            ROUTE:  /app/routes/create/map
+            -------------------------*/
+            &.map {
+                div.button {
+                    color: $primary_Hue900_color;
+                    position: absolute;
+                    top: 7px;
+                    right: 0px;
+                    background: rgba(0, 0, 0, 0);
+                    border: none;
+                    > div.counter-button {
+                        > div {
+                            width: 3.5em;
+                            height: 3.5em;
+                            > i {
+                                font-size: 1em;
+                            }
+                        }
+                    }
+                }
+            }
+            /*------------------------- 
+            VIEW:   Stop Page
+            ROUTE:  /app/routes/create/stop
+            -------------------------*/
+            &.stop {
+                ion-footer-bar {
+                    button {
+                        border-radius: 0px;
+                        padding: 8px 0px;
+                        text-transform: uppercase;
+                        font-size: 1.1em;
+                        &.pause {
+                            background: rgb(0, 128, 0);
+                            color: rgb(255, 255, 255);
+                        }
+                        &.discard {
+                            background: rgb(111, 111, 111);
+                            color: rgb(255, 255, 255);
+                            opacity: 0.8;
+                        }
+                    }
+                }
+                div.indicators {
+                    padding: 8px;
+                    margin-top: 0.2em;
+                    > div.row {
+                        padding: 0px;
+                        > div.col {
+                            line-height: 1.7em;
+                            > ion-spinner {
+                                stroke: $accent_color;
+                                fill: $accent_color;
+                                svg {
+                                    stroke: $accent_color;
+                                    .stop1 {
+                                        stop-color: $accent_color;
+                                    }
+                                    .stop2 {
+                                        stop-color: $accent_color;
+                                    }
+                                }
+                            }
+                            &:first-child {
+                                border-left: none;
+                            }
+                            > div.value {
+                                font-size: 1.55em;
+                                color: rgb(255, 193, 7);
+                                font-weight: bold;
+                                &.active {
+                                    > i {
+                                        color: rgb(239, 71, 58);
+                                    }
+                                }
+                            }
+                            > div.unit {
+                                font-size: 0.75em;
+                            }
+                            text-align: center;
+                            margin: 8px 0px;
+                            border-left: 1px solid rgb(64, 64, 64);
+                        }
+                        &:last-child {
+                            border-top: 1px solid rgb(64, 64, 64);
+                        }
+                    }
+                }
+            }
+            /*------------------------- 
+            VIEW:   Share Page
+            ROUTE:  /app/routes/create/resume
+            -------------------------*/
+            &.resume {
+                track-viewer {
+                    min-height: 11em;
+                    height: 11em;
                     width: 100%;
-                    border-radius: 3px;
                 }
-                > i {
-                    float: right;
-                    margin-top: -25px;
-                    margin-right: -21px;
-                    font-size: 2.5em;
-                    color: #FA4C0D;
+                div.sport {
+                    position: absolute;
+                    z-index: 10;
+                    top: 8em;
+                    right: 1em;
+                    > div.avatar {
+                        @include flex-basis(4em);
+                        @include flexbox();
+                        width: 4em;
+                        height: 4em;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        padding: 3px;
+                        border: 1px solid rgb(113, 113, 121);
+                        > img {
+                            border-radius: 50%;
+                            width: 100%;
+                            height: auto;
+                        }
+                        @include box-shadow(8px);
+                    }
+                }
+                div.indicators {
+                    padding: 8px;
+                    margin-top: 0.2em;
+                    > div.row {
+                        padding: 0px;
+                        > div.col {
+                            line-height: 1.7em;
+                            > ion-spinner {
+                                stroke: $accent_color;
+                                fill: $accent_color;
+                                svg {
+                                    stroke: $accent_color;
+                                    .stop1 {
+                                        stop-color: $accent_color;
+                                    }
+                                    .stop2 {
+                                        stop-color: $accent_color;
+                                    }
+                                }
+                            }
+                            &:first-child {
+                                border-left: none;
+                            }
+                            > div.value {
+                                font-size: 1.55em;
+                                color: rgb(255, 193, 7);
+                                font-weight: bold;
+                                &.active {
+                                    > i {
+                                        color: rgb(239, 71, 58);
+                                    }
+                                }
+                            }
+                            > div.unit {
+                                font-size: 0.75em;
+                            }
+                            text-align: center;
+                            margin: 8px 0px;
+                            border-left: 1px solid rgb(64, 64, 64);
+                        }
+                        &:last-child {
+                            border-top: 1px solid rgb(64, 64, 64);
+                        }
+                    }
+                }
+                div.title {
+                    margin-top: -32px;
+                    position: absolute;
+                    width: 100%;
+                    padding: 6px 4px;
+                    background-color: rgba(28, 28, 41, 0.8);
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    font-size: 1.15em;
+                    padding-right: 4.5em;
+                }
+                div.photos {
+                    @include flexbox();
+                    @include flex-direction(row);
+                    min-height: 4em;
+                    height: 4em;
+                    > figure {
+                        width: 4em;
+                        height: 4em;
+                        border-radius: 14px;
+                        margin-left: -0.5em;
+                        border: 1px solid rgb(255, 255, 255);
+                        overflow: hidden;
+                        &:first-child {
+                            margin-left: 8px;
+                        }
+                        &:nth-child(1) {
+                            @include transform(rotate(-7deg) !important);
+                        }
+                        &:nth-child(2) {
+                            @include transform(rotate(14deg) !important);
+                        }
+                        &:nth-child(3) {
+                            @include transform(rotate(7deg) !important);
+                        }
+                        > img {
+                            width: 100%;
+                            height: auto;
+                        }
+                    }
+                    > div.counter {
+                        @include flexbox();
+                        @include align-items(center);
+                        margin-left: 0.5em;
+                        transform: scale(1);
+                        font-size: 1.5em;
+                        @include text-shadow(3px, 4px, 5px);
+                    }
+                }
+                div.social-share {
+                    margin-top: 0.3em;
+                    div.spacer {
+                        @include flex-basis(35%);
+                    }
+                    div.col {
+                        text-align: center;
+                        >img {
+                            height: 3em;
+                            width: 3em;
+                        }
+                        &.disabled {
+                            > img {
+                                @include grayscale();
+                            }
+                        }
+                    }
+                    /* MOTO APP SHARE */
+                    .item-toggle {
+                        background: none;
+                        color: #FFF;
+                        width: 100%;
+                        border: none;
+                    }
+                }
+            }
+            /*------------------------- 
+            VIEW:   Upload Page
+            ROUTE:  /app/routes/upload
+            -------------------------*/
+            &.upload {
+                ion-item {
+                    background: $primary_color;
+                    color: $text_color;
+                    border: none;
+                }
+            }
+            /*------------------------- 
+            VIEW:   Camera Roll
+            ROUTE:  /app/routes/camera-roll
+            -------------------------*/
+            &.camera-roll {
+                div.image-box {
+                    width: 80%;
+                    box-shadow: #585858 2px 2px 7px;
+                    margin: 1em;
+                    border: 1px solid #1C1C29;
+                    border-radius: 5px;
+                    margin-top: 3em;
+                    > div {
+                        padding: 0.4em;
+                        background: #FFF;
+                        overflow: hidden;
+                        > img {
+                            width: 100%;
+                            border-radius: 3px;
+                        }
+                        > i {
+                            float: right;
+                            margin-top: -25px;
+                            margin-right: -21px;
+                            font-size: 2.5em;
+                            color: #FA4C0D;
+                        }
+                    }
+                }
+            }
+        }
+        /*------------------------- 
+        VIEW:   ROUTE VIEW
+        ROUTE:  /app/routes/view/*
+        -------------------------*/
+        &.view {
+            /*------------------------- 
+            VIEW:   ROUTE VIEW
+            ROUTE:  /app/routes/view/index
+            -------------------------*/
+            &.index {
+                track-viewer {
+                    min-height: 16em;
+                    height: 16em;
+                    width: 100%;
+                }
+                div.creator {
+                    position: absolute;
+                    z-index: 10;
+                    top: 13em;
+                    right: 1em;
+                    > div.avatar {
+                        @include flex-basis(4em);
+                        @include flexbox();
+                        width: 4em;
+                        height: 4em;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        padding: 3px;
+                        border: 1px solid rgb(113, 113, 121);
+                        > img {
+                            border-radius: 50%;
+                            width: 100%;
+                            height: auto;
+                        }
+                        @include box-shadow(8px);
+                    }
+                }
+                div.indicators {
+                    padding: 8px;
+                    margin-top: 0.2em;
+                    > div.row {
+                        padding: 0px;
+                        > div.col {
+                            line-height: 1.7em;
+                            > ion-spinner {
+                                stroke: $accent_color;
+                                fill: $accent_color;
+                                svg {
+                                    stroke: $accent_color;
+                                    .stop1 {
+                                        stop-color: $accent_color;
+                                    }
+                                    .stop2 {
+                                        stop-color: $accent_color;
+                                    }
+                                }
+                            }
+                            &:first-child {
+                                border-left: none;
+                            }
+                            > div.value {
+                                font-size: 1.55em;
+                                color: rgb(255, 193, 7);
+                                font-weight: bold;
+                                &.active {
+                                    > i {
+                                        color: rgb(239, 71, 58);
+                                    }
+                                }
+                            }
+                            > div.unit {
+                                font-size: 0.75em;
+                            }
+                            text-align: center;
+                            margin: 8px 0px;
+                            border-left: 1px solid rgb(64, 64, 64);
+                        }
+                        &:last-child {
+                            border-top: 1px solid rgb(64, 64, 64);
+                        }
+                    }
+                }
+                div.title {
+                    margin-top: -32px;
+                    position: absolute;
+                    width: 100%;
+                    padding: 6px 4px;
+                    background-color: rgba(28, 28, 41, 0.8);
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    font-size: 1.15em;
+                    padding-right: 4.5em;
+                }
+                div.photos {
+                    @include flexbox();
+                    @include flex-direction(row);
+                    min-height: 4em;
+                    height: 4em;
+                    > preload-image {
+                        width: 4em;
+                        height: 4em;
+                        border-radius: 14px;
+                        margin-left: -0.5em;
+                        border: 1px solid rgb(255, 255, 255);
+                        &:first-child {
+                            margin-left: 8px;
+                        }
+                        &:nth-child(1) {
+                            @include transform(rotate(-7deg) !important);
+                        }
+                        &:nth-child(2) {
+                            @include transform(rotate(14deg) !important);
+                        }
+                        &:nth-child(3) {
+                            @include transform(rotate(7deg) !important);
+                        }
+                    }
+                    > div.counter {
+                        @include flexbox();
+                        @include align-items(center);
+                        margin-left: 0.5em;
+                        transform: scale(1);
+                        font-size: 1.5em;
+                        @include text-shadow(3px, 4px, 5px);
+                    }
+                }
+                button.button-block {
+                    &.delete {
+                        color: rgb(218, 57, 44);
+                        border: 1px solid #4A4A4C;
+                    }
+                    &.maps {
+                        color: rgb(255, 193, 7);
+                        border: 1px solid #4A4A4C;
+                        margin-top: 4%;
+                    }
+                    background-color: rgba(0, 0, 0, 0);
+                    margin-left: 3%;
+                    width: 94%;
+                    > i {
+                        font-size: 1.3em;
+                    }
+                }
+            }
+            /*------------------------- 
+            VIEW:   ROUTE VIEW
+            ROUTE:  /app/routes/view/photos
+            -------------------------*/
+            &.photos {
+                div.image-box {
+                    margin: 1.5em;
+                    > img {
+                        border: 6px solid rgb(255, 255, 255);
+                        width: 100%;
+                    }
+                }
+            }
+            /*------------------------- 
+            VIEW:   ROUTE VIEW
+            ROUTE:  /app/routes/view/map
+            -------------------------*/
+            &.map {}
+        }
+        /*------------------------- 
+        VIEW:   ROUTE VIEW
+        ROUTE:  /app/routes/view/me
+        -------------------------*/
+        &.me {
+            /*------------------------- 
+            VIEW:   ROUTE VIEW
+            ROUTE:  /app/routes/me/index
+            -------------------------*/
+            &.index {
+                empty-content {
+                    button {
+                        padding: 4px;
+                        margin-top: 16px;
+                        background-color: rgb(255, 193, 7);
+                        border: none;
+                        border-radius: 4px;
+                        font-size: 1.3em;
+                        text-transform: uppercase;
+                        color: #000;
+                    }
+                }
+                ion-list {
+                    ion-item {
+                        padding: 0px;
+                        border: none;
+                        overflow: hidden;
+                        background-color: transparent;
+                        > div.creator {
+                            position: absolute;
+                            z-index: 10;
+                            margin-left: 1em;
+                            margin-right: 1em;
+                            margin-top: 17%;
+                            height: 45%;
+                            width: 18em;
+                            @include flexbox();
+                            @include flex-direction(row);
+                            @include justify-content(center);
+                            @include align-items(center);
+                            > div.box {
+                                @include flexbox();
+                                @include flex-basis(14em);
+                                @include flex-direction(column);
+                                @include justify-content(center);
+                                color: $text_color;
+                                overflow: hidden;
+                                padding-left: 0.5em;
+                                > div {
+                                    padding-bottom: 4px;
+                                }
+                                > div.fullname {
+                                    @include text-shadow(2px, 2px, 0px);
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    font-size: 1.2em;
+                                }
+                                > div.indicators {
+                                    @include flexbox();
+                                    @include flex-direction(row);
+                                    @include text-shadow(2px, 2px, 0px);
+                                    > div.indicator {
+                                        padding-left: 0.5em;
+                                        font-size: 1.2em;
+                                        font-weight: bold;
+                                        &:first-child {
+                                            padding-left: 0px;
+                                        }
+                                    }
+                                }
+                                > div.buttons {
+                                    @include flexbox();
+                                    @include flex-direction(row);
+                                    > div.details {
+                                        width: 50%;
+                                        border: 1px solid #FFF;
+                                        border-radius: 20px;
+                                        text-align: center;
+                                        padding: 4px;
+                                        font-size: 1.2em;
+                                        background: rgba(60, 60, 60, 0.6);
+                                    }
+                                    > div.likes {
+                                        margin-left: 0.5em;
+                                        min-width: 26%;
+                                        border: 1px solid rgb(68, 72, 63);
+                                        border-radius: 20px;
+                                        text-align: center;
+                                        background-color: #FFF;
+                                        padding: 4px;
+                                        color: #DA0000;
+                                        > i {
+                                            color: red;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        > img {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+        /*------------------------- 
+        VIEW:   ROUTE VIEW
+        ROUTE:  /app/routes/discover/*
+        -------------------------*/
+        &.discover {
+            /*------------------------- 
+            VIEW:   ROUTE VIEW
+            ROUTE:  /app/routes/discover/index
+            -------------------------*/
+            &.index {
+                ion-list {
+                    ion-item {
+                        padding: 0px;
+                        border: none;
+                        overflow: hidden;
+                        background-color: transparent;
+                        > div.name {
+                            position: absolute;
+                            color: rgb(255, 255, 255);
+                            width: 96%;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            margin-left: 2%;
+                            margin-top: 170px;
+                            @include text-shadow(2px, 2px, 0px);
+                        }
+                        > div.creator {
+                            position: absolute;
+                            z-index: 10;
+                            margin-left: 1em;
+                            margin-right: 1em;
+                            margin-top: 15%;
+                            height: 45%;
+                            width: 18em;
+                            @include flexbox();
+                            @include flex-direction(row);
+                            @include justify-content(center);
+                            @include align-items(center);
+                            > div.avatar {
+                                @include flex-basis(4em);
+                                @include flexbox();
+                                width: 4em;
+                                height: 4em;
+                                border-radius: 50%;
+                                overflow: hidden;
+                                padding: 3px;
+                                border: 1px solid $text_color;
+                                > img {
+                                    border-radius: 50%;
+                                    width: 100%;
+                                    height: auto;
+                                }
+                                @include box-shadow(8px);
+                            }
+                            > div.box {
+                                @include flexbox();
+                                @include flex-basis(14em);
+                                @include flex-direction(column);
+                                @include justify-content(center);
+                                color: $text_color;
+                                overflow: hidden;
+                                padding-left: 0.5em;
+                                > div {
+                                    padding-bottom: 4px;
+                                }
+                                > div.fullname {
+                                    @include text-shadow(2px, 2px, 0px);
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    font-size: 1.2em;
+                                }
+                                > div.indicators {
+                                    @include flexbox();
+                                    @include flex-direction(row);
+                                    @include text-shadow(2px, 2px, 0px);
+                                    > div.indicator {
+                                        padding-left: 0.5em;
+                                        font-size: 1.2em;
+                                        font-weight: bold;
+                                        &:first-child {
+                                            padding-left: 0px;
+                                        }
+                                    }
+                                }
+                                > div.buttons {
+                                    @include flexbox();
+                                    @include flex-direction(row);
+                                    > div.details {
+                                        width: 50%;
+                                        border: 1px solid #FFF;
+                                        border-radius: 20px;
+                                        text-align: center;
+                                        padding: 4px;
+                                        font-size: 1.2em;
+                                        background: rgba(60, 60, 60, 0.6);
+                                    }
+                                    > div.likes {
+                                        margin-left: 0.5em;
+                                        min-width: 26%;
+                                        border: 1px solid rgb(68, 72, 63);
+                                        border-radius: 20px;
+                                        text-align: center;
+                                        background-color: #FFF;
+                                        padding: 4px;
+                                        color: #DA0000;
+                                        > i {
+                                            color: red;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        > img {
+                            width: 100%;
+                        }
+                    }
                 }
             }
         }

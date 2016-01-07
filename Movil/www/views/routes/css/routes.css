@@ -1,536 +1,970 @@
 /* 
     SASS Theme Variables 
 */
-.box-shadow-3dp, ion-view.routes.main ion-tabs popular-routes ion-content ion-item,
-ion-view.routes.main ion-tabs my-routes ion-content ion-item,
-ion-view.routes.main ion-tabs shared-routes ion-content ion-item {
-  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 3px 3px -2px rgba(0, 0, 0, 0.12); }
-
-.box-shadow-8dp, ion-view.routes .counter-button > div {
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12); }
-
-.grayscale, ion-view.routes.share div.social-share div.col.disabled > img {
-  filter: url("data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg'&gt;&lt;filter id='grayscale'&gt;&lt;feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale");
-  /* Firefox 10+, Firefox on Android */
-  filter: gray;
-  /* IE6-9 */
-  -webkit-filter: grayscale(100%);
-  /* Chrome 19+, Safari 6+, Safari 6+ iOS */ }
-
-/*
-    -----------------------------------------
-    ROUTES
-    -----------------------------------------
+/* 
+    SASS Mixins
 */
-ion-view.routes {
+[md-theme='imoto'] ion-view.routes {
   /*------------------------- 
-  VIEW:   Route View's
-  ROUTE:  /app/routes/*
+  VIEW:   ROUTE VIEW
+  ROUTE:  /app/routes/create/*
   -------------------------*/
   /*------------------------- 
-  VIEW:   Route Save Error
-  ROUTE:  /nomenu/routes/create/saveForLater
+  VIEW:   ROUTE VIEW
+  ROUTE:  /app/routes/view/*
   -------------------------*/
   /*------------------------- 
-  VIEW:   Route Save Error
-  ROUTE:  /nomenu/routes/create/saveForLater
+  VIEW:   ROUTE VIEW
+  ROUTE:  /app/routes/view/me
   -------------------------*/
   /*------------------------- 
-  VIEW:   Route Save Error
-  ROUTE:  /nomenu/routes/create/saveForLater
-  -------------------------*/
-  /*------------------------- 
-  VIEW:   Route View List
-  ROUTE:  /app/routes/list
-  -------------------------*/
-  /*------------------------- 
-  VIEW:   Share Page
-  ROUTE:  /app/routes/create/share
-  -------------------------*/
-  /*------------------------- 
-  VIEW:   Share Page
-  ROUTE:  /app/routes/create/share
-  -------------------------*/
-  /*------------------------- 
-  VIEW:   Start Counter Page
-  ROUTE:  /app/routes/create/start
-  -------------------------*/
-  /*------------------------- 
-  VIEW:   IN-TRAVEL Home Page
-  ROUTE:  /app/routes/create
-  -------------------------*/
-  /*------------------------- 
-  VIEW:   Pause Page
-  ROUTE:  /app/routes/create/pause
-  -------------------------*/
-  /*------------------------- 
-  VIEW:   Map Page
-  ROUTE:  /app/routes/create/map
-  -------------------------*/
-  /*------------------------- 
-  VIEW:   Stop Page
-  ROUTE:  /app/routes/create/stop
-  -------------------------*/
-  /*------------------------- 
-  VIEW:   Upload Page
-  ROUTE:  /app/routes/upload
-  -------------------------*/
-  /*------------------------- 
-  VIEW:   Camera Roll
-  ROUTE:  /app/routes/camera-roll
+  VIEW:   ROUTE VIEW
+  ROUTE:  /app/routes/discover/*
   -------------------------*/ }
-  ion-view.routes .common-actions {
-    margin-top: 1.5em; }
-    ion-view.routes .common-actions > div.col {
+  [md-theme='imoto'] ion-view.routes.create {
+    /*------------------------- 
+    VIEW:   Route View's
+    ROUTE:  /app/routes/*
+    -------------------------*/
+    /*------------------------- 
+    VIEW:   Route Save Error
+    ROUTE:  /nomenu/routes/create/saveForLater
+    -------------------------*/
+    /*------------------------- 
+    VIEW:   Route Save Error
+    ROUTE:  /nomenu/routes/create/saveForLater
+    -------------------------*/
+    /*------------------------- 
+    VIEW:   Route Save Error
+    ROUTE:  /nomenu/routes/create/saveForLater
+    -------------------------*/
+    /*------------------------- 
+    VIEW:   Share Page
+    ROUTE:  /app/routes/create/share
+    -------------------------*/
+    /*------------------------- 
+    VIEW:   Start Counter Page
+    ROUTE:  /app/routes/create/start
+    -------------------------*/
+    /*------------------------- 
+    VIEW:   IN-TRAVEL Home Page
+    ROUTE:  /app/routes/create
+    -------------------------*/
+    /*------------------------- 
+    VIEW:   Pause Page
+    ROUTE:  /app/routes/create/pause
+    -------------------------*/
+    /*------------------------- 
+    VIEW:   Map Page
+    ROUTE:  /app/routes/create/map
+    -------------------------*/
+    /*------------------------- 
+    VIEW:   Stop Page
+    ROUTE:  /app/routes/create/stop
+    -------------------------*/
+    /*------------------------- 
+    VIEW:   Share Page
+    ROUTE:  /app/routes/create/resume
+    -------------------------*/
+    /*------------------------- 
+    VIEW:   Upload Page
+    ROUTE:  /app/routes/upload
+    -------------------------*/
+    /*------------------------- 
+    VIEW:   Camera Roll
+    ROUTE:  /app/routes/camera-roll
+    -------------------------*/ }
+    [md-theme='imoto'] ion-view.routes.create .common-actions {
+      margin-top: 1.5em; }
+      [md-theme='imoto'] ion-view.routes.create .common-actions > div.col {
+        text-align: center; }
+        [md-theme='imoto'] ion-view.routes.create .common-actions > div.col > .icon {
+          font-size: 3em; }
+        [md-theme='imoto'] ion-view.routes.create .common-actions > div.col > .badge {
+          position: absolute;
+          margin-top: -3em;
+          padding: 1px 5px;
+          margin-left: 5px; }
+    [md-theme='imoto'] ion-view.routes.create .counter-button {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      -moz-align-items: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      -moz-justify-content: center;
+      justify-content: center; }
+      [md-theme='imoto'] ion-view.routes.create .counter-button > div {
+        width: 7em;
+        height: 7em;
+        background-color: #BD0000;
+        color: #fff;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        -moz-justify-content: center;
+        justify-content: center;
+        border-radius: 50%;
+        box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 4px 0 rgba(0, 0, 0, 0.14), 0 8px 8px -2px rgba(0, 0, 0, 0.12); }
+        [md-theme='imoto'] ion-view.routes.create .counter-button > div > i.icon {
+          font-size: 2.5em; }
+    [md-theme='imoto'] ion-view.routes.create .distance {
+      margin-top: 1em;
       text-align: center; }
-      ion-view.routes .common-actions > div.col > .icon {
-        font-size: 3em; }
-      ion-view.routes .common-actions > div.col > .badge {
-        position: absolute;
-        margin-top: -3em;
-        padding: 1px 5px;
-        margin-left: 5px; }
-  ion-view.routes .counter-button {
-    justify-content: center;
-    align-items: center;
-    display: flex; }
-    ion-view.routes .counter-button > div {
-      width: 7em;
-      height: 7em;
-      background-color: #BD0000;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%; }
-      ion-view.routes .counter-button > div > i.icon {
-        font-size: 2.5em; }
-  ion-view.routes .distance {
-    margin-top: 1em;
-    text-align: center; }
-    ion-view.routes .distance > div.col > div:first-child {
-      font-size: 6em;
-      line-height: 1em;
-      font-weight: bold;
-      color: #ffc107; }
-    ion-view.routes .distance > div.col > div:last-child {
-      text-transform: uppercase; }
-  ion-view.routes .counters > div.col {
-    text-align: center;
-    font-size: 2.2em;
-    font-weight: bold; }
-    ion-view.routes .counters > div.col > div {
-      text-transform: uppercase;
-      color: #1c1c29;
-      font-size: 0.9em; }
-  ion-view.routes .sensation > div.states {
-    margin-top: 0em;
-    padding: 0px; }
-    ion-view.routes .sensation > div.states > div.col {
-      padding: 0px;
-      text-align: center;
-      font-size: 3em;
-      line-height: 1em;
-      opacity: 0.3; }
-      ion-view.routes .sensation > div.states > div.col.active {
-        opacity: 1; }
-        ion-view.routes .sensation > div.states > div.col.active.sensation-1 {
-          color: green; }
-        ion-view.routes .sensation > div.states > div.col.active.sensation-2 {
-          color: yellow; }
-        ion-view.routes .sensation > div.states > div.col.active.sensation-3 {
-          color: red; }
-  ion-view.routes.index .fab-button {
-    top: 15.2em; }
-    ion-view.routes.index .fab-button.likes {
-      background: #666; }
-      ion-view.routes.index .fab-button.likes.active {
-        background: red; }
-    ion-view.routes.index .fab-button.photos {
-      right: 5.5em; }
-    ion-view.routes.index .fab-button ion-spinner {
-      color: #FFF;
-      stroke: #FFF;
-      fill: #FFF; }
-  ion-view.routes.index track-viewer {
-    height: 17em;
-    margin-bottom: 2em; }
-  ion-view.routes.index div.row {
-    padding-bottom: 0.7em; }
-    ion-view.routes.index div.row.phones div.col {
-      padding: 0.5em; }
-      ion-view.routes.index div.row.phones div.col a {
-        text-decoration: none;
+      [md-theme='imoto'] ion-view.routes.create .distance > div.col > div:first-child {
+        font-size: 6em;
+        line-height: 1em;
+        font-weight: bold;
         color: #ffc107; }
-  ion-view.routes.index input.value,
-  ion-view.routes.index select.value {
-    width: 99%;
-    background: transparent;
-    border: 1px solid #ffc107;
-    border-radius: 4px;
-    color: #fff;
-    font-size: 1.6em;
-    text-align: center; }
-  ion-view.routes.photos div.image-box {
-    width: 90%;
-    margin-top: 3em;
-    background: #FFF;
-    padding-top: 5px;
-    padding: 5px;
-    padding-bottom: 0px; }
-    ion-view.routes.photos div.image-box > img {
-      margin: 0px;
-      padding: 0px;
-      width: 100%; }
-  ion-view.routes.save-for-later center > p {
-    text-align: justify;
-    padding: 2em;
-    font-size: 1.2em;
-    line-height: 1.2em; }
-  ion-view.routes.main ion-tabs {
-    /* CUSTOM DIRECTIVE */ }
-    ion-view.routes.main ion-tabs > div.tabs {
-      background: #ffc107;
-      color: #1c1c29; }
-      ion-view.routes.main ion-tabs > div.tabs a.tab-item-active {
-        border-bottom: 3px solid #1c1c29; }
-    ion-view.routes.main ion-tabs popular-routes,
-    ion-view.routes.main ion-tabs my-routes,
-    ion-view.routes.main ion-tabs shared-routes {
-      margin-top: 110px;
-      display: block;
-      background: #1c1c29; }
-      ion-view.routes.main ion-tabs popular-routes ion-content,
-      ion-view.routes.main ion-tabs my-routes ion-content,
-      ion-view.routes.main ion-tabs shared-routes ion-content {
-        background: transparent; }
-        ion-view.routes.main ion-tabs popular-routes ion-content > div.scroll,
-        ion-view.routes.main ion-tabs my-routes ion-content > div.scroll,
-        ion-view.routes.main ion-tabs shared-routes ion-content > div.scroll {
-          padding-bottom: 120px; }
-        ion-view.routes.main ion-tabs popular-routes ion-content ion-item,
-        ion-view.routes.main ion-tabs my-routes ion-content ion-item,
-        ion-view.routes.main ion-tabs shared-routes ion-content ion-item {
-          margin: 0.5em 0.5em 0em 0.5em;
-          padding-bottom: 8px;
-          margin-top: 0.6em;
-          border-radius: 2px; }
-          ion-view.routes.main ion-tabs popular-routes ion-content ion-item:first-child,
-          ion-view.routes.main ion-tabs my-routes ion-content ion-item:first-child,
-          ion-view.routes.main ion-tabs shared-routes ion-content ion-item:first-child {
-            margin-top: 1em; }
-          ion-view.routes.main ion-tabs popular-routes ion-content ion-item p,
-          ion-view.routes.main ion-tabs my-routes ion-content ion-item p,
-          ion-view.routes.main ion-tabs shared-routes ion-content ion-item p {
-            font-size: 0.8em;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            line-height: 1.2em;
-            white-space: normal; }
-          ion-view.routes.main ion-tabs popular-routes ion-content ion-item h2,
-          ion-view.routes.main ion-tabs my-routes ion-content ion-item h2,
-          ion-view.routes.main ion-tabs shared-routes ion-content ion-item h2 {
-            margin-right: 27px;
-            font-size: 0.9em; }
-          ion-view.routes.main ion-tabs popular-routes ion-content ion-item preload-image:first-child,
-          ion-view.routes.main ion-tabs my-routes ion-content ion-item preload-image:first-child,
-          ion-view.routes.main ion-tabs shared-routes ion-content ion-item preload-image:first-child {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            max-width: 80px;
-            max-height: 80px;
-            width: 100%;
-            height: 100%; }
-    ion-view.routes.main ion-tabs popular-routes ion-content ion-item div.information {
-      min-height: 60px; }
-    ion-view.routes.main ion-tabs popular-routes ion-content ion-item div.markers {
-      font-size: 0.9em; }
-      ion-view.routes.main ion-tabs popular-routes ion-content ion-item div.markers div.col span.value {
-        font-weight: bold; }
-      ion-view.routes.main ion-tabs popular-routes ion-content ion-item div.markers div.col span.unit {
-        font-size: 0.8em; }
-      ion-view.routes.main ion-tabs popular-routes ion-content ion-item div.markers div.col:last-child {
-        text-align: right; }
-    ion-view.routes.main ion-tabs popular-routes ion-content ion-item div.likes {
-      font-size: 0.85em;
-      position: absolute;
-      top: 7px;
-      right: 7px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center; }
-      ion-view.routes.main ion-tabs popular-routes ion-content ion-item div.likes > i.icon {
-        color: #EF473A; }
-      ion-view.routes.main ion-tabs popular-routes ion-content ion-item div.likes > span {
-        color: #EE4336;
-        padding-left: 2px; }
-    ion-view.routes.main ion-tabs my-routes ion-content ion-item div.information {
-      min-height: auto;
-      padding-bottom: 4px; }
-    ion-view.routes.main ion-tabs my-routes ion-content ion-item div.markers {
-      padding: 2px 0px;
-      font-size: 0.9em; }
-      ion-view.routes.main ion-tabs my-routes ion-content ion-item div.markers div.col span.value {
-        font-weight: bold; }
-      ion-view.routes.main ion-tabs my-routes ion-content ion-item div.markers div.col span.unit {
-        font-size: 0.8em; }
-      ion-view.routes.main ion-tabs my-routes ion-content ion-item div.markers div.col:last-child {
-        text-align: left; }
-    ion-view.routes.main ion-tabs shared-routes ion-content ion-item div.likes {
-      font-size: 0.85em;
-      position: absolute;
-      top: 7px;
-      right: 7px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center; }
-      ion-view.routes.main ion-tabs shared-routes ion-content ion-item div.likes > i.icon {
-        color: #EF473A; }
-      ion-view.routes.main ion-tabs shared-routes ion-content ion-item div.likes > span {
-        color: #EE4336;
-        padding-left: 2px; }
-    ion-view.routes.main ion-tabs shared-routes ion-content ion-item div.information {
-      min-height: 60px; }
-    ion-view.routes.main ion-tabs shared-routes ion-content ion-item div.markers {
-      font-size: 0.9em; }
-      ion-view.routes.main ion-tabs shared-routes ion-content ion-item div.markers div.col span.value {
-        font-weight: bold; }
-      ion-view.routes.main ion-tabs shared-routes ion-content ion-item div.markers div.col span.unit {
-        font-size: 0.8em; }
-      ion-view.routes.main ion-tabs shared-routes ion-content ion-item div.markers div.col:last-child {
-        text-align: right; }
-  ion-view.routes.gps ion-list ion-item {
-    padding: 6px 16px; }
-    ion-view.routes.gps ion-list ion-item p {
-      margin-bottom: 0px;
-      font-size: 0.9em;
-      line-height: 1.2em; }
-      ion-view.routes.gps ion-list ion-item p.stamp {
-        opacity: 0.5;
-        text-align: right;
-        margin-top: -6px; }
-    ion-view.routes.gps ion-list ion-item.event {
-      color: #1c1c29;
+      [md-theme='imoto'] ion-view.routes.create .distance > div.col > div:last-child {
+        text-transform: uppercase; }
+    [md-theme='imoto'] ion-view.routes.create .counters > div.col {
+      text-align: center;
+      font-size: 2.2em;
       font-weight: bold; }
-      ion-view.routes.gps ion-list ion-item.event p.stamp {
-        margin-top: -17px;
-        margin-bottom: 3px;
-        font-weight: normal; }
-      ion-view.routes.gps ion-list ion-item.event.route-autopause, ion-view.routes.gps ion-list ion-item.event.route-autostart {
-        color: green; }
-      ion-view.routes.gps ion-list ion-item.event.gps-timeout-error {
-        color: red; }
-      ion-view.routes.gps ion-list ion-item.event.gps-discard-point {
-        color: #4237E4; }
-  ion-view.routes.share track-viewer {
-    height: 9em;
-    width: 100%; }
-  ion-view.routes.share .mpas {
-    padding-bottom: 0px; }
-  ion-view.routes.share .chart-container {
-    height: 9em; }
-  ion-view.routes.share .sensation {
-    border-bottom: 1px solid #414550;
-    padding-bottom: 7px; }
-    ion-view.routes.share .sensation div.title {
-      opacity: 0.6;
-      font-size: 1em !important;
-      -webkit-box-flex: 0;
-      -webkit-flex: 0 0 50%;
-      -moz-box-flex: 0;
-      -moz-flex: 0 0 50%;
-      -ms-flex: 0 0 50%;
-      flex: 0 0 50%;
-      max-width: 50%;
-      justify-content: center;
-      align-items: center;
-      display: flex;
-      opacity: 0.6 !important; }
-  ion-view.routes.share .counters {
-    padding: 0px; }
-    ion-view.routes.share .counters div.col {
+      [md-theme='imoto'] ion-view.routes.create .counters > div.col > div {
+        text-transform: uppercase;
+        color: #1c1c29;
+        font-size: 0.9em; }
+    [md-theme='imoto'] ion-view.routes.create .sensation > div.states {
+      margin-top: 0em;
       padding: 0px; }
-    ion-view.routes.share .counters > div.col {
-      font-size: 1.8em;
-      padding: 0px; }
-      ion-view.routes.share .counters > div.col div.counter {
-        padding: 5px 0px;
-        text-align: left;
-        color: #ffc107;
-        text-transform: none; }
-        ion-view.routes.share .counters > div.col div.counter > div.row {
-          justify-content: center;
-          align-items: center;
-          padding: 0px; }
-          ion-view.routes.share .counters > div.col div.counter > div.row > div.icon {
-            text-align: center;
-            padding-right: 5px; }
-          ion-view.routes.share .counters > div.col div.counter > div.row > div.value {
-            text-align: right; }
-          ion-view.routes.share .counters > div.col div.counter > div.row > div.unit {
-            font-size: 0.4em;
-            padding: 0px;
-            text-align: right; }
-        ion-view.routes.share .counters > div.col div.counter.time div.value {
-          font-size: 0.86em; }
-  ion-view.routes.share div.photos {
-    margin-bottom: 9px; }
-    ion-view.routes.share div.photos > a {
-      padding-top: 12px;
+      [md-theme='imoto'] ion-view.routes.create .sensation > div.states > div.col {
+        padding: 0px;
+        text-align: center;
+        font-size: 3em;
+        line-height: 1em;
+        opacity: 0.3; }
+        [md-theme='imoto'] ion-view.routes.create .sensation > div.states > div.col.active {
+          opacity: 1; }
+          [md-theme='imoto'] ion-view.routes.create .sensation > div.states > div.col.active.sensation-1 {
+            color: green; }
+          [md-theme='imoto'] ion-view.routes.create .sensation > div.states > div.col.active.sensation-2 {
+            color: yellow; }
+          [md-theme='imoto'] ion-view.routes.create .sensation > div.states > div.col.active.sensation-3 {
+            color: red; }
+    [md-theme='imoto'] ion-view.routes.create.index .fab-button {
+      top: 15.2em; }
+      [md-theme='imoto'] ion-view.routes.create.index .fab-button.likes {
+        background: #666; }
+        [md-theme='imoto'] ion-view.routes.create.index .fab-button.likes.active {
+          background: red; }
+      [md-theme='imoto'] ion-view.routes.create.index .fab-button.photos {
+        right: 5.5em; }
+      [md-theme='imoto'] ion-view.routes.create.index .fab-button ion-spinner {
+        color: #FFF;
+        stroke: #FFF;
+        fill: #FFF; }
+    [md-theme='imoto'] ion-view.routes.create.index track-viewer {
+      height: 17em;
+      margin-bottom: 2em; }
+    [md-theme='imoto'] ion-view.routes.create.index div.row {
+      padding-bottom: 0.7em; }
+      [md-theme='imoto'] ion-view.routes.create.index div.row.phones div.col {
+        padding: 0.5em; }
+        [md-theme='imoto'] ion-view.routes.create.index div.row.phones div.col a {
+          text-decoration: none;
+          color: #ffc107; }
+    [md-theme='imoto'] ion-view.routes.create.index input.value,
+    [md-theme='imoto'] ion-view.routes.create.index select.value {
+      width: 99%;
       background: transparent;
-      border-top: none;
-      border-bottom: 1px solid #414550; }
-      ion-view.routes.share div.photos > a i:last-child {
-        opacity: 0.6; }
-  ion-view.routes.share div.form {
-    margin-top: 1em; }
-    ion-view.routes.share div.form label.item-input {
-      padding-bottom: 0px;
-      padding-top: 0px;
+      border: 1px solid #ffc107;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 1.6em;
+      text-align: center; }
+    [md-theme='imoto'] ion-view.routes.create.photos div.image-box {
+      width: 90%;
+      margin-top: 3em;
+      background: #FFF;
+      padding-top: 5px;
+      padding: 5px;
+      padding-bottom: 0px; }
+      [md-theme='imoto'] ion-view.routes.create.photos div.image-box > img {
+        margin: 0px;
+        padding: 0px;
+        width: 100%; }
+    [md-theme='imoto'] ion-view.routes.create.save-for-later center > p {
+      text-align: justify;
+      padding: 2em;
+      font-size: 1.2em;
+      line-height: 1.2em; }
+    [md-theme='imoto'] ion-view.routes.create.gps ion-list ion-item {
+      padding: 6px 16px; }
+      [md-theme='imoto'] ion-view.routes.create.gps ion-list ion-item p {
+        margin-bottom: 0px;
+        font-size: 0.9em;
+        line-height: 1.2em; }
+        [md-theme='imoto'] ion-view.routes.create.gps ion-list ion-item p.stamp {
+          opacity: 0.5;
+          text-align: right;
+          margin-top: -6px; }
+      [md-theme='imoto'] ion-view.routes.create.gps ion-list ion-item.event {
+        color: #1c1c29;
+        font-weight: bold; }
+        [md-theme='imoto'] ion-view.routes.create.gps ion-list ion-item.event p.stamp {
+          margin-top: -17px;
+          margin-bottom: 3px;
+          font-weight: normal; }
+        [md-theme='imoto'] ion-view.routes.create.gps ion-list ion-item.event.route-autopause, [md-theme='imoto'] ion-view.routes.create.gps ion-list ion-item.event.route-autostart {
+          color: green; }
+        [md-theme='imoto'] ion-view.routes.create.gps ion-list ion-item.event.gps-timeout-error {
+          color: red; }
+        [md-theme='imoto'] ion-view.routes.create.gps ion-list ion-item.event.gps-discard-point {
+          color: #4237E4; }
+    [md-theme='imoto'] ion-view.routes.create.start .counter {
+      text-align: center;
+      margin-top: 4em; }
+      [md-theme='imoto'] ion-view.routes.create.start .counter > span {
+        font-size: 15em;
+        line-height: 1em; }
+    [md-theme='imoto'] ion-view.routes.create.start .counter-button {
+      margin-top: 4em; }
+    [md-theme='imoto'] ion-view.routes.create.index .counters {
+      margin-top: -8em; }
+    [md-theme='imoto'] ion-view.routes.create.index .pause {
+      margin-top: 1.5em; }
+      [md-theme='imoto'] ion-view.routes.create.index .pause > div {
+        width: 12em;
+        height: 12em;
+        background-color: #fff;
+        color: #1c1c29; }
+        [md-theme='imoto'] ion-view.routes.create.index .pause > div > i.icon {
+          font-size: 5em; }
+    [md-theme='imoto'] ion-view.routes.create.index .arrow {
+      width: 150%;
+      background-image: url(images/svg/arrow.svg);
+      height: 180px;
+      margin-top: -4em;
+      margin-left: -25%; }
+    [md-theme='imoto'] ion-view.routes.create.index .map {
+      margin-top: 2em;
+      text-align: center; }
+      [md-theme='imoto'] ion-view.routes.create.index .map i.icon {
+        color: #fff;
+        font-size: 3em;
+        padding: 0.7em 1em; }
+    [md-theme='imoto'] ion-view.routes.create.pause .buttons {
+      margin-top: 2em; }
+      [md-theme='imoto'] ion-view.routes.create.pause .buttons .play > div {
+        background-color: #008000; }
+      [md-theme='imoto'] ion-view.routes.create.pause .buttons .chart-container {
+        width: 8.8em;
+        height: 8.8em;
+        position: absolute;
+        margin-top: -0.85em;
+        margin-left: 0.85em; }
+    [md-theme='imoto'] ion-view.routes.create.pause .counters {
+      margin-top: 2em; }
+      [md-theme='imoto'] ion-view.routes.create.pause .counters > div.col > div {
+        color: #fff; }
+    [md-theme='imoto'] ion-view.routes.create.pause ion-footer-bar > button {
+      background-color: #BD0000;
+      border-color: #BD0000;
+      color: #fff;
+      font-size: 1.3em;
+      border-radius: 0px; }
+      [md-theme='imoto'] ion-view.routes.create.pause ion-footer-bar > button > div {
+        margin-top: -30px; }
+        [md-theme='imoto'] ion-view.routes.create.pause ion-footer-bar > button > div > i.icon {
+          padding: 13px;
+          background-color: #BD0000;
+          border-radius: 50%; }
+    [md-theme='imoto'] ion-view.routes.create.map div.button {
+      color: #141925;
+      position: absolute;
+      top: 7px;
+      right: 0px;
       background: transparent;
       border: none; }
-      ion-view.routes.share div.form label.item-input .input-label.has-input {
-        color: #fff;
-        opacity: 0.6; }
-      ion-view.routes.share div.form label.item-input > textarea,
-      ion-view.routes.share div.form label.item-input > input {
-        background: transparent;
-        color: #fff;
-        border: none;
-        padding-right: 24px; }
-    ion-view.routes.share div.form label.item-input:last-child {
-      padding-top: 10px; }
-  ion-view.routes.share div.social-share {
-    position: fixed;
-    bottom: 57px; }
-    ion-view.routes.share div.social-share div.spacer {
-      -webkit-box-flex: 0;
-      -webkit-flex: 0 0 60%;
-      -moz-box-flex: 0;
-      -moz-flex: 0 0 60%;
-      -ms-flex: 0 0 60%;
-      flex: 0 0 60%;
-      max-width: 60%; }
-    ion-view.routes.share div.social-share div.col {
-      text-align: center; }
-      ion-view.routes.share div.social-share div.col > img {
-        height: 2.5em;
-        width: 2.5em; }
-  ion-view.routes.start .counter {
-    text-align: center;
-    margin-top: 4em; }
-    ion-view.routes.start .counter > span {
-      font-size: 15em;
-      line-height: 1em; }
-  ion-view.routes.start .counter-button {
-    margin-top: 4em; }
-  ion-view.routes.index .counters {
-    margin-top: -8em; }
-  ion-view.routes.index .pause {
-    margin-top: 1.5em; }
-    ion-view.routes.index .pause > div {
-      width: 12em;
-      height: 12em;
-      background-color: #fff;
-      color: #1c1c29; }
-      ion-view.routes.index .pause > div > i.icon {
-        font-size: 5em; }
-  ion-view.routes.index .arrow {
-    width: 150%;
-    background-image: url(images/svg/arrow.svg);
-    height: 180px;
-    margin-top: -4em;
-    margin-left: -25%; }
-  ion-view.routes.index .map {
-    margin-top: 2em;
-    text-align: center; }
-    ion-view.routes.index .map i.icon {
-      color: #fff;
-      font-size: 3em;
-      padding: 0.7em 1em; }
-  ion-view.routes.pause .buttons {
-    margin-top: 2em; }
-    ion-view.routes.pause .buttons .play > div {
-      background-color: #008000; }
-    ion-view.routes.pause .buttons .chart-container {
-      width: 8.8em;
-      height: 8.8em;
+      [md-theme='imoto'] ion-view.routes.create.map div.button > div.counter-button > div {
+        width: 3.5em;
+        height: 3.5em; }
+        [md-theme='imoto'] ion-view.routes.create.map div.button > div.counter-button > div > i {
+          font-size: 1em; }
+    [md-theme='imoto'] ion-view.routes.create.stop ion-footer-bar button {
+      border-radius: 0px;
+      padding: 8px 0px;
+      text-transform: uppercase;
+      font-size: 1.1em; }
+      [md-theme='imoto'] ion-view.routes.create.stop ion-footer-bar button.pause {
+        background: green;
+        color: white; }
+      [md-theme='imoto'] ion-view.routes.create.stop ion-footer-bar button.discard {
+        background: #6f6f6f;
+        color: white;
+        opacity: 0.8; }
+    [md-theme='imoto'] ion-view.routes.create.stop div.indicators {
+      padding: 8px;
+      margin-top: 0.2em; }
+      [md-theme='imoto'] ion-view.routes.create.stop div.indicators > div.row {
+        padding: 0px; }
+        [md-theme='imoto'] ion-view.routes.create.stop div.indicators > div.row > div.col {
+          line-height: 1.7em;
+          text-align: center;
+          margin: 8px 0px;
+          border-left: 1px solid #404040; }
+          [md-theme='imoto'] ion-view.routes.create.stop div.indicators > div.row > div.col > ion-spinner {
+            stroke: #ffc107;
+            fill: #ffc107; }
+            [md-theme='imoto'] ion-view.routes.create.stop div.indicators > div.row > div.col > ion-spinner svg {
+              stroke: #ffc107; }
+              [md-theme='imoto'] ion-view.routes.create.stop div.indicators > div.row > div.col > ion-spinner svg .stop1 {
+                stop-color: #ffc107; }
+              [md-theme='imoto'] ion-view.routes.create.stop div.indicators > div.row > div.col > ion-spinner svg .stop2 {
+                stop-color: #ffc107; }
+          [md-theme='imoto'] ion-view.routes.create.stop div.indicators > div.row > div.col:first-child {
+            border-left: none; }
+          [md-theme='imoto'] ion-view.routes.create.stop div.indicators > div.row > div.col > div.value {
+            font-size: 1.55em;
+            color: #ffc107;
+            font-weight: bold; }
+            [md-theme='imoto'] ion-view.routes.create.stop div.indicators > div.row > div.col > div.value.active > i {
+              color: #ef473a; }
+          [md-theme='imoto'] ion-view.routes.create.stop div.indicators > div.row > div.col > div.unit {
+            font-size: 0.75em; }
+        [md-theme='imoto'] ion-view.routes.create.stop div.indicators > div.row:last-child {
+          border-top: 1px solid #404040; }
+    [md-theme='imoto'] ion-view.routes.create.resume track-viewer {
+      min-height: 11em;
+      height: 11em;
+      width: 100%; }
+    [md-theme='imoto'] ion-view.routes.create.resume div.sport {
       position: absolute;
-      margin-top: -0.85em;
-      margin-left: 0.85em; }
-  ion-view.routes.pause .counters {
-    margin-top: 2em; }
-    ion-view.routes.pause .counters > div.col > div {
-      color: #fff; }
-  ion-view.routes.pause ion-footer-bar > button {
-    background-color: #BD0000;
-    border-color: #BD0000;
-    color: #fff;
-    font-size: 1.3em;
-    border-radius: 0px; }
-    ion-view.routes.pause ion-footer-bar > button > div {
-      margin-top: -30px; }
-      ion-view.routes.pause ion-footer-bar > button > div > i.icon {
-        padding: 13px;
-        background-color: #BD0000;
-        border-radius: 50%; }
-  ion-view.routes.map div.button {
-    color: #141925;
-    position: absolute;
-    top: 7px;
-    right: 0px;
-    background: transparent;
-    border: none; }
-    ion-view.routes.map div.button > div.counter-button > div {
-      width: 3.5em;
-      height: 3.5em; }
-      ion-view.routes.map div.button > div.counter-button > div > i {
-        font-size: 1em; }
-  ion-view.routes.stop .sensation > div.row:first-child {
-    margin-top: 0em; }
-    ion-view.routes.stop .sensation > div.row:first-child > div.col {
-      text-align: center; }
-  ion-view.routes.stop .counters {
-    margin-top: 0.5em; }
-    ion-view.routes.stop .counters > div.col > div {
-      color: #fff; }
-  ion-view.routes.stop .buttons {
-    margin-top: 1em;
-    margin-bottom: 2.5em; }
-    ion-view.routes.stop .buttons .counter-button > div {
-      width: 5em;
-      height: 5em; }
-    ion-view.routes.stop .buttons .chart-container {
-      width: 6.3em;
-      height: 6.3em;
+      z-index: 10;
+      top: 8em;
+      right: 1em; }
+      [md-theme='imoto'] ion-view.routes.create.resume div.sport > div.avatar {
+        -webkit-flex-basis: 4em;
+        -moz-flex-basis: 4em;
+        -ms-flex-preferred-size: 4em;
+        flex-basis: 4em;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        width: 4em;
+        height: 4em;
+        border-radius: 50%;
+        overflow: hidden;
+        padding: 3px;
+        border: 1px solid #717179;
+        box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 4px 0 rgba(0, 0, 0, 0.14), 0 8px 8px -2px rgba(0, 0, 0, 0.12); }
+        [md-theme='imoto'] ion-view.routes.create.resume div.sport > div.avatar > img {
+          border-radius: 50%;
+          width: 100%;
+          height: auto; }
+    [md-theme='imoto'] ion-view.routes.create.resume div.indicators {
+      padding: 8px;
+      margin-top: 0.2em; }
+      [md-theme='imoto'] ion-view.routes.create.resume div.indicators > div.row {
+        padding: 0px; }
+        [md-theme='imoto'] ion-view.routes.create.resume div.indicators > div.row > div.col {
+          line-height: 1.7em;
+          text-align: center;
+          margin: 8px 0px;
+          border-left: 1px solid #404040; }
+          [md-theme='imoto'] ion-view.routes.create.resume div.indicators > div.row > div.col > ion-spinner {
+            stroke: #ffc107;
+            fill: #ffc107; }
+            [md-theme='imoto'] ion-view.routes.create.resume div.indicators > div.row > div.col > ion-spinner svg {
+              stroke: #ffc107; }
+              [md-theme='imoto'] ion-view.routes.create.resume div.indicators > div.row > div.col > ion-spinner svg .stop1 {
+                stop-color: #ffc107; }
+              [md-theme='imoto'] ion-view.routes.create.resume div.indicators > div.row > div.col > ion-spinner svg .stop2 {
+                stop-color: #ffc107; }
+          [md-theme='imoto'] ion-view.routes.create.resume div.indicators > div.row > div.col:first-child {
+            border-left: none; }
+          [md-theme='imoto'] ion-view.routes.create.resume div.indicators > div.row > div.col > div.value {
+            font-size: 1.55em;
+            color: #ffc107;
+            font-weight: bold; }
+            [md-theme='imoto'] ion-view.routes.create.resume div.indicators > div.row > div.col > div.value.active > i {
+              color: #ef473a; }
+          [md-theme='imoto'] ion-view.routes.create.resume div.indicators > div.row > div.col > div.unit {
+            font-size: 0.75em; }
+        [md-theme='imoto'] ion-view.routes.create.resume div.indicators > div.row:last-child {
+          border-top: 1px solid #404040; }
+    [md-theme='imoto'] ion-view.routes.create.resume div.title {
+      margin-top: -32px;
       position: absolute;
-      margin-top: -0.65em;
-      margin-left: 0.2em; }
-  ion-view.routes.upload ion-item {
-    background: #1c1c29;
-    color: #fff;
-    border: none; }
-  ion-view.routes.camera-roll div.image-box {
-    width: 80%;
-    box-shadow: #585858 2px 2px 7px;
-    margin: 1em;
-    border: 1px solid #1C1C29;
-    border-radius: 5px;
-    margin-top: 3em; }
-    ion-view.routes.camera-roll div.image-box > div {
-      padding: 0.4em;
-      background: #FFF;
-      overflow: hidden; }
-      ion-view.routes.camera-roll div.image-box > div > img {
+      width: 100%;
+      padding: 6px 4px;
+      background-color: rgba(28, 28, 41, 0.8);
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 1.15em;
+      padding-right: 4.5em; }
+    [md-theme='imoto'] ion-view.routes.create.resume div.photos {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-direction: normal;
+      -webkit-box-orient: horizontal;
+      -webkit-flex-direction: row;
+      -moz-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      min-height: 4em;
+      height: 4em; }
+      [md-theme='imoto'] ion-view.routes.create.resume div.photos > figure {
+        width: 4em;
+        height: 4em;
+        border-radius: 14px;
+        margin-left: -0.5em;
+        border: 1px solid white;
+        overflow: hidden; }
+        [md-theme='imoto'] ion-view.routes.create.resume div.photos > figure:first-child {
+          margin-left: 8px; }
+        [md-theme='imoto'] ion-view.routes.create.resume div.photos > figure:nth-child(1) {
+          -ms-transform: rotate(-7deg) !important;
+          /* IE 9 */
+          -webkit-transform: rotate(-7deg) !important;
+          /* Chrome, Safari, Opera */
+          transform: rotate(-7deg) !important; }
+        [md-theme='imoto'] ion-view.routes.create.resume div.photos > figure:nth-child(2) {
+          -ms-transform: rotate(14deg) !important;
+          /* IE 9 */
+          -webkit-transform: rotate(14deg) !important;
+          /* Chrome, Safari, Opera */
+          transform: rotate(14deg) !important; }
+        [md-theme='imoto'] ion-view.routes.create.resume div.photos > figure:nth-child(3) {
+          -ms-transform: rotate(7deg) !important;
+          /* IE 9 */
+          -webkit-transform: rotate(7deg) !important;
+          /* Chrome, Safari, Opera */
+          transform: rotate(7deg) !important; }
+        [md-theme='imoto'] ion-view.routes.create.resume div.photos > figure > img {
+          width: 100%;
+          height: auto; }
+      [md-theme='imoto'] ion-view.routes.create.resume div.photos > div.counter {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        align-items: center;
+        margin-left: 0.5em;
+        transform: scale(1);
+        font-size: 1.5em;
+        text-shadow: 3px 4px 5px #000; }
+    [md-theme='imoto'] ion-view.routes.create.resume div.social-share {
+      margin-top: 0.3em;
+      /* MOTO APP SHARE */ }
+      [md-theme='imoto'] ion-view.routes.create.resume div.social-share div.spacer {
+        -webkit-flex-basis: 35%;
+        -moz-flex-basis: 35%;
+        -ms-flex-preferred-size: 35%;
+        flex-basis: 35%; }
+      [md-theme='imoto'] ion-view.routes.create.resume div.social-share div.col {
+        text-align: center; }
+        [md-theme='imoto'] ion-view.routes.create.resume div.social-share div.col > img {
+          height: 3em;
+          width: 3em; }
+        [md-theme='imoto'] ion-view.routes.create.resume div.social-share div.col.disabled > img {
+          filter: url("data:image/svg+xml;utf8,&lt;svg xmlns='http://www.w3.org/2000/svg'&gt;&lt;filter id='grayscale'&gt;&lt;feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0'/&gt;&lt;/filter&gt;&lt;/svg&gt;#grayscale");
+          /* Firefox 10+, Firefox on Android */
+          filter: gray;
+          /* IE6-9 */
+          -webkit-filter: grayscale(100%);
+          /* Chrome 19+, Safari 6+, Safari 6+ iOS */ }
+      [md-theme='imoto'] ion-view.routes.create.resume div.social-share .item-toggle {
+        background: none;
+        color: #FFF;
         width: 100%;
-        border-radius: 3px; }
-      ion-view.routes.camera-roll div.image-box > div > i {
-        float: right;
-        margin-top: -25px;
-        margin-right: -21px;
-        font-size: 2.5em;
-        color: #FA4C0D; }
+        border: none; }
+    [md-theme='imoto'] ion-view.routes.create.upload ion-item {
+      background: #1c1c29;
+      color: #fff;
+      border: none; }
+    [md-theme='imoto'] ion-view.routes.create.camera-roll div.image-box {
+      width: 80%;
+      box-shadow: #585858 2px 2px 7px;
+      margin: 1em;
+      border: 1px solid #1C1C29;
+      border-radius: 5px;
+      margin-top: 3em; }
+      [md-theme='imoto'] ion-view.routes.create.camera-roll div.image-box > div {
+        padding: 0.4em;
+        background: #FFF;
+        overflow: hidden; }
+        [md-theme='imoto'] ion-view.routes.create.camera-roll div.image-box > div > img {
+          width: 100%;
+          border-radius: 3px; }
+        [md-theme='imoto'] ion-view.routes.create.camera-roll div.image-box > div > i {
+          float: right;
+          margin-top: -25px;
+          margin-right: -21px;
+          font-size: 2.5em;
+          color: #FA4C0D; }
+  [md-theme='imoto'] ion-view.routes.view {
+    /*------------------------- 
+    VIEW:   ROUTE VIEW
+    ROUTE:  /app/routes/view/index
+    -------------------------*/
+    /*------------------------- 
+    VIEW:   ROUTE VIEW
+    ROUTE:  /app/routes/view/photos
+    -------------------------*/
+    /*------------------------- 
+    VIEW:   ROUTE VIEW
+    ROUTE:  /app/routes/view/map
+    -------------------------*/ }
+    [md-theme='imoto'] ion-view.routes.view.index track-viewer {
+      min-height: 16em;
+      height: 16em;
+      width: 100%; }
+    [md-theme='imoto'] ion-view.routes.view.index div.creator {
+      position: absolute;
+      z-index: 10;
+      top: 13em;
+      right: 1em; }
+      [md-theme='imoto'] ion-view.routes.view.index div.creator > div.avatar {
+        -webkit-flex-basis: 4em;
+        -moz-flex-basis: 4em;
+        -ms-flex-preferred-size: 4em;
+        flex-basis: 4em;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        width: 4em;
+        height: 4em;
+        border-radius: 50%;
+        overflow: hidden;
+        padding: 3px;
+        border: 1px solid #717179;
+        box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 4px 0 rgba(0, 0, 0, 0.14), 0 8px 8px -2px rgba(0, 0, 0, 0.12); }
+        [md-theme='imoto'] ion-view.routes.view.index div.creator > div.avatar > img {
+          border-radius: 50%;
+          width: 100%;
+          height: auto; }
+    [md-theme='imoto'] ion-view.routes.view.index div.indicators {
+      padding: 8px;
+      margin-top: 0.2em; }
+      [md-theme='imoto'] ion-view.routes.view.index div.indicators > div.row {
+        padding: 0px; }
+        [md-theme='imoto'] ion-view.routes.view.index div.indicators > div.row > div.col {
+          line-height: 1.7em;
+          text-align: center;
+          margin: 8px 0px;
+          border-left: 1px solid #404040; }
+          [md-theme='imoto'] ion-view.routes.view.index div.indicators > div.row > div.col > ion-spinner {
+            stroke: #ffc107;
+            fill: #ffc107; }
+            [md-theme='imoto'] ion-view.routes.view.index div.indicators > div.row > div.col > ion-spinner svg {
+              stroke: #ffc107; }
+              [md-theme='imoto'] ion-view.routes.view.index div.indicators > div.row > div.col > ion-spinner svg .stop1 {
+                stop-color: #ffc107; }
+              [md-theme='imoto'] ion-view.routes.view.index div.indicators > div.row > div.col > ion-spinner svg .stop2 {
+                stop-color: #ffc107; }
+          [md-theme='imoto'] ion-view.routes.view.index div.indicators > div.row > div.col:first-child {
+            border-left: none; }
+          [md-theme='imoto'] ion-view.routes.view.index div.indicators > div.row > div.col > div.value {
+            font-size: 1.55em;
+            color: #ffc107;
+            font-weight: bold; }
+            [md-theme='imoto'] ion-view.routes.view.index div.indicators > div.row > div.col > div.value.active > i {
+              color: #ef473a; }
+          [md-theme='imoto'] ion-view.routes.view.index div.indicators > div.row > div.col > div.unit {
+            font-size: 0.75em; }
+        [md-theme='imoto'] ion-view.routes.view.index div.indicators > div.row:last-child {
+          border-top: 1px solid #404040; }
+    [md-theme='imoto'] ion-view.routes.view.index div.title {
+      margin-top: -32px;
+      position: absolute;
+      width: 100%;
+      padding: 6px 4px;
+      background-color: rgba(28, 28, 41, 0.8);
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 1.15em;
+      padding-right: 4.5em; }
+    [md-theme='imoto'] ion-view.routes.view.index div.photos {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-direction: normal;
+      -webkit-box-orient: horizontal;
+      -webkit-flex-direction: row;
+      -moz-flex-direction: row;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      min-height: 4em;
+      height: 4em; }
+      [md-theme='imoto'] ion-view.routes.view.index div.photos > preload-image {
+        width: 4em;
+        height: 4em;
+        border-radius: 14px;
+        margin-left: -0.5em;
+        border: 1px solid white; }
+        [md-theme='imoto'] ion-view.routes.view.index div.photos > preload-image:first-child {
+          margin-left: 8px; }
+        [md-theme='imoto'] ion-view.routes.view.index div.photos > preload-image:nth-child(1) {
+          -ms-transform: rotate(-7deg) !important;
+          /* IE 9 */
+          -webkit-transform: rotate(-7deg) !important;
+          /* Chrome, Safari, Opera */
+          transform: rotate(-7deg) !important; }
+        [md-theme='imoto'] ion-view.routes.view.index div.photos > preload-image:nth-child(2) {
+          -ms-transform: rotate(14deg) !important;
+          /* IE 9 */
+          -webkit-transform: rotate(14deg) !important;
+          /* Chrome, Safari, Opera */
+          transform: rotate(14deg) !important; }
+        [md-theme='imoto'] ion-view.routes.view.index div.photos > preload-image:nth-child(3) {
+          -ms-transform: rotate(7deg) !important;
+          /* IE 9 */
+          -webkit-transform: rotate(7deg) !important;
+          /* Chrome, Safari, Opera */
+          transform: rotate(7deg) !important; }
+      [md-theme='imoto'] ion-view.routes.view.index div.photos > div.counter {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        align-items: center;
+        margin-left: 0.5em;
+        transform: scale(1);
+        font-size: 1.5em;
+        text-shadow: 3px 4px 5px #000; }
+    [md-theme='imoto'] ion-view.routes.view.index button.button-block {
+      background-color: transparent;
+      margin-left: 3%;
+      width: 94%; }
+      [md-theme='imoto'] ion-view.routes.view.index button.button-block.delete {
+        color: #da392c;
+        border: 1px solid #4A4A4C; }
+      [md-theme='imoto'] ion-view.routes.view.index button.button-block.maps {
+        color: #ffc107;
+        border: 1px solid #4A4A4C;
+        margin-top: 4%; }
+      [md-theme='imoto'] ion-view.routes.view.index button.button-block > i {
+        font-size: 1.3em; }
+    [md-theme='imoto'] ion-view.routes.view.photos div.image-box {
+      margin: 1.5em; }
+      [md-theme='imoto'] ion-view.routes.view.photos div.image-box > img {
+        border: 6px solid white;
+        width: 100%; }
+  [md-theme='imoto'] ion-view.routes.me {
+    /*------------------------- 
+    VIEW:   ROUTE VIEW
+    ROUTE:  /app/routes/me/index
+    -------------------------*/ }
+    [md-theme='imoto'] ion-view.routes.me.index empty-content button {
+      padding: 4px;
+      margin-top: 16px;
+      background-color: #ffc107;
+      border: none;
+      border-radius: 4px;
+      font-size: 1.3em;
+      text-transform: uppercase;
+      color: #000; }
+    [md-theme='imoto'] ion-view.routes.me.index ion-list ion-item {
+      padding: 0px;
+      border: none;
+      overflow: hidden;
+      background-color: transparent; }
+      [md-theme='imoto'] ion-view.routes.me.index ion-list ion-item > div.creator {
+        position: absolute;
+        z-index: 10;
+        margin-left: 1em;
+        margin-right: 1em;
+        margin-top: 17%;
+        height: 45%;
+        width: 18em;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-direction: normal;
+        -webkit-box-orient: horizontal;
+        -webkit-flex-direction: row;
+        -moz-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        -moz-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        align-items: center; }
+        [md-theme='imoto'] ion-view.routes.me.index ion-list ion-item > div.creator > div.box {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-flex-basis: 14em;
+          -moz-flex-basis: 14em;
+          -ms-flex-preferred-size: 14em;
+          flex-basis: 14em;
+          -webkit-box-direction: normal;
+          -webkit-box-orient: vertical;
+          -webkit-flex-direction: column;
+          -moz-flex-direction: column;
+          -ms-flex-direction: column;
+          flex-direction: column;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          -webkit-justify-content: center;
+          -moz-justify-content: center;
+          justify-content: center;
+          color: #fff;
+          overflow: hidden;
+          padding-left: 0.5em; }
+          [md-theme='imoto'] ion-view.routes.me.index ion-list ion-item > div.creator > div.box > div {
+            padding-bottom: 4px; }
+          [md-theme='imoto'] ion-view.routes.me.index ion-list ion-item > div.creator > div.box > div.fullname {
+            text-shadow: 2px 2px 0px #000;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            font-size: 1.2em; }
+          [md-theme='imoto'] ion-view.routes.me.index ion-list ion-item > div.creator > div.box > div.indicators {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-direction: normal;
+            -webkit-box-orient: horizontal;
+            -webkit-flex-direction: row;
+            -moz-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            text-shadow: 2px 2px 0px #000; }
+            [md-theme='imoto'] ion-view.routes.me.index ion-list ion-item > div.creator > div.box > div.indicators > div.indicator {
+              padding-left: 0.5em;
+              font-size: 1.2em;
+              font-weight: bold; }
+              [md-theme='imoto'] ion-view.routes.me.index ion-list ion-item > div.creator > div.box > div.indicators > div.indicator:first-child {
+                padding-left: 0px; }
+          [md-theme='imoto'] ion-view.routes.me.index ion-list ion-item > div.creator > div.box > div.buttons {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-direction: normal;
+            -webkit-box-orient: horizontal;
+            -webkit-flex-direction: row;
+            -moz-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row; }
+            [md-theme='imoto'] ion-view.routes.me.index ion-list ion-item > div.creator > div.box > div.buttons > div.details {
+              width: 50%;
+              border: 1px solid #FFF;
+              border-radius: 20px;
+              text-align: center;
+              padding: 4px;
+              font-size: 1.2em;
+              background: rgba(60, 60, 60, 0.6); }
+            [md-theme='imoto'] ion-view.routes.me.index ion-list ion-item > div.creator > div.box > div.buttons > div.likes {
+              margin-left: 0.5em;
+              min-width: 26%;
+              border: 1px solid #44483f;
+              border-radius: 20px;
+              text-align: center;
+              background-color: #FFF;
+              padding: 4px;
+              color: #DA0000; }
+              [md-theme='imoto'] ion-view.routes.me.index ion-list ion-item > div.creator > div.box > div.buttons > div.likes > i {
+                color: red; }
+      [md-theme='imoto'] ion-view.routes.me.index ion-list ion-item > img {
+        width: 100%; }
+  [md-theme='imoto'] ion-view.routes.discover {
+    /*------------------------- 
+    VIEW:   ROUTE VIEW
+    ROUTE:  /app/routes/discover/index
+    -------------------------*/ }
+    [md-theme='imoto'] ion-view.routes.discover.index ion-list ion-item {
+      padding: 0px;
+      border: none;
+      overflow: hidden;
+      background-color: transparent; }
+      [md-theme='imoto'] ion-view.routes.discover.index ion-list ion-item > div.name {
+        position: absolute;
+        color: white;
+        width: 96%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-left: 2%;
+        margin-top: 170px;
+        text-shadow: 2px 2px 0px #000; }
+      [md-theme='imoto'] ion-view.routes.discover.index ion-list ion-item > div.creator {
+        position: absolute;
+        z-index: 10;
+        margin-left: 1em;
+        margin-right: 1em;
+        margin-top: 15%;
+        height: 45%;
+        width: 18em;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-direction: normal;
+        -webkit-box-orient: horizontal;
+        -webkit-flex-direction: row;
+        -moz-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        -moz-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        align-items: center; }
+        [md-theme='imoto'] ion-view.routes.discover.index ion-list ion-item > div.creator > div.avatar {
+          -webkit-flex-basis: 4em;
+          -moz-flex-basis: 4em;
+          -ms-flex-preferred-size: 4em;
+          flex-basis: 4em;
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: flex;
+          width: 4em;
+          height: 4em;
+          border-radius: 50%;
+          overflow: hidden;
+          padding: 3px;
+          border: 1px solid #fff;
+          box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 8px 4px 0 rgba(0, 0, 0, 0.14), 0 8px 8px -2px rgba(0, 0, 0, 0.12); }
+          [md-theme='imoto'] ion-view.routes.discover.index ion-list ion-item > div.creator > div.avatar > img {
+            border-radius: 50%;
+            width: 100%;
+            height: auto; }
+        [md-theme='imoto'] ion-view.routes.discover.index ion-list ion-item > div.creator > div.box {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-flex-basis: 14em;
+          -moz-flex-basis: 14em;
+          -ms-flex-preferred-size: 14em;
+          flex-basis: 14em;
+          -webkit-box-direction: normal;
+          -webkit-box-orient: vertical;
+          -webkit-flex-direction: column;
+          -moz-flex-direction: column;
+          -ms-flex-direction: column;
+          flex-direction: column;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          -webkit-justify-content: center;
+          -moz-justify-content: center;
+          justify-content: center;
+          color: #fff;
+          overflow: hidden;
+          padding-left: 0.5em; }
+          [md-theme='imoto'] ion-view.routes.discover.index ion-list ion-item > div.creator > div.box > div {
+            padding-bottom: 4px; }
+          [md-theme='imoto'] ion-view.routes.discover.index ion-list ion-item > div.creator > div.box > div.fullname {
+            text-shadow: 2px 2px 0px #000;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            font-size: 1.2em; }
+          [md-theme='imoto'] ion-view.routes.discover.index ion-list ion-item > div.creator > div.box > div.indicators {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-direction: normal;
+            -webkit-box-orient: horizontal;
+            -webkit-flex-direction: row;
+            -moz-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            text-shadow: 2px 2px 0px #000; }
+            [md-theme='imoto'] ion-view.routes.discover.index ion-list ion-item > div.creator > div.box > div.indicators > div.indicator {
+              padding-left: 0.5em;
+              font-size: 1.2em;
+              font-weight: bold; }
+              [md-theme='imoto'] ion-view.routes.discover.index ion-list ion-item > div.creator > div.box > div.indicators > div.indicator:first-child {
+                padding-left: 0px; }
+          [md-theme='imoto'] ion-view.routes.discover.index ion-list ion-item > div.creator > div.box > div.buttons {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-direction: normal;
+            -webkit-box-orient: horizontal;
+            -webkit-flex-direction: row;
+            -moz-flex-direction: row;
+            -ms-flex-direction: row;
+            flex-direction: row; }
+            [md-theme='imoto'] ion-view.routes.discover.index ion-list ion-item > div.creator > div.box > div.buttons > div.details {
+              width: 50%;
+              border: 1px solid #FFF;
+              border-radius: 20px;
+              text-align: center;
+              padding: 4px;
+              font-size: 1.2em;
+              background: rgba(60, 60, 60, 0.6); }
+            [md-theme='imoto'] ion-view.routes.discover.index ion-list ion-item > div.creator > div.box > div.buttons > div.likes {
+              margin-left: 0.5em;
+              min-width: 26%;
+              border: 1px solid #44483f;
+              border-radius: 20px;
+              text-align: center;
+              background-color: #FFF;
+              padding: 4px;
+              color: #DA0000; }
+              [md-theme='imoto'] ion-view.routes.discover.index ion-list ion-item > div.creator > div.box > div.buttons > div.likes > i {
+                color: red; }
+      [md-theme='imoto'] ion-view.routes.discover.index ion-list ion-item > img {
+        width: 100%; }
 
 /*# sourceMappingURL=routes.css.map */

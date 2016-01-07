@@ -4,7 +4,9 @@ angular.route('app.profile/index', function(
     $log,
     $Api,
     $Identity,
-    $LocalStorage
+    $LocalStorage,
+    $Configuration,
+    ApplicationCleanse
 )
 {
     var user = $Identity.getCurrent();
@@ -45,8 +47,12 @@ angular.route('app.profile/index', function(
 
     $scope.logOut = function()
     {
-        $LocalStorage.clear();
-        $Identity.logOut();
+
+        // CLEAN OLD STUFF
+        ApplicationCleanse.clean().then(function(){
+            $Identity.logOut();
+        });
+        
     };
 
 });

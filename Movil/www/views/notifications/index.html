@@ -11,9 +11,8 @@
             <ion-refresher pulling-text="Vamos!, con un poco mas de fuerza..." spinner="lines" on-refresh="doRefresh()">
             </ion-refresher>
             <ion-list>
-                <ion-item ng-repeat="item in items" class="item-avatar">
+                <ion-item ng-repeat="item in items track by $index" class="item-avatar">
                     <div class="information">
-
                         <preload-image ng-src="item.image"></preload-image>
                         <h2>{{item.type.name}}</h2>
                         <p>{{item.text}}</p>
@@ -21,6 +20,8 @@
                     </div>
                 </ion-item>
             </ion-list>
+            <ion-infinite-scroll ng-if="hasNext()" on-infinite="nextPage()" spinner="dots">
+            </ion-infinite-scroll>
         </ion-content>
     </div>
 </ion-view>

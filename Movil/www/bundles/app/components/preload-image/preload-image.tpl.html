@@ -7,7 +7,9 @@
         {{loadingLegend}}
     </div>
 </center>
-<img ng-if="loadComplete" ng-src="{{ngSrc}}" />
+<figure class="{{cssgramFilter}}" ng-if="loadComplete" >
+    <img ng-src="{{ngSrc}}" />
+</figure>
 <div ng-if="loadError" class="error">
     <i class="icon ion-outlet"></i>
 </div>

@@ -1,0 +1,26 @@
+<ion-view class="firstRun configure">
+    <!-- SLIDES -->
+    <ion-slides slider="slider">
+        <!-- Background GPS Permitions -->
+        <ion-slide-page class="swiper-no-swiping">
+            <background-gps on-complete="next('BACKGROUND_GPS')">
+            </background-gps>
+        </ion-slide-page>
+        <!-- Push Notifications Permitions -->
+        <ion-slide-page >
+            <push-notifications on-complete="next('PUSH_NOTIFICATIONS')">
+            </push-notifications>
+        </ion-slide-page>
+        <!-- Sport Selector -->
+        <ion-slide-page>
+            <sport-selector on-complete="next('SPORT_SELECTOR')">
+            </sport-selector>
+        </ion-slide-page>
+        <!-- Emergency Contact 
+        <ion-slide-page>
+            <emergency-contacts on-complete="next('EMERGENCY_CONTACTS')">
+            </emergency-contacts>
+        </ion-slide-page>
+        -->
+    </ion-slides>
+</ion-view>

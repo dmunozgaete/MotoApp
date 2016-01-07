@@ -18,14 +18,15 @@ angular.module('app.services.synchronizers')
     {
         // SYNC VARIABLES
         var self = Object.create(BaseEventHandler); //Extend From EventHandler
-        var label = "$_route_stamp";
         var database = {
             name: "routes",
             options:
             {
-                size: 50
+                size: 50,
+                auto_compaction: true
             }
         };
+        var label = database.name + "_stamp";
 
         //----------------------------------------
         // CONFIGURATION STEP (LIKE CONSTRUCTOR)
@@ -41,54 +42,11 @@ angular.module('app.services.synchronizers')
                 {
 
                     //RE-CREATE 
-                    var db = pouchDB(database.name, database.options);
-
-                    //CREATE VIEW'S FOR FASTER RETRIEVAL
-                    var ddoc = {
-                        _id: '_design/queries',
-                        views:
-                        {
-                            //GET ALL ROUTES
-                            all:
-                            {
-                                map: function(doc)
-                                {
-                                    emit(doc);
-                                }.toString()
-                            },
-
-                            //GET LOCAL ROUTES
-                            locals:
-                            {
-                                map: function(doc)
-                                {
-                                    if (doc.isShared === 0)
-                                    {
-                                        emit(doc);
-                                    };
-                                }.toString()
-                            },
-
-                            //GET SHARED ROUTES
-                            shared:
-                            {
-                                map: function(doc)
-                                {
-                                    if (doc.isShared === 1)
-                                    {
-                                        emit(doc);
-                                    };
-                                }.toString()
-                            }
-                        }
-                    };
-                    db.put(ddoc).then(function()
+                    var db = pouchDB(database.name, database.options).then(function()
                     {
                         defer.resolve();
-                    }).catch(function(err)
-                    {
-                        throw err;
                     });
+
 
                 })
             }
@@ -134,11 +92,13 @@ angular.module('app.services.synchronizers')
             {
                 if (data.items.length > 0)
                 {
+                    //-----------------------------------------
                     //SET key with the date
                     angular.forEach(data.items, function(item)
                     {
-                        item._id = item.createdAt;
+                        item._id = item.start + Math.random();
                     });
+
                     //-----------------------------------------
                     //Bulk all new items's to storage
                     var db = pouchDB(database.name);
@@ -169,40 +129,105 @@ angular.module('app.services.synchronizers')
 
         //-----------------------------------------
         // CUSTOM ACTION'S
-        var query = function(name)
+        self.paginate = function(limit)
         {
-            var defer = $q.defer();
-
             var db = pouchDB(database.name);
-
-            db.query("queries/{0}".format([name]),
-            {
+            var options = {
+                limit: limit,
                 include_docs: true,
                 descending: true
-            }).then(function(res)
-            {
-                var items = _.pluck(res.rows, 'doc');
-                defer.resolve(items);
-            });
+            };
 
+            var totalRows = 0;
+            var currentRows = 0;
+
+            var hasNext = function hasNext()
+            {
+                return totalRows > 0 && currentRows < totalRows;
+            }
+
+            var nextPage = function nextPage()
+            {
+                var defer = $q.defer();
+
+                db.allDocs(options).then(function(res)
+                {
+                    if (res.rows.length > 0)
+                    {
+                        //Set counter's
+                        options.startkey = res.rows[res.rows.length - 1].key;
+                        totalRows = res.total_rows;
+                        currentRows += res.rows.length;
+                        options.skip = 1;
+                    }
+
+                    //Return Item's
+                    var items = _.pluck(res.rows, 'doc');
+                    defer.resolve(items);
+
+                }, defer.reject);
+
+                return defer.promise;
+            };
+
+            var defer = nextPage();
+            defer.nextPage = nextPage;
+            defer.hasNext = hasNext;
+
+            return defer;
+        };
+
+        self.findByToken = function(token)
+        {
+            var defer = $q.defer();
+            var db = pouchDB(database.name);
+            db.get(token).then(function(res)
+            {
+                defer.resolve(res);
+            }, function(err)
+            {
+                defer.resolve(err);
+            });
             return defer.promise;
         };
 
-        self.getItems = function()
+        self.remove = function(token)
         {
-            return query("all");
-        };
+            var defer = $q.defer();
+            var db = pouchDB(database.name);
 
-        self.getLocals = function()
-        {
-            return query("locals");
-        };
+            db.query(function(doc, emit)
+            {
+                emit(doc.token);
+            },
+            {
+                key: token,
+                include_docs: true,
+                limit: 1
+            }).then(function(result)
+            {
+                //Found??
+                if (result.rows.length > 0)
+                {
+                    //Remove the DOC 
+                    db.remove(result.rows[0].doc).then(function()
+                    {
+                        defer.resolve(token);
+                    }, function(err)
+                    {
+                        defer.reject(err);
+                    });
+                }
 
-        self.getShared = function()
-        {
-            return query("shared");
-        };
 
+            }).catch(function(err)
+            {
+                defer.reject(err);
+            });
+
+
+            return defer.promise;
+        };
 
         return self;
     });

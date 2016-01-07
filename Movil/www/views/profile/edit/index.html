@@ -7,19 +7,10 @@
     <!-- CONTENT -->
     <form name="form">
         <div >
-            <ion-content>
+            <ion-content overflow-scroll="false">
                 <div class="row title">
                     <div class="col">
                         Datos Personales:
-                    </div>
-                </div>
-                <!-- WEIGHT -->
-                <div class="row">
-                    <div class="col">
-                        Peso (kg.)
-                    </div>
-                    <div class="col-33">
-                        <input type="tel" ng-model="data.weight" maxlength="3" required ng-range min="30" max="600" class="value" />
                     </div>
                 </div>
                 <!-- SPORT TYPE -->
@@ -28,8 +19,7 @@
                         Deporte
                     </div>
                     <div class="col-66">
-                        <select ng-model="data.sport" class="value" required>
-                            <option ng-repeat="item in collections.sportTypes" ng-selected="item.identifier == data.sport" ng-value="{{item}}">{{item.name}}</option>
+                        <select ng-model="data.sport" ng-options="option.name for option in collections.sportTypes track by option.identifier" class="value" required>
                         </select>
                     </div>
                 </div>

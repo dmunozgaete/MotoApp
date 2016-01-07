@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Class="DiscoverDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="" Member="Paginations">
+    <Type Name="Pagination">
+      <Column Name="RegistrosSaltados" Member="offset" Type="System.Int32" CanBeNull="false" />
+      <Column Name="RegistrosPorPagina" Member="limit" Type="System.Int32" CanBeNull="false" />
+      <Column Name="Contador" Member="total" Type="System.Int32" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VT_MOT_RutasPopulares" Member="DiscoveredRoutes">
+    <Type Name="DiscoveredRoute">
+      <Column Name="RUTA_Token" Member="token" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RUTA_Fecha" Member="createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Distancia" Member="distance" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Duracion" Member="duration" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Imagen" Member="image" Type="System.String" DbType="VarChar(2048) NOT NULL" CanBeNull="false" />
+      <Column Name="Proximidad" Member="proximity" Type="System.Decimal" CanBeNull="false" />
+      <Column Name="RUCO_Nombre" Member="shared_name" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="RUCO_MeGusta" Member="shared_likes" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RUCO_Fecha" Member="shared_createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ENTI_Token" Member="creator_token" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ENTI_Identificador" Member="creator_identifier" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ARCH_Token" Member="creator_photo" Type="System.String" CanBeNull="false" />
+      <Column Name="USUA_NombreCompleto" Member="creator_fullname" Storage="_fullname" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

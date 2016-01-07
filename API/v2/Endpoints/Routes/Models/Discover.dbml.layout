@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Discover">
+  <DataContextMoniker Name="/DiscoverDataContext" />
+  <nestedChildShapes>
+    <classShape Id="71f81e92-7b05-469f-ad8b-7e6b70e3451e" absoluteBounds="0.875, 0.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DiscoverDataContext/Pagination" />
+      <nestedChildShapes>
+        <elementListCompartment Id="82016745-c0e5-4616-bde6-1d85774dc6da" absoluteBounds="0.89000000000000012, 0.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fb206d65-eacc-406a-bd73-758e00913bb7" absoluteBounds="3.25, 0.5, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/DiscoverDataContext/DiscoveredRoute" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6426a269-57d7-4c0e-b2a2-2b1422564f0d" absoluteBounds="3.2649999999999997, 0.96, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

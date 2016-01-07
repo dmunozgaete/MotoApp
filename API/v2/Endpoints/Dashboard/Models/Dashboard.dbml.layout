@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Dashboard">
+  <DataContextMoniker Name="/DashboardDataContext" />
+  <nestedChildShapes>
+    <classShape Id="01876519-7d3c-4f87-969f-60ad079e366a" absoluteBounds="0.5, 0.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/DashboardDataContext/Filter" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c4c36522-7070-48b9-8215-4dde96db97d2" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="685d4d0a-5ea6-42e4-9e47-40f311d2979e" absoluteBounds="0.5, 4, 2, 1.1939925130208331">
+      <DataClassMoniker Name="/DashboardDataContext/GraphItem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a19509fc-4b17-415f-84cf-f0694d9adf00" absoluteBounds="0.51499999999999968, 4.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="89b28c0d-9b15-41f5-a899-0286f9907c5f" absoluteBounds="0.5, 2.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/DashboardDataContext/Counters" />
+      <nestedChildShapes>
+        <elementListCompartment Id="41081a79-4177-4f5f-8a8d-a1f821ad43ba" absoluteBounds="0.51499999999999968, 2.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

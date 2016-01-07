@@ -16,8 +16,15 @@ angular.route('app.profile/edit/index', function(
     //---------------------------------------------------
     // Model
     $scope.collections = $Configuration.get("collections");
-
     $scope.data = $Identity.getCurrent().property("personal");
+
+    //------------------------------------------------
+    //Get Sport Item in the collection
+    $scope.data.sport = _.find($scope.collections.sportTypes,
+    {
+        identifier: $scope.data.sport
+    });
+
 
     //------------------------------------------------
     // Action's
@@ -28,6 +35,8 @@ angular.route('app.profile/edit/index', function(
         {
             template: 'Actualizando...'
         });
+
+        data.sport = data.sport.identifier;
 
         $Api.update("/Accounts/Me", data)
             .success(function(response)
@@ -43,7 +52,7 @@ angular.route('app.profile/edit/index', function(
                 $ionicLoading.hide();
 
                 Rewards.check('PROFILE');
-                
+
                 //Set Profile
                 $scope.back();
 
@@ -81,7 +90,6 @@ angular.route('app.profile/edit/index', function(
         $cordovaContacts.pickContact()
             .then(function(contactPicked)
             {
-                $log.debug(contactPicked);
                 if (contactPicked.phoneNumbers && contactPicked.phoneNumbers.length > 0)
                 {
                     var phone = contactPicked.phoneNumbers[0].value;

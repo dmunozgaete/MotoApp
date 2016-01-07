@@ -1,23 +1,24 @@
-$stroke_color: #ffc107;
+@import "../../../css/_variables";
+@import "../../../css/_flexbox";
 
 flex-loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flexbox();
+    @include flex-direction(column);
+    @include justify-content(center);
+    @include align-items(center);
     height: 100%;
     width: 100%;
-    flex-direction: column;
     text-align: center;
     .spinner {
-        stroke: $stroke_color;
-        fill: $stroke_color;
+        stroke: $accent_color;
+        fill: $accent_color;
         svg {
-            stroke: $stroke_color;
+            stroke: $accent_color;
             .stop1 {
-                stop-color: $stroke_color;
+                stop-color: $accent_color;
             }
             .stop2 {
-                stop-color: $stroke_color;
+                stop-color: $accent_color;
             }
         }
     }
