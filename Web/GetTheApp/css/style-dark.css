@@ -534,11 +534,14 @@ div > a.btn:nth-of-type(2){
 	background-size: cover;
 	border-radius: 40px;
 }
-#reviews .owl-item:nth-child(1) .avatar, #reviews .owl-item:nth-child(3) .avatar{
+#reviews .owl-item:nth-child(1) .avatar{
 	background-image: url('../img/avatar1.jpg');
 }
 #reviews .owl-item:nth-child(2) .avatar{
 	background-image: url('../img/avatar2.jpg');
+}
+#reviews .owl-item:nth-child(3) .avatar{
+	background-image: url('../img/avatar3.jpg');
 }
 #reviews .quote{
 	font-family: Merriweather, serif;
@@ -729,7 +732,7 @@ footer .copyright{
 		margin-bottom: 2px;
 	}
 	#features .icon{
-		font-size: 48px;
+		font-size: 36px;
 	}
 }
 @media (max-width: 991px){
