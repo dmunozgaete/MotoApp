@@ -1,79 +1,88 @@
-@import "../../../bundles/app/css/variables";
-
-/*------------------------- 
-VIEW:   First Run View's
-ROUTE:  /app/firstRun/*
--------------------------*/
-ion-view.firstRun {
+@import "../../../bundles/app/css/_variables";
+@import "../../../bundles/app/css/_flexbox";
+[md-theme='imoto'] {
+    @mixin layout-fill {
+        display: block;
+        min-height: 100%;
+        width: 100%;
+    }
     /*------------------------- 
-    VIEW:   First Time Configuration
-    ROUTE:  /app/firstRun/configuration
+    VIEW:   First Run View's
+    ROUTE:  /app/firstRun/configure
     -------------------------*/
-    &.configuration {
-        .title {
-            padding-bottom: 0.5em !important;
-            background-color: $primary_Hue900_color;
-            margin-bottom: 1em;
-            line-height: 1em;
-            div.col:first-child {
-                text-transform: uppercase;
+    .firstRun {
+        &.configure {
+            background-gps {
+                @include layout-fill();
+                background-image: url(images/background-gps.png);
+                background-color: #bd741a;
             }
-        }
-        &.step-1 {
-            background-image: url(images/backgrounds/background-2.jpg);
-            background-size: 100%;
-            ion-content {
-                background: none;
-                div.welcome {
-                    color: $accent_color;
-                    padding: 1em;
-                    padding-bottom: 2em;
-                    padding-top: 2em;
-                    text-align: justify;
-                    h1 {
-                        color: $accent_color;
-                        font-size: 1.6em;
-                        font-weight: normal;
+            push-notifications {
+                @include layout-fill();
+                background-image: url(images/push-notifications.png);
+                background-color: #6b8e35;
+                .actions {
+                    text-align: left;
+                    > button {
+                        padding: 6px !important;
+                        margin-right: 8px;
+                    }
+                    > a {
+                        color: rgb(255, 255, 255);
+                        font-size: 1.1em;
+                        padding-left: 4px;
+                        padding: 8px;
+                        padding-right: 12px;
+                        padding-left: 8px;
                     }
                 }
-                div.fav-button {
-                    position: absolute;
-                    right: 1em;
-                    border-radius: 50%;
-                    height: 3.5em;
-                    width: 3.5em;
-                    background-color: $accent_color;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    margin-top: -1em;
-                    > i {
-                        color: $primary_color;
-                        text-align: center;
-                        font-size: 1.8em;
+            }
+            sport-selector {
+                @include layout-fill();
+                background-image: url(images/sport-selector.png);
+                background-color: #3c3688;
+            }
+            /*
+              ION SLIDES CUSTOMIZATION
+            */
+            ion-slides {
+                .swiper-slide {
+                    > * {
+                        background-size: 100% auto;
+                        background-position: center 35%;
+                        background-repeat: no-repeat;
                     }
-                }
-                div.row {
-                    padding-bottom: 1em;
-                    &.phones {
-                        div.col {
-                            padding: 0.5em;
-                            a {
-                                text-decoration: none;
-                                color: $accent_color;
+                    content {
+                        display: block;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        padding: 1em;
+                        height: 18em;
+                        > .title {
+                            font-size: 1.8em;
+                            padding-bottom: 1em;
+                        }
+                        > .description {
+                            text-align: justify
+                        }
+                        > .actions {
+                            text-align: center;
+                            padding-top: 2em;
+                            > button {
+                                padding: 6px 25px;
+                                border-radius: 4px;
+                                font-size: 1.2em;
+                                border: 1px solid rgb(226, 226, 226);
+                                background: none;
+                                color: rgb(255, 255, 255);
                             }
                         }
                     }
                 }
-                input.value,
-                select.value {
-                    width: 99%;
-                    background: rgba(0, 0, 0, 0);
-                    border: 1px solid $accent_color;
-                    border-radius: 4px;
-                    color: #fff;
-                    font-size: 1.6em;
-                    text-align: center;
+                .swiper-pagination-bullet {
+                    background-color: #fff;
                 }
             }
         }

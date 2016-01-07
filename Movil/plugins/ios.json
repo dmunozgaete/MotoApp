@@ -127,6 +127,14 @@
                         {
                             "xml": "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Diagnostic\"><param name=\"ios-package\" value=\"Diagnostic\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"UniversalAnalytics\"><param name=\"ios-package\" value=\"UniversalAnalyticsPlugin\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -147,6 +155,10 @@
                         {
                             "xml": "<string />",
                             "count": 2
+                        },
+                        {
+                            "xml": "<string>This app will now only track your location when the screen is on and the app is displayed.</string>",
+                            "count": 1
                         }
                     ],
                     "CFBundleURLTypes": [
@@ -162,6 +174,10 @@
                     "NSLocationAlwaysUsageDescription": [
                         {
                             "xml": "<string>This app requires background location tracking</string>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<string>This app requires constant access to your location in order to track your position, even when the screen is off.</string>",
                             "count": 1
                         }
                     ],
@@ -194,7 +210,7 @@
                     "CoreLocation.framework": [
                         {
                             "xml": false,
-                            "count": 3
+                            "count": 4
                         }
                     ],
                     "AddressBook.framework": [
@@ -219,6 +235,10 @@
                         {
                             "xml": true,
                             "count": 1
+                        },
+                        {
+                            "xml": false,
+                            "count": 1
                         }
                     ],
                     "AudioToolbox.framework": [
@@ -230,6 +250,10 @@
                     "AVFoundation.framework": [
                         {
                             "xml": true,
+                            "count": 1
+                        },
+                        {
+                            "xml": false,
                             "count": 1
                         }
                     ],
@@ -278,7 +302,7 @@
                     "libsqlite3.dylib": [
                         {
                             "xml": false,
-                            "count": 1
+                            "count": 2
                         }
                     ],
                     "Accounts.framework": [
@@ -290,6 +314,30 @@
                     "Security.framework": [
                         {
                             "xml": true,
+                            "count": 1
+                        }
+                    ],
+                    "CoreBluetooth.framework": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "Photos.framework": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "CoreData.framework": [
+                        {
+                            "xml": false,
+                            "count": 1
+                        }
+                    ],
+                    "libz.dylib": [
+                        {
+                            "xml": false,
                             "count": 1
                         }
                     ]
@@ -365,6 +413,12 @@
             "PACKAGE_NAME": "com.vlabs.motoapp"
         },
         "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.vlabs.motoapp"
+        },
+        "cordova.plugins.diagnostic": {
+            "PACKAGE_NAME": "com.vlabs.motoapp"
+        },
+        "cordova-plugin-google-analytics": {
             "PACKAGE_NAME": "com.vlabs.motoapp"
         }
     },

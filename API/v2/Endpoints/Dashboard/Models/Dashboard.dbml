@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MotoApp_v1" Class="DashboardDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\MSSQLSERVER_2012;Initial Catalog=MotoApp_v1;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MotoApp_v1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="" Member="Filters">
+    <Type Name="Filter">
+      <Column Name="range" Type="System.String" CanBeNull="false" />
+      <Column Name="start" Type="System.DateTime" CanBeNull="false" />
+      <Column Name="end" Type="System.DateTime" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="GraphItems">
+    <Type Name="GraphItem">
+      <Column Name="Etiqueta" Member="label" Type="System.String" CanBeNull="false" />
+      <Column Name="RUTA_Distancia" Member="value" Type="System.Decimal" DbType="decimal(18,5)" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_MOT_Ruta" Member="Counters">
+    <Type Name="Counters">
+      <Column Name="RUTA_Distancia" Member="distance" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Velocidad" Member="speed" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Calorias" Member="calories" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="false" />
+      <Column Name="RUTA_Altitud" Member="altitude" Type="System.Decimal" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

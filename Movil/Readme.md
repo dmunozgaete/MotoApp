@@ -29,3 +29,6 @@ configurations {
    all*.exclude group: 'com.android.support', module: 'support-v4'
 }
 
+
+In the __project.properties__ file , for correct build downgrade the appcompat to 22 and not 23
+cordova.system.library.6=com.android.support:appcompat-v7:22.2.1

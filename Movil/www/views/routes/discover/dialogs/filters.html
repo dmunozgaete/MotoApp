@@ -1,0 +1,40 @@
+<ion-modal-view ng-controller="FilterDialogController" class="filters">
+    <form name="form">
+        <center>
+            <!-- TEXT -->
+            <div class="text">
+                Desde donde te encuentras ahora , indicanos a que distancia maxima deseas buscar.
+            </div>
+            <!-- TITLE -->
+            <div class="nears">
+                <div class="row">
+                    <div class="col">
+                        <button ng-disabled="form.$invalid" ng-click="data.distance = 100">Muy Cerca</button>
+                    </div>
+                    <div class="col">
+                        <button ng-disabled="form.$invalid" ng-click="data.distance = 250">Cerca</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <button ng-disabled="form.$invalid" ng-click="data.distance = 500">Lejos</button>
+                    </div>
+                    <div class="col">
+                        <button ng-disabled="form.$invalid" ng-click="data.distance = 1000">Muy Lejos</button>
+                    </div>
+                </div>
+            </div>
+            <div class="list">
+                <div class="item range range-positive">
+                    <input type="range" on-tap="onTap($event)" on-drag="onTap($event)" ng-model="data.distance" min="1" max="250">
+                </div>
+            </div>
+            <div class="distance">
+                {{data.distance}} Km.
+            </div>
+        </center>
+        <div class="bar bar-footer" ng-class="{'grayscale': form.$invalid}" ng-click="share();">
+            <button ng-disabled="form.$invalid">Buscar</button>
+        </div>
+    </form>
+</ion-modal-view>

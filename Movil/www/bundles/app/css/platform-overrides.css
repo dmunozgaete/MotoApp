@@ -2,20 +2,6 @@
 Whether the application is running within a webview on 
 the device within a native application
 --------------------------------------------------*/
-.platform-webview {
-  /*------------------------------------------------------
-  SPECIFIC VIEW'S
-  ------------------------------------------------------*/ }
-  .platform-webview ion-view.pane {
-    /*------------------------- 
-    VIEW:   Pause Page
-    -------------------------*/ }
-    .platform-webview ion-view.pane.pause ion-footer-bar > button {
-      /* IN MOBILE, THE RED CIRCLE DONT SHOW PROPERLY */ }
-      .platform-webview ion-view.pane.pause ion-footer-bar > button > div {
-        position: absolute;
-        left: 41%; }
-
 /*--------------------------------------------------
   PORTRAIT IOS VIEWPORT' (DEFAULT DIMENSIONS ARE FOR iPhone 5 and 5S)
 --------------------------------------------------*/
@@ -23,29 +9,16 @@ the device within a native application
   /* iPhone 4 and 4S */
   /* iPhone 6 */
   /* iPhone 6+ (plus) */ }
-  .platform-ios ion-view.pane {
-    /*------------------------- 
-    VIEW:   Share Page
-    -------------------------*/ }
-    .platform-ios ion-view.pane.share .maps {
-      margin-top: 17px; }
   @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
     .platform-ios {
       /*------------------------------------------------------
       SPECIFIC VIEW'S
       ------------------------------------------------------*/ }
-      .platform-ios ion-view.pane.route {
-        /*------------------------- 
-        VIEW:   Pause Page
-        -------------------------*/
+      .platform-ios ion-view.pane.routes {
         /*------------------------- 
         VIEW:   Stop Page
         -------------------------*/ }
-        .platform-ios ion-view.pane.route.pause .buttons .chart-container {
-          margin-top: -13px !important;
-          margin-left: 24px !important; }
-        .platform-ios ion-view.pane.route.stop .buttons .chart-container {
-          margin-top: -0.65em !important;
-          margin-left: 0.84em !important; } }
+        .platform-ios ion-view.pane.routes.pause .buttons .chart-container {
+          margin-left: 1.84em !important; } }
 
 /*# sourceMappingURL=platform-overrides.css.map */

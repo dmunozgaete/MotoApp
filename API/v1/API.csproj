@@ -170,6 +170,7 @@
     <Compile Include="Endpoints\Routes\Services\MyRoutes.cs" />
     <Compile Include="Endpoints\Routes\Services\Share.cs" />
     <Compile Include="Endpoints\Routes\Services\Create.cs" />
+    <Compile Include="Endpoints\Routes\Services\Delete.cs" />
     <Compile Include="Endpoints\Routes\Services\Unlike.cs" />
     <Compile Include="Endpoints\Security\Models\Oauth.designer.cs">
       <AutoGen>True</AutoGen>

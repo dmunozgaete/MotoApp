@@ -1,0 +1,22 @@
+<ion-modal-view ng-controller="ShareDialogController" class="share">
+    <form name="form">
+        <center>
+            <!-- LOGO -->
+            <img src="bundles/app/css/images/isotipo.jpg" />
+            <!-- TEXT -->
+            <div class="text">
+                Necesitamos que identifiques la ruta con un nombre , para que la compartamos en la comunidad MotoApp
+            </div>
+            <!-- TITLE -->
+            <div class="list">
+                <label class="item item-input">
+                    <i class="icon ion-location placeholder-icon"></i>
+                    <input type="text" required ng-model="data.name" placeholder="Nombre de la Ruta">
+                </label>
+            </div>
+        </center>
+        <div class="bar bar-footer" ng-class="{'grayscale': form.$invalid}" ng-click="share();">
+            <button ng-disabled="form.$invalid">Compartir Ruta</button>
+        </div>
+    </form>
+</ion-modal-view>

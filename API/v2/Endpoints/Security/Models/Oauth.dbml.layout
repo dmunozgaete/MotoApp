@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Oauth">
+  <DataContextMoniker Name="/OauthDataContext" />
+  <nestedChildShapes>
+    <classShape Id="5d9d0e51-f009-4fe2-b2b0-4681f77fcbb1" absoluteBounds="0.5, 0.5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/OauthDataContext/FacebookCredentials" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3a589608-6f1e-4cf4-8030-cddf5e415cc4" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2b8dec67-d339-4eb1-9842-321f15397792" absoluteBounds="3.375, 0.75, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/OauthDataContext/GoogleCredentials" />
+      <nestedChildShapes>
+        <elementListCompartment Id="593e299b-200c-4616-947e-8ebd298d73b6" absoluteBounds="3.39, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

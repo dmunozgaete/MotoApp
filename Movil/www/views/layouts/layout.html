@@ -9,7 +9,7 @@
             </ion-nav-buttons>
             <!-- RIGHT BUTTON'S -->
             <ion-nav-buttons side="right">
-                <button ng-if="config.notifications >0" class="button button-icon ion-android-notifications notification" ui-sref="app.notifications">
+                <button ng-if="config.notifications >0" class="button button-icon ion-android-notifications notification" ng-click="showNotifications();">
                     <span class="badge badge-assertive">{{config.notifications}}</span>
                 </button>
             </ion-nav-buttons>

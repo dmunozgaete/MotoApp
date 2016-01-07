@@ -1,0 +1,54 @@
+<ion-view title="Mis Rutas" class="routes me index" can-swipe-back="false">
+    <!-- LOADING -->
+    <flex-loading ng-if="!items" title="Obteniendo Información..." legend="Cargando tus rutas...">
+    </flex-loading>
+    <!-- EMPTY DATA -->
+    <empty-data ng-if="items.length==0" ng-click="create();">
+        <empty-message>
+            No hay nada que mostrar =(.
+        </empty-message>
+        <empty-legend>
+            Puedes cambiar este mensaje creando tu primera ruta!.
+            <br />
+            <br />
+            <br /> Dirijete al <strong>inicio</strong> y presiona el botón "Iniciar Ruta"
+        </empty-legend>
+    </empty-data>
+    <!-- CONTENT -->
+    <div ng-if="items.length > 0">
+        <ion-content overflow-scroll="true">
+            <ion-refresher spinner="lines" on-refresh="doRefresh()">
+            </ion-refresher>
+            <ion-list>
+                <ion-item item-height="200px" item-width="100%" collection-repeat="item in items track by $index">
+                    <div class="creator">
+                        <div class="box">
+                            <!-- CREATOR FULLNAME -->
+                            <div class="fullname">
+                                <time am-time-ago="item.start"></time>
+                            </div>
+                            <!-- INDICATORS -->
+                            <div class="indicators">
+                                <div class="indicator">
+                                    <i class="ion-android-stopwatch"></i> {{item.duration | time}}
+                                </div>
+                                <div class="indicator">
+                                    <i class="ion-android-map"></i> {{item.distance | distance}} km
+                                </div>
+                            </div>
+                            <!-- SOCIAL ACTION'S -->
+                            <div class="buttons">
+                                <div class="details" ng-click="view(item);">
+                                    Ver Ruta
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img ng-src="{{item.image}}" />
+                </ion-item>
+            </ion-list>
+            <ion-infinite-scroll ng-if="hasNext()" on-infinite="nextPage()" spinner="dots">
+            </ion-infinite-scroll>
+        </ion-content>
+    </div>
+</ion-view>

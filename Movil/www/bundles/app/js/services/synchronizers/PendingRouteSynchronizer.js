@@ -7,7 +7,6 @@
 angular.module('app.services.synchronizers')
     .service('PendingRouteSynchronizer', function(
         $q,
-        BaseEventHandler,
         $LocalStorage,
         pouchDB,
         $Api,
@@ -18,12 +17,13 @@ angular.module('app.services.synchronizers')
     )
     {
         // SYNC VARIABLES
-        var self = Object.create(BaseEventHandler); //Extend From EventHandler
+        var self = {}; //Extend From EventHandler
         var database = {
-            name: "pending_routes",
+            name: "pendingRoutes",
             options:
             {
-                size: 50
+                size: 50,
+                auto_compaction: true
             }
         };
 

@@ -29,6 +29,20 @@ namespace API.Endpoints.Routes
 
 
         /// <summary>
+        /// Discover New Route , by Geo 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [HierarchicalRoute("/Discover/{lat},{lng}")]
+        [Swashbuckle.Swagger.Annotations.SwaggerResponseRemoveDefaults]
+        [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.OK)]
+        public IHttpActionResult Discover()
+        {
+            return new Gale.REST.Http.HttpQueryableActionResult<Models.PopularRoute>(this.Request);
+        }
+
+
+        /// <summary>
         /// Retrieve Detailed Route
         /// </summary>
         /// <returns></returns>
@@ -125,6 +139,23 @@ namespace API.Endpoints.Routes
             return new Services.Share(route, information);
         }
 
+        /// <summary>
+        /// Delete Route
+        /// </summary>
+        /// <returns></returns>
+        [HttpDelete]
+        [Swashbuckle.Swagger.Annotations.SwaggerResponseRemoveDefaults]
+        [Swashbuckle.Swagger.Annotations.SwaggerResponse(HttpStatusCode.OK)]
+        [HierarchicalRoute("/{route}")]
+        public IHttpActionResult Delete(String route)
+        {
+            //------------------------------------------------------------------------------------------------------
+            // GUARD EXCEPTIONS
+            Gale.Exception.RestException.Guard(() => route == null, "EMPTY_ROUTE", API.Errors.ResourceManager);
+            //------------------------------------------------------------------------------------------------------
+
+            return new Services.Delete(this.User.PrimarySid(), route);
+        }
 
         /// <summary>
         /// Save Route Photo

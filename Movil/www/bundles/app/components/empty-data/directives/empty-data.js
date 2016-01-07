@@ -6,17 +6,23 @@ angular.module('app.components')
         restrict: 'E',
         scope:
         {
-            title: '@', // Title While loading
+            message: '@', // Title While loading
             legend: '@' // Legend While loading
         },
+        transclude: true,
         templateUrl: 'bundles/app/components/empty-data/empty-data.tpl.html',
-        controller: function(
-            $scope,
-            $element
-        )
+        controller: function($scope, $element) {},
+        link: function(scope, element, attributes)
         {
-            $scope.title = ($scope.title || "Lo sentimos =(");
-            $scope.legend = ($scope.legend || "No tenemos nada que mostrar...");
+            var count = element.find('empty-content')[0].children.length;
+            if (count == 0)
+            {
+                scope.data = {
+                    message: (scope.message || "Lo sentimos =("),
+                    legend: (scope.legend || "No tenemos nada que mostrar...")
+                };
+            }
+
         }
     };
 });

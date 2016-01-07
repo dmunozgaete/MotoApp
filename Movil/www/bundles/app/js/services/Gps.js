@@ -21,7 +21,11 @@
             var _highAccuracy = false;
             var _accuracyThreshold = 150; //Web Acuracy Default
             var _testRoute = null;
-
+            var _stateType = {
+                STARTED: 1,
+                STOPPED: 2,
+                FAIL_STARTED: 3
+            };
 
             this.frequency = function(timeout)
             {
@@ -69,8 +73,7 @@
             {
                 var self = Object.create(BaseEventHandler); //Extend From EventHandler
                 var watcher = null;
-                var callbacks = [];
-                var isPlatformReady = false;
+                var state = _stateType.STOPPED;
 
                 //Don't change this Timeout, they are diferent from above
                 var options = {
@@ -79,18 +82,42 @@
                     enableHighAccuracy: _highAccuracy
                 };
 
-                var executeOnLoad = function(callback)
+                var executeOnLoad = (function()
                 {
-                    if (isPlatformReady)
+                    var callbacks = [];
+                    var isPlatformReady = false;
+
+                    // will execute when device is ready, or 
+                    // immediately if the device is already ready.
+                    //    (Mobile and Web)
+                    ionic.Platform.ready(function()
                     {
-                        //Execute Inmeditely 
-                        callback();
-                    }
-                    else
+                        isPlatformReady = true;
+
+                        //Execute the Queue
+                        angular.forEach(callbacks, function(callback)
+                        {
+                            callback();
+                        });
+
+                        callbacks = []; //Clear Cached Callbacks
+                    });
+
+                    return function(callback)
                     {
-                        callbacks.push(callback); //Add to Queue
-                    }
-                };
+
+                        if (isPlatformReady)
+                        {
+                            //Execute Inmeditely 
+                            callback();
+                        }
+                        else
+                        {
+                            callbacks.push(callback); //Add to Queue
+                        }
+
+                    };
+                })();
 
                 var _lastSuccessGPS = new Date();
                 var _updateLocation = _.throttle(function(position)
@@ -146,13 +173,15 @@
                 };
 
                 //Retrieve the Current Location 
-                self.getCurrentPosition = function(timeout)
+                //  @timeout in Miliseconds 
+                //  @maximumAge in Miliseconds
+                self.getCurrentPosition = function(timeout, maximumAge)
                 {
                     var deferred = $q.defer();
                     var current_options = {
                         timeout: (timeout || options.timeout),
                         enableHighAccuracy: _highAccuracy,
-                        maximumAge: 0
+                        maximumAge: (maximumAge || 0)
                     };
 
                     if (_debug)
@@ -180,16 +209,35 @@
                 //Start Tracking GPS accord to initial setup
                 self.start = function()
                 {
+                    state = _stateType.STARTED; //START STATE
+                    var defer = $q.defer();
+
                     if (watcher)
                     {
                         //If already a Watcher , Do Nothing!
-                        return;
+                        var delay = $interval(function()
+                        {
+
+                            $interval.cancel(delay);
+                            defer.resolve();
+
+                        }, 100);
+
+                        return defer.promise;
                     }
+
+                    var options = {
+                        desiredAccuracy: 10,
+                        stationaryRadius: 10,
+                        distanceFilter: 30,
+                        stopOnTerminate: true, // <-- enable this to clear background location settings when the app terminates 
+                        //FAILS IN XCODE > 7
+                        debug: false, // <-- enable this hear sounds for background-geolocation life-cycle. 
+                    };
 
                     executeOnLoad(function()
                     {
                         watcher = navigator.geolocation.watchPosition(onUpdateLocation, onFailureLocation, options);
-
 
                         //Added Background GPS
                         if (typeof backgroundGeoLocation !== "undefined")
@@ -201,88 +249,98 @@
 
                             // BackgroundGeoLocation is highly configurable. See platform specific configuration options 
                             backgroundGeoLocation.configure(function(location)
-                            {
-
-                                if (_debug)
                                 {
-                                    $log.info("GPS BG: Update Position...", location);
-                                }
 
-                                onUpdateLocation(
-                                {
-                                    coords:
+                                    if (_debug)
                                     {
-                                        altitudeAccuracy: location.altitudeAccuracy,
-                                        altitude: location.altitude,
-                                        accuracy: location.accuracy,
-                                        latitude: location.latitude,
-                                        longitude: location.longitude
-                                    },
-                                    timestamp: location.timestamp
-                                });
+                                        $log.info("GPS BG: Update Position...", location);
+                                    }
 
-                            }, onFailureLocation,
-                            {
-                                desiredAccuracy: 10,
-                                stationaryRadius: 10,
-                                distanceFilter: 30,
-                                debug: _debug, // <-- enable this hear sounds for background-geolocation life-cycle. 
-                                stopOnTerminate: true, // <-- enable this to clear background location settings when the app terminates 
-                            });
+                                    onUpdateLocation(
+                                    {
+                                        coords:
+                                        {
+                                            altitudeAccuracy: location.altitudeAccuracy,
+                                            altitude: location.altitude,
+                                            accuracy: location.accuracy,
+                                            latitude: location.latitude,
+                                            longitude: location.longitude
+                                        },
+                                        timestamp: location.timestamp
+                                    });
+
+                                    defer.resolve();
+
+                                }, function(err)
+                                {
+                                    onFailureLocation(err);
+                                    defer.reject("GPS_ERROR");
+                                },
+                                options);
 
                             // Turn ON the background-geolocation system.  The user will be tracked whenever they suspend the app. 
                             backgroundGeoLocation.start();
+                        }else{
+                            defer.reject("BG_GPS_NOT_INSTALLED")
                         }
-
 
                         self.$fire("gps.start");
                     })
+
+                    return defer.promise;
                 };
 
                 //Stop the GPS Tracking 
                 self.stop = function()
                 {
+                    state = _stateType.STOPPED; //STOP STATE
                     if (watcher)
                     {
                         executeOnLoad(function()
                         {
                             navigator.geolocation.clearWatch(watcher);
-
+                            watcher = null;
+                            
                             //Clear Event Listeners
                             self.$clear("gps.update");
                             self.$clear("gps.error");
                         });
                     }
-                }
+                };
 
                 //------------------------------------------------
                 // CHECKER FUNCTION, TO ENSURE THAT GPS IS ACTIVE
+                // TODO: Check if actually is neccesary :P
                 var isInProcess = false;
                 $interval(function()
                 {
-                    if (!isInProcess)
+                    if (state == _stateType.STARTED)
                     {
-                        var dif = (new Date() - _lastSuccessGPS);
-                        if (dif > _timeout)
+                        if (!isInProcess)
                         {
-                            // MEANS GPS IS NOT WORK AT TIMEOUT LIMIT
-                            // ...help , calling manually current position
-                            if (_debug)
+                            var dif = (new Date() - _lastSuccessGPS);
+                            if (dif > _timeout)
                             {
-                                $log.warn("GPS: too long wait... try getting position...", dif);
+                                // MEANS GPS IS NOT WORK AT TIMEOUT LIMIT
+                                // ...help , calling manually current position
+                                if (_debug)
+                                {
+                                    $log.warn("GPS: too long wait... try getting position...", dif);
+                                }
+
+                                var stopProcess = function()
+                                {
+                                    isInProcess = false;
+                                };
+
+                                isInProcess = true;
+                                self.getCurrentPosition(_timeout).then(stopProcess, stopProcess);
                             }
-
-                            var stopProcess = function()
-                            {
-                                isInProcess = false;
-                            };
-
-                            isInProcess = true;
-                            self.getCurrentPosition(_timeout).then(stopProcess, stopProcess);
                         }
                     }
 
                 }, (_timeout + (_timeout / 3)));
+
 
                 //------------------------------------------------
                 // Only for Testing Purpose!
@@ -294,9 +352,11 @@
                     }
 
                     var interval = null;
-
                     self.start = function()
                     {
+                        state = _stateType.STARTED; //STOP STATE
+                        var defer = $q.defer();
+
                         $http.get(_testRoute).success(function(data)
                         {
                             $log.info("GPS: Test Route Loaded ({0} points) ".format([data.length]));
@@ -326,40 +386,30 @@
 
                             }, _timeout);
 
+                            defer.resolve();
+
                         }).error(function(error)
                         {
                             if (_debug)
                             {
                                 $log.error("GPS: Can't get test route ", error);
                             }
+
+                            defer.reject(error);
                         });
 
+                        return defer.promise;
                     };
 
                     self.stop = function()
                     {
+                        state = _stateType.STOPPED; //STOP STATE
                         if (interval)
                         {
                             $interval.cancel(interval);
                         }
                     };
-                }
-
-                // will execute when device is ready, or 
-                // immediately if the device is already ready.
-                //    (Mobile and Web)
-                ionic.Platform.ready(function()
-                {
-                    isPlatformReady = true;
-
-                    //Execute the Queue
-                    angular.forEach(callbacks, function(callback)
-                    {
-                        callback();
-                    });
-
-                    callbacks = null; //Clear Cached Callbacks
-                });
+                };
 
                 return self;
             };
@@ -374,7 +424,6 @@
                 {
                     $log.info("GPS: autostart");
                 }
-
                 Gps.start();
             }
         });

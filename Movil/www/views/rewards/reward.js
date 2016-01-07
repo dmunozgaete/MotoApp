@@ -2,7 +2,7 @@
  Company:           Valentys Ltda.
  Author:            David Gaete <dmunozgaete@gmail.com> (https://github.com/dmunozgaete)
  
- Description:       Synchronizer System to Sync to Some File
+ Description:       Rewards Modal controller
  Github:            http://ngcordova.com/docs/plugins/geolocation/
 ------------------------------------------------------*/
 (function()
@@ -27,7 +27,7 @@
             $scope.close = function()
             {
 
-                modal.hide();
+                modal.remove();
 
                 //-------------------------------------------
                 //RAISE NEW LEVEL???
@@ -69,7 +69,7 @@
             // Model
             $scope.close = function()
             {
-                modal.hide();
+                modal.remove();
             };
 
         });

@@ -1,58 +1,93 @@
 angular.route('boot/index', function(
-    $scope,
     $state,
     $log,
-    $Api,
     $Configuration,
     $location,
     $LocalStorage,
-    pouchDB,
     $q,
     Synchronizer,
     $Identity,
-    $cordovaBadge,
-    $cordovaSplashscreen
+    Gps,
+    $cordovaSplashscreen,
+    ApplicationCleanse
 )
 {
-    //Hide Splash Screen 
-    if (ionic.Platform.isWebView())
+    //Wait for Platform Ready
+    ionic.Platform.ready(function()
     {
-        $cordovaSplashscreen.hide();
-    }
 
-    //INITIALIZE THE SYNCRONIZER MANAGER
-    var defer = Synchronizer.start();
+        var stamps = $Configuration.get("localstorageStamps");
+        var new_version_defer = $q.defer();
 
-    //When all Process are Checked, run APP
-    $q.all([defer]).then(function()
-    {
-        //Get if user is the first time!!
-        var label = $Configuration.get("localstorageStamps").personal_data;
-        var isFirstTime = $LocalStorage.get(label) == null;
-        if (isFirstTime)
+        var onBooted = function()
         {
-            $state.go("nomenu.firstRun/configuration/step-1");
-            return;
+            Synchronizer.start().then(function()
+            {
+                // --------------------------------
+                //FIRST TIME???, CONFIGURE!!
+                if (!$LocalStorage.get(stamps.personal_data))
+                {
+                    $state.go("nomenu.firstRun/configure");
+                    return;
+                }
+                // --------------------------------
+
+
+                // --------------------------------
+                // MANUAL BOOT
+                Gps.start();
+
+                //Extend Personal Data
+                $Identity.extend("personal", $LocalStorage.getObject(stamps.personal_data));
+
+                var url = $Configuration.get("application");
+                $location.url(url.home);
+                // --------------------------------
+            });
+
+        };
+
+        //When all Process are Checked, run APP
+        $q.all([
+            new_version_defer.promise
+        ]).then(onBooted, function(err)
+        {
+
+            $log.error(err);
+
+        });
+
+
+        // ---------------------------------------------------------
+        // NEW VERSION SECTION! (ONLY WHEN NEW VERSION IS ACQUIRED)
+        if ($LocalStorage.get(stamps.new_version))
+        {
+
+            ApplicationCleanse.clean(true).then(function()
+            {
+                new_version_defer.resolve();
+            }, function(err)
+            {
+                new_version_defer.reject(err);
+            });
+
+            //Remove new Version Flag
+            $LocalStorage.remove(stamps.new_version);
+
         }
         else
         {
-            //Extend Personal Data
-            $Identity.extend("personal", $LocalStorage.getObject(label));
+            new_version_defer.resolve();
         }
+        // ---------------------------------------------------------
 
 
-        var url = $Configuration.get("application");
-        $location.url(url.home);
+
+        //Hide Splash Screen 
+        if (ionic.Platform.isWebView())
+        {
+            $cordovaSplashscreen.hide();
+        }
     });
 
-    //ONLY IN DEVICE
-    if (ionic.Platform.isWebView())
-    {
-        //PROMOT FOR NOTIFICATION ACCESS
-        $cordovaBadge.hasPermission().then(function() {}, function()
-        {
-            //ASK FOR PERMISSION
-            window.plugin.notification.local.promptForPermission();
-        });
-    }
 });

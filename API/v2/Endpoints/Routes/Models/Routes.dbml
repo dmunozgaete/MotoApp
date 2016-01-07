@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MotoApp_v1" Class="RoutesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\MSSQLSERVER_2012;Initial Catalog=MotoApp_v1;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MotoApp_v1ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TB_MOT_Ruta" Member="NewRoutes">
+    <Type Name="NewRoute">
+      <Column Name="RUTA_Inicio" Member="start" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Fin" Member="end" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Duracion" Member="duration" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="true" />
+      <Column Name="RUTA_Distancia" Member="distance" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="true" />
+      <Column Name="RUTA_Velocidad" Member="speed" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="true" />
+      <Column Name="RUTA_Calorias" Member="calories" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="true" />
+      <Column Name="RUTA_Latitud" Member="lat" Type="System.Decimal" DbType="Decimal(18,9) NOT NULL" CanBeNull="true" />
+      <Column Name="RUTA_Longitud" Member="lng" Type="System.Decimal" DbType="Decimal(18,9) NOT NULL" CanBeNull="true" />
+      <Column Name="RUTA_Altitud" Member="altitude" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="true" />
+      <Column Name="RUTA_Imagen" Member="image" Type="System.String" DbType="VarChar(2048) NOT NULL" CanBeNull="false" />
+      <Column Name="coordinates" Type="List&lt;Coordinates&gt;" CanBeNull="false" />
+      <Column Name="RUTA_Pausas" Member="pauses" Type="System.Int32" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TB_MOT_Coordenada" Member="Coordinates">
+    <Type Name="Coordinates">
+      <Column Name="COOR_Latitud" Member="lat" Type="System.Decimal" DbType="Decimal(18,9) NOT NULL" CanBeNull="false" />
+      <Column Name="COOR_Longitud" Member="lng" Type="System.Decimal" DbType="Decimal(18,9) NOT NULL" CanBeNull="false" />
+      <Column Name="COOR_Altitud" Member="altitude" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="COOR_Velocidad" Member="speed" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="COOR_Distancia" Member="distance" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="COOR_Duracion" Member="duration" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="COOR_Fecha" Member="createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VT_MOT_Rutas" Member="Routes">
+    <Type Name="Route">
+      <Column Name="RUTA_Token" Member="token" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RUTA_Inicio" Member="start" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Fin" Member="end" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Altitud" Member="altitude" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Latitud" Member="lat" Type="System.Decimal" DbType="Decimal(18,9) NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Longitud" Member="lng" Type="System.Decimal" DbType="Decimal(18,9) NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Calorias" Member="calories" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Distancia" Member="distance" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Duracion" Member="duration" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Pausas" Member="pauses" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Imagen" Member="image" Type="System.String" DbType="VarChar(2048) NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Velocidad" Member="speed" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="Compartida" Member="isShared" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RUCO_Nombre" Member="shared_name" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="RUCO_MeGusta" Member="shared_likes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RUCO_Observaciones" Member="shared_observations" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="RUCO_Fecha" Member="shared_createdAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TISE_Nombre" Member="sensation_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TISE_Token" Member="sensation_token" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="TISE_Identificador" Member="sensation_identifier" Type="System.String" CanBeNull="true" />
+      <Column Name="RUTA_Fecha" Member="createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ENTI_Token" Member="creator_token" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ENTI_Identificador" Member="creator_identifier" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ARCH_Token" Member="creator_photo" Type="System.String" CanBeNull="false" />
+      <Column Name="USUA_NombreCompleto" Member="creator_fullname" Storage="_fullname" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="newSharedRoutes">
+    <Type Name="newSharedRoute">
+      <Column Name="RUCO_Nombre" Member="name" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="RUCO_Observaciones" Member="observation" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VT_MOT_RutasPopulares" Member="PopularRoutes">
+    <Type Name="PopularRoute">
+      <Column Name="RUTA_Token" Member="token" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RUTA_Fecha" Member="createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RUCO_Fecha" Member="shared_createdAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Altitud" Member="altitude" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Latitud" Member="lat" Type="System.Decimal" DbType="Decimal(18,9) NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Longitud" Member="lng" Type="System.Decimal" DbType="Decimal(18,9) NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Distancia" Member="distance" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Duracion" Member="duration" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Pausas" Member="pauses" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Imagen" Member="image" Type="System.String" DbType="VarChar(2048) NOT NULL" CanBeNull="false" />
+      <Column Name="RUTA_Velocidad" Member="speed" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="RUCO_Nombre" Member="shared_name" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="RUCO_MeGusta" Member="shared_likes" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RUCO_Observaciones" Member="shared_observations" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="ENTI_Token" Member="creator_token" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ENTI_Identificador" Member="creator_identifier" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="ARCH_Token" Member="creator_photo" Type="System.String" CanBeNull="false" />
+      <Column Name="USUA_NombreCompleto" Member="creator_fullname" Storage="_fullname" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="RoutePhotos">
+    <Type Name="RoutePhoto">
+      <Column Name="photo" Type="System.String" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="" Member="SocialRoutes">
+    <Type Name="SocialRoute">
+      <Column Name="MeGusta" Member="like" Type="System.Boolean" CanBeNull="false" />
+      <Column Name="RUCO_Nombre" Member="name" Storage="_shared_name" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="RUCO_MeGusta" Member="totalLikes" Storage="_shared_likes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RUCO_Observaciones" Member="observations" Storage="_shared_observations" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="RUCO_Fecha" Member="sharedAt" Storage="_shared_createdAt" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

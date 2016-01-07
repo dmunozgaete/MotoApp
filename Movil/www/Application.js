@@ -17,13 +17,42 @@
     .run(function($location, $Configuration, $log, uiGmapGoogleMapApi)
     {
         //uiGmapGoogleMapApi Preload Gmaps script :P (before is better ^)
-        var application = $Configuration.get("application");
-        $log.info("application start... ;)!",
-        {
-            env: application.environment,
-            version: application.version
-        });
         $location.url("boot");
+    })
+    //CHANGE STATUS BAR TO LIGHT CONTENT
+    .run(function($ionicPlatform)
+    {
+        //IOS, SET Light Background in Fullscreen mode
+        $ionicPlatform.ready(function()
+        {
+            if (window.StatusBar)
+            {
+                // org.apache.cordova.statusbar required
+                StatusBar.styleLightContent();
+            }
+        });
+    })
+    // GOOGLE ANALITYCS
+    .run(function($rootScope, $cordovaGoogleAnalytics, CONFIGURATION, $ionicPlatform)
+    {
+        //Native?
+        $ionicPlatform.ready(function()
+        {
+            if (ionic.Platform.isWebView())
+            {
+                //DEBUGGING??
+                if (CONFIGURATION.debugging)
+                {
+                    $cordovaGoogleAnalytics.debugMode();
+                }
+
+                $cordovaGoogleAnalytics.startTrackerWithId('UA-46328608-6');
+                $rootScope.$on('$stateChangeStart', function(e, toState, toParams, fromState, fromParams)
+                {
+                    $cordovaGoogleAnalytics.trackView(toState.name);
+                });
+            }
+        });
     })
     .config(function($cordovaFacebookProvider)
     {
@@ -55,7 +84,7 @@
         //GPS Configuration
         GpsProvider
             .enableDeviceGPS() //Enable GPS Tracking
-            .autoStart() //Auto Start
+            //.autoStart() //Auto Start
             .accuracyThreshold(70) //Real GPS Aproximaty (aprox 65)
             .frequency(5000); //Try to get GPS Track each 5 seconds
 
@@ -70,7 +99,6 @@
             .enable()
             .notifyText('MotoApp seguirá enviando las coordenadas del GPS');
 
-
         //Synchronizer Manager
         SynchronizerProvider
             .autoLoadSynchronizers() //Auto Load Synchronizer via Reflection
@@ -84,7 +112,9 @@
         //If is a Web Broser, add test route!
         if (!ionic.Platform.isWebView())
         {
-            GpsProvider.addTestRoute('bundles/mocks/js/gps/+250.json'); //Simulate a Route
+            GpsProvider
+                .frequency(700)
+                .addTestRoute('bundles/mocks/js/gps/+250.json'); //Simulate a Route
         }
 
     })
@@ -94,29 +124,36 @@
         MocksProvider,
         BackgroundProvider,
         SynchronizerProvider,
+        ApplicationCleanseProvider,
         CONFIGURATION)
     {
         //Enable Debug for GPS and RouteTracker
         if (CONFIGURATION.debugging)
         {
-
             //Debugger Information
             RouteTrackerProvider.debug();
             GpsProvider.debug();
             MocksProvider.debug();
             BackgroundProvider.debug();
             SynchronizerProvider.debug();
+            ApplicationCleanseProvider.debug();
         }
 
     })
-    .config(function(uiGmapGoogleMapApiProvider)
+    .config(function(uiGmapGoogleMapApiProvider, trackViewerProvider)
     {
+        //Maps Configuration
+        var googleKey = 'AIzaSyANyXwrXOkNgp9RPOAuebclIHLU2FWmPAA';
         uiGmapGoogleMapApiProvider.configure(
         {
-            key: 'AIzaSyANyXwrXOkNgp9RPOAuebclIHLU2FWmPAA',
-            v: '3.22',
-            libraries: 'visualization,geometry'
+            key: googleKey,
+            libraries: 'visualization,geometry',
+            sensor: false
         });
+
+        //Track Viewer Config
+        trackViewerProvider
+            .googleMapApiKey(googleKey);
     })
     .config(function($ApiProvider, FileProvider, CONFIGURATION)
     {
@@ -134,17 +171,6 @@
             .setIssuerEndpoint("/Security/Authorize")
             .setLogInRoute("security/identity/login");
 
-    })
-    .run(function($ionicPlatform)
-    {
-        $ionicPlatform.ready(function()
-        {
-            if (window.StatusBar)
-            {
-                // org.apache.cordova.statusbar required
-                StatusBar.styleLightContent();
-            }
-        });
     })
     .config(function($stateProvider, $urlRouterProvider)
     {

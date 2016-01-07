@@ -1,9 +1,10 @@
-<ion-view class="routes index" can-swipe-back="false">
+<ion-view class="routes create index" can-swipe-back="false">
     <!-- HIDDEN IN THIS STEP -->
     <div class="row common-actions">
         <div class="col no-padding" ng-click="takePicture();">
             <i class="icon ion-ios-camera"></i>
             <div>Tomar Foto</div>
+            <span ng-if="resume.photos.length>0" class="badge badge-assertive">{{resume.photos.length}}</span>
         </div>
         <div class="col" style="display:none">
             <label class="toggle toggle-energized">

@@ -1,81 +1,105 @@
-<ion-view title="Detalle de Ruta" class="routes view index" cache-view="false">
+<ion-view title="Detalle de Ruta" class="routes view index" >
     <ion-nav-buttons side="left">
         <button class="button" ng-click="back()">
             <i class="icon ion-chevron-left"></i>
         </button>
     </ion-nav-buttons>
     <!-- LOADING -->
-    <flex-loading ng-if="!data" title="Cargando Ruta..." legend="obteniendo información ^^">
+    <flex-loading ng-if="!data" title="Cargando Ruta..." legend="Obteniendo información ^^">
     </flex-loading>
     <!-- CONTENT -->
     <div ng-if="data">
         <ion-content>
-            <!-- LIKE -->
-            <div class="fab-button top right likes" ng-class="{'active': data.social.like}" ng-click="like();" ng-if="data.shared.name">
-                <ion-spinner icon="ios-small" ng-if="data.social.like === null"></ion-spinner>
-                <i ng-if="data.social.like !== null" class="icon ion-heart"></i>
-            </div>
-            <!-- LIKE -->
-            <div class="fab-button top right photos" ng-click="photos();" ng-if="data.photos.length>0">
-                <i class="icon ion-images"></i>
-            </div>
-            <!-- VIEWER MAP -->
+            <!-- MAP -->
             <track-viewer>
             </track-viewer>
+            <!-- FULL NAME ROUTE IF EXIST'S -->
+            <div class="title" ng-if="data.social.name">
+                {{data.social.name}}
+            </div>
+            <!-- CREATOR -->
+            <div class="creator" ng-click="showUser()">
+                <div class="avatar">
+                    <img ng-src="{{data.creator.photo}}" />
+                </div>
+            </div>
             <!-- CONTENT -->
-            <form name="form">
-                <div>
-                    <!-- -->
-                    <div class="row">
-                        <div class="col">
+            <div class="indicators">
+                <div class="row">
+                    <div class="col">
+                        <!-- INDICATOR -->
+                        <div class="value">
+                            {{ data.distance | distance }}
+                        </div>
+                        <div class="unit">
                             Distancia (km)
                         </div>
-                        <div class="col-33">
-                            <input type="tel" disabled value="{{ data.distance | distance }}" class="value" />
-                        </div>
                     </div>
-                    <!-- -->
-                    <div class="row">
-                        <div class="col">
+                    <div class="col">
+                        <!-- INDICATOR -->
+                        <div class="value">
+                            {{ data.altitude | distance }}
+                        </div>
+                        <div class="unit">
                             Altitud (mts)
                         </div>
-                        <div class="col-33">
-                            <input type="tel" disabled value="{{ data.altitude | distance }}" class="value" />
-                        </div>
                     </div>
-                    <!-- -->
-                    <div class="row">
-                        <div class="col">
-                            Duración (min)
+                    <div class="col">
+                        <!-- INDICATOR -->
+                        <div class="value">
+                            {{ data.speed | speed }}
                         </div>
-                        <div class="col-33">
-                            <input type="tel" disabled value="{{ data.duration | time }}" class="value" />
-                        </div>
-                    </div>
-                    <!-- -->
-                    <div class="row">
-                        <div class="col">
+                        <div class="unit">
                             Velocidad (km/hr)
                         </div>
-                        <div class="col-33">
-                            <input type="tel" disabled value="{{ data.speed | speed }}" class="value" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" ng-click="like();" ng-if="data.isShared">
+                        <ion-spinner icon="ios-small" ng-if="data.social.like === null"></ion-spinner>
+                        <!-- INDICATOR -->
+                        <div class="value" ng-class="{'active': data.social.like}" ng-if="data.social.like !== null">
+                            <i class="icon ion-heart"></i> {{ data.social.totalLikes | number:0 }}
+                        </div>
+                        <div class="unit" ng-if="data.social.like !== null">
+                            Me gusta
                         </div>
                     </div>
-                    <!-- -->
-                    <div class="row">
-                        <div class="col">
+                    <div class="col">
+                        <!-- INDICATOR -->
+                        <div class="value">
+                            {{ data.duration | time }}
+                        </div>
+                        <div class="unit">
+                            Duración (min)
+                        </div>
+                    </div>
+                    <div class="col">
+                        <!-- INDICATOR -->
+                        <div class="value">
+                            {{ data.pauses | time }}
+                        </div>
+                        <div class="unit">
                             Pausas (min)
                         </div>
-                        <div class="col-33">
-                            <input type="tel" disabled value="{{ data.pauses | time }}" class="value" />
-                        </div>
                     </div>
-                    <!-- -->
                 </div>
-            </form>
+            </div>
+            <!-- PHOTOS -->
+            <div class="photos">
+                <preload-image ng-src="item.photo" ng-click="showFullImage(item)" cssgram-filter="earlybird" ng-repeat="item in data.photos|limitTo:3"></preload-image>
+                <div class="counter" ng-if="data.photos.length > 3" ng-click="showGallery();">
+                    + {{data.photos.length-3}} Fotos
+                </div>
+            </div>
+            <!-- SHOW MAPS -->
+            <button class="button button-block maps" ng-click="showMap(data);">
+                <i class="ion-map"></i>
+                <span>Ver Mapa</span>
+            </button>
             <!-- SAVE DATA -->
-            <button class="button button-block delete" ng-click="delete(data);">
-                <i class="icon ion-ios-checkmark-outline"></i>
+            <button class="button button-block delete" ng-if="canDelete(data);" ng-click="delete(data);">
+                <i class="ion-ios-trash"></i>
                 <span>Eliminar ruta</span>
             </button>
         </ion-content>

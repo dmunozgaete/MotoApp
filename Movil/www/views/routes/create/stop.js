@@ -6,92 +6,44 @@ angular.route('nomenu.routes/create/stop', function(
     $interval,
     RouteTracker,
     $ionicLoading,
+    $cordovaDialogs,
     Camera
 )
 {
     //---------------------------------------------
     // Model
-    $scope.model = {
-        sensation: null
-    };
+    $scope.model = {};
 
     //---------------------------------------------
     // Resume Tracker
     $scope.resume = RouteTracker.getResume();
 
-    //---------------------------------------------
-    // COUNTER PIE CHART AROUND STOP BUTTON
-    $scope.chart = {
-        data: [0, 0],
-        labels: ['&nbsp'],
-        colours: ['#ffc107'],
-        options:
-        {
-            segmentShowStroke: false,
-            animateScale: false,
-            percentageInnerCutout: 80,
-            showTooltips: false,
-            //http://api.jqueryui.com/easings/
-            animationEasing: 'easeOutBack'
-        }
-    };
-    var currentCounter = null;
-    $scope.discard = function(start)
-    {
-        if (start)
-        {
-            var addTick = function()
-            {
-                var tick = $scope.chart.data[0];
-                $scope.chart.data[0] = tick += 1;
-                if (tick == 2)
-                {
-                    $interval.cancel(currentCounter);
-
-                    //Discard Sesión =(
-                    $state.go("app.home");
-                }
-            };
-
-            currentCounter = $interval(function()
-            {
-                addTick();
-            }, 720);
-
-            addTick();
-        }
-        else
-        {
-            if (currentCounter)
-            {
-                $scope.chart.data = [0, 0];
-                $interval.cancel(currentCounter);
-            }
-        }
-    };
-    $scope.$on("$destroy", function()
-    {
-        if (currentCounter)
-        {
-            $interval.cancel(currentCounter);
-        }
-    });
-    //---------------------------------------------
 
     //----------------------------------------
     // Action's
-    $scope.share = function()
+    $scope.discard = function()
     {
-        $state.go("nomenu.routes/create/share",
-        {
-            sensation: $scope.model.sensation
-        });
+
+        $cordovaDialogs
+            .confirm(
+                '¿Estás seguro de descartar la ruta?',
+                'Descartar Ruta', [
+                    'Cancelar',
+                    'Descartar'
+                ])
+            .then(function(buttonIndex)
+            {
+                if (buttonIndex == 2)
+                {
+                    $state.go("app.home");
+                }
+            });
+
     };
 
     $scope.save = function()
     {
-        RouteTracker.setData($scope.model);
-        $state.go("nomenu.routes/create/upload");
+        $state.go("nomenu.routes/create/resume");
     };
 
     $scope.takePicture = function()

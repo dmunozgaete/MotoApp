@@ -1,0 +1,15 @@
+<ion-modal-view ng-controller="SportDialogController" class="sports">
+    <!-- TITLE -->
+    <div class="title">
+        Deportes Disponibles:
+    </div>
+    <!-- COLLECTION -->
+    <ion-content class="has-header has-footer">
+        <ion-list>
+            <ion-checkbox ng-click="toggle(item)" ng-checked="item == data.sport" ng-repeat="item in collections.sportTypes">{{item.name}}</ion-checkbox>
+        </ion-list>
+    </ion-content>
+    <div class="bar bar-footer" ng-class="{'disabled': form.$invalid}" ng-click="select();">
+        <button ng-disabled="form.$invalid">Seleccionar</button>
+    </div>
+</ion-modal-view>

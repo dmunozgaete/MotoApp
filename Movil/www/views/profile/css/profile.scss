@@ -1,4 +1,4 @@
-@import "../../../bundles/app/css/variables";
+@import "../../../bundles/app/css/_variables";
 [md-theme='imoto'] {
     /*------------------------- 
     VIEW:   PROFILE PAGE
@@ -146,9 +146,9 @@
                 }
                 div.col:last-child {
                     font-size: 1.6em;
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-end;
+                    @include align-items(center);
+                    @include justify-content(flex-end);
+                    @include flexbox();
                     padding-right: 0.5em;
                 }
                 &:last-child {
@@ -168,9 +168,9 @@
                 height: 3.5em;
                 width: 3.5em;
                 background-color: $accent_color;
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                @include align-items(center);
+                @include justify-content(center);
+                @include flexbox();
                 margin-top: -1em;
                 > i {
                     color: $primary_color;
@@ -245,7 +245,7 @@
                     border: 1px solid #ddd;
                     background-color: #fff;
                     color: #444;
-                    @extend .box-shadow-3dp;
+                    @include box-shadow(3px);
                 }
                 > div.information {
                     min-height: 55px;

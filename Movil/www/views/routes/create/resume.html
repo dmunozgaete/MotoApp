@@ -1,0 +1,104 @@
+<ion-view title="Resumen" class="routes create resume">
+    <!-- CONTENT -->
+    <ion-content>
+        <!-- MAP -->
+        <track-viewer>
+        </track-viewer>
+        <!-- FULL NAME ROUTE IF EXIST'S -->
+        <div class="title" ng-if="route.name">
+            {{route.name}}
+        </div>
+        <!-- CREATOR -->
+        <div class="sport">
+            <div class="avatar">
+                <img ng-src="{{user.photo | restricted}}" />
+            </div>
+        </div>
+        <!-- CONTENT -->
+        <div class="indicators">
+            <div class="row">
+                <div class="col">
+                    <!-- INDICATOR -->
+                    <div class="value">
+                        {{ resume.distance | distance }}
+                    </div>
+                    <div class="unit">
+                        Distancia (km)
+                    </div>
+                </div>
+                <div class="col">
+                    <!-- INDICATOR -->
+                    <div class="value">
+                        {{ resume.altitude | distance }}
+                    </div>
+                    <div class="unit">
+                        Altitud (mts)
+                    </div>
+                </div>
+                <div class="col">
+                    <!-- INDICATOR -->
+                    <div class="value">
+                        {{ resume.speed | speed }}
+                    </div>
+                    <div class="unit">
+                        Velocidad (km/hr)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <!-- INDICATOR -->
+                    <div class="value">
+                        {{ resume.seconds | time }}
+                    </div>
+                    <div class="unit">
+                        Duración (min)
+                    </div>
+                </div>
+                <div class="col">
+                    <!-- INDICATOR -->
+                    <div class="value">
+                        {{ resume.pauses | time }}
+                    </div>
+                    <div class="unit">
+                        Pausas (min)
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- PHOTOS -->
+        <div class="photos">
+            <figure class="earlybird" ng-click="showFullImage(item)" ng-repeat="item in resume.photos|limitTo:3 track by $index">
+                <img ng-src="data:image/jpg;base64,{{item}}" />
+            </figure>
+            <div class="counter" ng-if="resume.photos.length > 3" ng-click="showGallery();">
+                + {{resume.photos.length-3}} Fotos
+            </div>
+        </div>
+        <!-- MOTOAPP SHARING -->
+        <div class="row social-share no-padding">
+            <ion-toggle ng-model="route.isShared" ng-change="shareRoute(route);" toggle-class="toggle-energized">Compartir mi ruta en MotoApp</ion-toggle>
+        </div>
+        <!-- SOCIAL SHARING -->
+        <div class="row social-share">
+            <div class="col spacer">
+            </div>
+            <div class="col" ng-click="share('facebook');">
+                <img ng-src="bundles/app/css/images/social-sharing/fb.png" />
+            </div>
+            <div class="col" ng-click="share('twitter');">
+                <img ng-src="bundles/app/css/images/social-sharing/twitter.png" />
+            </div>
+            <div class="col" ng-click="share('instagram');">
+                <img ng-src="bundles/app/css/images/social-sharing/a.png" />
+            </div>
+        </div>
+    </ion-content>
+    <!-- FOOTER -->
+    <ion-footer-bar>
+        <button class="button button-block" ng-click="save(route);">
+            <i class="icon ion-android-stopwatch"></i>
+            <span>Finalizar</span>
+        </button>
+    </ion-footer-bar>
+</ion-view>

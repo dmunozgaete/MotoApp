@@ -12,10 +12,14 @@ angular.route('security/identity/login', function(
 )
 {
     //Hide Splash Screen 
-    if (ionic.Platform.isWebView())
+    ionic.Platform.ready(function()
     {
-        $cordovaSplashscreen.hide();
-    }
+        if (ionic.Platform.isWebView())
+        {
+            $cordovaSplashscreen.hide();
+        }
+    });
+
 
     //Application Information
     $scope.signature = $Configuration.get("application");
@@ -60,7 +64,7 @@ angular.route('security/identity/login', function(
                 //NOTE: In Android Only , the authReponse has a oauthToken and not the accessToken
                 var data = {
                     name: authReponse.displayName,
-                    accessToken: (authReponse.accessToken||authReponse.oauthToken),
+                    accessToken: (authReponse.accessToken || authReponse.oauthToken),
                     email: authReponse.email,
                     id: authReponse.userId,
                     image: authReponse.imageUrl

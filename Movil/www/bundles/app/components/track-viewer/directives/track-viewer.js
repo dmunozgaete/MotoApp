@@ -6,9 +6,7 @@ angular.module('app.components')
         restrict: 'E',
         scope:
         {
-            path: '=', // Default Message,
-            name: '@', // tracker Unique ID,
-            static: '=', // Define if the map is image or fully Google Map
+            name: '@' // tracker Unique ID,
         },
         templateUrl: 'bundles/app/components/track-viewer/track-viewer.tpl.html',
         controller: function(
@@ -24,6 +22,7 @@ angular.module('app.components')
             var self = Object.create(BaseEventHandler); //Extend From EventHandler
             var unique_id = ($scope.name || (new Date()).getTime()); //Component Unique ID
             var polylineColor = "ffc107";
+
             $scope.loadingMap = true;
 
             //TrackViewer Data
@@ -242,7 +241,8 @@ angular.module('app.components')
                         mapTypeId: google.maps.MapTypeId.HYBRID,
                         zoomControl: false,
                         panControl: false,
-                        disableDefaultUI: true
+                        disableDefaultUI: false,
+                        scrollwheel: false
                     }
                 };
 
@@ -266,46 +266,6 @@ angular.module('app.components')
 
             });
 
-            var isInStaticMode = function()
-            {
-                return $scope.static;
-            };
-
-            var setStaticMode = function(callback)
-            {
-
-                var staticURL = self.getImage(trackData.path);
-
-                var image = new Image();
-                image.onload = function()
-                {
-                    //------------------------------------------
-                    $scope.image = trackData.image = staticURL;
-                    $scope.loadingMap = false;
-                    //------------------------------------------
-
-                    //Call $apply beacuse the loading is Async and
-                    //AngularJs doesn't know which the image is already loading
-                    try
-                    {
-                        $scope.$apply();
-                    }
-                    catch (e)
-                    {}
-                };
-                image.onerror = function()
-                {
-                    //Do Something?, MAYBE IS BECAUSE INTERNET ERROR!!
-                };
-                image.src = staticURL;
-
-                //Call callback :P
-                if (callback)
-                {
-                    callback(staticURL);
-                }
-            };
-
             var centerPath = function(coords)
             {
 
@@ -317,22 +277,21 @@ angular.module('app.components')
 
                 var center = bounds.getCenter();
 
-                if (!isInStaticMode())
-                {
-                    $scope.map.center = {
-                        latitude: center.lat(),
-                        longitude: center.lng()
-                    };
 
-                    //Wait for the Map , or not... 
-                    addTask(function(map)
-                    {
-                        //Set Zoom and Center Map
-                        map.fitBounds(bounds);
-                        //Set Data to Model 
-                        trackData.zoom = map.getZoom();
-                    });
-                }
+                $scope.map.center = {
+                    latitude: center.lat(),
+                    longitude: center.lng()
+                };
+
+                //Wait for the Map , or not... 
+                addTask(function(map)
+                {
+                    //Set Zoom and Center Map
+                    map.fitBounds(bounds);
+                    //Set Data to Model 
+                    trackData.zoom = map.getZoom();
+                });
+
 
                 //Set Data to Model                 
                 trackData.center = {
@@ -407,17 +366,6 @@ angular.module('app.components')
                 centerPath();
 
                 //--------------------------------------------------------
-                // Set in Static Mode (Google Static Image)
-                if (isInStaticMode())
-                {
-                    trackData.path = coords;
-                    setStaticMode(callback);
-                    return;
-                }
-                //--------------------------------------------------------
-
-
-                //--------------------------------------------------------
                 addTask(function(map)
                 {
 
@@ -447,9 +395,6 @@ angular.module('app.components')
                         currentPolyline.getPath().push(
                             new google.maps.LatLng(coord)
                         );
-
-                        //Center Path
-                        centerPath();
 
                         //Add Coord to Model
                         trackData.coords.push(coord);
@@ -544,6 +489,12 @@ angular.module('app.components')
                     //--[ Map Type
                     fullUrl.push("&maptype=");
                     fullUrl.push(google.maps.MapTypeId.HYBRID);
+                    //----------------------------------------------------
+
+                    //----------------------------------------------------
+                    //--[ Google Maps Key
+                    fullUrl.push("&key=");
+                    fullUrl.push(trackViewer.getGoogleMapApiKey());
                     //----------------------------------------------------
 
                     //----------------------------------------------------

@@ -1,10 +1,11 @@
 <ion-view title="Inicio" class="home" cache-view="false" can-swipe-back="false">
-    <!-- LOADING -->
-    <flex-loading ng-if="!dashboard" title="Cargando Resumen..." legend="Veamos como van esas sesiones">
-    </flex-loading>
-    <!-- CONTENT -->
-    <div ng-if="dashboard">
-        <ion-content>
+    
+    <ion-content>
+        <!-- LOADING -->
+        <flex-loading ng-if="!dashboard" title="Cargando Resumen..." legend="Veamos como van esas sesiones">
+        </flex-loading>
+        <!-- CONTENT -->    
+        <div ng-if="dashboard">
             <!-- Stat's -->
             <div class="row period-selector">
                 <div class="col">
@@ -29,11 +30,11 @@
             <div class="row kpi">
                 <div class="col">
                     <div class="value">
-                        <i class="icon ion-fireball"></i>
-                        <span>{{ dashboard.counters.calories | calories }}</span>
+                        <i class="icon ion-arrow-graph-up-right"></i>
+                        <span>{{ dashboard.counters.altitude | altitude }}</span>
                     </div>
                     <div class="label">
-                        Calorias Quemadas
+                        Altitud Promedio
                     </div>
                 </div>
                 <div class="col">
@@ -51,13 +52,13 @@
                 <canvas class="chart chart-line" chart-options="graph.options" chart-data="graph.values" chart-labels="graph.labels" chart-series="graph.series" chart-colours="graph.colours" chart-click="graph.onClick">
                 </canvas>
             </div>
-        </ion-content>
-        <!-- FOOTER -->
-        <ion-footer-bar>
-            <button class="button button-block" ng-click="create();">
-                <i class="icon ion-android-stopwatch"></i>
-                <span>Iniciar Ruta</span>
-            </button>
-        </ion-footer-bar>
-    </div>
+        </div>
+    </ion-content>
+    <!-- FOOTER -->
+    <ion-footer-bar>
+        <button class="button button-block" ng-click="create();">
+            <i class="icon ion-android-stopwatch"></i>
+            <span>Iniciar Ruta</span>
+        </button>
+    </ion-footer-bar>
 </ion-view>
